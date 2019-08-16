@@ -1,0 +1,27 @@
+{
+  "name": "subilan-blog",
+  "version": "1.0.0",
+  "description": "My personal blog, based on VuePress.",
+  "main": "index.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Subilan/Blog.git"
+  },
+  "keywords": [
+    "blog",
+    "vuepress",
+    "static"
+  ],
+  "author": "Subilan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Subilan/Blog/issues"
+  },
+  "homepage": "https://github.com/Subilan/Blog#readme",
+  "devDependencies": {
+    "vuepress": "^1.0.3"
+  }
+}
