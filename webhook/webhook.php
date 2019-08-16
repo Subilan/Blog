@@ -6,7 +6,7 @@
  * @author  Miloslav Hůla (https://github.com/milo)
  */
 
-$hookSecret = '$ubilan1995sWeBHoOkOptIoNPassWoRd'; # set NULL to disable check
+$hookSecret = '$ubilanuNeVeRPlAyEDtUBersIMuLATor1995'; # set NULL to disable check
 
 set_error_handler(function ($severity, $message, $file, $line) {
     throw new \ErrorException($message, 0, $severity, $file, $line);
