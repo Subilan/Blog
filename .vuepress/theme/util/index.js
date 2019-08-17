@@ -245,5 +245,6 @@ function resolveItem (item, pages, base, groupDepth = 1) {
 }
 
 export function getPostTitle(post) {
-  return /\/(\w+)\.(html|md)/.exec(post.regularPath)[1];
+  post = decodeURI(post.regularPath);
+  return /\/([\w|\s?+]+)\.(html|md)/.exec(post)[1].replace("-", " ");
 }

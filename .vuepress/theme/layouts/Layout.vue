@@ -28,7 +28,6 @@
         slot="bottom"
       />
     </Sidebar>
-
     <div class="post-list" v-if="isRoot">
       <div class="post" v-for="post of getPages()">
          <router-link class="post-title" :to="post.path">{{ getPostTitle(post) }}</router-link>
