@@ -2,10 +2,7 @@
   <main class="page">
     <slot name="top"/>
 
-    <div class="theme-default-content">
-      <h1>{{ getPostTitle($page) }}</h1>
-      <Content/>
-    </div>
+      <Content class="theme-default-content"/>
 
     <footer class="page-edit">
       <div
@@ -65,7 +62,7 @@
 </template>
 
 <script>
-import { resolvePage, outboundRE, endingSlashRE, getPostTitle } from '../util'
+import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
   props: ['sidebarItems'],
@@ -162,7 +159,6 @@ export default {
       )
     },
 
-    getPostTitle,
   }
 }
 

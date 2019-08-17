@@ -30,7 +30,7 @@
     </Sidebar>
     <div class="post-list" v-if="isRoot">
       <div class="post" v-for="post of getPages()">
-         <router-link class="post-title" :to="post.path">{{ getPostTitle(post) }}</router-link>
+         <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
          <span class="last-updated">{{ post.lastUpdated }}</span>
          <span class="post-content" v-html="post.excerpt"></span>
          <div class="post-actions">
@@ -59,7 +59,7 @@
 import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
-import { resolveSidebarItems, getPostTitle } from '../util'
+import { resolveSidebarItems } from '../util'
 
 export default {
   components: { Page, Sidebar, Navbar },
@@ -127,7 +127,7 @@ export default {
   mounted () {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
-    })
+    });
   },
 
   methods: {
@@ -158,15 +158,16 @@ export default {
     getPages() {
       return this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path));
     },
-
-    getPostTitle,
-
   },
 }
 </script>
 
 <style lang="stylus" scoped>
 @require '../styles/wrapper.styl'
+
+@media screen and (max-width: 768px)
+  .post-list
+    padding: 16px !important;
 
 .post-list
   max-width: 740px;
