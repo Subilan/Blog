@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Subilan/Blog#readme",
   "devDependencies": {
+    "@vuepress/plugin-medium-zoom": "^1.0.0-rc.1",
     "@vuepress/theme-blog": "^1.2.3",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
@@ -31,6 +32,8 @@
     "vuepress-theme-simple-blog": "^0.1.2"
   },
   "dependencies": {
-    "@vuepress/plugin-blog": "^1.2.4"
+    "@vuepress/plugin-blog": "^1.2.4",
+    "@vuepress/plugin-last-updated": "^1.0.3",
+    "moment": "^2.24.0"
   }
 }
