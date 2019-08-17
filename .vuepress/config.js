@@ -13,5 +13,6 @@ module.exports = {
             "/About.html",
             "/Friends.html",
         ]
-    }
+    },
+    dest: "./public"
 }
