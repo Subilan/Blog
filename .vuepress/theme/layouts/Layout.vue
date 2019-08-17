@@ -32,7 +32,7 @@
       <div class="post" v-for="post of getPages()">
          <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
          <span class="last-updated">{{ post.lastUpdated }}</span>
-         <span class="post-content" v-html="post.excerpt"></span>
+         <span class="post-content" v-html="getExcerptContent(post.excerpt)"></span>
          <div class="post-actions">
           <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
          </div>
@@ -158,6 +158,10 @@ export default {
     getPages() {
       return this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path));
     },
+
+    getExcerptContent(excerpt) {
+      return /^<h1.*?>(.|\n)*?<\/h1>((.|\n)*?)$/.exec(excerpt)[2];
+    }
   },
 }
 </script>
