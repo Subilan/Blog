@@ -35,4 +35,7 @@ module.exports = {
             target: "svg",
         }
     },
+    head: [
+        ["link", { rel: "icon", href: "/img/avatar.png"}]
+    ]
 }
