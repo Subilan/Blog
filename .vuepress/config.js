@@ -13,6 +13,7 @@ module.exports = {
             "/",
             "/About.html",
             "/Friends.html",
+            "/Contact.html",
         ],
         search: true,
         searchMaxSuggestions: 10
