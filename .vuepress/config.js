@@ -12,7 +12,9 @@ module.exports = {
             "/",
             "/About.html",
             "/Friends.html",
-        ]
+        ],
+        search: true,
+        searchMaxSuggestions: 10
     },
     dest: "./public"
 }
