@@ -6,6 +6,7 @@ module.exports = {
             { text: "Blog", link: "/" },
             { text: "Friends", link: "/friends" },
             { text: "About", link: "/about" },
+            { text: "Contact", link: "/contact" },
         ],
         lastUpdated: "最后更新于",
         hiddenPages: [
