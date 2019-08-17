@@ -73,7 +73,7 @@ export default {
                     name: "Shine",
                     href: "https://ifsun.cc",
                     avatar: "https://www.gravatar.com/avatar/9fe93675cf47b3452b99a81c780d2913?s=500",
-                    description: "Though, Stories and Ideas",
+                    description: "Thoughts, Stories and Ideas",
                     background: "#000",
                     light: true,
                 }
