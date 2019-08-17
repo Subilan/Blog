@@ -5,9 +5,9 @@ module.exports = {
         title: "Subilan's Blog",
         nav: [
             { text: "Blog", link: "/" },
-            { text: "Friends", link: "/friends" },
-            { text: "About", link: "/about" },
-            { text: "Contact", link: "/contact" },
+            { text: "Friends", link: "/Friends.html" },
+            { text: "About", link: "/About.html" },
+            { text: "Contact", link: "/Contact.html" },
         ],
         lastUpdated: "最后更新于",
         hiddenPages: [
