@@ -4,7 +4,8 @@
   "description": "My personal blog, based on VuePress.",
   "main": "index.js",
   "scripts": {
-    "test": "none"
+    "docs:dev": "vuepress dev .",
+    "docs:build": "vuepress build ."
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,9 @@
   },
   "homepage": "https://github.com/Subilan/Blog#readme",
   "devDependencies": {
+    "@vuepress/theme-blog": "^1.2.3",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
     "vuepress": "^1.0.3",
     "vuepress-theme-simple": "^0.7.0",
     "vuepress-theme-simple-blog": "^0.1.2"
