@@ -2,6 +2,7 @@ module.exports = {
     title: "Subilan's Blog",
     description: "再次重演鸽子奇迹",
     themeConfig: {
+        title: "Subilan's Blog",
         nav: [
             { text: "Blog", link: "/" },
             { text: "Friends", link: "/friends" },
@@ -30,5 +31,8 @@ module.exports = {
         "@vuepress/medium-zoom": {
             selector: ".theme-default-content :not(a) > img",
         },
+        mathjax: {
+            target: "svg",
+        }
     },
 }

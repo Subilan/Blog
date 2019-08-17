@@ -34,6 +34,7 @@
   "dependencies": {
     "@vuepress/plugin-blog": "^1.2.4",
     "@vuepress/plugin-last-updated": "^1.0.3",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "vuepress-plugin-mathjax": "^1.2.8"
   }
 }
