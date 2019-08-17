@@ -1,0 +1,214 @@
+<template>
+  <div
+    class="theme-container"
+    :class="pageClasses"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
+  >
+    <Navbar
+      v-if="shouldShowNavbar"
+      @toggle-sidebar="toggleSidebar"
+    />
+
+    <div
+      class="sidebar-mask"
+      @click="toggleSidebar(false)"
+    ></div>
+
+    <Sidebar
+      :items="sidebarItems"
+      @toggle-sidebar="toggleSidebar"
+    >
+      <slot
+        name="sidebar-top"
+        slot="top"
+      />
+      <slot
+        name="sidebar-bottom"
+        slot="bottom"
+      />
+    </Sidebar>
+
+    <div class="post-list" v-if="isRoot">
+      <div class="post" v-for="post of getPages()">
+         <router-link class="post-title" :to="post.path">{{ getPostTitle(post) }}</router-link>
+         <span class="last-updated">{{ post.lastUpdated }}</span>
+         <span class="post-content" v-html="post.excerpt"></span>
+         <div class="post-actions">
+          <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
+         </div>
+      </div>
+    </div>
+
+    <Page
+      v-else
+      :sidebar-items="sidebarItems"
+    >
+      <slot
+        name="page-top"
+        slot="top"
+      />
+      <slot
+        name="page-bottom"
+        slot="bottom"
+      />
+    </Page>
+  </div>
+</template>
+
+<script>
+import Navbar from '@theme/components/Navbar.vue'
+import Page from '@theme/components/Page.vue'
+import Sidebar from '@theme/components/Sidebar.vue'
+import { resolveSidebarItems, getPostTitle } from '../util'
+
+export default {
+  components: { Page, Sidebar, Navbar },
+
+  data () {
+    return {
+      isSidebarOpen: false,
+    }
+  },
+
+  computed: {
+    shouldShowNavbar () {
+      const { themeConfig } = this.$site
+      const { frontmatter } = this.$page
+      if (
+        frontmatter.navbar === false
+        || themeConfig.navbar === false) {
+        return false
+      }
+      return (
+        this.$title
+        || themeConfig.logo
+        || themeConfig.repo
+        || themeConfig.nav
+        || this.$themeLocaleConfig.nav
+      )
+    },
+
+    shouldShowSidebar () {
+      const { frontmatter } = this.$page
+      return (
+        !frontmatter.home
+        && frontmatter.sidebar !== false
+        && this.sidebarItems.length
+      )
+    },
+
+    sidebarItems () {
+      return resolveSidebarItems(
+        this.$page,
+        this.$page.regularPath,
+        this.$site,
+        this.$localePath
+      )
+    },
+
+    pageClasses () {
+      const userPageClass = this.$page.frontmatter.pageClass
+      return [
+        {
+          'no-navbar': !this.shouldShowNavbar,
+          'sidebar-open': this.isSidebarOpen,
+          'no-sidebar': !this.shouldShowSidebar
+        },
+        userPageClass
+      ]
+    },
+      
+    isRoot() {
+      const path = this.$route.path;
+      return path === "/";
+    },
+  },
+
+  mounted () {
+    this.$router.afterEach(() => {
+      this.isSidebarOpen = false
+    })
+  },
+
+  methods: {
+    toggleSidebar (to) {
+      this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
+    },
+
+    // side swipe
+    onTouchStart (e) {
+      this.touchStart = {
+        x: e.changedTouches[0].clientX,
+        y: e.changedTouches[0].clientY
+      }
+    },
+
+    onTouchEnd (e) {
+      const dx = e.changedTouches[0].clientX - this.touchStart.x
+      const dy = e.changedTouches[0].clientY - this.touchStart.y
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx > 0 && this.touchStart.x <= 80) {
+          this.toggleSidebar(true)
+        } else {
+          this.toggleSidebar(false)
+        }
+      }
+    },
+
+    getPages() {
+      return this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path));
+    },
+
+    getPostTitle,
+
+  },
+}
+</script>
+
+<style lang="stylus" scoped>
+@require '../styles/wrapper.styl'
+
+.post-list
+  max-width: 740px;
+  margin: 0 auto;
+  margin-top: 56px;
+  padding: 2rem 2.5rem;
+
+.post
+  border: 1px solid #eaecef;
+  border-radius: 2px;
+  margin-top: 16px;
+  margin-bottom 16px;
+  padding: 16px;
+  transition: box-shadow linear .1s;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  position: relative;
+  &:hover,
+  &:focus
+    transition: box-shadow linear .1s;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  .post-actions
+    display: flex;
+    justify-content: flex-end;
+  .post-title
+    font-size: 36px;
+    font-weight: 600;
+  .last-updated
+    color: #bbb;
+    display: block;
+    font-size: 14px;
+  .continue-reading
+    padding: 6px;
+    border-radius: 2px;
+    background-color: white;
+    display: inline-flex;
+    transition: background-color linear .2s;
+    &:hover,
+    &:focus
+      transition: background-color linear .2s;
+      background-color: #eee
+</style>
