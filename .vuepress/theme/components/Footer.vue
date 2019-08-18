@@ -17,6 +17,7 @@ export default {
     color: #aaa;
     border-top: 1px solid #eaecef;
     padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .license {
