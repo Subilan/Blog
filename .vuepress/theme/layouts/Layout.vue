@@ -182,7 +182,6 @@ export default {
 .post
   border: 1px solid #eaecef;
   border-radius: 2px;
-  margin-top: 16px;
   margin-bottom 16px;
   padding: 16px;
   transition: box-shadow linear .1s;
