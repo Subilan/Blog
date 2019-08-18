@@ -36,6 +36,6 @@ module.exports = {
         }
     },
     head: [
-        ["link", { rel: "icon", href: "/img/avatar.png"}]
+        ["link", { rel: "icon", href: "https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png"}]
     ]
 }
