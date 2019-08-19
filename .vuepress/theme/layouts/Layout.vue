@@ -31,7 +31,7 @@
     <div class="post-list" v-if="isRoot">
       <div class="post" v-for="post of getPages()">
          <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
-         <span class="last-updated">{{ post.lastUpdated }}</span>
+         <span class="last-updated">{{ post.lastUpdated ? "编辑于 " + post.lastUpdated : "尚未发布" }}</span>
          <span class="post-content" v-html="getExcerptContent(post.excerpt)"></span>
          <div class="post-actions">
           <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
@@ -159,7 +159,7 @@ export default {
     },
 
     getPages() {
-      return this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path));
+      return this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path)).reverse();
     },
 
     getExcerptContent(excerpt) {
@@ -204,6 +204,7 @@ export default {
     font-size: 36px;
     font-weight: 600;
   .last-updated
+    margin-top: 4px;
     color: #bbb;
     display: block;
     font-size: 14px;
