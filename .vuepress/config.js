@@ -33,6 +33,10 @@ module.exports = {
         },
         mathjax: {
             target: "svg",
+        },
+        "@vuepress/pwa": {
+            serviceWorker: true,
+            updatePopup: false,
         }
     },
     head: [
