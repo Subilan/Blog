@@ -36,7 +36,10 @@ module.exports = {
         },
         "@vuepress/pwa": {
             serviceWorker: true,
-            updatePopup: false,
+            updatePopup: {
+                message: "有更新内容可用",
+                button: "刷新"
+            }
         }
     },
     head: [
