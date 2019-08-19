@@ -34,13 +34,6 @@ module.exports = {
         mathjax: {
             target: "svg",
         },
-        "@vuepress/pwa": {
-            serviceWorker: true,
-            updatePopup: {
-                message: "有更新内容可用",
-                button: "刷新"
-            }
-        }
     },
     head: [
         ["link", { rel: "icon", href: "https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png"}]
