@@ -29,9 +29,9 @@
       />
     </Sidebar>
     <div class="post-list" v-if="isRoot">
-      <div class="post" v-for="post of getPages()">
+      <div class="post" v-for="(post, i) of getPages()">
          <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
-         <span class="last-updated">{{ post.lastUpdated ? "编辑于 " + post.lastUpdated : "尚未发布" }}</span>
+         <span class="last-updated">{{ post.lastUpdated }}</span>
          <span class="post-content" v-html="getExcerptContent(post.excerpt)"></span>
          <div class="post-actions">
           <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
@@ -70,6 +70,7 @@ export default {
   data () {
     return {
       isSidebarOpen: false,
+      max: this.getPageCount
     }
   },
 
@@ -164,7 +165,7 @@ export default {
 
     getExcerptContent(excerpt) {
       return /^<h1.*?>(.|\n)*?<\/h1>((.|\n)*?)$/.exec(excerpt)[2];
-    }
+    },
   },
 }
 </script>
