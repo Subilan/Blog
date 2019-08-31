@@ -6,7 +6,7 @@ script:
 deploy:
   provider: pages
   skip_cleanup: true
-  local_dir: docs/.vuepress/dist
+  local_dir: public
   github_token: $GITHUB_TOKEN
   keep_history: true
   on:
