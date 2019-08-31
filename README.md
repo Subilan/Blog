@@ -1,4 +1,4 @@
-# Index
+# Index ![](https://api.travis-ci.org/Subilan/Blog.svg?branch=master)
 
 Hi.
 
