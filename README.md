@@ -1,6 +1,6 @@
 # Index
 
-**构建状态** | ![](https://api.travis-ci.org/Subilan/Blog.svg?branch=master)
+![](https://api.travis-ci.org/Subilan/Blog.svg?branch=master)
 
 Hi.
 
