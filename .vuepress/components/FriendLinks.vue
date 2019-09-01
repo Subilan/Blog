@@ -64,7 +64,7 @@ export default {
                 {
                     name: "Andy Wang",
                     href: "https://blog.uotca.com",
-                    avatar: "https://avatars2.githubusercontent.com/u/16192291?s=400&v=4",
+                    avatar: "https://i.loli.net/2019/09/01/Y6TbO1FGPSv4agE.jpg",
                     description: "a typical note-taker",
                     background: "#000",
                     light: true,
