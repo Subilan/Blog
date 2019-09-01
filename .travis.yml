@@ -2,7 +2,8 @@ language: node_js
 node_js:
   - "10"
 script:
-  - npm run docs:build && echo 'subilan.win' > CNAME
+  - npm run docs:build
+  - echo 'subilan.win' > CNAME
 deploy:
   provider: pages
   skip_cleanup: true
