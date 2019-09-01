@@ -160,7 +160,7 @@ export default {
     },
 
     getPages() {
-      return this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path));
+      return this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path)).reverse();
     },
 
     getExcerptContent(excerpt) {
