@@ -42,7 +42,7 @@ export default {
                 {
                     name: "浅墨小站",
                     href: "https://romonov.com",
-                    avatar: "https://www.romonov.com/wp-content/uploads/2017/09/head.jpg",
+                    avatar: "https://i.loli.net/2019/09/01/26aeCHOuNYhxXi8.jpg",
                     description: "No mountain too high, no ocean too deep.",
                     background: "rgb(217 112 213)",
                 },
