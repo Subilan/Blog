@@ -35,7 +35,7 @@ export default {
                 {
                     name: "Bottle 小站",
                     href: "https://bottle.moe/",
-                    avatar: "https://ww2.sinaimg.cn/large/ed039e1fgy1ft1plam1e5j2046046t94",
+                    avatar: "https://cdn2.imbottle.com/avatar.png",
                     description: "些瓶dalao的博客~",
                     background: "rgb(102 203 254)",
                 },
