@@ -72,7 +72,7 @@ export default {
                 {
                     name: "Shine",
                     href: "https://ifsun.cc",
-                    avatar: "https://www.gravatar.com/avatar/9fe93675cf47b3452b99a81c780d2913?s=500",
+                    avatar: "https://i.loli.net/2019/09/01/XCmdWxSKyacp3E7.jpg",
                     description: "Thoughts, Stories and Ideas",
                     background: "#000",
                     light: true,
