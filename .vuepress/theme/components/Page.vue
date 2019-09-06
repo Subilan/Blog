@@ -22,7 +22,7 @@
         v-if="lastUpdated"
       >
         <span class="prefix">{{ lastUpdatedText }}: </span>
-        <span class="time">{{ lastUpdated }}</span>
+        <span class="time">{{ getFormatedDate(lastUpdated) }}</span>
       </div>
     </footer>
 
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { resolvePage, outboundRE, endingSlashRE } from '../util'
+import { resolvePage, outboundRE, endingSlashRE, getFormatedDate } from '../util'
 
 export default {
   props: ['sidebarItems'],
@@ -159,6 +159,7 @@ export default {
       )
     },
 
+    getFormatedDate,
   }
 }
 
