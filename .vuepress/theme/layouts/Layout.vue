@@ -31,7 +31,8 @@
     <div class="post-list" v-if="isRoot">
       <div class="post" v-for="(post, i) of getPages()">
          <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
-         <span class="last-updated">{{ post.lastUpdated }}</span>
+         <span v-if="isPublishDate(post, getPages(), i)" class="edited-text">edited</span>
+         <span class="last-updated">{{ ( isPublishDate(post, getPages(), i) ? "编辑于 " : "" ) + getFormatedDate(post.lastUpdated) }}</span>
          <span class="post-content" v-html="getExcerptContent(post.excerpt)"></span>
          <div class="post-actions">
           <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
@@ -62,7 +63,7 @@ import Navbar from '@theme/components/Navbar.vue'
 import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
 import Footer from "../components/Footer.vue"
-import { resolveSidebarItems } from '../util'
+import { resolveSidebarItems, getFormatedDate } from '../util'
 
 export default {
   components: { Page, Sidebar, Navbar, Footer },
@@ -166,6 +167,15 @@ export default {
     getExcerptContent(excerpt) {
       return /^<h1.*?>(.|\n)*?<\/h1>((.|\n)*?)$/.exec(excerpt)[2];
     },
+
+    getFormatedDate,
+
+    isPublishDate(current, all_pages, index) {
+      if (all_pages[index-1] == undefined) return "";
+      let c = new Date(current.lastUpdated).getTime();
+      let n = new Date(all_pages[index-1].lastUpdated).getTime();
+      return c > n;
+    }
   },
 }
 </script>
@@ -219,4 +229,10 @@ export default {
     &:focus
       transition: background-color linear .2s;
       background-color: #eee
+  .edited-text
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    color: #bbb;
+    font-size: 14px;
 </style>

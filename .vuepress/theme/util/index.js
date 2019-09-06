@@ -208,6 +208,16 @@ export function resolveMatchingConfig (regularPath, config) {
   return {}
 }
 
+export function getFormatedDate(date) {
+  date = new Date(date);
+  date = date.getFullYear().toString() + "/" + (date.getMonth() + 1).toString() + "/" + date.getDate().toString();
+  return date;
+}
+
+export function compareDate(d1, cond, d2) {
+  
+}
+
 function ensureEndingSlash (path) {
   return /(\.html|\/)$/.test(path)
     ? path

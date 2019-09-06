@@ -21,13 +21,6 @@ module.exports = {
     },
     dest: "./public",
     plugins: {
-        "@vuepress/last-updated": {
-            transformer: (timestamp) => {
-                const moment = require("moment");
-                moment.locale("zh-CN");
-                return moment(timestamp).fromNow();
-            }
-        },
         "@vuepress/medium-zoom": {
             selector: ".theme-default-content :not(a) > img",
         },
