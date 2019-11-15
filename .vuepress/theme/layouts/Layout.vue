@@ -31,8 +31,9 @@
     <div class="post-list" v-if="isRoot">
       <div class="post" v-for="(post, i) of getPages()">
          <router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
-         <span v-if="isPublishDate(post, getPages(), i)" class="edited-text">edited</span>
-         <span class="last-updated">{{ ( isPublishDate(post, getPages(), i) ? "编辑于 " : "" ) + getFormatedDate(post.lastUpdated) }}</span>
+         <!--<span v-if="isPublishDate(post, getPages(), i)" class="edited-text">edited</span>-->
+         <!--<span class="last-updated">{{ ( isPublishDate(post, getPages(), i) ? "编辑于 " : "" ) + getFormatedDate(post.lastUpdated) }}</span>-->
+         <span class="last-updated">{{ getFormatedDate(post.lastUpdated) }}</span>
          <span class="post-content" v-html="'<p>' + post.frontmatter.desc + '</p>'"></span>
          <div class="post-actions">
           <router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
