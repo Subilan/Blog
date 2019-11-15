@@ -47,7 +47,7 @@ curl https://download.nextcloud.com/server/releases/nextcloud-17.0.1.zip -o next
 下载完毕后解压到要部署网站的位置。需要注意的是解压出来的并不是一大堆文件，而是一个 `nextcloud` 文件夹，里面包含的才是你想要的文件。因此如果你真的想要把它部署到某个目录，别忘了将 `nextcloud` 文件夹里的文件移动出来（`mv nextcloud/* <document-root>`）。
 
 :::tip
-**提示 :info:**
+**提示 :question:**
 
 下文中使用 `<document-root>` 代替你所部署网页的位置，即所有网页文件的存放点和 Webserver 的根目录。
 :::
