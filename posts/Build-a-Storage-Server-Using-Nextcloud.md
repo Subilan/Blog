@@ -213,5 +213,3 @@ Nextcloud was successfully installed
 ```
 
 代表安装成功了。这个时候打开你的网站，应该就可以看到正常页面了！
-
-*（未完待续）*
