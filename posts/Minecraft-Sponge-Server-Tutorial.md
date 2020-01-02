@@ -33,6 +33,7 @@ Sponge 分为三个大分支，在这里为了能够安装 Mod 我们选择 Spon
 
 ::: warning
 **⚠ Warning**
+
 Sponge 对 Forge 的版本有要求，在选择 Sponge 时需要注意到其支持的 Forge 版本号。在上面所给的链接中，下载到的 Forge 和 Sponge 应分别为 `forge-1.12.2-14.23.5.2838-installer.jar` 和 `spongeforge-1.12.2-2838-7.1.8.jar`。
 
 注意到其中，Forge 版本号为 1.12.2-14.23.5.**2838**，Sponge 版本号为 1.12.2-**2838**-7.1.8，这代表它们是对应的版本。如果这两个版本不一致，Forge 偏高（Sponge 偏低）会导致运行不稳定，Forge 偏低（Sponge 偏高）会导致部分插件无法正常运行。
@@ -161,21 +162,27 @@ Sponge 界构建出了一种独立于 Bukkit 插件的体系，因此它们的�
 ## 一些坑
 
 Q **进入服务器后无法破坏东西？**
+
 A 可能是出生点保护。将 `server.properties` 中的 `spawn-protection` 项目更改为 0。这个项目没有任何实际作用，如果真的需要相关功能，可以使用插件，但是这个功能会导致即使拥有最高权限也无法做出任何更改。
 
 Q **OP 无效？**
+
 A Sponge 中没有 OP 这种概念，取而代之的是较为复杂但是又很方便的权限组管理模式。具体可以上网查找相关资料，需要依靠权限管理插件来实现。比较推荐 [LuckPerms](https://luckperms.net)
 
 Q **`/help` 无权限？**
+
 A `help` 的权限在 `sponge.commands.help`，确保此权限给到。OP 应拥有 `sponge.commands` 权限。 
 
 Q **`/gamerule`、`/gamemode` 等无权限？**
+
 A 这些都是原版指令，在 `minecraft.commands` 里。OP 应拥有 `minecraft.commands` 权限。
 
 Q **在一次性给予所有权限（`*` 权限）以后，发生很多奇怪的事情？**
+
 A 重置权限组。不提倡一次性给予 `*` 权限，因为这有可能给到那些不一定需要的权限，例如 `nucleus.vanish.onlogin` 会导致每一次登录自动隐身，除了聊天以外没有任何办法发现此人（Tab 菜单也不可见）。
 
 Q **Nucleus 如何设置玩家最大家的数量以及称号？**
+
 A Nucleus 和 LuckPerms 搭配使用可以方便地设置这两者，用权限组进行区分。
 
 ```bash
