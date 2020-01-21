@@ -11,15 +11,15 @@
 其实是否提前添加本站是无所谓的~
 
 > 网站名称：Subilan's Blog
-
+>
 > 网站介绍：已删库跑路
-
+>
 > 网站代表色（如果有的话）：#009688
-
+>
 > 网站地址：<https://subilan.win>
-
+>
 > 头像（圆）：<https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png>
-
+>
 > 头像（方）：<https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar-big.jpg>
 
 ## 如何在本站上添加友链？
