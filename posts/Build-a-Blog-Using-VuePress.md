@@ -25,7 +25,7 @@ npm install -D vuepress
 # 或者 yarn add -D vuepress
 ```
 
-需要注意的一点是，这种方式是以本地依赖（depencies）的形式安装 VuePress，它会在当前目录生成一个 `node_modules` 文件夹并自动安装 JavaScript、Vue 等所需要的依赖。
+需要注意的一点是，这种方式是以本地依赖（dependencies）的形式安装 VuePress，它会在当前目录生成一个 `node_modules` 文件夹并自动安装 JavaScript、Vue 等所需要的依赖。
 
 在本文后面出现的指令均无法以 `vuepress` 开头，因为 VuePress 没有被全局安装。
 
