@@ -79,7 +79,7 @@ export default {
                 }, 
                 {
                     name: "9527's Blog",
-                    href: "https://9527.lhteam.top/",
+                    href: "https://9527dhx.top/",
                     avatar: "https://i.loli.net/2019/05/26/5cea282e596b167848.png",
                     description: "跌倒了，站起来，换个姿势，再跌倒。",
                     background: "#80deea",
