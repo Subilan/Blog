@@ -126,6 +126,7 @@ export default {
         .avatar
             border-radius 100%
             width 64px
+            height 64px
         .link-content
             margin-left 16px
             .name
