@@ -84,6 +84,14 @@ export default {
                     description: "跌倒了，站起来，换个姿势，再跌倒。",
                     background: "#80deea",
                     light: true,
+                },
+                {
+                    name: "Jimmy0w0 Blog",
+                    href: "https://blog.jimmy0w0.me/",
+                    avatar: "https://s2.ax1x.com/2019/08/31/mxEWfH.jpg",
+                    description: "数字世界的建筑师",
+                    background: "#3949ab",
+                    light: true,
                 }
             ]
         }
