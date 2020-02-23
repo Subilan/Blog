@@ -90,7 +90,7 @@ export default {
                     href: "https://blog.jimmy0w0.me/",
                     avatar: "https://s2.ax1x.com/2019/08/31/mxEWfH.jpg",
                     description: "数字世界的建筑师",
-                    background: "#3949ab",
+                    background: "#42B983",
                     light: true,
                 }
             ]
