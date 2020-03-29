@@ -4,7 +4,7 @@
 
 *按照活跃先后排序*
 
-- GitHub Issue <https://github.com/Subilan/Blog/issues>
+- GitHub Issue <https://github.com/Subilan/subilan.github.io/issues>
 - Gmail [suyuanliang1995@gmail.com](mailto:suyuanliang1995@gmail.com)
 - QQ 邮箱 [1843917482@qq.com](mailto:1843917482@qq.com)
 
