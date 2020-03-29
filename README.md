@@ -8,7 +8,7 @@ Hi.
 
 本博客使用 VuePress 搭建，Travis CI 实现自动部署，GitHub Pages 进行托管。
 
-我的博客会不定期更新（但由于现实原因，无法做到活跃更新），您可以在这个 repo 里看到博客的更新日志。更新的内容不一定是文字，还有可能是对 VuePress 本人的修改。博客不支持评论，但如果您有任何想法，欢迎在 [Issues](//github.com/Subilan/subilan.github.io/issues) 提出。
+我的博客会不定期更新（但由于现实原因，无法做到活跃更新），您可以在这个 repo 里看到博客的更新日志。更新的内容不一定是文字，还有可能是对 VuePress 本身的修改。博客不支持评论，但如果您有任何想法，欢迎在 [Issues](//github.com/Subilan/subilan.github.io/issues) 提出。
 
 ## 关于
 
