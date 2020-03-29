@@ -24,9 +24,7 @@
 
 ## 如何在本站上添加友链？
 
-您可以通过[这里](/contact.html)的联系方式联系到我，或者直接在 GitHub 页面提 Issue，标明「友链申请」。您甚至可以直接提交 Pull Request，仅需依照 `/.vuepress/components/FriendLinks.vue` 内的写法继续在该文件中添加内容即可。在提交之前请参考如下规则。目前友链申请是开放的。
-
-规定也很简单：
+您可以通过[这里](/Contact.html)的联系方式联系到我，或者直接在 GitHub 页面提 Issue，标明「友链申请」。您甚至可以直接提交 Pull Request，仅需依照 `/.vuepress/components/FriendLinks.vue` 内的写法继续在该文件中添加内容即可。在提交之前请参考如下规则。目前友链申请是开放的。
 
 - 开启全站 HTTPS
 - 非二级域名
