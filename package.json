@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Subilan/Blog.git"
+    "url": "git+https://github.com/Subilan/subilan.github.io.git"
   },
   "keywords": [
     "blog",
@@ -19,9 +19,9 @@
   "author": "Subilan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Subilan/Blog/issues"
+    "url": "https://github.com/Subilan/subilan.github.io/issues"
   },
-  "homepage": "https://github.com/Subilan/Blog#readme",
+  "homepage": "https://github.com/Subilan/subilan.github.io#readme",
   "devDependencies": {
     "@vuepress/plugin-medium-zoom": "^1.0.0-rc.1",
     "@vuepress/plugin-pwa": "^1.0.0-rc.1",
