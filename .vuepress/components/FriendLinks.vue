@@ -101,6 +101,20 @@ export default {
                     background_type: "image",
                     background: "https://s1.ax1x.com/2020/04/05/GD7Epq.jpg",
                     light: true,
+                },
+                {
+                    name: "Mashirl's Blog",
+                    href: "https://www.mashirl.cn/",
+                    avatar: "https://resource.mashirl.cn/images/avatar.jpg",
+                    description: "予 世界温柔以待 惟愿 时光静好",
+                    background: "#FFAEB9"
+                },
+                {
+                    name: "Fidel's Lab",
+                    href: "https://fidel.js.org/",
+                    avatar: "https://gravatar.loli.net/avatar/bccd181c71d3a08f6c182f3f48164545",
+                    description: "玄云Fidel's Blog",
+                    background: "#000"
                 }
             ]
         }
