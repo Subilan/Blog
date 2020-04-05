@@ -92,6 +92,15 @@ export default {
                     description: "数字世界的建筑师",
                     background: "#42B983",
                     light: true,
+                },
+                {
+                    name: "FlyEmoji STudio",
+                    href: "https://flyemoji.xyz",
+                    avatar: "https://s1.ax1x.com/2020/03/12/8Z0eFP.png",
+                    description: "摸鱼就完了（逃",
+                    background_type: "image",
+                    background: "https://s1.ax1x.com/2020/04/05/GD7Epq.jpg",
+                    light: true,
                 }
             ]
         }
