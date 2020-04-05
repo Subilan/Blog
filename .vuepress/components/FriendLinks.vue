@@ -114,7 +114,8 @@ export default {
                     href: "https://fidel.js.org/",
                     avatar: "https://gravatar.loli.net/avatar/bccd181c71d3a08f6c182f3f48164545",
                     description: "玄云Fidel's Blog",
-                    background: "#000"
+                    background: "#000",
+                    light: true
                 }
             ]
         }
