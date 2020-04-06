@@ -27,7 +27,7 @@ export default {
                     name: "Dream City",
                     href: "https://www.littleqiu.net",
                     avatar: "https://www.littleqiu.net/wp-content/uploads/2018/01/Avatar.png",
-                    description: "就算世界终结 也无所谓",
+                    description: "愿你有一天，能与你最重要的人重逢",
                     background_type: "image",
                     background: "https://www.littleqiu.net/wp-content/uploads/2018/01/ChulillaSpain_ZH-CN10170248808_1920x1080.jpg",
                     light: true,
