@@ -116,6 +116,13 @@ export default {
                     description: "玄云Fidel's Blog",
                     background: "#000",
                     light: true
+                },
+                {
+                    name: "Yang's Blog",
+                    href: "https://yang233.top/",
+                    avatar: "https://yangblog.top/img/logo.jpg",
+                    description: "迷失的人迷失了，相逢的人会相逢",
+                    background: "#FFF"
                 }
             ]
         }
