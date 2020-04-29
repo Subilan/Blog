@@ -56,7 +56,7 @@ export default {
                 {
                     name: "Ojhdt's Blog",
                     href: "https://blog.ojhdt.com",
-                    avatar: "https://ojhdt-1257115336.cos.ap-guangzhou.myqcloud.com/favicon.ico",
+                    avatar: "https://www.gravatar.com/avatar/af6911b4de2f5a357fa796a66e202272?s=128",
                     description: "隐约雷鸣，阴霾天空",
                     background: "#009688",
                     light: true,
