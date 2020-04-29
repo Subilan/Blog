@@ -39,13 +39,13 @@ export default {
                     description: "些瓶dalao的博客~",
                     background: "rgb(102 203 254)",
                 },
-                {
+                /* {
                     name: "浅墨小站",
                     href: "https://romonov.com",
                     avatar: "https://i.loli.net/2019/09/01/26aeCHOuNYhxXi8.jpg",
                     description: "No mountain too high, no ocean too deep.",
                     background: "rgb(217 112 213)",
-                },
+                }, */
                 {
                     name: "MoeClue~",
                     href: "https://moeclue.com",
@@ -69,14 +69,14 @@ export default {
                     background: "#000",
                     light: true,
                 },
-                {
+                /* {
                     name: "Shine",
                     href: "https://ifsun.cc",
                     avatar: "https://i.loli.net/2019/09/01/XCmdWxSKyacp3E7.jpg",
                     description: "Thoughts, Stories and Ideas",
                     background: "#000",
                     light: true,
-                }, 
+                }, */
                 {
                     name: "9527's Blog",
                     href: "https://9527dhx.top/",
