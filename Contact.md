@@ -5,7 +5,7 @@
 *按照活跃先后排序*
 
 - GitHub Issue <https://github.com/Subilan/subilan.github.io/issues>
-- Gmail [suyuanliang1995@gmail.com](mailto:suyuanliang1995@gmail.com)
+- Gmail [christophersubilan@gmail.com](mailto:christophersubilan@gmail.com)
 - QQ 邮箱 [1843917482@qq.com](mailto:1843917482@qq.com)
 
 然后是纯属娱乐的社交账号，有兴趣可以关注一下~
