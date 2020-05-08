@@ -13,7 +13,7 @@
 - [GitHub](https://github.com/Subilan)
 - [知乎](https://zhihu.com/people/subilan)
 - [Bilibili](https://space.bilibili.com/35413001)
-- [Twitter](https://twitter.com/Subilan)
+- [Twitter](https://twitter.com/subilan1995)
 - [Telegram](https://t.me/Subilan)
 
 基本上只是用来看东西的账号...
