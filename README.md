@@ -4,9 +4,7 @@
 
 Hi.
 
-欢迎来到我的博客。博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.github.io> 访问。由于 github.io 域名在最近出现了问题，并且在将来都有可能不再可靠，博客已经设置了反向代理，国内网络也可以放心访问。感谢 9527 的提醒~
-
-本博客使用 VuePress 搭建，Travis CI 实现自动部署，GitHub Pages 进行托管。
+欢迎来到我的博客。博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.github.io> 访问。本博客使用 VuePress 搭建，Travis CI 实现自动部署，GitHub Pages 进行托管。
 
 我的博客会不定期更新（但由于现实原因，无法做到活跃更新），您可以在这个 repo 里看到博客的更新日志。更新的内容不一定是文字，还有可能是对 VuePress 本身的修改。博客不支持评论，但如果您有任何想法，欢迎在 [Issues](//github.com/Subilan/subilan.github.io/issues) 提出。
 
