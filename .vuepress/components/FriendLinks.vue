@@ -123,6 +123,14 @@ export default {
                     avatar: "https://yangblog.top/img/logo.jpg",
                     description: "迷失的人迷失了，相逢的人会相逢",
                     background: "#FFF"
+                },
+                {
+                    name: "WindSpirit IT",
+                    href: "https://www.leviatan.cn/",
+                    avatar: "https://www.leviatan.cn/chevereto/images/2020/02/26/01e87e28661f72ed13f55a444a49fdcc.md.png",
+                    description: "跟随互联网发展的每一步",
+                    background: "#262626",
+                    light: true
                 }
             ]
         }
