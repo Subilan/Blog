@@ -59,7 +59,7 @@ dataArray = dataArray.fill(false);
 ```vue
 <div>
   	<whatever v-for="(x, i) in items" :key="i" v-model="dataArray[i]">
-    	{{ items }}
+    	{{ x }}
   	</whatever>
 </div>
 ```
