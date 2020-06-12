@@ -113,8 +113,9 @@ export default {
                     name: "Fidel's Lab",
                     href: "https://fidel.js.org/",
                     avatar: "https://gravatar.loli.net/avatar/bccd181c71d3a08f6c182f3f48164545",
-                    description: "玄云Fidel's Blog",
-                    background: "#000",
+                    description: "不乱于心，不困于情。不畏将来，不念过往。",
+                    background_type: "image",
+                    background: "https://i.loli.net/2020/06/07/Sa7dWDtVMivUnoQ.jpg",
                     light: true
                 },
                 {
