@@ -208,4 +208,6 @@ voteData.extend([0 for i in range(len(itemsNew) - len(itemsOld))])
 
 ## 未完待续
 
-__*To be continued*__
+:::warning
+由于个人原因，此文章的续集可能需要较长时间完成。
+:::
