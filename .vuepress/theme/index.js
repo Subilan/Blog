@@ -39,5 +39,19 @@ module.exports = (options, ctx) => ({
         '/zh/': '警告'
       }
     }]
-  ]
+  ],
+
+  extendPageData($page) {
+    const {
+      _filePath,
+      _computed,
+      _content,
+      _strippedContent,
+      key,
+      frontmatter,
+      regularPath,
+      path,
+    } = $page
+    $page.content = $page._strippedContent;
+  }
 })
