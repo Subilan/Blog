@@ -30,5 +30,12 @@ module.exports = {
     },
     head: [
         ["link", { rel: "icon", href: "https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png"}]
-    ]
+    ],
+    markdown: {
+        plugins: [
+            "footnote",
+            "sup",
+            "sub"
+        ]
+    }
 }
