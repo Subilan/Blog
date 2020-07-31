@@ -1,6 +1,6 @@
 ---
 desc: Hi. 欢迎来到我的博客！
-date: 2019/8/17
+date: 2019/08/17
 ---
 # Hello World
 
