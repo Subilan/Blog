@@ -146,13 +146,9 @@ String randomKey = keyList.get(rand.nextInt(keyList.size()));
 
 > Returns a pseudorandom, **uniformly distributed int value between 0 (inclusive) and the specified value (exclusive)**, drawn from this random number generator's sequence. The general contract of nextInt is that one int value in the specified range is pseudorandomly generated and returned. All bound possible int values are produced with (approximately) equal probability.
 
-不需要把它完全读完，粗体部分就足够。`nextInt` 获取到的随机数是范围性的，其范围为 $0\leq{n}\lt{b}$，其中 $b$ 为其参数 `bound`。恰好，List 的顺序是从 `0` 开始的。当我们有这样一个 List 时
+不需要把它完全读完，粗体部分就足够。`nextInt` 获取到的随机数是范围性的，其范围为 $0\leq{n}\lt{b}$，其中 $b$ 为其参数 `bound`。恰好，List 的顺序是从 `0` 开始的。
 
-$$ L = \{1,2,3,4,5,6\} $$
-
-它的大小 `L.size()` 为 6，Random 恰好为我们解决了 OutOfBound 的问题。由于随机数生成的范围只能是 $0\leq{n}\lt{b}$ 即 $0\leq{n}\lt{6}$，可能取的值只有
-
-$$ P = \{0,1,2,3,4,5\} $$
+当我们有这样一个 List 时 $L = \{1,2,3,4,5,6\}$，它的大小 `L.size()` 为 6，Random 恰好为我们解决了 OutOfBound 的问题。由于随机数生成的范围只能是 $0\leq{n}\lt{b}$ 即 $0\leq{n}\lt{6}$，可能取的值只有 $P = \{0,1,2,3,4,5\}$
 
 而该数组可取的最高位就是第 5 位（值为 $6$）。
 
