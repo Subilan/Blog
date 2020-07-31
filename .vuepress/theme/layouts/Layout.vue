@@ -136,8 +136,7 @@ export default {
 		},
 
 		countWords(str) {
-			var matches = str.match(/[\u00ff-\uffff]|\S+/g);
-			return matches ? matches.length : 0;
+			return (str.match(/[\u4E00-\u9FA5]/gu) || []).length;
 		}
 	}
 };
