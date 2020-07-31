@@ -1,13 +1,18 @@
 <template>
     <footer class="footer">
-        <div class="copyright">&copy; 2019~2020 Subilan's Blog</div>
-        <div class="license">Based on <a href="//vuepress.vuejs.org">VuePress</a></div>
+        <div class="copyright">&copy; {{ year }} Subilan's Blog</div>
+        <div class="license">Powered by <a href="//vuepress.vuejs.org">VuePress</a></div>
     </footer>
 </template>
 
 <script>
 export default {
-    
+    computed: {
+        year() {
+            let date = new Date();
+            return date.getFullYear().toString();
+        }
+    }
 }
 </script>
 
