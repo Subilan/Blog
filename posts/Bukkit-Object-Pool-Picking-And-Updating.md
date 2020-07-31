@@ -5,9 +5,7 @@ date: 2020/07/31
 
 # Bukkit 实现对象池随机抽取和定时更新
 
-:::tip
-
-**前置说明**
+:::tip 前置说明
 
 标题中的「对象池」并不是什么新的、高深的名词，而是代表一个「包含了一系列物体」的池。例如卡池、任务池。只有在池存在的情况下，才会有「抽取」这样的操作。为了叙述方便，本文将对象设定为「任务」，围绕一个任务插件来展开讨论。
 :::
@@ -341,7 +339,7 @@ public static Date getDailyNextRefreshTime(FileConfiguration config) {
 Calendar cal = Calendar.getInstance();
 ```
 
-:::tips
+:::tip
 为什么不是 `new Calendar()`？因为 Calendar 是一个 abstract class，它不能被实例化。该 `getInstance()` 方法返回的实际上是一个叫做 `GregorianCalendar` 的实例。上述语句等同于 `Calendar cal = new GregorianCalendar();`
 :::
 
