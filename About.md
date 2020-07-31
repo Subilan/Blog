@@ -20,4 +20,16 @@
 
 此博客使用 [VuePress](//vuepress.vuejs.org) 搭建，主题是由官方默认主题修改而成。具体信息可以参考 [GitHub 页面](//github.com/Subilan/subilan.github.io)。
 
-此博客托管在 GitHub Pages 上，域名 `subilan.win` 会长期使用，同时你也可以通过 `subilan.github.io` 来访问同样的内容，它也本博客的备用域名。
+此博客托管在 GitHub Pages 上，域名 `subilan.win` 会长期使用，同时你也可以通过 `subilan.github.io` 来访问同样的内容，它也是本博客的备用域名。
+
+## 关于字数统计
+
+本博客的字数统计基于该函数
+
+```javascript
+function countWords(str) {
+	return (str.match(/[\u4E00-\u9FA5]/gu) || []).length;
+}
+```
+
+仅统计中文字符。
