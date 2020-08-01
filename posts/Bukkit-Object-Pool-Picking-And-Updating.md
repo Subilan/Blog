@@ -117,7 +117,9 @@ FileConfiguration pool = load("daily-pool.yml");
 
 但这还不够！我们需要将其放入一个 Java 类型中，以便我们进行操作。在这里我们需要首先梳理一下随机抽取的思路。
 
-经过观察，我们发现 Bukkit 的 `FileConfiguration` 有两个关键方法：`getKeys(boolean)` 和 `getValues(boolean)`。至于这个 `boolean` 到底是干什么的，我们现在不需要知道。通过 Javadoc 可以得知它们的返回值一个是 `Map<String,Object>`，另一个是 `Set<String>`，因此我们认为**这绝对又是一场噩梦**。为了能够让后续的流程不乱套，我们先将这两个值获取出来。
+经过观察，我们发现 Bukkit 的 `FileConfiguration` 有两个关键方法：`getKeys(boolean)` 和 `getValues(boolean)`。至于这个 `boolean` 到底是干什么的，我们现在不需要知道。通过 Javadoc 可以得知它们的返回值一个是 `Map<String,Object>`，另一个是 `Set<String>`，因此我们认为**这绝对又是一场噩梦**。
+
+为了能够让后续的流程不乱套，我们先将这两个值获取出来。
 
 ```java
 Map<String,Object> objects = pool.getValues(false);
@@ -161,7 +163,7 @@ Object object = pool.get(randomKey);
 
 我们来汇总一下我们先前的代码：
 
-```java
+```java{4-5}
 FileConfiguration pool = load("daily-pool.yml");
 List<String> keyList = new ArrayList<>(pool.getKeys(false));
 Random rand = new Random();
@@ -204,7 +206,7 @@ public void onEnable() {
 }
 ```
 
-首先我们创建一个用于存储挑选出来内容的 Yaml。然后，我们开始写入。
+首先我们创建一个用于存储挑选出来内容的 Yaml，即后文中的「存储池」。然后，我们开始写入。
 
 ```java
 // 先清空先前生成的内容，因为每次生成都是覆盖性操作
@@ -295,7 +297,7 @@ weekly_refresh_time: 6
 
 ### 每日池刷新
 
-首先我们需要明确的一点时，**随机抽取并写入存储池的时间不是确定的**。你可能会认为，既然用户规定了刷新的时间，那么掌控刷新操作的函数一定是在那个时间被执行，那么只需要将下次刷新时间基于那次的时间进行推算（加 24 小时、加 7 天）即可，但这是不对的。至于为什么会发生这种情况，可以理解如下代码：
+首先我们需要明确的一点是，**随机抽取并写入存储池的时间不是确定的**。你可能会认为，既然用户规定了刷新的时间，那么掌控刷新操作的函数一定是在那个时间被执行，那么只需要将下次刷新时间基于那次的时间进行推算（加 24 小时、加 7 天）即可，但这是不对的。至于为什么会发生这种情况，可以理解如下代码：
 
 ```java
 public void onEnable() {
