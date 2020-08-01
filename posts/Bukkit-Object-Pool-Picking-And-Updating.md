@@ -26,8 +26,7 @@ date: 2020/07/31
 ```java
 package win.subilan.ExamplePlugin;
 
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.configuration.file.FileConfiguration;
+// import 部分省略
 
 public final class ExamplePlugin extends JavaPlugin {
     
