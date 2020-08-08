@@ -104,7 +104,7 @@ export default {
                 },
                 {
                     name: "Mashirl's Blog",
-                    href: "https://www.mashirl.cn/",
+                    href: "https://www.mashirl.com/",
                     avatar: "https://cdn.jsdelivr.net/gh/Mashirl/Images/avatar.jpg",
                     description: "予 世界温柔以待 惟愿 时光静好",
                     background: "#FFAEB9"
