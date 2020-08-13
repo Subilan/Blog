@@ -24,6 +24,14 @@ export default {
                     light: true,
                 },
                 {
+                    name: "WindSpirit IT",
+                    href: "https://www.leviatan.cn/",
+                    avatar: "https://www.leviatan.cn/chevereto/images/2020/02/26/01e87e28661f72ed13f55a444a49fdcc.md.png",
+                    description: "跟随互联网发展的每一步",
+                    background: "#262626",
+                    light: true
+                },
+                {
                     name: "Dream City",
                     href: "https://www.littleqiu.net",
                     avatar: "https://www.littleqiu.net/wp-content/uploads/2018/01/Avatar.png",
@@ -116,21 +124,6 @@ export default {
                     description: "不乱于心，不困于情。不畏将来，不念过往。",
                     background_type: "image",
                     background: "https://i.loli.net/2020/06/07/Sa7dWDtVMivUnoQ.jpg",
-                    light: true
-                },
-                {
-                    name: "Yang's Blog",
-                    href: "https://yang233.top/",
-                    avatar: "https://yangblog.top/img/logo.jpg",
-                    description: "迷失的人迷失了，相逢的人会相逢",
-                    background: "#FFF"
-                },
-                {
-                    name: "WindSpirit IT",
-                    href: "https://www.leviatan.cn/",
-                    avatar: "https://www.leviatan.cn/chevereto/images/2020/02/26/01e87e28661f72ed13f55a444a49fdcc.md.png",
-                    description: "跟随互联网发展的每一步",
-                    background: "#262626",
                     light: true
                 }
             ]
