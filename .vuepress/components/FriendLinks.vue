@@ -130,8 +130,8 @@ export default {
                     name: "Socular 的博客",
                     href: "https://awsl.rip",
                     avatar: "https://www.gravatar.com/avatar/202e3e3a8e8fcefd140c1aab9b54c0d6",
-                    description: "少一点吹捧，多一点实干 :)"
-                    background: "#2196F3"
+                    description: "少一点吹捧，多一点实干 :)",
+                    background: "#2196F3",
                     light: true
                 }
             ]
