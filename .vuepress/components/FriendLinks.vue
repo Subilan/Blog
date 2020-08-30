@@ -125,6 +125,14 @@ export default {
                     background_type: "image",
                     background: "https://i.loli.net/2020/06/07/Sa7dWDtVMivUnoQ.jpg",
                     light: true
+                },
+                {
+                    name: "Socular 的博客",
+                    href: "https://awsl.rip",
+                    avatar: "https://www.gravatar.com/avatar/202e3e3a8e8fcefd140c1aab9b54c0d6",
+                    description: "少一点吹捧，多一点实干 :)",
+                    background: "#2196F3",
+                    light: true
                 }
             ]
         }
