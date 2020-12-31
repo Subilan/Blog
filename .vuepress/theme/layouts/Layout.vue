@@ -14,7 +14,7 @@
 				<!--<span v-if="isPublishDate(post, getPages(), i)" class="edited-text">edited</span>-->
 				<!--<span class="last-updated">{{ ( isPublishDate(post, getPages(), i) ? "编辑于 " : "" ) + getFormatedDate(post.lastUpdated) }}</span>-->
 				<span class="last-updated">{{ post.frontmatter.date !== undefined ? post.frontmatter.date : getFormatedDate(post.lastUpdated) }} · 约 {{ countWords(post.content) }} 字</span>
-				<span class="post-content" v-html="'<p>' + post.frontmatter.desc + '</p>'"></span>
+				<span v-if="post.frontmatter.desc !== undefined" class="post-content" v-html="'<p>' + post.frontmatter.desc + '</p>'"></span>
 				<div class="post-actions">
 					<router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
 				</div>
