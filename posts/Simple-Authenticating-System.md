@@ -99,7 +99,7 @@ localStorage.setItem('xxx-login-token', r);
 
 > On disk until deleted by user (delete cache) or by the app. 
 
-<small><em>来自 <http://www.gwtproject.org/doc/latest/DevGuideHtml5Storage.html></em></small>
+<small>来自 <a href='http://www.gwtproject.org/doc/latest/DevGuideHtml5Storage.html' target='_blank'>GWTProject</a></small>
 
 所以实际上不需要担心 localStorage 被无缘无故清掉。换句话说，Token 将会在 localStorage 中长期存在。
 
