@@ -115,7 +115,7 @@ Token 的利用主要体现在请求上，且有多种。在这里我们演示�
 
 ```typescript
 function checkAuth() {
-  let token = localStorage.getItem("xxx-login/token");
+  let token = localStorage.getItem("xxx-login-token");
   return new Promise((r, j) => {
     if (!token) {
       j();
@@ -127,7 +127,7 @@ function checkAuth() {
         },
         (response) => {
           if (response === true) {
-	    r();
+	      r();
           } else {
             j();
           }
@@ -236,7 +236,7 @@ function hashEquals($a, $b)
             return hash_equals($a, $b);
         }
         $nonce = openssl_random_pseudo_bytes(32);
-        return hash_hmac(self::HASH_ALGO, $a, $nonce) === hash_hmac(self::HASH_ALGO, $b, $nonce);
+        return hash_hmac('sha256', $a, $nonce) === hash_hmac('sha256', $b, $nonce);
     }
 }
 ```
