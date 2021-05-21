@@ -126,11 +126,12 @@ function checkAuth() {
           token,
         },
         (response) => {
-         if (response === true) {
-				   r();
-			   } else {
-				   j();
-			   }
+          if (response === true) {
+	    r();
+          } else {
+            j();
+          }
+        }
       );
     }
   });
