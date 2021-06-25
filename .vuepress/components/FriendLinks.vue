@@ -132,6 +132,15 @@ export default {
                     description: "少一点吹捧，多一点实干 :)",
                     background: "#2196F3",
                     light: true
+                },
+                {
+                    name: "Restent Blog",
+                    href: "https://blog.restent.win/",
+                    avatar: "https://cdn.jsdelivr.net/gh/Restent/Restent/avatar.jpg",
+                    description: "面对黑暗，向往光明。",
+                    background_type: "image",
+                    background: "https://cdn.jsdelivr.net/gh/Restent/Website-Images/background.jpg",
+                    light: true
                 }
             ]
         }
