@@ -4,7 +4,7 @@
 
 这里是我的博客的存储库。博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.github.io> 访问。本博客使用 VuePress 搭建，Travis CI 实现自动部署，GitHub Pages 进行托管。博客不定期更新，commit 记录就是博客的更新日志。
 
-由于程序限制（静态），评论只能借助于第三方，如 Discus、GitHub Issue 等，因此博客并不支持直接评论。但如果你想评论，也可以在本存储库的 Issue 内发表并带上 `comment` 的 tag。
+由于程序限制（静态），评论只能借助于第三方，如 Discus、GitHub Issue 等，个人不是很喜欢（会拖慢速度等），因此博客并不支持直接评论。但如果你想评论，也可以在本存储库的 Issue 内发表并带上 `comment` 的 tag。
 
 ## 关于
 
