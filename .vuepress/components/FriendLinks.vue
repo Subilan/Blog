@@ -146,7 +146,7 @@ export default {
                     avatar: "https://cdn.jsdelivr.net/gh/Restent/Restent/avatar.jpg",
                     description: "面对黑暗，向往光明。",
                     background_type: "image",
-                    background: "https://cdn.jsdelivr.net/gh/Restent/Website-Images/background.jpg",
+                    background: "https://i.yecdn.com/images/2021/07/13/68dd24d85519577d858c1e87ea186a17.jpg",
                     light: true
                 }
             ]
