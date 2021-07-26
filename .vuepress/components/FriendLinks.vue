@@ -77,22 +77,6 @@ export default {
                     light: true,
                 },
                 {
-                    name: "Andy Wang",
-                    href: "https://blog.uotca.com",
-                    avatar: "https://i.loli.net/2019/09/01/Y6TbO1FGPSv4agE.jpg",
-                    description: "a typical note-taker",
-                    background: "#000",
-                    light: true,
-                },
-                /* {
-                    name: "Shine",
-                    href: "https://ifsun.cc",
-                    avatar: "https://i.loli.net/2019/09/01/XCmdWxSKyacp3E7.jpg",
-                    description: "Thoughts, Stories and Ideas",
-                    background: "#000",
-                    light: true,
-                }, */
-                {
                     name: "9527's Blog",
                     href: "https://9527dhx.top/",
                     avatar: "https://i.loli.net/2019/05/26/5cea282e596b167848.png",
