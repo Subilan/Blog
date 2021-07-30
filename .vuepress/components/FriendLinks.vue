@@ -177,7 +177,7 @@ export default {
 		display: flex;
 		align-items: center;
 		margin: 4px;
-		padding: 8px;
+		padding: 10px 16px;
 		border-radius: 5px;
 		background-position: center;
 		background-size: cover;
