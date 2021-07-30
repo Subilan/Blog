@@ -1,8 +1,7 @@
 module.exports = {
     title: "Subilan's Blog",
-    description: "再次重演鸽子奇迹",
+    description: "Satellite yourself.",
     themeConfig: {
-        title: "Subilan's Blog",
         nav: [
             { text: "Blog", link: "/" },
             { text: "Friends", link: "/Friends.html" },
@@ -25,7 +24,7 @@ module.exports = {
             selector: ".theme-default-content :not(a) > img",
         },
         mathjax: {
-            target: "svg",
+            target: "chtml",
         },
     },
     head: [
