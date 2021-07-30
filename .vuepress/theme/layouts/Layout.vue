@@ -1,5 +1,10 @@
 <template>
-	<div class="theme-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
+	<div
+		class="theme-container"
+		:class="pageClasses"
+		@touchstart="onTouchStart"
+		@touchend="onTouchEnd"
+	>
 		<Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
 		<div class="sidebar-mask" @click="toggleSidebar(false)"></div>
@@ -9,14 +14,27 @@
 			<slot name="sidebar-bottom" slot="bottom" />
 		</Sidebar>
 		<div class="post-list" v-if="isRoot">
-			<div class="post" v-for="(post, i) of getPages()">
-				<router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
-				<!--<span v-if="isPublishDate(post, getPages(), i)" class="edited-text">edited</span>-->
-				<!--<span class="last-updated">{{ ( isPublishDate(post, getPages(), i) ? "编辑于 " : "" ) + getFormatedDate(post.lastUpdated) }}</span>-->
-				<span class="last-updated">{{ post.frontmatter.date !== undefined ? post.frontmatter.date : getFormatedDate(post.lastUpdated) }} · 约 {{ countWords(post.content) }} 字</span>
-				<span v-if="post.frontmatter.desc !== undefined" class="post-content" v-html="'<p>' + post.frontmatter.desc + '</p>'"></span>
+			<div class="post" v-for="(post, i) of getPages()" :key="i">
+				<router-link class="post-title" :to="post.path">{{
+					post.title
+				}}</router-link>
+				<span class="last-updated"
+					>{{
+						post.frontmatter.date !== undefined
+							? post.frontmatter.date
+							: getFormatedDate(post.lastUpdated)
+					}}
+					· 约 {{ countWords(post.content) }} 字</span
+				>
+				<span
+					v-if="post.frontmatter.desc !== undefined"
+					class="post-content"
+					v-html="'<p>' + post.frontmatter.desc + '</p>'"
+				></span>
 				<div class="post-actions">
-					<router-link class="continue-reading" :to="post.path">继续阅读 &raquo;</router-link>
+					<router-link class="continue-reading" :to="post.path"
+						>查看全文 &raquo;</router-link
+					>
 				</div>
 			</div>
 		</div>
@@ -43,7 +61,7 @@ export default {
 	data() {
 		return {
 			isSidebarOpen: false,
-			max: this.getPageCount
+			max: this.getPageCount,
 		};
 	},
 
@@ -54,16 +72,31 @@ export default {
 			if (frontmatter.navbar === false || themeConfig.navbar === false) {
 				return false;
 			}
-			return this.$title || themeConfig.logo || themeConfig.repo || themeConfig.nav || this.$themeLocaleConfig.nav;
+			return (
+				this.$title ||
+				themeConfig.logo ||
+				themeConfig.repo ||
+				themeConfig.nav ||
+				this.$themeLocaleConfig.nav
+			);
 		},
 
 		shouldShowSidebar() {
 			const { frontmatter } = this.$page;
-			return !frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length;
+			return (
+				!frontmatter.home &&
+				frontmatter.sidebar !== false &&
+				this.sidebarItems.length
+			);
 		},
 
 		sidebarItems() {
-			return resolveSidebarItems(this.$page, this.$page.regularPath, this.$site, this.$localePath);
+			return resolveSidebarItems(
+				this.$page,
+				this.$page.regularPath,
+				this.$site,
+				this.$localePath
+			);
 		},
 
 		pageClasses() {
@@ -72,16 +105,16 @@ export default {
 				{
 					"no-navbar": !this.shouldShowNavbar,
 					"sidebar-open": this.isSidebarOpen,
-					"no-sidebar": !this.shouldShowSidebar
+					"no-sidebar": !this.shouldShowSidebar,
 				},
-				userPageClass
+				userPageClass,
 			];
 		},
 
 		isRoot() {
 			const path = this.$route.path;
 			return path === "/";
-		}
+		},
 	},
 
 	mounted() {
@@ -92,14 +125,15 @@ export default {
 
 	methods: {
 		toggleSidebar(to) {
-			this.isSidebarOpen = typeof to === "boolean" ? to : !this.isSidebarOpen;
+			this.isSidebarOpen =
+				typeof to === "boolean" ? to : !this.isSidebarOpen;
 		},
 
 		// side swipe
 		onTouchStart(e) {
 			this.touchStart = {
 				x: e.changedTouches[0].clientX,
-				y: e.changedTouches[0].clientY
+				y: e.changedTouches[0].clientY,
 			};
 		},
 
@@ -116,9 +150,13 @@ export default {
 		},
 
 		getPages() {
-			let p = this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path));
+			let p = this.$site.pages.filter(
+				(i) => !this.$site.themeConfig.hiddenPages.includes(i.path)
+			);
 			return p.sort((a, b) => {
-				return new Date(b.frontmatter.date) - new Date(a.frontmatter.date);
+				return (
+					new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
+				);
 			});
 		},
 
@@ -137,64 +175,67 @@ export default {
 
 		countWords(str) {
 			return (str.match(/[\u4E00-\u9FA5]/gu) || []).length;
-		}
-	}
+		},
+	},
 };
 </script>
 
-<style lang="stylus" scoped>
-@require '../styles/wrapper.styl'
+<style lang="less" scoped>
+@media screen and (max-width: 768px) {
+	.post-list {
+		padding: 16px !important;
+	}
+}
 
-@media screen and (max-width: 768px)
-  .post-list
-    padding: 16px !important;
+.post-list {
+	max-width: 740px;
+	margin: 0 auto;
+	margin-top: 56px;
+	padding: 2rem 2.5rem;
+}
 
-.post-list
-  max-width: 740px;
-  margin: 0 auto;
-  margin-top: 56px;
-  padding: 2rem 2.5rem;
-
-.post
-  border: 1px solid #eaecef;
-  border-radius: 2px;
-  margin-bottom 16px;
-  padding: 16px;
-  transition: box-shadow linear .1s;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  position: relative;
-  &:hover,
-  &:focus
-    transition: box-shadow linear .1s;
-    border: 1px solid transparent;
-    -webkit-box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-  .post-actions
-    display: flex;
-    justify-content: flex-end;
-  .post-title
-    font-size: 36px;
-    font-weight: 600;
-  .last-updated
-    margin-top: 4px;
-    color: #bbb;
-    display: block;
-    font-size: 14px;
-  .continue-reading
-    padding: 6px;
-    border-radius: 2px;
-    background-color: white;
-    display: inline-flex;
-    transition: background-color linear .2s;
-    &:hover,
-    &:focus
-      transition: background-color linear .2s;
-      background-color: #eee
-  .edited-text
-    position: absolute;
-    right: 16px;
-    top: 16px;
-    color: #bbb;
-    font-size: 14px;
+.post {
+	border: 1px solid #eaecef;
+	border-radius: 2px;
+	margin-bottom: 16px;
+	padding: 16px;
+	position: relative;
+	transition: all 0.2s ease;
+	.post-actions {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.post-title {
+		font-size: 36px;
+		font-weight: 600;
+	}
+	.last-updated {
+		margin-top: 16px;
+		color: #bbb;
+		display: block;
+		font-size: 14px;
+	}
+	.continue-reading {
+		padding: 6px;
+		border-radius: 2px;
+		background-color: white;
+		display: inline-flex;
+		transition: all linear 0.2s;
+		border: 1px solid transparent;
+		&:hover,
+		&:focus {
+			border-color: #3eaf7c;
+			box-shadow: 0 2px 10px #eee;
+		}
+	}
+	.edited-text {
+		position: absolute;
+		right: 16px;
+		top: 16px;
+		color: #bbb;
+		font-size: 14px;
+	}
+}
 </style>
+
+<style lang="stylus" src="../styles/wrapper.styl"></style>
