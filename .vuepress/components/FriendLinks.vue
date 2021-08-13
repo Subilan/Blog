@@ -35,14 +35,6 @@ export default {
 		return {
 			links: [
 				{
-					name: "Sapherise's Lab",
-					href: "https://sapherise.co",
-					avatar: "https://gravatar.loli.net/avatar/9fe93675cf47b3452b99a81c780d2913?s=70",
-					description: "一个堕落的实验室",
-					background: "#d14742",
-					light: true,
-				},
-				{
 					name: "Kiwi's House",
 					href: "https://nyan.kiwi.cat",
 					avatar: "https://i.loli.net/2018/12/14/5c135b73215cf.png",
