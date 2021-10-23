@@ -83,7 +83,7 @@ public class ThreadPooledServer implements Runnable {
             this.runningThread = Thread.currentThread();
         }
         openServerSocket();
-        while(!isStopped()){
+        while (!isStopped()){
             Socket clientSocket = null;
             try {
                 clientSocket = this.serverSocket.accept();
