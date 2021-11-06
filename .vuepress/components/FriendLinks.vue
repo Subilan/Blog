@@ -147,12 +147,13 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .links-container {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	.link {
+		text-decoration: none !important;
 		@media screen and (max-width: 900px) {
 			width: 100%;
 		}
@@ -160,7 +161,6 @@ export default {
             transition: all 0.2s ease;
 			&:hover,
 			&:focus {
-				text-decoration: none;
 				box-shadow: 0 1.5px 2px #bbb;
 			}
 		}

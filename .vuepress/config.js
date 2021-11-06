@@ -3,10 +3,10 @@ module.exports = {
     description: "Satellite yourself.",
     themeConfig: {
         nav: [
-            { text: "Blog", link: "/" },
-            { text: "Friends", link: "/Friends.html" },
-            { text: "About", link: "/About.html" },
-            { text: "Contact", link: "/Contact.html" },
+            { text: "主页", link: "/" },
+            { text: "友链", link: "/Friends.html" },
+            { text: "关于", link: "/About.html" },
+            { text: "联系", link: "/Contact.html" },
         ],
         lastUpdated: "最后更新于",
         hiddenPages: [
