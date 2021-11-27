@@ -24,7 +24,7 @@
 							? post.frontmatter.date
 							: getFormatedDate(post.lastUpdated)
 					}}
-					· 约 {{ countWords(post.content) }} 字</span
+					· 约 {{ countWords(post.content) }} 字 {{ post.frontmatter.cate !== undefined ? "· " + post.frontmatter.cate : "" }}</span
 				>
 				<span
 					v-if="post.frontmatter.desc !== undefined"
