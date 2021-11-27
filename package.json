@@ -34,11 +34,13 @@
     "vuepress-theme-simple-blog": "^0.1.2"
   },
   "dependencies": {
+    "@mdi/js": "^6.5.95",
     "@vuepress/plugin-blog": "^1.2.4",
     "@vuepress/plugin-last-updated": "^1.0.3",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
+    "mdi-vue": "^3.0.12",
     "moment": "^2.24.0",
     "vuepress-plugin-mathjax": "^1.2.8"
   }
