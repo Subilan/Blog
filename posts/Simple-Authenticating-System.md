@@ -127,7 +127,7 @@ function checkAuth() {
         },
         (response) => {
           if (response === true) {
-	      r();
+	        r();
           } else {
             j();
           }
