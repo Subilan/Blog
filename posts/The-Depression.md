@@ -50,13 +50,13 @@ date: 2021/11/27
 而我只要不是在赶时间或者追求效率的情况下，会写成这个样子
 
 ```
-这篇文章是用 **M**ark**d**own 写的。部分 $\mathbb{\LaTeX}$ 公式的渲染也许会有问题，若影响观感可联系 [christophersubilan@gmail.com](mailto:christophersubilan@gmail.com)，双休日可答复。
+这篇文章是用 **M**ark**d**own 写的。部分 $\mathrm{\LaTeX}$ 公式的渲染也许会有问题，若影响观感可联系 [christophersubilan@gmail.com](mailto:christophersubilan@gmail.com)，双休日可答复。
 ```
 
 :::tip
 **效果**
 
-这篇文章是用 **M**ark**d**own 写的。部分 $\mathbb{\LaTeX}$ 公式的渲染也许会有问题，若影响观感可联系 [christophersubilan@gmail.com](mailto:christophersubilan@gmail.com)，双休日可答复。
+这篇文章是用 **M**ark**d**own 写的。部分 $\mathrm{\LaTeX}$ 公式的渲染也许会有问题，若影响观感可联系 [christophersubilan@gmail.com](mailto:christophersubilan@gmail.com)，双休日可答复。
 :::
 
 这也许也是一种强迫症？
