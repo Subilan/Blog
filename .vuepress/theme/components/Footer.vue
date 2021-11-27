@@ -1,7 +1,7 @@
 <template>
     <footer class="footer">
         <div class="copyright">&copy; 2019~2021 Subilan's Blog</div>
-        <div class="license">基于 <a href="//vuepress.vuejs.org">VuePress</a> 搭建 · 主题改自默认</div>
+        <div class="license">Based on <a target="_blank" href="//vuepress.vuejs.org">VuePress</a></div>
     </footer>
 </template>
 

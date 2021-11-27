@@ -14,7 +14,17 @@
 			<slot name="sidebar-bottom" slot="bottom" />
 		</Sidebar>
 		<div class="post-list" v-if="isRoot">
-			<div class="post" v-for="(post, i) of getPages()" :key="i">
+			<div
+				@click="$router.push(post.path)"
+				class="post"
+				v-for="(post, i) of getPages()"
+				:key="i"
+			>
+				<mdicon
+					class="cate-icon"
+					v-if="getCateIcon(post.frontmatter.cate) !== null"
+					:name="getCateIcon(post.frontmatter.cate)"
+				/>
 				<router-link class="post-title" :to="post.path">{{
 					post.title
 				}}</router-link>
@@ -24,18 +34,24 @@
 							? post.frontmatter.date
 							: getFormatedDate(post.lastUpdated)
 					}}
-					· 约 {{ countWords(post.content) }} 字 {{ post.frontmatter.cate !== undefined ? "· " + post.frontmatter.cate : "" }}</span
+					· 约 {{ countWords(post.content) }} 字
+					{{
+						post.frontmatter.cate !== undefined
+							? "· " + post.frontmatter.cate
+							: ""
+					}}</span
 				>
 				<span
 					v-if="post.frontmatter.desc !== undefined"
 					class="post-content"
 					v-html="'<p>' + post.frontmatter.desc + '</p>'"
 				></span>
-				<div class="post-actions">
+				<!--
+					<div class="post-actions">
 					<router-link class="continue-reading" :to="post.path"
 						>查看全文 &raquo;</router-link
 					>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
@@ -53,7 +69,8 @@ import Navbar from "@theme/components/Navbar.vue";
 import Page from "@theme/components/Page.vue";
 import Sidebar from "@theme/components/Sidebar.vue";
 import Footer from "../components/Footer.vue";
-import { resolveSidebarItems, getFormatedDate } from "../util";
+import { resolveSidebarItems, getFormatedDate, getCateIcon, countWords } from "../util";
+
 
 export default {
 	components: { Page, Sidebar, Navbar, Footer },
@@ -173,9 +190,9 @@ export default {
 			return c > n;
 		},
 
-		countWords(str) {
-			return (str.match(/[\u4E00-\u9FA5]/gu) || []).length;
-		},
+		countWords,
+
+		getCateIcon
 	},
 };
 </script>
@@ -195,10 +212,12 @@ export default {
 }
 
 .post {
+	overflow: hidden;
+	background: white;
 	border: 1px solid #eaecef;
-	border-radius: 2px;
+	border-radius: 5px;
 	margin-bottom: 16px;
-	padding: 16px;
+	padding: 20px 16px;
 	position: relative;
 	transition: all 0.2s ease;
 	.post-actions {
@@ -234,6 +253,29 @@ export default {
 		top: 16px;
 		color: #bbb;
 		font-size: 14px;
+	}
+}
+
+.cate-icon {
+	position: absolute;
+	color: rgba(#3eaf7c, 0.5);
+	right: 50px;
+	bottom: 50px;
+	transform: scale(10) translate3d(10px, 10px, 0);
+	transition: all 0.3s ease;
+	opacity: 0;
+}
+
+@media screen and (min-width: 900px) {
+	.post:hover {
+		.cate-icon {
+			opacity: 1;
+			transform: scale(9) translate3d(0, 0, 0);
+		}
+
+		border-color: #3eaf7c;
+		cursor: pointer;
+		transform: scale(1.05);
 	}
 }
 </style>
