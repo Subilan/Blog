@@ -143,7 +143,7 @@ export default {
 				},
 				{
 					name: "Carm's Pages",
-					href: "https:/pages.carm.cc",
+					href: "https://pages.carm.cc",
 					avatar: "https://en.gravatar.com/userimage/186254338/92ff64167a1c45e8b995200e992bcfdb.png",
 					description: "分享所见，总结所学。",
 					background: "#8b658b",
