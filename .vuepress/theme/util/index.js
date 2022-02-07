@@ -21,7 +21,8 @@ export function getCateIcon(icon) {
 		思想: 'circle-opacity',
 		路径: 'arrow-right-top-bold',
 		记录: 'magnify',
-		代码: 'code-tags'
+		代码: 'code-tags',
+		杂记: 'fountain-pen-tip'
 	};
 	if (!Object.keys(match).includes(icon)) return null;
 	return match[icon];

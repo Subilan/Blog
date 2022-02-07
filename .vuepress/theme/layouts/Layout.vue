@@ -46,12 +46,6 @@
 					class="post-content"
 					v-html="'<p>' + post.frontmatter.desc + '</p>'"
 				></span>
-				<!--
-					<div class="post-actions">
-					<router-link class="continue-reading" :to="post.path"
-						>查看全文 &raquo;</router-link
-					>
-				</div> -->
 			</div>
 		</div>
 
