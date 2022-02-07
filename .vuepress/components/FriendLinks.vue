@@ -141,6 +141,14 @@ export default {
 						"https://i.yecdn.com/images/2021/07/13/68dd24d85519577d858c1e87ea186a17.jpg",
 					light: true,
 				},
+				{
+					name: "Carm's Pages",
+					href: "https://pages.carm.cc",
+					avatar: "https://en.gravatar.com/userimage/186254338/92ff64167a1c45e8b995200e992bcfdb.png",
+					description: "分享所见，总结所学。",
+					background: "#8b658b",
+					light: true,
+				}
 			],
 		};
 	},
