@@ -20,9 +20,8 @@ export function getCateIcon(icon) {
 	let match = {
 		思想: 'circle-opacity',
 		路径: 'arrow-right-top-bold',
-		记录: 'magnify',
-		代码: 'code-tags',
-		杂记: 'fountain-pen-tip'
+		记录: 'fountain-pen-tip',
+		代码: 'code-tags'
 	};
 	if (!Object.keys(match).includes(icon)) return null;
 	return match[icon];
