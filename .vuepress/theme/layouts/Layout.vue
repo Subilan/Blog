@@ -63,8 +63,12 @@ import Navbar from "@theme/components/Navbar.vue";
 import Page from "@theme/components/Page.vue";
 import Sidebar from "@theme/components/Sidebar.vue";
 import Footer from "../components/Footer.vue";
-import { resolveSidebarItems, getFormatedDate, getCateIcon, countWords } from "../util";
-
+import {
+	resolveSidebarItems,
+	getFormatedDate,
+	getCateIcon,
+	countWords,
+} from "../util";
 
 export default {
 	components: { Page, Sidebar, Navbar, Footer },
@@ -162,7 +166,9 @@ export default {
 
 		getPages() {
 			let p = this.$site.pages.filter(
-				(i) => !this.$site.themeConfig.hiddenPages.includes(i.path)
+				(i) =>
+					!this.$site.themeConfig.hiddenPages.includes(i.path) &&
+					!this.frontmatter.hidden
 			);
 			return p.sort((a, b) => {
 				return (
@@ -186,7 +192,7 @@ export default {
 
 		countWords,
 
-		getCateIcon
+		getCateIcon,
 	},
 };
 </script>
