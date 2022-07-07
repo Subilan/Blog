@@ -168,7 +168,7 @@ export default {
 			let p = this.$site.pages.filter(
 				(i) =>
 					!this.$site.themeConfig.hiddenPages.includes(i.path) &&
-					(this.frontmatter ? !this.frontmatter.hidden : true)
+					(i.frontmatter ? !i.frontmatter.hidden : true)
 			);
 			return p.sort((a, b) => {
 				return (
