@@ -148,6 +148,14 @@ export default {
 					description: "分享所见，总结所学。",
 					background: "#8b658b",
 					light: true,
+				},
+				{
+					name: "Nocturne",
+					href: "https://wynio.online",
+					avatar: "https://i.328888.xyz/2023/01/17/2LG3w.png",
+					description: "Ivory Tower",
+					background: "#009999",
+					light: true,
 				}
 			],
 		};
