@@ -1,6 +1,6 @@
 <template>
     <footer class="footer">
-        <div class="copyright">&copy; 2019~2022 Subilan</div>
+        <div class="copyright">&copy; 2019-2023 Subilan</div>
         <div class="license">Based on <a target="_blank" href="//vuepress.vuejs.org">VuePress</a></div>
     </footer>
 </template>
