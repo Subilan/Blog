@@ -1,7 +1,7 @@
 ---
 date: 2023/01/26
 cate: 代码
-desc: C！R！U！D！CRUD！
+desc: C！R！U！D！
 ---
 
 # 常用 CRUD 前后端架构
