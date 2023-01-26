@@ -55,6 +55,7 @@ export default Vue.extend({
         }
     }
 })
+</script>
 ```
 
 这一点在子组件内如何实现呢？官方提供了 `v-model` 这一方案，实际上是语法糖。
