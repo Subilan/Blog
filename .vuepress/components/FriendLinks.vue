@@ -72,7 +72,7 @@ export default {
 					href: "https://crazymanarmy.github.io/",
 					avatar: "https://imgur.com/lsmKGQE.png",
 					description: "玩ctf的小菜鸡,又喜欢捣鼓捣鼓一些realworld的东西",
-					background: "#FFFFFF",
+					background: "#fff",
 				},
 				{
 					name: "Ojhdt's Blog",
