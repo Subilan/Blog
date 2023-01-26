@@ -68,11 +68,11 @@ export default {
 					background: "rgb(102 203 254)",
 				},
 				{
-					name: "MoeClue~",
-					href: "https://moeclue.com",
-					avatar: "https://moeclue.com/icon.png",
-					description: "Moeka的辣鸡Blog",
-					background: "#FFB6C1",
+					name: "crazyman_army's Blog",
+					href: "https://crazymanarmy.github.io/",
+					avatar: "https://imgur.com/lsmKGQE.png",
+					description: "玩ctf的小菜鸡,又喜欢捣鼓捣鼓一些realworld的东西",
+					background: "#FFFFFF",
 				},
 				{
 					name: "Ojhdt's Blog",
