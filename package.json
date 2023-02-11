@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev .",
-    "docs:build": "vuepress build ."
+    "docs:build": "vuepress build . && echo subilan.win > public/CNAME"
   },
   "repository": {
     "type": "git",
