@@ -27,6 +27,4 @@ jobs:
         git add *
         git commit -m 'build'
         git push origin master --force
-    - name: Happy
-      run: echo I'm happy now.
     
