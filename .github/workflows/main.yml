@@ -21,6 +21,8 @@ jobs:
       run: |
         cd public
         git init
+        git config --global user.email ''
+        git config --global user.name 'bot'
         git remote add origin https://${{ secrets.TOKEN }}@github.com/Subilan/subilan.github.io.git
         git add *
         git commit -m 'build'
