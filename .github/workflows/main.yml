@@ -26,7 +26,7 @@ jobs:
         git remote add origin https://${{ secrets.TOKEN }}@github.com/Subilan/subilan.github.io.git
         git add *
         git commit -m 'build'
-        git push origin deploy --force
+        git push origin master --force
     - name: Happy
       run: echo I'm happy now.
     
