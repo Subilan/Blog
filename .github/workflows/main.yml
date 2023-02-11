@@ -1,0 +1,30 @@
+on:
+  push:
+    branches:
+    - deploy
+    
+jobs:
+  deploy_job:
+    name: Build VuePress
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+    - name: Build Docs
+      run: |
+        npm install
+        npm run docs:build
+    - name: Push
+      run: |
+        cd public
+        git init
+        git config --global user.email ''
+        git config --global user.name 'bot'
+        git remote add origin https://${{ secrets.TOKEN }}@github.com/Subilan/subilan.github.io.git
+        git add *
+        git commit -m 'build'
+        git push origin master --force
+    
