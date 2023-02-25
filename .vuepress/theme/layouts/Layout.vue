@@ -1,10 +1,5 @@
 <template>
-	<div
-		class="theme-container"
-		:class="pageClasses"
-		@touchstart="onTouchStart"
-		@touchend="onTouchEnd"
-	>
+	<div class="theme-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
 		<Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
 		<div class="sidebar-mask" @click="toggleSidebar(false)"></div>
@@ -14,38 +9,11 @@
 			<slot name="sidebar-bottom" slot="bottom" />
 		</Sidebar>
 		<div class="post-list" v-if="isRoot">
-			<div
-				@click="$router.push(post.path)"
-				class="post"
-				v-for="(post, i) of getPages()"
-				:key="i"
-			>
-				<mdicon
-					class="cate-icon"
-					v-if="getCateIcon(post.frontmatter.cate) !== null"
-					:name="getCateIcon(post.frontmatter.cate)"
-				/>
-				<router-link class="post-title" :to="post.path">{{
-					post.title
-				}}</router-link>
-				<span class="last-updated"
-					>{{
-						post.frontmatter.date !== undefined
-							? post.frontmatter.date
-							: getFormatedDate(post.lastUpdated)
-					}}
-					· 约 {{ countWords(post.content) }} 字
-					{{
-						post.frontmatter.cate !== undefined
-							? "· " + post.frontmatter.cate
-							: ""
-					}}</span
-				>
-				<span
-					v-if="post.frontmatter.desc !== undefined"
-					class="post-content"
-					v-html="'<p>' + post.frontmatter.desc + '</p>'"
-				></span>
+			<div @click="$router.push(post.path)" class="post" v-for="(post, i) of getPages()" :key="i">
+				<mdicon class="cate-icon" v-if="getCateIcon(post.frontmatter.cate) !== null" :name="getCateIcon(post.frontmatter.cate)" />
+				<router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
+				<span class="last-updated">{{ post.frontmatter.date !== undefined ? post.frontmatter.date : getFormatedDate(post.lastUpdated) }} · 约 {{ post.frontmatter.english ? countWordsEn(post.content) : countWords(post.content) }} 字 {{ post.frontmatter.cate !== undefined ? '· ' + post.frontmatter.cate : '' }}</span>
+				<span v-if="post.frontmatter.desc !== undefined" class="post-content" v-html="'<p>' + post.frontmatter.desc + '</p>'"></span>
 			</div>
 		</div>
 
@@ -59,16 +27,11 @@
 </template>
 
 <script>
-import Navbar from "@theme/components/Navbar.vue";
-import Page from "@theme/components/Page.vue";
-import Sidebar from "@theme/components/Sidebar.vue";
-import Footer from "../components/Footer.vue";
-import {
-	resolveSidebarItems,
-	getFormatedDate,
-	getCateIcon,
-	countWords,
-} from "../util";
+import Navbar from '@theme/components/Navbar.vue';
+import Page from '@theme/components/Page.vue';
+import Sidebar from '@theme/components/Sidebar.vue';
+import Footer from '../components/Footer.vue';
+import { resolveSidebarItems, getFormatedDate, getCateIcon, countWords } from '../util';
 
 export default {
 	components: { Page, Sidebar, Navbar, Footer },
@@ -76,7 +39,7 @@ export default {
 	data() {
 		return {
 			isSidebarOpen: false,
-			max: this.getPageCount,
+			max: this.getPageCount
 		};
 	},
 
@@ -87,49 +50,34 @@ export default {
 			if (frontmatter.navbar === false || themeConfig.navbar === false) {
 				return false;
 			}
-			return (
-				this.$title ||
-				themeConfig.logo ||
-				themeConfig.repo ||
-				themeConfig.nav ||
-				this.$themeLocaleConfig.nav
-			);
+			return this.$title || themeConfig.logo || themeConfig.repo || themeConfig.nav || this.$themeLocaleConfig.nav;
 		},
 
 		shouldShowSidebar() {
 			const { frontmatter } = this.$page;
-			return (
-				!frontmatter.home &&
-				frontmatter.sidebar !== false &&
-				this.sidebarItems.length
-			);
+			return !frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length;
 		},
 
 		sidebarItems() {
-			return resolveSidebarItems(
-				this.$page,
-				this.$page.regularPath,
-				this.$site,
-				this.$localePath
-			);
+			return resolveSidebarItems(this.$page, this.$page.regularPath, this.$site, this.$localePath);
 		},
 
 		pageClasses() {
 			const userPageClass = this.$page.frontmatter.pageClass;
 			return [
 				{
-					"no-navbar": !this.shouldShowNavbar,
-					"sidebar-open": this.isSidebarOpen,
-					"no-sidebar": !this.shouldShowSidebar,
+					'no-navbar': !this.shouldShowNavbar,
+					'sidebar-open': this.isSidebarOpen,
+					'no-sidebar': !this.shouldShowSidebar
 				},
-				userPageClass,
+				userPageClass
 			];
 		},
 
 		isRoot() {
 			const path = this.$route.path;
-			return path === "/";
-		},
+			return path === '/';
+		}
 	},
 
 	mounted() {
@@ -140,15 +88,14 @@ export default {
 
 	methods: {
 		toggleSidebar(to) {
-			this.isSidebarOpen =
-				typeof to === "boolean" ? to : !this.isSidebarOpen;
+			this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen;
 		},
 
 		// side swipe
 		onTouchStart(e) {
 			this.touchStart = {
 				x: e.changedTouches[0].clientX,
-				y: e.changedTouches[0].clientY,
+				y: e.changedTouches[0].clientY
 			};
 		},
 
@@ -165,15 +112,9 @@ export default {
 		},
 
 		getPages() {
-			let p = this.$site.pages.filter(
-				(i) =>
-					!this.$site.themeConfig.hiddenPages.includes(i.path) &&
-					(i.frontmatter ? !i.frontmatter.hidden : true)
-			);
+			let p = this.$site.pages.filter(i => !this.$site.themeConfig.hiddenPages.includes(i.path) && (i.frontmatter ? !i.frontmatter.hidden : true));
 			return p.sort((a, b) => {
-				return (
-					new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-				);
+				return new Date(b.frontmatter.date) - new Date(a.frontmatter.date);
 			});
 		},
 
@@ -184,7 +125,7 @@ export default {
 		getFormatedDate,
 
 		isPublishDate(current, all_pages, index) {
-			if (all_pages[index - 1] == undefined) return "";
+			if (all_pages[index - 1] == undefined) return '';
 			let c = new Date(current.lastUpdated).getTime();
 			let n = new Date(all_pages[index - 1].lastUpdated).getTime();
 			return c > n;
@@ -192,8 +133,13 @@ export default {
 
 		countWords,
 
-		getCateIcon,
-	},
+		countWordsEn(str) {
+			var matches = str.match(/[\w\d\’\'-]+/gi);
+			return matches ? matches.length : 0;
+		},
+
+		getCateIcon
+	}
 };
 </script>
 
