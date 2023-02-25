@@ -7,6 +7,7 @@ module.exports = {
             { text: "友链", link: "/Friends.html" },
             { text: "关于", link: "/About.html" },
             { text: "联系", link: "/Contact.html" },
+            { text: "公钥", link: "/PGP.html"}
         ],
         lastUpdated: "最后更新于",
         hiddenPages: [
@@ -14,6 +15,7 @@ module.exports = {
             "/About.html",
             "/Friends.html",
             "/Contact.html",
+            "/PGP.html"
         ],
         search: true,
         searchMaxSuggestions: 10
