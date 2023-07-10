@@ -134,7 +134,7 @@ export default {
 				{
 					name: "Restent Blog",
 					href: "https://blog.restent.win/",
-					avatar: "https://cdn.jsdelivr.net/gh/Restent/Restent/avatar.jpg",
+					avatar: "https://library.restent.win/images/icons/avatar.webp",
 					description: "面对黑暗，向往光明。",
 					background_type: "image",
 					background:
