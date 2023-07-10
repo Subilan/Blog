@@ -10,7 +10,7 @@
     </div>
 
     <script src="https://beaudar.lipk.org/client.js" repo="Subilan/subilan.github.io" branch="deploy" issue-term="title"
-      label="💬 comment" theme="github-light" crossorigin="anonymous" async>
+      comment-order="desc" label="💬 comment" theme="github-light" crossorigin="anonymous" async>
     </script>
 
     <footer class="page-edit">
