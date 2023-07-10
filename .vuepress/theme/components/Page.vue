@@ -4,15 +4,6 @@
 
     <Content class="theme-default-content" />
 
-    <div class="comment-wrapper">
-      <h2>💬 评论</h2>
-      <div class="beaudar"></div>
-    </div>
-
-    <script src="https://beaudar.lipk.org/client.js" repo="Subilan/subilan.github.io" branch="deploy" issue-term="title"
-      comment-order="desc" label="💬 comment" theme="github-light" crossorigin="anonymous" async>
-    </script>
-
     <footer class="page-edit">
       <div class="edit-link" v-if="editLink">
         <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>

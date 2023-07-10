@@ -10,10 +10,15 @@
 		</Sidebar>
 		<div class="post-list" v-if="isRoot">
 			<div @click="$router.push(post.path)" class="post" v-for="(post, i) of getPages()" :key="i">
-				<mdicon class="cate-icon" v-if="getCateIcon(post.frontmatter.cate) !== null" :name="getCateIcon(post.frontmatter.cate)" />
+				<mdicon class="cate-icon" v-if="getCateIcon(post.frontmatter.cate) !== null"
+					:name="getCateIcon(post.frontmatter.cate)" />
 				<router-link class="post-title" :to="post.path">{{ post.title }}</router-link>
-				<span class="last-updated">{{ post.frontmatter.date !== undefined ? post.frontmatter.date : getFormatedDate(post.lastUpdated) }} · 约 {{ post.frontmatter.english ? countWordsEn(post.content) : countWords(post.content) }} 字 {{ post.frontmatter.cate !== undefined ? '· ' + post.frontmatter.cate : '' }}</span>
-				<span v-if="post.frontmatter.desc !== undefined" class="post-content" v-html="'<p>' + post.frontmatter.desc + '</p>'"></span>
+				<span class="last-updated">{{ post.frontmatter.date !== undefined ? post.frontmatter.date :
+					getFormatedDate(post.lastUpdated) }} · 约 {{ post.frontmatter.english ? countWordsEn(post.content) :
+		countWords(post.content) }} 字 {{ post.frontmatter.cate !== undefined ? '· ' + post.frontmatter.cate : ''
+	}}</span>
+				<span v-if="post.frontmatter.desc !== undefined" class="post-content"
+					v-html="'<p>' + post.frontmatter.desc + '</p>'"></span>
 			</div>
 		</div>
 
@@ -77,7 +82,7 @@ export default {
 		isRoot() {
 			const path = this.$route.path;
 			return path === '/';
-		}
+		},
 	},
 
 	mounted() {
@@ -166,20 +171,24 @@ export default {
 	padding: 20px 16px;
 	position: relative;
 	transition: all 0.2s ease;
+
 	.post-actions {
 		display: flex;
 		justify-content: flex-end;
 	}
+
 	.post-title {
 		font-size: 36px;
 		font-weight: 600;
 	}
+
 	.last-updated {
 		margin-top: 16px;
 		color: #bbb;
 		display: block;
 		font-size: 14px;
 	}
+
 	.continue-reading {
 		padding: 6px;
 		border-radius: 2px;
@@ -187,12 +196,14 @@ export default {
 		display: inline-flex;
 		transition: all linear 0.2s;
 		border: 1px solid transparent;
+
 		&:hover,
 		&:focus {
 			border-color: #3eaf7c;
 			box-shadow: 0 2px 10px #eee;
 		}
 	}
+
 	.edited-text {
 		position: absolute;
 		right: 16px;
