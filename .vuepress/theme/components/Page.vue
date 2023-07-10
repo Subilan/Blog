@@ -1,26 +1,25 @@
 <template>
   <main class="page">
-    <slot name="top"/>
+    <slot name="top" />
 
-      <Content class="theme-default-content"/>
+    <Content class="theme-default-content" />
+
+    <div class="comment-wrapper">
+      <h2>💬 评论</h2>
+      <div class="beaudar"></div>
+    </div>
+
+    <script src="https://beaudar.lipk.org/client.js" repo="Subilan/subilan.github.io" branch="deploy" issue-term="title"
+      label="💬 comment" theme="github-light" crossorigin="anonymous" async>
+    </script>
 
     <footer class="page-edit">
-      <div
-        class="edit-link"
-        v-if="editLink"
-      >
-        <a
-          :href="editLink"
-          target="_blank"
-          rel="noopener noreferrer"
-        >{{ editLinkText }}</a>
-        <OutboundLink/>
+      <div class="edit-link" v-if="editLink">
+        <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
+        <OutboundLink />
       </div>
 
-      <div
-        class="last-updated"
-        v-if="lastUpdated"
-      >
+      <div class="last-updated" v-if="lastUpdated">
         <span class="prefix">{{ lastUpdatedText }}: </span>
         <span class="time">{{ getFormatedDate(lastUpdated) }}</span>
       </div>
@@ -28,28 +27,15 @@
 
     <div class="page-nav" v-if="prev || next">
       <p class="inner">
-        <span
-          v-if="prev"
-          class="prev"
-        >
+        <span v-if="prev" class="prev">
           ←
-          <router-link
-            v-if="prev"
-            class="prev"
-            :to="prev.path"
-          >
+          <router-link v-if="prev" class="prev" :to="prev.path">
             {{ prev.title || prev.path }}
           </router-link>
         </span>
 
-        <span
-          v-if="next"
-          class="next"
-        >
-          <router-link
-            v-if="next"
-            :to="next.path"
-          >
+        <span v-if="next" class="next">
+          <router-link v-if="next" :to="next.path">
             {{ next.title || next.path }}
           </router-link>
           →
@@ -57,7 +43,7 @@
       </p>
     </div>
 
-    <slot name="bottom"/>
+    <slot name="bottom" />
   </main>
 </template>
 
@@ -68,11 +54,11 @@ export default {
   props: ['sidebarItems'],
 
   computed: {
-    lastUpdated () {
+    lastUpdated() {
       return this.$page.lastUpdated
     },
 
-    lastUpdatedText () {
+    lastUpdatedText() {
       if (typeof this.$themeLocaleConfig.lastUpdated === 'string') {
         return this.$themeLocaleConfig.lastUpdated
       }
@@ -82,7 +68,7 @@ export default {
       return 'Last Updated'
     },
 
-    prev () {
+    prev() {
       const prev = this.$page.frontmatter.prev
       if (prev === false) {
         return
@@ -93,7 +79,7 @@ export default {
       }
     },
 
-    next () {
+    next() {
       const next = this.$page.frontmatter.next
       if (next === false) {
         return
@@ -104,7 +90,7 @@ export default {
       }
     },
 
-    editLink () {
+    editLink() {
       if (this.$page.frontmatter.editLink === false) {
         return
       }
@@ -121,7 +107,7 @@ export default {
       }
     },
 
-    editLinkText () {
+    editLinkText() {
       return (
         this.$themeLocaleConfig.editLinkText
         || this.$site.themeConfig.editLinkText
@@ -131,7 +117,7 @@ export default {
   },
 
   methods: {
-    createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
+    createEditLink(repo, docsRepo, docsDir, docsBranch, path) {
       const bitbucket = /bitbucket.org/
       if (bitbucket.test(repo)) {
         const base = outboundRE.test(docsRepo)
@@ -139,11 +125,11 @@ export default {
           : repo
         return (
           base.replace(endingSlashRE, '')
-           + `/src`
-           + `/${docsBranch}/`
-           + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
-           + path
-           + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
+          + `/src`
+          + `/${docsBranch}/`
+          + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+          + path
+          + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
         )
       }
 
@@ -163,15 +149,15 @@ export default {
   }
 }
 
-function resolvePrev (page, items) {
+function resolvePrev(page, items) {
   return find(page, items, -1)
 }
 
-function resolveNext (page, items) {
+function resolveNext(page, items) {
   return find(page, items, 1)
 }
 
-function find (page, items, offset) {
+function find(page, items, offset) {
   const res = []
   flatten(items, res)
   for (let i = 0; i < res.length; i++) {
@@ -182,7 +168,7 @@ function find (page, items, offset) {
   }
 }
 
-function flatten (items, res) {
+function flatten(items, res) {
   for (let i = 0, l = items.length; i < l; i++) {
     if (items[i].type === 'group') {
       flatten(items[i].children || [], res)
@@ -196,6 +182,11 @@ function flatten (items, res) {
 
 <style lang="stylus">
 @require '../styles/wrapper.styl'
+
+.comment-wrapper
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
 
 .page
   padding-bottom 2rem
