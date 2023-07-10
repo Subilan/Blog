@@ -2,7 +2,7 @@
 
 这里是我的博客的存储库。博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.github.io> 访问。本博客使用 VuePress 搭建，GitHub Actions 实现自动部署，GitHub Pages 进行托管。博客不定期更新，commit 记录就是博客的更新日志。
 
-博客使用 [beaudar/beaudar](https://github.com/beaudar/beaudar) 作为评论服务，使用 GitHub 账号登录即可评论，默认发在 Issue 里。
+博客暂时使用 [beaudar/beaudar](https://github.com/beaudar/beaudar) 作为评论服务，使用 GitHub 账号登录即可评论，默认发在 Issue 里。
 
 ## 关于
 
