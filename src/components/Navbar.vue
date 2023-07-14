@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <div class="page-title">
+    <div class="page-title" @click="router.push(`/`)">
       Subilan's Blog
     </div>
     <search-box/>
@@ -9,11 +9,11 @@
       <div class="page" v-for="x in Object.keys(pages)" @click="">{{ x }}</div>
     </div>
   </nav>
-
 </template>
 
 <script setup lang="ts">
 import SearchBox from './SearchBox.vue';
+import {useRouter} from "vue-router";
 
 const pages = {
   "主页": "/",
@@ -22,6 +22,8 @@ const pages = {
   "联系": "/contact.html",
   "公钥": "/peg.html"
 }
+
+const router = useRouter();
 </script>
 
 <style lang="less">
