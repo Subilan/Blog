@@ -1,13 +1,15 @@
 <template>
   <div @click="searchDialog = !searchDialog" class="search-box">
     <span class="mdi mdi-magnify"/>
-    <span>搜索</span>
+    <span>搜索 (Ctrl+K)</span>
   </div>
-  <div class="cover" :style="{display: searchDialogDisplay}" :class="{'active': searchDialogActive}">
+  <div @click.self="searchDialog = false" class="cover" :style="{display: searchDialogDisplay}"
+       :class="{'active': searchDialogActive}">
     <div class="search-dialog">
       <div class="search-textfield">
         <span class="mdi mdi-magnify"/>
-        <input placeholder="搜索文章标题、内容" class="search-input" type="text" v-model="searchContent"/>
+        <input ref="searchInput" placeholder="搜索文章标题、内容" class="search-input" type="text"
+               v-model="searchContent"/>
       </div>
     </div>
   </div>
@@ -20,6 +22,7 @@ const searchDialog = ref(false)
 const searchDialogActive = ref(false)
 const searchDialogDisplay = ref("none")
 const searchContent = ref("")
+const searchInput = ref<HTMLInputElement | null>(null)
 
 watch(searchDialog, v => {
   if (v) {
@@ -44,12 +47,23 @@ function keydownHandler(e: KeyboardEvent) {
 watch(searchDialogActive, v => {
   if (v) {
     window.addEventListener("keydown", keydownHandler);
+    if (searchInput.value !== null) {
+      searchInput.value.focus();
+    }
   } else {
     window.removeEventListener("keydown", keydownHandler)
+    searchContent.value = ""
   }
 })
 
-
+onMounted(() => {
+  window.addEventListener("keydown", e => {
+    if (e.ctrlKey && e.key === "k") {
+      e.preventDefault();
+      searchDialog.value = !searchDialog.value;
+    }
+  })
+})
 </script>
 
 <style lang="less">
