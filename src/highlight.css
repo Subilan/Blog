@@ -1,0 +1,171 @@
+code[class^=language-]:before {
+    position: absolute;
+    right: 1rem;
+    top: .8rem;
+    font-size: .75rem;
+    color: rgba(255,255,255,.4);
+}
+
+code[class~=language-js]:before {
+    content: "js"
+}
+
+code[class~=language-ts]:before {
+    content: "ts"
+}
+
+code[class~=language-html]:before {
+    content: "html"
+}
+
+code[class~=language-md]:before {
+    content: "md"
+}
+
+code[class~=language-vue]:before {
+    content: "vue"
+}
+
+code[class~=language-css]:before {
+    content: "css"
+}
+
+code[class~=language-sass]:before {
+    content: "sass"
+}
+
+code[class~=language-scss]:before {
+    content: "scss"
+}
+
+code[class~=language-less]:before {
+    content: "less"
+}
+
+code[class~=language-stylus]:before {
+    content: "stylus"
+}
+
+code[class~=language-go]:before {
+    content: "go"
+}
+
+code[class~=language-java]:before {
+    content: "java"
+}
+
+code[class~=language-c]:before {
+    content: "c"
+}
+
+code[class~=language-sh]:before {
+    content: "sh"
+}
+
+code[class~=language-yaml]:before {
+    content: "yaml"
+}
+
+code[class~=language-py]:before {
+    content: "py"
+}
+
+code[class~=language-docker]:before {
+    content: "docker"
+}
+
+code[class~=language-dockerfile]:before {
+    content: "dockerfile"
+}
+
+code[class~=language-makefile]:before {
+    content: "makefile"
+}
+
+code[class~=language-javascript]:before {
+    content: "js"
+}
+
+code[class~=language-typescript]:before {
+    content: "ts"
+}
+
+code[class~=language-markup]:before {
+    content: "html"
+}
+
+code[class~=language-markdown]:before {
+    content: "md"
+}
+
+code[class~=language-json]:before {
+    content: "json"
+}
+
+code[class~=language-ruby]:before {
+    content: "rb"
+}
+
+code[class~=language-python]:before {
+    content: "py"
+}
+
+code[class~=language-bash]:before {
+    content: "sh"
+}
+
+code[class~=language-php]:before {
+    content: "php"
+}
+
+.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog {
+    color: #999
+}
+
+.token.punctuation {
+    color: #ccc
+}
+
+.token.attr-name,.token.deleted,.token.namespace,.token.tag {
+    color: #e2777a
+}
+
+.token.function-name {
+    color: #6196cc
+}
+
+.token.boolean,.token.function,.token.number {
+    color: #f08d49
+}
+
+.token.class-name,.token.constant,.token.property,.token.symbol {
+    color: #f8c555
+}
+
+.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector {
+    color: #cc99cd
+}
+
+.token.attr-value,.token.char,.token.regex,.token.string,.token.variable {
+    color: #7ec699
+}
+
+.token.entity,.token.operator,.token.url {
+    color: #67cdcc
+}
+
+.token.bold,.token.important {
+    font-weight: 700
+}
+
+.token.italic {
+    font-style: italic
+}
+
+.token.entity {
+    cursor: help
+}
+
+.token.inserted {
+    color: green
+}
