@@ -13,7 +13,7 @@ import Navbar from '@/components/Navbar.vue'
 .container {
   margin: calc(1.5rem + 2 * 0.7rem) auto 0 auto;
 
-  max-width: 1000px;
+  max-width: 740px;
   display: block;
 }
 </style>
