@@ -24,10 +24,14 @@
 
 本站所使用的主题参考了 [VuePress](https://vuepress.vuejs.org/) 的默认主题~
 
-### 杂项
+### 网站/项目
 
-- Repo 开放 Pull Request，可用于添加友链、纠正错误。
-- 本站不会出现任何政治观点，如果有发现请告诉我
+- 目录结构
+  - `src`, `public` — 前端相关的开发文件
+  - `posts` — 文章 Markdown 文件
+  - `build.js` — 构建脚本
+- 本仓库开放 Pull Request，可用于添加友链、纠正错误。
+- 本站域名 https://subilan.win 将长期续费~
 
 ## 协议
 
