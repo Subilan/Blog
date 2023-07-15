@@ -98,9 +98,11 @@ const router = useRouter();
   cursor: pointer;
   transition: all .2s ease;
 
-  &:hover {
-    border-color: #009688;
-    transform: scale(1.1);
+  @media (min-width: 700px) {
+    &:hover {
+      border-color: #009688;
+      transform: scale(1.1);
+    }
   }
 }
 

@@ -63,10 +63,16 @@ function getPrev() {
   display: flex;
   align-items: center;
   color: #bbb;
+  overflow: visible;
+  white-space: nowrap;
 
   > *::after {
     content: "·";
     margin: 0 8px;
+
+    @media (max-width: 700px) {
+      margin: 0 4px;
+    }
   }
 
   > *:last-child::after {

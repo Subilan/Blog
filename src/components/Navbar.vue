@@ -31,7 +31,7 @@
              @click="router.push(`/${x.filename}`)"><span class="mdi" :class="getPageIcon(x.title)"/>{{ x.title }}
         </div>
         <div class="sidebar-item" @click="openTab('https://github.com/Subilan/subilan.github.io')">
-          GitHub
+          <span class="mdi mdi-github"/>GitHub
         </div>
       </div>
     </div>
@@ -174,7 +174,7 @@ watch(() => sidebar.value, v => {
   position: fixed;
   top: 0;
   left: 0;
-  padding: 1rem 1.5rem;
+  padding: .8rem 1.25rem;
   background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
   height: 1.5rem;
@@ -184,7 +184,7 @@ watch(() => sidebar.value, v => {
   gap: 1rem;
   z-index: 1000;
 
-  width: calc(100% - 3rem);
+  width: calc(100% - 2.5rem);
 }
 
 .page-title {
