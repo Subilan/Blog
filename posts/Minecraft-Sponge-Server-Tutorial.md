@@ -33,7 +33,7 @@ Sponge 分为三个大分支，在这里为了能够安装 Mod 我们选择 Spon
 - Sponge 本体 👉[Link](https://repo.spongepowered.org/maven/org/spongepowered/spongeforge/1.12.2-2838-7.1.8/spongeforge-1.12.2-2838-7.1.8.jar)
 
 ::: warning
-注意
+**⚠️ 注意**
 
 Sponge 对 Forge 的版本有要求，在选择 Sponge 时需要注意到其支持的 Forge 版本号。在上面所给的链接中，下载到的 Forge 和 Sponge 应分别为 `forge-1.12.2-14.23.5.2838-installer.jar` 和 `spongeforge-1.12.2-2838-7.1.8.jar`。
 
@@ -50,7 +50,7 @@ $ cd sponge-server
 然后，将 Minecraft 原版服务器端放入，并将其改名为 `minecraft_server.1.12.2.jar`。
 
 ::: tip
-提示
+**提示**
 
 这一步是为了避免 Forge 安装出错。Forge 安装时会尝试下载官方客户端，但是实际上根本无法下载（即使科学上网）。因此我们要用正常的途径提前下载完毕后，将其命名为 Forge 所 expect 的那样，这样它便会跳过它而开始下载 library 文件。
 :::
@@ -98,7 +98,7 @@ $ java -jar forge-1.12.2-14.23.5.2838-universal.jar
 这个时候，如果你在你的客户端上也安装一样的 Mod 组合，就可以直接进入服务器了！
 
 ::: tip
-提示
+**提示**
 
 你必须有与服务器相同的 Mod 组合才能进入服务器，当然也有例外（见下文）。
 :::
