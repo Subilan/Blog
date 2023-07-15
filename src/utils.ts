@@ -1,5 +1,6 @@
 import posts from "@/posts";
 import pages from "@/pages";
+import search from '@/searchdata.json';
 
 export function getSortedPosts(): Post[] {
     return Object.values(posts).sort((a, b) => {
@@ -15,6 +16,10 @@ export function getSortedPosts(): Post[] {
 
 export function getPages(): Page[] {
     return Object.values(pages);
+}
+
+export function getSearch(): Search[] {
+    return search as Search[];
 }
 
 export function getCardIcon(cate: string | undefined) {

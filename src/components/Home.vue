@@ -82,6 +82,7 @@ const router = useRouter();
   .desc {
     font-size: 1rem;
     position: relative;
+    line-height: 1.7;
   }
 
   cursor: pointer;

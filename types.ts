@@ -12,7 +12,13 @@ interface Page {
     title: string,
     filename: string
 }
-
 interface Post extends Page {
     frontmatters: Partial<PostFrontmatter>
+}
+
+interface Search {
+    title: string,
+    filecontent: string,
+    filename: string,
+    namespace: "post" | "page"
 }
