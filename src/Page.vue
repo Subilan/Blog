@@ -1,35 +1,28 @@
 <template>
   <navbar/>
-  <div class="post">
+  <div class="page">
     <router-view/>
   </div>
+  <home v-if="route.path === '/'"/>
 </template>
 
 <script setup lang="ts">
 import Navbar from "@/components/Navbar.vue";
 import {useRoute} from "vue-router";
-import pages from "@/pages";
-import {getSortedPosts} from "@/utils";
+import {getPages} from "@/utils";
+import Home from "@/components/Home.vue";
 
 const route = useRoute();
+const pages = getPages();
 const pagedata = pages[route.meta.uuid as string];
-const sortedFilenames = getSortedPosts().map(x => x.filename);
+const sortedFilenames = getPages().map(x => x.filename);
 
-function getNext() {
-  const index = sortedFilenames.indexOf(pagedata.filename);
-  if (index === 0) return index;
-  return index - 1;
-}
-
-function getPrev() {
-  const index = sortedFilenames.indexOf(pagedata.filename);
-  if (index === sortedFilenames.length - 1) return index;
-  return index + 1;
-}
 </script>
 
 <style scoped lang="less">
-.post {
+@import "./typo.less";
+
+.page {
   padding: 1.5rem 1.5rem 1.5rem 2rem;
   max-width: 740px;
   margin: 0 auto;

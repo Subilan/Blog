@@ -1,7 +1,8 @@
+import posts from "@/posts";
 import pages from "@/pages";
 
-export function getSortedPages(): Post[] {
-    return Object.values(pages).sort((a, b) => {
+export function getSortedPosts(): Post[] {
+    return Object.values(posts).sort((a, b) => {
         return new Date(b.frontmatters.date?.replace("/", "-") || 0).getTime() - new Date(a.frontmatters.date?.replace("/", "-") || 0).getTime()
     }).map(x => {
         return {
@@ -10,6 +11,10 @@ export function getSortedPages(): Post[] {
             frontmatters: x.frontmatters
         }
     });
+}
+
+export function getPages(): Page[] {
+    return Object.values(pages);
 }
 
 export function getCardIcon(cate: string | undefined) {

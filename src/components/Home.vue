@@ -21,10 +21,10 @@
 </template>
 
 <script lang="ts" setup>
-import {getCardIcon, getSortedPages} from "@/utils";
+import {getCardIcon, getSortedPosts} from "@/utils";
 import {useRouter} from "vue-router";
 
-const cardPages = getSortedPages();
+const cardPages = getSortedPosts();
 const router = useRouter();
 </script>
 

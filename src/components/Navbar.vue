@@ -6,32 +6,28 @@
     <search-box/>
     <div class="nav-spacer" style="flex: 1"/>
     <div class="page-list">
-      <div class="page" v-for="x in Object.keys(pages)" @click="">{{ x }}</div>
+      <div class="page" :class="{active: route.path === `/`}" @click="$router.push('/')">首页</div>
+      <div class="page" :class="{active: route.path === `/${x.filename}`}" v-for="x in pages" @click="router.push(`/${x.filename}`)">{{ x.title }}</div>
     </div>
   </nav>
 </template>
 
 <script setup lang="ts">
 import SearchBox from './SearchBox.vue';
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
+import {getPages} from "@/utils";
 
-const pages = {
-  "主页": "/",
-  "友链": "/links.html",
-  "关于": "/about.html",
-  "联系": "/contact.html",
-  "公钥": "/peg.html"
-}
+const pages = getPages();
 
 const router = useRouter();
+const route = useRoute();
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 20;
   padding: .7rem 1.5rem;
   background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
@@ -40,6 +36,7 @@ const router = useRouter();
   flex-direction: row;
   align-items: center;
   gap: 1rem;
+  z-index: 1000;
 
   width: calc(100% - 3rem);
 }

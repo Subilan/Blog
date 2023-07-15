@@ -45,11 +45,11 @@ const md = new MarkdownIt({
         slugify: s => encodeURI(s)
     });
 
-function buildRouterTs() {
-    let result = `import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";const routes: RouteRecordRaw[]=[{name:"home",path:"/",component:()=>import("@/Home.vue")},{name:"posts",path:"/posts",component:()=>import("@/Post.vue"),children:[`
-    routes.forEach(r => {
-        result += `{name: "post-${r.name}", path: "${r.path}", component: () => import("@/views/${r.name}.vue"), meta: {filename: "${r.name}", uuid: "${r.uuid}"}},`;
-    })
+function buildRouterTs(postRoutes, pageRoutes) {
+    let result = `import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";const routes: RouteRecordRaw[]=[{name:"page",path:"/",component:()=>import("@/Page.vue"),children:[`
+        + pageRoutes.map(x => `{name: "${x.name.toLowerCase()}", path: "/${x.path}", component:()=>import("@/pages/${x.name}.vue"),meta:{filename:"${x.name}",uuid:"${x.uuid}",isStandalone:true}}`).join(",")
+        + `]},{name:"posts",path:"/posts",component:()=>import("@/Post.vue"),children:[`
+        + postRoutes.map(r => `{name:"post-${r.name.toLowerCase()}",path:"${r.path}",component:()=>import("@/views/${r.name}.vue"),meta:{filename:"${r.name}",uuid:"${r.uuid}",isStandalone:false}}`).join(",")
     result += "]}];const router = createRouter({history: createWebHistory(),routes}); export default router";
     return result;
 }
@@ -86,14 +86,15 @@ async function buildPageComponent(fm, fileparsed) {
             b.append(await buildElement(externalLinkIcon));
         }
 
-        const metabar = `<div class="metabar">` +
-            `<div class="metabar-item">${fm.date}</div>` +
-            `<div class="metabar-item">${fm.desc}</div>` +
-            `</div>`;
-
         const h = document.querySelector("h1");
-        h.after(await buildElement(metabar));
-        h.classList.add("post-title");
+        if (h && !fm.standalone) {
+            const metabar = `<div class="metabar">` +
+                `<div class="metabar-item">${fm.date}</div>` +
+                `<div class="metabar-item">${fm.desc}</div>` +
+                `</div>`;
+            h.after(await buildElement(metabar));
+            h.classList.add("post-title");
+        }
 
 
         return {
@@ -108,21 +109,20 @@ async function buildPageComponent(fm, fileparsed) {
     };
 }
 
-const readdir = util.promisify(fs.readdir)
-const readFile = util.promisify(fs.readFile)
-const writeFile = util.promisify(fs.writeFile)
-const posts = {};
-const routes = [];
+const readdir = util.promisify(fs.readdir);
+const readFile = util.promisify(fs.readFile);
+const writeFile = util.promisify(fs.writeFile);
 
 (async () => {
     try {
         console.log("🚧 Reading files...")
 
-        const template = (await readFile("src/Post.vue")).toString();
-        const files = await readdir("posts")
+        const posts = await readdir("posts")
+        const postResult = {};
+        const postRoutes = [];
 
-        for (let f of files) {
-            let filename = f.replace(".md", "");
+        for (let p of posts) {
+            let filename = p.replace(".md", "");
             let filecontent = (await readFile(`posts/${filename}.md`)).toString();
             let filefrontmatter = fm(filecontent);
             console.log(`📕 Building ${filename}.md`)
@@ -130,22 +130,48 @@ const routes = [];
             let uuid = v5(filename, config.uuidNamespace);
             let result = await buildPageComponent(filefrontmatter.attributes, fileparsed)
             await writeFile(`src/views/${filename}.vue`, result.result);
-            routes.push({
-                name: `${filename}`,
-                path: `${filename}`,
-                uuid: `${uuid}`
+            postRoutes.push({
+                name: filename,
+                path: filename,
+                uuid: uuid
             })
-            posts[uuid] = {
+            postResult[uuid] = {
                 "title": result.title.replace("# ", ""),
                 "filename": filename,
                 "frontmatters": filefrontmatter.attributes
             }
         }
 
-        console.log("🚧 Building & writing files...")
 
-        await writeFile(`src/pages.ts`, `const data: Record<string, Post> = ${JSON.stringify(posts)}; export default data;`);
-        await writeFile(`src/router.ts`, buildRouterTs())
+        const pages = await readdir("pages")
+        const pageResult = {};
+        const pageRoutes = [];
+
+        for (let p of pages) {
+            let filename = p.replace(".md", "")
+            let filecontent = (await readFile(`pages/${filename}.md`)).toString();
+            console.log(`📄 Building ${filename}.md`);
+            let fileparsed = md.render(filecontent);
+            let uuid = v5(filename, config.uuidNamespace);
+            let result = await buildPageComponent({
+                standalone: true
+            }, fileparsed);
+            await writeFile(`src/pages/${filename}.vue`, result.result);
+            pageRoutes.push({
+                name: filename,
+                path: filename,
+                uuid: uuid
+            })
+            pageResult[uuid] = {
+                "title": result.title.replace("# ", ""),
+                "filename": filename
+            }
+        }
+
+        console.log("🚧 Building & writing files...")
+        await writeFile(`src/posts.ts`, `const data: Record<string, Post> = ${JSON.stringify(postResult)}; export default data;`);
+        await writeFile(`src/pages.ts`, `const data: Record<string, Page> = ${JSON.stringify(pageResult)}; export default data;`)
+        await writeFile(`src/router.ts`, buildRouterTs(postRoutes, pageRoutes))
 
         console.log("🙌 Successfully built necessary files to be build.")
     } catch (e) {
