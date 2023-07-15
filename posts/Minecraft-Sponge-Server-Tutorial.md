@@ -33,7 +33,7 @@ Sponge 分为三个大分支，在这里为了能够安装 Mod 我们选择 Spon
 - Sponge 本体 👉[Link](https://repo.spongepowered.org/maven/org/spongepowered/spongeforge/1.12.2-2838-7.1.8/spongeforge-1.12.2-2838-7.1.8.jar)
 
 ::: warning
-**⚠ Warning**
+**注意**
 
 Sponge 对 Forge 的版本有要求，在选择 Sponge 时需要注意到其支持的 Forge 版本号。在上面所给的链接中，下载到的 Forge 和 Sponge 应分别为 `forge-1.12.2-14.23.5.2838-installer.jar` 和 `spongeforge-1.12.2-2838-7.1.8.jar`。
 
