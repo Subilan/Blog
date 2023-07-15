@@ -24,18 +24,20 @@
 
 ## 如何在本站上添加友链？
 
-首先，请确保你的网站满足以下要求：
-- 全站（包括主域名和所有一级子域名）开启 HTTPS，不要求强制。
-- 个人搭建，而非使用一键式建站产品搭建。
-- 域名归本人所有，或者是非一键式建站产品提供的域名。
-  - 你的个人域名，例如 —  `yourblog.com`
-  - 非一键式建站产品提供的域名，例如 — `abc.github.io`
-- 个人博客性质
+请确保你的网站满足以下要求：
+
+- **至少有一篇计算机领域的*原创*博文**
+- **博客在 2 年内至少发布过两篇博文**（最近两篇博文发布日期应该在 <two-years-ago></two-years-ago> 之后）
+- 全站开启 HTTPS
+- 域名为本人所有或者系有影响力的二级域名
+  - 你的个人域名，例如 `subilan.win`
+  - 有影响力的二级域名，例如 `*.github.io`、`*.js.org`
+- 个人博客性质，不含大规模宣传内容
 
 若已确定满足以上需求，则可以从下面三个方式中选择一个申请友链。
 
 - **直接联系我** — 使用[联系](/Contact)页面里的联系方式联系我，并提供相关信息
-- **Pull Request** — 如果你有 GitHub 账号和使用经验，则可以自己手动向 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 提交 pull request。具体地，请依照项目中 `/.vuepress/components/FriendLinks.vue` 内的写法继续在该文件中添加内容。
+- **Pull Request** — 如果你有 GitHub 账号和使用经验，则可以自己手动向 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 提交 pull request。具体地，请依照项目中 `src/components/Blogroll.vue` 内的写法继续在该文件中添加内容。
 - **提交 Issue** — 如果你有 GitHub 账号，则可以在 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 项目中提交 Issue，注明友链申请和提供相关信息即可。
 
 申请时需要提供的信息的模板为：
@@ -50,7 +52,7 @@
 >
 > 头像（圆形、方形皆可）：（必填）
 
-你的友链将最终呈现为这样
+你的友链将最终呈现为下面这样，具体宽度视友链添加情况自动调整。
 
 <example-link></example-link>
 
