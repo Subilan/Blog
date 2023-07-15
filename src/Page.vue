@@ -1,8 +1,8 @@
 <template>
-  <div class="page">
+  <home v-if="route.path === '/'"/>
+  <div class="page" v-else>
     <router-view/>
   </div>
-  <home v-if="route.path === '/'"/>
 </template>
 
 <script setup lang="ts">
@@ -22,7 +22,7 @@ const sortedFilenames = getPages().map(x => x.filename);
 @import "./typo.less";
 
 .page {
-  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  padding: 1rem 1.5rem 1.5rem 2rem;
   max-width: 740px;
   margin: 0 auto;
   line-height: 1.7;

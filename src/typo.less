@@ -5,12 +5,17 @@
     padding-left: 1.2rem;
   }
 
+  h1, h2, h3{
+    line-height: 1.4;
+  }
+
   h1 a, h2 a, h3 a {
     color: #2c3e50;
     font-weight: 600;
   }
 
   a {
+    overflow-wrap: break-word;
     color: #009688;
     text-decoration: none;
     font-weight: 500;
@@ -74,8 +79,10 @@
     right: calc(100% + .2rem);
     opacity: 0;
 
-    &:hover {
-      opacity: 1;
+    @media (min-width: 700px) {
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 
@@ -137,5 +144,6 @@
   img {
     width: 100%;
     border: 1px solid #eaecef;
+    border-radius: 5px;
   }
 }
