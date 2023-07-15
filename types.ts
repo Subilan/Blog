@@ -8,8 +8,11 @@ interface PostFrontmatter {
     english?: boolean,
 }
 
-interface Post {
+interface Page {
     title: string,
-    filename: string,
+    filename: string
+}
+
+interface Post extends Page {
     frontmatters: Partial<PostFrontmatter>
 }
