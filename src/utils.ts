@@ -3,20 +3,11 @@ import pages from "@/pages";
 import search from '@/searchdata.json';
 
 export function getSortedPosts(): Post[] {
-    return Object.values(posts).sort((a, b) => {
-        return new Date(b.frontmatters.date?.replace("/", "-") || 0).getTime() - new Date(a.frontmatters.date?.replace("/", "-") || 0).getTime()
-    }).map(x => {
-        return {
-            title: x.title,
-            filename: x.filename,
-            frontmatters: x.frontmatters,
-            wordcount: x.wordcount
-        }
-    });
+    return posts;
 }
 
 export function getPages(): Page[] {
-    return Object.values(pages);
+    return pages;
 }
 
 export function getSearch(): Search[] {
