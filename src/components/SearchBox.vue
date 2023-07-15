@@ -8,8 +8,38 @@
     <div class="search-dialog">
       <div class="search-textfield">
         <span class="mdi mdi-magnify"/>
-        <input ref="searchInput" placeholder="搜索文章标题、内容" class="search-input" type="text"
-               v-model="searchContent"/>
+        <input ref="searchInput" v-model="searchContent" placeholder="搜索文章标题、内容" class="search-input"
+               type="text" @keydown="debounce(400)(() => {searching = true; getSearchResult()})"/>
+      </div>
+      <div class="search-result">
+        <div v-if="searchResult.length > 0">
+          <div
+              @click="searchDialog = false; router.push(x.namespace === 'post' ? `/posts/${x.filename}` : `/${x.filename}`);"
+              class="result" v-for="(x, i) in searchResult" tabindex="0">
+            <div class="title">
+              {{ x.title }}
+            </div>
+            <div class="content" v-html="x.nearestText"/>
+            <div class="meta">
+              <div class="badge">
+                {{ x.namespace }}
+              </div>
+
+              {{ x.filename }}.md
+
+
+            </div>
+          </div>
+        </div>
+        <div class="search-text" v-else-if="searchContent.trim().length === 0">
+          键入以搜索
+        </div>
+        <div class="search-text" v-else-if="searching">
+          加载中...
+        </div>
+        <div class="search-text" v-else>
+          没有与搜索条件匹配的项
+        </div>
       </div>
     </div>
   </div>
@@ -17,44 +47,82 @@
 
 <script setup lang="ts">
 import {onMounted, ref, watch} from "vue";
+import {getSearch} from "@/utils";
+import {useRouter} from "vue-router";
 
 const searchDialog = ref(false)
 const searchDialogActive = ref(false)
 const searchDialogDisplay = ref("none")
-const searchContent = ref("")
 const searchInput = ref<HTMLInputElement | null>(null)
+const searchContent = ref("")
+const searchResult = ref<SearchResult[]>([]);
+const search = getSearch();
+const searching = ref(false);
+const router = useRouter();
 
-watch(searchDialog, v => {
-  if (v) {
-    searchDialogDisplay.value = 'block';
-    setTimeout(() => {
-      searchDialogActive.value = true;
-    }, 1)
-  } else {
-    searchDialogActive.value = false;
-    setTimeout(() => {
-      searchDialogDisplay.value = 'none';
-    }, 200)
+interface SearchResult {
+  title: string,
+  namespace: Search["namespace"],
+  nearestText: string,
+  filename: string
+}
+
+let debounceTimer = 0;
+const debounce = (timeout: number) => (func: Function) => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => func(), timeout);
+}
+
+function disableScroll() {
+  document.body.style.overflow = "hidden";
+  document.body.style.height = "100%";
+}
+
+function enableScroll() {
+  document.body.style.overflow = "";
+  document.body.style.height = "";
+}
+
+function getSearchResult() {
+  if (searchContent.value.trim().length === 0) {
+    searchResult.value = [];
+    return;
   }
-})
+  const titleMatch = search.filter(x => x.title.toLowerCase().includes(searchContent.value.toLowerCase()));
+  const contentMatch = search.filter(x => x.filecontent.toLowerCase().includes(searchContent.value.toLowerCase()));
+  const union = [...new Set([...titleMatch, ...contentMatch])];
+  searchResult.value = union.map(x => {
+    return {
+      title: x.title,
+      filename: x.filename,
+      namespace: x.namespace,
+      nearestText: getNearestText(x.filecontent, searchContent.value)
+    }
+  });
+  searching.value = false;
+}
+
+function getNearestText(filecontent: string, searchContent: string) {
+  const index = filecontent.toLowerCase().indexOf(searchContent.toLowerCase());
+  const start = index - 50;
+  const end = index + searchContent.length + 50
+  const part = filecontent.substring(
+      start < 0 ? 0 : start,
+      end > filecontent.length - 1 ? filecontent.length - 1 : end
+  );
+  return "..."
+      + part.replace(
+          new RegExp(`(${searchContent})`, "gi"),
+          `<strong>$1</strong>`
+      )
+      + "...";
+}
 
 function keydownHandler(e: KeyboardEvent) {
   if (e.key === "Escape") {
     searchDialog.value = false;
   }
 }
-
-watch(searchDialogActive, v => {
-  if (v) {
-    window.addEventListener("keydown", keydownHandler);
-    if (searchInput.value !== null) {
-      searchInput.value.focus();
-    }
-  } else {
-    window.removeEventListener("keydown", keydownHandler)
-    searchContent.value = ""
-  }
-})
 
 onMounted(() => {
   window.addEventListener("keydown", e => {
@@ -64,9 +132,38 @@ onMounted(() => {
     }
   })
 })
+
+watch(searchDialog, v => {
+  if (v) {
+    searchDialogDisplay.value = 'block';
+    setTimeout(() => {
+      searchDialogActive.value = true;
+      disableScroll();
+    }, 1)
+  } else {
+    searchDialogActive.value = false;
+    enableScroll()
+    setTimeout(() => {
+      searchDialogDisplay.value = 'none';
+    }, 200)
+  }
+})
+
+watch(searchDialogActive, v => {
+  if (v) {
+    window.addEventListener("keydown", keydownHandler);
+    if (searchInput.value !== null) {
+      searchInput.value.focus();
+    }
+  } else {
+    window.removeEventListener("keydown", keydownHandler)
+    searchContent.value = "";
+    searchResult.value = [];
+  }
+})
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import "@/var.less";
 
 .search-box {
@@ -107,6 +204,11 @@ onMounted(() => {
   &.active {
     backdrop-filter: blur(2px);
     opacity: 1;
+
+    .search-dialog {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
   }
 }
 
@@ -119,7 +221,9 @@ onMounted(() => {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(.9);
+  opacity: 0;
+  transition: all .35s cubic-bezier(.77, .01, .2, .98);
 }
 
 .search-textfield {
@@ -146,6 +250,67 @@ onMounted(() => {
     border: none;
     border-bottom: 2px solid #009688;
     .fontset-monospace;
+  }
+}
+
+.search-text {
+  text-align: center;
+  color: #bbb;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.badge {
+  display: inline-block;
+  background: #e0f2f1;
+  color: #009688;
+  padding: .2rem .4rem;
+  line-height: 1;
+  border-radius: 5px;
+}
+</style>
+
+<style lang="less">
+.search-result {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  gap: 1rem;
+  max-height: 700px;
+  overflow-y: auto;
+
+  .result {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding: 1rem;
+
+    &:hover,
+    &:focus {
+      background: #e0f2f1;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .content {
+      color: #aaa;
+      font-size: 1rem;
+      overflow-x: clip;
+
+      strong {
+        color: #000;
+        background: #ffeb3b;
+      }
+    }
   }
 }
 </style>

@@ -7,12 +7,12 @@ const {v5} = require("uuid");
 const anchor = require("markdown-it-anchor");
 const jsdom = require("jsdom");
 const util = require("util");
-const {executablePath} = require("puppeteer-core");
 
 const config = {
     uuidNamespace: 'ae42b17e-ba44-4d10-914a-639148fc993f',
     categories: ["思想", "代码", "实现"]
 };
+const search = [];
 
 console.log("🚧 Applying marked plugins...")
 
@@ -47,6 +47,16 @@ function buildRouterTs(postRoutes, pageRoutes) {
     return result;
 }
 
+function addSearch(filecontent, title, filename, namespace) {
+    if (filename === "PGP") return;
+    search.push({
+        title,
+        filecontent: require("remove-markdown")(filecontent).replace(/:::\w+?/g, ""),
+        filename,
+        namespace
+    })
+}
+
 async function buildPageComponent(fm, fileparsed) {
     const pup = require("puppeteer-core");
     const {executablePath} = require("puppeteer");
@@ -74,6 +84,11 @@ async function buildPageComponent(fm, fileparsed) {
         }
 
         const externalLinkIcon = `<span class="external-link-icon mdi mdi-launch"></span>`;
+        const mailLinkIcon = `<span class="external-link-icon mdi mdi-email-outline"></span>`;
+
+        for (let a of body.querySelectorAll("a[href*='mailto']")) {
+            a.append(await buildElement(mailLinkIcon));
+        }
 
         for (let b of body.querySelectorAll(".external-link")) {
             b.append(await buildElement(externalLinkIcon));
@@ -92,6 +107,7 @@ async function buildPageComponent(fm, fileparsed) {
         for (let a of body.querySelectorAll("a")) {
             if (a.classList.contains("external-link")) continue;
             if (a.closest("[class^='footnote']") !== null) continue;
+            if (a.getAttribute("href").startsWith("mailto")) continue;
             let routerLink = document.createElement("router-link");
             routerLink.innerText = a.innerText;
             routerLink.setAttribute("to", a.getAttribute("href"));
@@ -100,22 +116,39 @@ async function buildPageComponent(fm, fileparsed) {
         }
 
         for (let h of body.querySelectorAll("h1, h2")) {
-            const anchor = `<a class="header-anchor" href="#${encodeURI(h.innerText)}">#</a>`
+            const anchor = `<a class="header-anchor" id="${encodeURI(h.innerText)}" href="#${encodeURI(h.innerText)}">#</a>`
             h.append(await buildElement(anchor));
         }
 
-
-
         return {
-            html: body.innerHTML.replace(/<p>:::tip\s*(.*?)\s*:::<\/p>/g, `<div class="notice tip">$1</div>`).replace(/<p>:::warning\s*(.*?)\s*:::<\/p>/g, `<div class="notice warning">$1</div>`),
+            html: body.innerHTML,
             title: h.innerText
         };
     }, fm)
     await browser.close();
     return {
         result: `<template><div class="content">${result.html}</div></template>`,
-        title: result.title
+        title: result.title.replace("#", "")
     };
+}
+
+function parse(raw) {
+    const reg1 = /:::tip((\s|.)*?):::/g;
+    const reg2 = /:::warning((\s|.)*?):::/g;
+    const res1 = reg1.exec(raw);
+    const res2 = reg2.exec(raw);
+
+    if (res1) {
+        const customBlockInner1 = res1[1];
+        raw = raw.replace(reg1, `<div class="notice tip">${md.render(customBlockInner1)}</div>`);
+    }
+
+    if (res2) {
+        const customBlockInner2 = res2[1];
+        raw = raw.replace(reg2, `<div class="notice warning">${md.render(customBlockInner2)}</div>`);
+    }
+
+    return md.render(raw);
 }
 
 const readdir = util.promisify(fs.readdir);
@@ -140,17 +173,20 @@ try {
         let filecontent = (await readFile(`posts/${filename}.md`)).toString();
         let filefrontmatter = fm(filecontent);
         console.log(`📕 Building ${filename}.md`)
-        let fileparsed = md.render(filefrontmatter.body);
+        let fileparsed = parse(filefrontmatter.body);
         let uuid = v5(filename, config.uuidNamespace);
         let result = await buildPageComponent(filefrontmatter.attributes, fileparsed)
         await writeFile(`src/posts/${filename}.vue`, result.result);
+        if (!filefrontmatter.attributes.hidden) {
+            addSearch(filecontent, result.title, filename, "post")
+        }
         postRoutes.push({
             name: filename,
             path: filename,
             uuid: uuid
         })
         postResult[uuid] = {
-            "title": result.title.replace("# ", "").replace("#", ""),
+            "title": result.title,
             "filename": filename,
             "frontmatters": filefrontmatter.attributes
         }
@@ -164,19 +200,20 @@ try {
         let filename = p.replace(".md", "")
         let filecontent = (await readFile(`pages/${filename}.md`)).toString();
         console.log(`📄 Building ${filename}.md`);
-        let fileparsed = md.render(filecontent);
+        let fileparsed = parse(filecontent);
         let uuid = v5(filename, config.uuidNamespace);
         let result = await buildPageComponent({
             standalone: true
         }, fileparsed);
         await writeFile(`src/pages/${filename}.vue`, result.result);
+        addSearch(filecontent, result.title, filename, "page")
         pageRoutes.push({
             name: filename,
             path: filename,
             uuid: uuid
         })
         pageResult[uuid] = {
-            "title": result.title.replace("# ", "").replace("#", ""),
+            "title": result.title,
             "filename": filename
         }
     }
@@ -185,6 +222,7 @@ try {
     await writeFile(`src/posts.ts`, `const data: Record<string, Post> = ${JSON.stringify(postResult)}; export default data;`);
     await writeFile(`src/pages.ts`, `const data: Record<string, Page> = ${JSON.stringify(pageResult)}; export default data;`)
     await writeFile(`src/router.ts`, buildRouterTs(postRoutes, pageRoutes))
+    await writeFile(`src/searchdata.json`, JSON.stringify(search));
 
     console.log("🙌 Successfully built necessary files to be build.")
 
