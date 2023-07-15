@@ -54,7 +54,7 @@ VuePress 的写作使用 Markdown 文件进行，路由会自动将你的 Markdo
 
 到目前为止，你的博客目录应该为这个样子
 
-```tree
+```
 .
 ├─package-lock.json
 ├─package.json

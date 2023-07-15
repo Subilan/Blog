@@ -55,7 +55,7 @@ function addSearch(filecontent, title, filename, namespace) {
     })
 }
 
-async function buildPageComponent(fm, fileparsed) {
+async function buildPageComponent(fm, fileparsed, wordcount) {
     const pup = require("puppeteer-core");
     const {executablePath} = require("puppeteer");
     const browser = await pup.launch({
@@ -73,13 +73,40 @@ async function buildPageComponent(fm, fileparsed) {
     await page.setContent(`<!DOCTYPE html><html><body class='dist'>${fileparsed}</body></html>`, {waitUntil: "domcontentloaded"});
     await page.waitForSelector(".dist");
 
-    const result = await page.evaluate(async (fm, mediumZoom) => {
+    const result = await page.evaluate(async (fm, wordcount) => {
         const parser = new window.DOMParser();
         const body = document.body;
 
         async function buildElement(struct) {
             const newdoc = parser.parseFromString(struct, "text/html");
             return newdoc.body.firstChild;
+        }
+
+        function getReadingMinutes(wordcount, category) {
+            let res = 0;
+            const basis = wordcount / 250;
+            switch (category) {
+                case "思想":
+                    res = basis / .6;
+                    break;
+
+                case "代码":
+                case "路径":
+                    res = basis / .7;
+                    break;
+
+                case "记录":
+                    res = basis / .85;
+                    break;
+
+                case "诗":
+                    res = basis / .75;
+                    break;
+
+                default:
+                    res = basis;
+            }
+            return res.toFixed(0);
         }
 
         const externalLinkIcon = `<span class="external-link-icon mdi mdi-launch"></span>`;
@@ -105,6 +132,7 @@ async function buildPageComponent(fm, fileparsed) {
             const metabar = `<div class="metabar">` +
                 `<div class="metabar-item">日期 — ${fm.date}</div>` +
                 `<div class="metabar-item">分类 — ${fm.cate}</div>` +
+                `<div class="metabar-item">约 ${getReadingMinutes(wordcount, fm.cate)} 分钟读完</div>` +
                 `</div>`;
             h.after(await buildElement(metabar));
             h.classList.add("post-title");
@@ -130,7 +158,7 @@ async function buildPageComponent(fm, fileparsed) {
             html: body.innerHTML,
             title: h.innerText
         };
-    }, fm)
+    }, fm, wordcount)
     await browser.close();
     return {
         result: `<template><div class="content">${result.html}</div></template>`,
@@ -188,11 +216,12 @@ try {
     for (let p of posts) {
         let filename = p.replace(".md", "");
         let filecontent = (await readFile(`posts/${filename}.md`)).toString();
+        let wordcount = countWords(filecontent);
         let filefrontmatter = fm(filecontent);
         console.log(`📕 Building ${filename}.md`)
         let fileparsed = parse(filefrontmatter.body);
         let uuid = v5(filename, config.uuidNamespace);
-        let result = await buildPageComponent(filefrontmatter.attributes, fileparsed)
+        let result = await buildPageComponent(filefrontmatter.attributes, fileparsed, wordcount)
         await writeFile(`src/posts/${filename}.vue`, result.result);
         if (!filefrontmatter.attributes.hidden) {
             addSearch(filecontent, result.title, filename, "post")
@@ -206,7 +235,7 @@ try {
             "title": result.title,
             "filename": filename,
             "frontmatters": filefrontmatter.attributes,
-            "wordcount": countWords(filecontent)
+            "wordcount": wordcount
         }
     }
 

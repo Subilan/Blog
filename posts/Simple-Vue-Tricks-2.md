@@ -40,7 +40,7 @@ Vue.prototype.$states = reactive(states)
 
 在编写 checkbox、dialog 等组件的时候，经常需要在父组件内控制子组件的状态。例如
 
-```vue
+```html
 <template>
     <Dialog v-model="dialogState"/>
 </template>
@@ -60,7 +60,7 @@ export default Vue.extend({
 
 这一点在子组件内如何实现呢？官方提供了 `v-model` 这一方案，实际上是语法糖。
 
-```vue
+```html
 <template>
     <div>
         <input v-model="data" />
@@ -78,7 +78,7 @@ export default Vue.extend({
 
 这一整个逻辑都可以使用 `v-model='data'` 做到。例如对话框
 
-```vue
+```html
 父组件：
 
 <template>

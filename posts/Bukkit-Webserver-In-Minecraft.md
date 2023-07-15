@@ -268,7 +268,7 @@ out.write(result);
 
 其中 `body` 部分就是发送者想要的结果了，直接将我们上面封装的 JSON 对象转为字符串即可。在 `out` 写完以后，需要手动使用 `out.flush()` 方法强制将当前写入的内容返回。所以整体的代码看上去应该是这样的：
 
-```java{33}
+```java {33}
 var in = new BufferedReader(new InputStreamReader(input));
 var out = new BufferedWriter(new OutputStreamWriter(output));
 var body = new StringBuilder();

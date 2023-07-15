@@ -57,7 +57,7 @@ dataArray = dataArray.fill(false);
 
 这样就可以轻松借助循环来实现在两个不同数组相同位置的数据关联。以 Vue 为例子：
 
-```vue
+```html
 <div>
   	<whatever v-for="(x, i) in items" :key="i" v-model="dataArray[i]">
     	{{ x }}
@@ -150,7 +150,7 @@ for i in voteTargets:
 
 在对投票的项目进行编辑时，我们需要记录究竟删除了哪些项目，增加了多少项目？这些记录的代码可以放在删除或增加时所要调用的函数内。
 
-```vue
+```html
 <!-- ... -->
 
 <script lang="js">
