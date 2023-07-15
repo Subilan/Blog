@@ -169,9 +169,9 @@ async function buildPageComponent(fm, fileparsed, wordcount) {
 }
 
 function parse(raw) {
-    const reg1 = /:::tip((\s|.)*?):::/g;
-    const reg2 = /:::warning((\s|.)*?):::/g;
-    const reg3 = /:::danger((\s|.)*?):::/g;
+    const reg1 = /:::tip([\s.]*?):::/g;
+    const reg2 = /:::warning([.\s]*?):::/g;
+    const reg3 = /:::danger(([.\s]*?):::/g;
     const res1 = reg1.exec(raw);
     const res2 = reg2.exec(raw);
     const res3 = reg3.exec(raw);
