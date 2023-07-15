@@ -22,7 +22,7 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-src/views
+src/posts
 src/pages
 src/posts.ts
 src/pages.ts
