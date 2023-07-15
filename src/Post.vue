@@ -43,4 +43,23 @@ function getPrev() {
 .content {
   .typo;
 }
+
+.post-title {
+  margin-bottom: 0;
+}
+
+.metabar {
+  display: flex;
+  align-items: center;
+  color: #bbb;
+
+  >*::after {
+    content: "·";
+    margin: 0 8px;
+  }
+
+  >*:last-child::after {
+    content: "";
+  }
+}
 </style>
