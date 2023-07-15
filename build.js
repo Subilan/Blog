@@ -113,68 +113,69 @@ const readdir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 
+try {
+    fs.mkdirSync("src/posts");
+    fs.mkdirSync("src/pages");
+} catch {}
+
 (async () => {
-    try {
-        console.log("🚧 Reading files...")
+    console.log("🚧 Reading files...")
 
-        const posts = await readdir("posts")
-        const postResult = {};
-        const postRoutes = [];
+    const posts = await readdir("posts")
+    const postResult = {};
+    const postRoutes = [];
 
-        for (let p of posts) {
-            let filename = p.replace(".md", "");
-            let filecontent = (await readFile(`posts/${filename}.md`)).toString();
-            let filefrontmatter = fm(filecontent);
-            console.log(`📕 Building ${filename}.md`)
-            let fileparsed = md.render(filefrontmatter.body);
-            let uuid = v5(filename, config.uuidNamespace);
-            let result = await buildPageComponent(filefrontmatter.attributes, fileparsed)
-            await writeFile(`src/posts/${filename}.vue`, result.result);
-            postRoutes.push({
-                name: filename,
-                path: filename,
-                uuid: uuid
-            })
-            postResult[uuid] = {
-                "title": result.title.replace("# ", ""),
-                "filename": filename,
-                "frontmatters": filefrontmatter.attributes
-            }
+    for (let p of posts) {
+        let filename = p.replace(".md", "");
+        let filecontent = (await readFile(`posts/${filename}.md`)).toString();
+        let filefrontmatter = fm(filecontent);
+        console.log(`📕 Building ${filename}.md`)
+        let fileparsed = md.render(filefrontmatter.body);
+        let uuid = v5(filename, config.uuidNamespace);
+        let result = await buildPageComponent(filefrontmatter.attributes, fileparsed)
+        await writeFile(`src/posts/${filename}.vue`, result.result);
+        postRoutes.push({
+            name: filename,
+            path: filename,
+            uuid: uuid
+        })
+        postResult[uuid] = {
+            "title": result.title.replace("# ", ""),
+            "filename": filename,
+            "frontmatters": filefrontmatter.attributes
         }
-
-
-        const pages = await readdir("pages")
-        const pageResult = {};
-        const pageRoutes = [];
-
-        for (let p of pages) {
-            let filename = p.replace(".md", "")
-            let filecontent = (await readFile(`pages/${filename}.md`)).toString();
-            console.log(`📄 Building ${filename}.md`);
-            let fileparsed = md.render(filecontent);
-            let uuid = v5(filename, config.uuidNamespace);
-            let result = await buildPageComponent({
-                standalone: true
-            }, fileparsed);
-            await writeFile(`src/pages/${filename}.vue`, result.result);
-            pageRoutes.push({
-                name: filename,
-                path: filename,
-                uuid: uuid
-            })
-            pageResult[uuid] = {
-                "title": result.title.replace("# ", ""),
-                "filename": filename
-            }
-        }
-
-        console.log("🚧 Building & writing files...")
-        await writeFile(`src/posts.ts`, `const data: Record<string, Post> = ${JSON.stringify(postResult)}; export default data;`);
-        await writeFile(`src/pages.ts`, `const data: Record<string, Page> = ${JSON.stringify(pageResult)}; export default data;`)
-        await writeFile(`src/router.ts`, buildRouterTs(postRoutes, pageRoutes))
-
-        console.log("🙌 Successfully built necessary files to be build.")
-    } catch (e) {
-        console.error(e);
     }
+
+    const pages = await readdir("pages")
+    const pageResult = {};
+    const pageRoutes = [];
+
+    for (let p of pages) {
+        let filename = p.replace(".md", "")
+        let filecontent = (await readFile(`pages/${filename}.md`)).toString();
+        console.log(`📄 Building ${filename}.md`);
+        let fileparsed = md.render(filecontent);
+        let uuid = v5(filename, config.uuidNamespace);
+        let result = await buildPageComponent({
+            standalone: true
+        }, fileparsed);
+        await writeFile(`src/pages/${filename}.vue`, result.result);
+        pageRoutes.push({
+            name: filename,
+            path: filename,
+            uuid: uuid
+        })
+        pageResult[uuid] = {
+            "title": result.title.replace("# ", ""),
+            "filename": filename
+        }
+    }
+
+    console.log("🚧 Building & writing files...")
+    await writeFile(`src/posts.ts`, `const data: Record<string, Post> = ${JSON.stringify(postResult)}; export default data;`);
+    await writeFile(`src/pages.ts`, `const data: Record<string, Page> = ${JSON.stringify(pageResult)}; export default data;`)
+    await writeFile(`src/router.ts`, buildRouterTs(postRoutes, pageRoutes))
+
+    console.log("🙌 Successfully built necessary files to be build.")
+
 })();
