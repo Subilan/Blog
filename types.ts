@@ -13,7 +13,8 @@ interface Page {
     filename: string
 }
 interface Post extends Page {
-    frontmatters: Partial<PostFrontmatter>
+    frontmatters: Partial<PostFrontmatter>,
+    wordcount: number
 }
 
 interface Search {

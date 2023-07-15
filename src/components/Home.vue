@@ -8,6 +8,7 @@
           <div class="meta">
             <span>{{ x.frontmatters.date }}</span>
             <span>{{ x.frontmatters.cate }}</span>
+            <span>约 {{ x.wordcount }} 字</span>
             <span v-if="x.frontmatters.english">英文</span>
           </div>
         </div>

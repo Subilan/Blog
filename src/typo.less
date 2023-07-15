@@ -5,7 +5,7 @@
     padding-left: 1.2rem;
   }
 
-  h1, h2, h3{
+  h1, h2, h3 {
     line-height: 1.4;
   }
 
@@ -129,7 +129,7 @@
     }
 
     &.warning {
-      background-color: rgba(255,229,100,.3);
+      background-color: rgba(255, 229, 100, .3);
       border-color: #e7c000;
       color: #6b5900;
     }
@@ -139,11 +139,37 @@
       border-color: #009688;
       color: #2c3e50;
     }
+
+    &.danger {
+      background-color: #ffe6e6;
+      border-color: #c00;
+      color: #4d0000;
+    }
   }
 
   img {
     width: 100%;
     border: 1px solid #eaecef;
     border-radius: 5px;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    display: block;
+    overflow-x: auto;
+  }
+
+  td, th {
+    border: 1px solid #dfe2e5;
+    padding: 0.6em 1em;
+  }
+
+  tr:nth-child(2n) {
+    background-color: #f6f8fa;
+  }
+
+  tr {
+    border-top: 1px solid #dfe2e5;
   }
 }
