@@ -39,9 +39,9 @@ const md = new MarkdownIt({
 
 function buildRouterTs(postRoutes, pageRoutes) {
     let result = `import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";const routes: RouteRecordRaw[]=[{name:"page",path:"/",component:()=>import("@/Page.vue"),children:[`
-        + pageRoutes.map(x => `{name: "${x.name.toLowerCase()}", path: "/${x.path}", component:()=>import("@/pages/${x.name}.vue"),meta:{filename:"${x.name}",uuid:"${x.uuid}",isStandalone:true}}`).join(",")
+        + pageRoutes.map(x => `{name: "${x.filename.toLowerCase()}", path: "/${x.filename}", component:()=>import("@/pages/${x.filename}.vue"),meta:{filename:"${x.filename}",title:"${x.title}",uuid:"${x.uuid}",isStandalone:true}}`).join(",")
         + `]},{name:"posts",path:"/posts",component:()=>import("@/Post.vue"),children:[`
-        + postRoutes.map(r => `{name:"post-${r.name.toLowerCase()}",path:"${r.path}",component:()=>import("@/posts/${r.name}.vue"),meta:{filename:"${r.name}",uuid:"${r.uuid}",isStandalone:false}}`).join(",")
+        + postRoutes.map(r => `{name:"post-${r.filename.toLowerCase()}",path:"${r.filename}",component:()=>import("@/posts/${r.filename}.vue"),meta:{filename:"${r.filename}",title:"${r.title}",uuid:"${r.uuid}",isStandalone:false}}`).join(",")
     result += "]}];const router = createRouter({history: createWebHistory(),routes}); export default router";
     return result;
 }
@@ -229,8 +229,8 @@ try {
             addSearch(filecontent, result.title, filename, "post")
         }
         postRoutes.push({
-            name: filename,
-            path: filename,
+            title: result.title,
+            filename: filename,
             uuid: uuid
         })
         postResult[uuid] = {
@@ -257,8 +257,8 @@ try {
         await writeFile(`src/pages/${filename}.vue`, result.result);
         addSearch(filecontent, result.title, filename, "page")
         pageRoutes.push({
-            name: filename,
-            path: filename,
+            title: result.title,
+            filename: filename,
             uuid: uuid
         })
         pageResult[uuid] = {
