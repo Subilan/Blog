@@ -4,7 +4,7 @@
 
 这里是友链页面。本页面中呈现的友链，都是按一定标准（见下文）筛选的**个人博客**。
 
-<FriendLinks/>
+<blogroll></blogroll>
 
 ## 本站的友链信息
 
@@ -34,7 +34,7 @@
 
 若已确定满足以上需求，则可以从下面三个方式中选择一个申请友链。
 
-- **直接联系我** — 使用[联系](/Contact.html)页面里的联系方式联系我，并提供相关信息
+- **直接联系我** — 使用[联系](/Contact)页面里的联系方式联系我，并提供相关信息
 - **Pull Request** — 如果你有 GitHub 账号和使用经验，则可以自己手动向 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 提交 pull request。具体地，请依照项目中 `/.vuepress/components/FriendLinks.vue` 内的写法继续在该文件中添加内容。
 - **提交 Issue** — 如果你有 GitHub 账号，则可以在 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 项目中提交 Issue，注明友链申请和提供相关信息即可。
 
@@ -52,6 +52,6 @@
 
 你的友链将最终呈现为这样
 
-<ExampleLink/>
+<example-link></example-link>
 
 一般我会在 48 小时内答复。若超时间没有答复，可以通过联系方式再次联系我以示提醒。
