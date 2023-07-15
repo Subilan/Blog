@@ -34,13 +34,6 @@ const md = new MarkdownIt({
     .use(require("@iktakahiro/markdown-it-katex"), {
         throwOnError: false
     })
-    .use(anchor, {
-        permalink: anchor.permalink.ariaHidden({
-            placement: "before",
-            symbol: "#",
-        }),
-        slugify: s => encodeURI(s)
-    })
     .use(require("markdown-it-toc-done-right"), {
         slugify: s => encodeURI(s)
     });
