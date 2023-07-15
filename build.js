@@ -268,7 +268,8 @@ try {
     }
 
     console.log("🚧 Building & writing files...")
-    await writeFile(`src/posts.ts`, `const data: Post[] = ${JSON.stringify(postResult.sort((a, b) => new Date(b.frontmatters.date.replace("/", "-")).getTime() - new Date(a.frontmatters.date.replace("/", "-")).getTime()))}; export default data;`);
+    // temporary implementation, need to be improved. 2023.07.15
+    await writeFile(`src/posts.ts`, `const data: Post[] = ${JSON.stringify(postResult.filter(x => !!x.frontmatters.date).sort((a, b) => new Date(b.frontmatters.date.replace("/", "-")).getTime() - new Date(a.frontmatters.date.replace("/", "-")).getTime()))}; export default data;`);
     await writeFile(`src/pages.ts`, `const data: Page[] = ${JSON.stringify(pageResult)}; export default data;`)
     await writeFile(`src/router.ts`, buildRouterTs(postRoutes, pageRoutes))
     await writeFile(`src/searchdata.json`, JSON.stringify(search));
