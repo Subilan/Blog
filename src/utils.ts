@@ -9,7 +9,8 @@ export function getSortedPosts(): Post[] {
         return {
             title: x.title,
             filename: x.filename,
-            frontmatters: x.frontmatters
+            frontmatters: x.frontmatters,
+            wordcount: x.wordcount
         }
     });
 }

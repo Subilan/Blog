@@ -31,9 +31,7 @@ const md = new MarkdownIt({
     .use(require("markdown-it-sup"))
     .use(require("markdown-it-sup"))
     .use(require("markdown-it-footnote"))
-    .use(require("@iktakahiro/markdown-it-katex"), {
-        throwOnError: false
-    })
+    .use(require("markdown-it-mathjax3"), {})
     .use(require("markdown-it-toc-done-right"), {
         slugify: s => encodeURI(s)
     });
@@ -74,7 +72,8 @@ async function buildPageComponent(fm, fileparsed) {
     await page.goto("about:blank")
     await page.setContent(`<!DOCTYPE html><html><body class='dist'>${fileparsed}</body></html>`, {waitUntil: "domcontentloaded"});
     await page.waitForSelector(".dist");
-    const result = await page.evaluate(async (fm) => {
+
+    const result = await page.evaluate(async (fm, mediumZoom) => {
         const parser = new window.DOMParser();
         const body = document.body;
 
@@ -142,8 +141,10 @@ async function buildPageComponent(fm, fileparsed) {
 function parse(raw) {
     const reg1 = /:::tip((\s|.)*?):::/g;
     const reg2 = /:::warning((\s|.)*?):::/g;
+    const reg3 = /:::danger((\s|.)*?):::/g;
     const res1 = reg1.exec(raw);
     const res2 = reg2.exec(raw);
+    const res3 = reg3.exec(raw);
 
     if (res1) {
         const customBlockInner1 = res1[1];
@@ -155,7 +156,16 @@ function parse(raw) {
         raw = raw.replace(reg2, `<div class="notice warning">${md.render(customBlockInner2)}</div>`);
     }
 
+    if (res3) {
+        const customBlockInner3 = res3[1];
+        raw = raw.replace(reg3, `<div class="notice danger">${md.render(customBlockInner3)}</div>`);
+    }
+
     return md.render(raw);
+}
+
+function countWords(text) {
+    return (text.match(/[\u00ff-\uffff]|\S+/g) || []).length;
 }
 
 const readdir = util.promisify(fs.readdir);
@@ -195,7 +205,8 @@ try {
         postResult[uuid] = {
             "title": result.title,
             "filename": filename,
-            "frontmatters": filefrontmatter.attributes
+            "frontmatters": filefrontmatter.attributes,
+            "wordcount": countWords(filecontent)
         }
     }
 
