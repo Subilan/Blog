@@ -9,7 +9,12 @@
 <script setup lang="ts">
 import Navbar from '@/components/Navbar.vue'
 import Footer from "@/components/Footer.vue";
+import {onMounted} from "vue";
+import mediumZoom from "medium-zoom";
 
+onMounted(() => {
+  mediumZoom(".content img")
+})
 </script>
 
 <style lang="less">

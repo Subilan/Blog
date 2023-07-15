@@ -114,7 +114,7 @@ with connect() as conn:
 
 ## 登录认证
 
-登录认证的设计流程已经在[这里](./Simple-Authenticating-System.md)有概述。本文所展示的是使用 `jwt` 库所实现的 Python 版本。
+登录认证的设计流程已经在[这里](./Simple-Authenticating-System)有概述。本文所展示的是使用 `jwt` 库所实现的 Python 版本。
 
 ```python
 from jwt import encode, decode, DecodeError

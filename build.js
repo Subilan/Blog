@@ -7,6 +7,7 @@ const {v5} = require("uuid");
 const anchor = require("markdown-it-anchor");
 const jsdom = require("jsdom");
 const util = require("util");
+const path = require("path");
 
 const config = {
     uuidNamespace: 'ae42b17e-ba44-4d10-914a-639148fc993f',
@@ -55,9 +56,10 @@ function addSearch(filecontent, title, filename, namespace) {
     })
 }
 
+const pup = require("puppeteer-core");
+const {executablePath} = require("puppeteer");
+
 async function buildPageComponent(fm, fileparsed, wordcount) {
-    const pup = require("puppeteer-core");
-    const {executablePath} = require("puppeteer");
     const browser = await pup.launch({
         headless: true,
         args: ['--no-sandbox'],
