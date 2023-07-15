@@ -212,7 +212,7 @@ try {
     console.log("🚧 Reading files...")
 
     const posts = await readdir("posts")
-    const postResult = {};
+    const postResult = [];
     const postRoutes = [];
 
     for (let p of posts) {
@@ -242,7 +242,7 @@ try {
     }
 
     const pages = await readdir("pages")
-    const pageResult = {};
+    const pageResult = [];
     const pageRoutes = [];
 
     for (let p of pages) {
