@@ -5,6 +5,7 @@ import router from "@/router";
 import Blogroll from "@/components/Blogroll.vue";
 import ExampleLink from "@/components/ExampleLink.vue";
 import nProgress from "nprogress";
+import TwoYearsAgo from "@/snip-components/two-years-ago.vue";
 
 
 router.beforeEach((to, from, next) => {
@@ -22,5 +23,6 @@ router.afterEach(() => {
 createApp(App)
     .component("blogroll", Blogroll)
     .component("example-link", ExampleLink)
+    .component("two-years-ago", TwoYearsAgo)
     .use(router)
     .mount('#app');
