@@ -49,7 +49,7 @@ function buildRouterTs(postRoutes, pageRoutes) {
     let result = `import {createRouter, createWebHistory, RouteRecordRaw} from "vue-router";const routes: RouteRecordRaw[]=[{name:"page",path:"/",component:()=>import("@/Page.vue"),children:[`
         + pageRoutes.map(x => `{name: "${x.name.toLowerCase()}", path: "/${x.path}", component:()=>import("@/pages/${x.name}.vue"),meta:{filename:"${x.name}",uuid:"${x.uuid}",isStandalone:true}}`).join(",")
         + `]},{name:"posts",path:"/posts",component:()=>import("@/Post.vue"),children:[`
-        + postRoutes.map(r => `{name:"post-${r.name.toLowerCase()}",path:"${r.path}",component:()=>import("@/views/${r.name}.vue"),meta:{filename:"${r.name}",uuid:"${r.uuid}",isStandalone:false}}`).join(",")
+        + postRoutes.map(r => `{name:"post-${r.name.toLowerCase()}",path:"${r.path}",component:()=>import("@/posts/${r.name}.vue"),meta:{filename:"${r.name}",uuid:"${r.uuid}",isStandalone:false}}`).join(",")
     result += "]}];const router = createRouter({history: createWebHistory(),routes}); export default router";
     return result;
 }
@@ -129,7 +129,7 @@ const writeFile = util.promisify(fs.writeFile);
             let fileparsed = md.render(filefrontmatter.body);
             let uuid = v5(filename, config.uuidNamespace);
             let result = await buildPageComponent(filefrontmatter.attributes, fileparsed)
-            await writeFile(`src/views/${filename}.vue`, result.result);
+            await writeFile(`src/posts/${filename}.vue`, result.result);
             postRoutes.push({
                 name: filename,
                 path: filename,
