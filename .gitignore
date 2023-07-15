@@ -23,3 +23,6 @@ pnpm-debug.log*
 *.sw?
 
 src/views
+src/pages
+src/posts.ts
+src/pages.ts
