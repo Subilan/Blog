@@ -1,7 +1,7 @@
 <template>
   <div @click="searchDialog = !searchDialog" class="search-box">
     <span class="mdi mdi-magnify"/>
-    <span>搜索 (Ctrl+K)</span>
+    <span v-if="isPCWidth()">搜索 (Ctrl+K)</span>
   </div>
   <div @click.self="searchDialog = false" class="cover" :style="{display: searchDialogDisplay}"
        :class="{'active': searchDialogActive}">
@@ -27,7 +27,6 @@
 
               {{ x.filename }}.md
 
-
             </div>
           </div>
         </div>
@@ -43,11 +42,18 @@
       </div>
     </div>
   </div>
+  <Transition name="flowup">
+    <div class="close-btn-wrapper" v-if="searchDialogActive && !isPCWidth()">
+      <div class="close-btn" @click="searchDialog = false">
+        关闭
+      </div>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
 import {onMounted, ref, watch} from "vue";
-import {getSearch} from "@/utils";
+import {getSearch, isPCWidth, enableScroll, disableScroll} from "@/utils";
 import {useRouter} from "vue-router";
 
 const searchDialog = ref(false)
@@ -71,16 +77,6 @@ let debounceTimer = 0;
 const debounce = (timeout: number) => (func: Function) => {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(() => func(), timeout);
-}
-
-function disableScroll() {
-  document.body.style.overflow = "hidden";
-  document.body.style.height = "100%";
-}
-
-function enableScroll() {
-  document.body.style.overflow = "";
-  document.body.style.height = "";
 }
 
 function getSearchResult() {
@@ -178,14 +174,27 @@ watch(searchDialogActive, v => {
   padding: .2rem .4rem;
   border-radius: 5px;
 
+  @media (max-width: 700px) {
+    padding: .2rem;
+    outline: none;
+  }
+
   .mdi::before {
     line-height: 1;
     font-size: 1rem;
+
+    @media (max-width: 700px) {
+      font-size: 1.3rem;
+    }
   }
 
   .mdi {
     height: 14px;
     width: 14px;
+    @media (max-width: 700px) {
+      height: 20px;
+      width: 20px;
+    }
   }
 }
 
@@ -208,6 +217,9 @@ watch(searchDialogActive, v => {
     .search-dialog {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
+      @media (max-width: 700px) {
+        transform: scale(1);
+      }
     }
   }
 }
@@ -224,6 +236,16 @@ watch(searchDialogActive, v => {
   transform: translate(-50%, -50%) scale(.9);
   opacity: 0;
   transition: all .35s cubic-bezier(.77, .01, .2, .98);
+
+  @media (max-width: 700px) {
+    width: calc(100vw - 2rem);
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: scale(.9);
+    border: none;
+    border-radius: 0;
+  }
 }
 
 .search-textfield {
@@ -272,16 +294,62 @@ watch(searchDialogActive, v => {
   line-height: 1;
   border-radius: 5px;
 }
+
+.close-btn-wrapper {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 4000;
+}
+
+.close-btn {
+  display: block;
+  background: #e0f2f1;
+  color: #009688;
+  font-size: 1.2rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
+  border-radius: 100px;
+  padding: .6rem;
+  width: 25%;
+  text-align: center;
+  margin: 2rem auto;
+}
 </style>
 
 <style lang="less">
+
+.flowup-enter-to,
+.flowup-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flowup-enter-from,
+.flowup-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.flowup-enter-active,
+.flowup-leave-active {
+  transition: all .2s cubic-bezier(.75,-0.01,.22,.99);
+}
+
 .search-result {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
   gap: 1rem;
-  max-height: 700px;
   overflow-y: auto;
+  max-height: 700px;
+
+  @media (max-width: 700px) {
+    max-height: calc(100% - 4rem)
+  }
 
   .result {
     display: flex;

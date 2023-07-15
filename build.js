@@ -94,6 +94,13 @@ async function buildPageComponent(fm, fileparsed) {
             b.append(await buildElement(externalLinkIcon));
         }
 
+        for (let c of body.querySelectorAll("pre")) {
+            let div = document.createElement("div");
+            div.classList.add(...c.classList);
+            c.parentElement.replaceChild(div, c)
+            div.append(c);
+        }
+
         const h = document.querySelector("h1");
         if (h && !fm.standalone) {
             const metabar = `<div class="metabar">` +

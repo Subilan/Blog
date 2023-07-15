@@ -34,7 +34,11 @@ const router = useRouter();
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 2rem 2.5rem;
+  padding: 1.5rem 2rem;
+
+  @media (max-width: 700px) {
+    padding: 1.5rem;
+  }
 }
 
 .header {
@@ -67,14 +71,19 @@ const router = useRouter();
   gap: 16px;
   position: relative;
 
+  @media (max-width: 700px) {
+    padding: 1rem 1.5rem;
+  }
+
   .title, .desc {
     z-index: 20;
+
   }
 
   .title {
     font-weight: bold;
     font-size: 2rem;
-    line-height: 1;
+    line-height: 1.2;
     color: #009688;
     position: relative;
   }
@@ -112,8 +121,10 @@ const router = useRouter();
   }
 }
 
-.card:hover .card-icon .mdi::before {
-  opacity: .4;
-  transform: translate(0, 0);
+@media (min-width: 700px) {
+  .card:hover .card-icon .mdi::before {
+    opacity: .4;
+    transform: translate(0, 0);
+  }
 }
 </style>

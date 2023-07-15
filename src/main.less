@@ -1,13 +1,19 @@
 @import "var.less";
 @import "highlight.css";
+@import "nprogress.css";
 
 body {
   margin: 0;
   .fontset-default;
   color: #2c3e50;
+  overflow-x: hidden;
 }
 
 *::selection {
   background-color: rgba(62,175,124,.2);
+}
+
+div[class^=language-] {
+  .fontset-monospace;
 }
 

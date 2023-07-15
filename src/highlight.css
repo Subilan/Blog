@@ -1,120 +1,125 @@
-code[class^=language-]:before {
+div[class^=language-] {
+    position: relative;
+}
+
+div[class^=language-]::before {
     position: absolute;
     right: 1rem;
     top: .8rem;
     font-size: .75rem;
     color: rgba(255,255,255,.4);
+    z-index: 200;
 }
 
-code[class~=language-js]:before {
+div[class~=language-js]::before {
     content: "js"
 }
 
-code[class~=language-ts]:before {
+div[class~=language-ts]::before {
     content: "ts"
 }
 
-code[class~=language-html]:before {
+div[class~=language-html]::before {
     content: "html"
 }
 
-code[class~=language-md]:before {
+div[class~=language-md]::before {
     content: "md"
 }
 
-code[class~=language-vue]:before {
+div[class~=language-vue]::before {
     content: "vue"
 }
 
-code[class~=language-css]:before {
+div[class~=language-css]::before {
     content: "css"
 }
 
-code[class~=language-sass]:before {
+div[class~=language-sass]::before {
     content: "sass"
 }
 
-code[class~=language-scss]:before {
+div[class~=language-scss]::before {
     content: "scss"
 }
 
-code[class~=language-less]:before {
+div[class~=language-less]::before {
     content: "less"
 }
 
-code[class~=language-stylus]:before {
+div[class~=language-stylus]::before {
     content: "stylus"
 }
 
-code[class~=language-go]:before {
+div[class~=language-go]::before {
     content: "go"
 }
 
-code[class~=language-java]:before {
+div[class~=language-java]::before {
     content: "java"
 }
 
-code[class~=language-c]:before {
+div[class~=language-c]::before {
     content: "c"
 }
 
-code[class~=language-sh]:before {
+div[class~=language-sh]::before {
     content: "sh"
 }
 
-code[class~=language-yaml]:before {
+div[class~=language-yaml]::before {
     content: "yaml"
 }
 
-code[class~=language-py]:before {
+div[class~=language-py]::before {
     content: "py"
 }
 
-code[class~=language-docker]:before {
+div[class~=language-docker]::before {
     content: "docker"
 }
 
-code[class~=language-dockerfile]:before {
+div[class~=language-dockerfile]::before {
     content: "dockerfile"
 }
 
-code[class~=language-makefile]:before {
+div[class~=language-makefile]::before {
     content: "makefile"
 }
 
-code[class~=language-javascript]:before {
+div[class~=language-javascript]::before {
     content: "js"
 }
 
-code[class~=language-typescript]:before {
+div[class~=language-typescript]::before {
     content: "ts"
 }
 
-code[class~=language-markup]:before {
+div[class~=language-markup]::before {
     content: "html"
 }
 
-code[class~=language-markdown]:before {
+div[class~=language-markdown]::before {
     content: "md"
 }
 
-code[class~=language-json]:before {
+div[class~=language-json]::before {
     content: "json"
 }
 
-code[class~=language-ruby]:before {
+div[class~=language-ruby]::before {
     content: "rb"
 }
 
-code[class~=language-python]:before {
+div[class~=language-python]::before {
     content: "py"
 }
 
-code[class~=language-bash]:before {
+div[class~=language-bash]::before {
     content: "sh"
 }
 
-code[class~=language-php]:before {
+div[class~=language-php]::before {
     content: "php"
 }
 

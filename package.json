@@ -19,11 +19,13 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "markdown-it-toc-done-right": "^4.2.0",
+    "nprogress": "^0.2.0",
     "uuid": "^9.0.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
+    "@types/nprogress": "^0.2.0",
     "@types/uuid": "^9.0.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",

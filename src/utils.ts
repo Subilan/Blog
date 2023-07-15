@@ -33,3 +33,17 @@ export function getCardIcon(cate: string | undefined) {
     }
     return match[cate] ? `mdi-${match[cate]}` : "";
 }
+
+export function isPCWidth() {
+    return window.innerWidth > 700;
+}
+
+export function disableScroll() {
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100%";
+}
+
+export function enableScroll() {
+    document.body.style.overflow = "";
+    document.body.style.height = "";
+}
