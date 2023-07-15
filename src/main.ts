@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import './main.less'
 import router from "@/router";
@@ -8,7 +8,22 @@ import nProgress from "nprogress";
 import TwoYearsAgo from "@/snip-components/two-years-ago.vue";
 
 
+function getTitle(path: string, meta: PageMeta) {
+    if (meta.title) {
+        return `${meta.title} | Subilan's Blog`
+    }
+    return "Subilan's Blog"
+}
+
+interface PageMeta {
+    filename: string,
+    title: string,
+    uuid: string,
+    isStandalone: boolean
+}
+
 router.beforeEach((to, from, next) => {
+    window.document.title = getTitle(to.path, to.meta as unknown as PageMeta);
     nProgress.start();
     next();
 })
