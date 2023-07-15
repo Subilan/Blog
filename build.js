@@ -82,8 +82,8 @@ async function buildPageComponent(fm, fileparsed) {
         const h = document.querySelector("h1");
         if (h && !fm.standalone) {
             const metabar = `<div class="metabar">` +
-                `<div class="metabar-item">${fm.date}</div>` +
-                `<div class="metabar-item">${fm.desc}</div>` +
+                `<div class="metabar-item">日期 — ${fm.date}</div>` +
+                `<div class="metabar-item">分类 — ${fm.cate}</div>` +
                 `</div>`;
             h.after(await buildElement(metabar));
             h.classList.add("post-title");
@@ -91,6 +91,7 @@ async function buildPageComponent(fm, fileparsed) {
 
         for (let a of body.querySelectorAll("a")) {
             if (a.classList.contains("external-link")) continue;
+            if (a.closest("[class^='footnote']") !== null) continue;
             let routerLink = document.createElement("router-link");
             routerLink.innerText = a.innerText;
             routerLink.setAttribute("to", a.getAttribute("href"));
@@ -103,8 +104,10 @@ async function buildPageComponent(fm, fileparsed) {
             h.append(await buildElement(anchor));
         }
 
+
+
         return {
-            html: body.innerHTML,
+            html: body.innerHTML.replace(/<p>:::tip\s*(.*?)\s*:::<\/p>/g, `<div class="notice tip">$1</div>`).replace(/<p>:::warning\s*(.*?)\s*:::<\/p>/g, `<div class="notice warning">$1</div>`),
             title: h.innerText
         };
     }, fm)
@@ -122,7 +125,8 @@ const writeFile = util.promisify(fs.writeFile);
 try {
     fs.mkdirSync("src/posts");
     fs.mkdirSync("src/pages");
-} catch {}
+} catch {
+}
 
 (async () => {
     console.log("🚧 Reading files...")
