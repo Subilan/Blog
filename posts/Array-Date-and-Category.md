@@ -107,7 +107,7 @@ CREATE TABLE `Events` (
 
 这个结构就可以被前端很好地处理，只需要进行两次遍历。例如在 Vue 中
 
-```vue
+```html
 <template>
     <div v-for="k in data">
         <div class="meta">

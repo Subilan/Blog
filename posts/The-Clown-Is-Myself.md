@@ -35,7 +35,7 @@ OK，这是开发阶段，我们解决了，使用起来没有任何问题。然
 
 那么该如何解离呢，请看
 
-```xml{4}
+```xml {4}
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -51,7 +51,7 @@ OK，这是开发阶段，我们解决了，使用起来没有任何问题。然
 
 接下来就只需要把所有的后端文件都装在这个文件夹里，然后在 `build` 的时候一起放到 `dist` 里面（因为 `dist` 是网站根目录，`.htaccess` 也在里面）就完了。而这也很简单，在 `package.json` 里面加上这样一句就可。
 
-```js{5}
+```js {5}
 {
     //...
     "scripts": {

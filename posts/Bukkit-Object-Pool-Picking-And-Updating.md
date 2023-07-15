@@ -164,7 +164,7 @@ Object object = pool.get(randomKey);
 
 我们来汇总一下我们先前的代码：
 
-```java{4-5}
+```java {4-5}
 FileConfiguration pool = load("daily-pool.yml");
 List<String> keyList = new ArrayList<>(pool.getKeys(false));
 Random rand = new Random();

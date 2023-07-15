@@ -24,7 +24,7 @@ FLUSH PRIVILEGES;
 
 然后就离开了数据库。就在这个时候我突然不知道怎么想的想要重启一下数据库，虽然这种情况下不重启是完全可以的。重启就重启吧，反正不是甚么高危操作，可这一重启可给爷整麻了啊，出现了我从来没有见过的错误，甚至觉得 MariaDB 在逗我。报错信息大概是这样的：
 
-```log{8-9,17}
+```log {8-9,17}
 Aug 06 01:35:42 server systemd[1]: Starting MariaDB 10.1.47 database server...
 -- Subject: Unit mariadb.service has begun start-up
 -- Defined-By: systemd
@@ -90,7 +90,7 @@ mysqldump -u root --all-databases > /alldb.sql
 
 然后还可以在 cron 里面加一个定时的备份，为了避免输入密码，可以创建一个 `~/my.cnf` 然后写入内容
 
-```conf
+```ini
 [mysqldump]
 user=root
 password=...
@@ -98,7 +98,7 @@ password=...
 
 然后在 `crontab -e` 里面加入
 
-```crontab
+```
 10 * * * * mysqldump -u root --all-databases > /alldb.sql
 ```
 

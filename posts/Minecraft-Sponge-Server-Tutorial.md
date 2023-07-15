@@ -109,7 +109,7 @@ Sponge 既支持 Mod 又支持插件，但是它们都放在 `mods` 文件夹里
 
 一般来说一个 Sponge 服务器的 Mod 与插件方面结构如下：
 
-```tree
+```
 .
 ├── config
 │   ├── plugin1
