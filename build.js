@@ -232,13 +232,13 @@ try {
             title: result.title,
             filename: filename,
             uuid: uuid
-        })
-        postResult[uuid] = {
+        });
+        postResult.push({
             "title": result.title,
             "filename": filename,
             "frontmatters": filefrontmatter.attributes,
             "wordcount": wordcount
-        }
+        });
     }
 
     const pages = await readdir("pages")
@@ -260,16 +260,16 @@ try {
             title: result.title,
             filename: filename,
             uuid: uuid
-        })
-        pageResult[uuid] = {
+        });
+        pageResult.push({
             "title": result.title,
             "filename": filename
-        }
+        });
     }
 
     console.log("🚧 Building & writing files...")
-    await writeFile(`src/posts.ts`, `const data: Record<string, Post> = ${JSON.stringify(postResult)}; export default data;`);
-    await writeFile(`src/pages.ts`, `const data: Record<string, Page> = ${JSON.stringify(pageResult)}; export default data;`)
+    await writeFile(`src/posts.ts`, `const data: Post[] = ${JSON.stringify(postResult.sort((a, b) => new Date(b.frontmatters.date.replace("/", "-")).getTime() - new Date(a.frontmatters.date.replace("/", "-")).getTime())}; export default data;`);
+    await writeFile(`src/pages.ts`, `const data: Page[] = ${JSON.stringify(pageResult)}; export default data;`)
     await writeFile(`src/router.ts`, buildRouterTs(postRoutes, pageRoutes))
     await writeFile(`src/searchdata.json`, JSON.stringify(search));
 
