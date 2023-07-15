@@ -146,7 +146,7 @@ try {
             uuid: uuid
         })
         postResult[uuid] = {
-            "title": result.title.replace("# ", ""),
+            "title": result.title.replace("# ", "").replace("#", ""),
             "filename": filename,
             "frontmatters": filefrontmatter.attributes
         }
@@ -172,7 +172,7 @@ try {
             uuid: uuid
         })
         pageResult[uuid] = {
-            "title": result.title.replace("# ", ""),
+            "title": result.title.replace("# ", "").replace("#", ""),
             "filename": filename
         }
     }
