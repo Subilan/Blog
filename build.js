@@ -132,8 +132,8 @@ async function buildPageComponent(fm, fileparsed, wordcount) {
         const h = document.querySelector("h1");
         if (h && !fm.standalone) {
             const metabar = `<div class="metabar">` +
-                `<div class="metabar-item">日期 — ${fm.date}</div>` +
-                `<div class="metabar-item">分类 — ${fm.cate}</div>` +
+                `<div class="metabar-item">日期: ${fm.date}</div>` +
+                `<div class="metabar-item">分类: ${fm.cate}</div>` +
                 `<div class="metabar-item">约 ${getReadingMinutes(wordcount, fm.cate)} 分钟读完</div>` +
                 `</div>`;
             h.after(await buildElement(metabar));
