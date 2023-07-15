@@ -8,14 +8,14 @@ import nProgress from "nprogress";
 
 
 router.beforeEach((to, from, next) => {
-    window.scrollTo({
-        top: 0
-    });
     nProgress.start();
     next();
 })
 
 router.afterEach(() => {
+    window.scrollTo({
+        top: 0
+    });
     nProgress.done();
 })
 
