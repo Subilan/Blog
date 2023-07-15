@@ -89,6 +89,19 @@ async function buildPageComponent(fm, fileparsed) {
             h.classList.add("post-title");
         }
 
+        for (let a of body.querySelectorAll("a")) {
+            if (a.classList.contains("external-link")) continue;
+            let routerLink = document.createElement("router-link");
+            routerLink.innerText = a.innerText;
+            routerLink.setAttribute("to", a.getAttribute("href"));
+            a.parentElement.append(routerLink);
+            a.parentElement.removeChild(a);
+        }
+
+        for (let h of body.querySelectorAll("h1, h2")) {
+            const anchor = `<a class="header-anchor" href="#${encodeURI(h.innerText)}">#</a>`
+            h.append(await buildElement(anchor));
+        }
 
         return {
             html: body.innerHTML,
