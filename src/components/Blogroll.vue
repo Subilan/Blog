@@ -4,22 +4,20 @@
         target="_blank"
         :href="link.href"
         class="link"
-        :style="
-				link.background_type === 'image'
-					? 'background-image: url(' + link.background + ');'
-					: 'background-color: ' +
-					  link.background +
-					  ';' +
-					  (link.background === '#fff'
-							? 'border: 1px solid rgba(0, 0, 0, .21)'
-							: '')
-			"
-        v-for="(link, i) in links"
-        :key="i"
+        :style="{
+          backgroundImage: link.background.startsWith('http') ? `url(${link.background})` : '',
+          backgroundColor: link.background.startsWith('rgb') || link.background.startsWith('#') ? `${link.background}` : ''
+        }"
+        :class="{
+          'background-image': link.background.startsWith('http'),
+          'background-color': link.background.startsWith('rgb') || link.background.startsWith('#'),
+          'light': link.light
+        }"
+        v-for="(link) in links"
     >
       <img class="avatar" :src="link.avatar" :alt="link.name"/>
       <div
-          :style="link.light === true ? 'color: white' : null"
+
           class="link-content"
       >
         <span class="name">{{ link.name }}</span>
@@ -35,14 +33,6 @@ export default {
     return {
       links: [
         {
-          name: "Kiwi's House",
-          href: "https://nyan.kiwi.cat",
-          avatar: "https://i.loli.net/2018/12/14/5c135b73215cf.png",
-          description: "Bio",
-          background: "#000",
-          light: true,
-        },
-        {
           name: "WindSpirit IT",
           href: "https://www.leviatan.cn/",
           avatar: "https://img.leviatan.cn/images/cat7ca3549fa0b56444.th.png",
@@ -55,7 +45,6 @@ export default {
           href: "https://www.littleqiu.net",
           avatar: "https://www.littleqiu.net/wp-content/uploads/2018/01/Avatar.png",
           description: "愿你有一天，能与你最重要的人重逢",
-          background_type: "image",
           background:
               "https://www.littleqiu.net/wp-content/uploads/2018/01/ChulillaSpain_ZH-CN10170248808_1920x1080.jpg",
           light: true,
@@ -98,47 +87,11 @@ export default {
           background: "#fff",
         },
         {
-          name: "FlyEmoji STudio",
-          href: "https://flyemoji.xyz",
-          avatar: "https://s1.ax1x.com/2020/03/12/8Z0eFP.png",
-          description: "摸鱼就完了（逃",
-          background_type: "image",
-          background: "https://s1.ax1x.com/2020/04/05/GD7Epq.jpg",
-          light: true,
-        },
-        {
-          name: "Mashirl's Blog",
-          href: "https://www.mashirl.com/",
-          avatar: "https://cdn.jsdelivr.net/gh/Mashirl/Blog/source/images/avatar.jpg",
-          description: "予 世界温柔以待 惟愿 时光静好",
-          background: "#FFAEB9",
-        },
-        {
-          name: "Fidel's Lab",
-          href: "https://fidel.js.org/",
-          avatar: "https://gravatar.loli.net/avatar/bccd181c71d3a08f6c182f3f48164545",
-          description: "不乱于心，不困于情。不畏将来，不念过往。",
-          background_type: "image",
-          background:
-              "https://i.loli.net/2020/06/07/Sa7dWDtVMivUnoQ.jpg",
-          light: true,
-        },
-        {
           name: "Socular 的博客",
           href: "https://awsl.rip",
           avatar: "https://www.gravatar.com/avatar/202e3e3a8e8fcefd140c1aab9b54c0d6",
           description: "少一点吹捧，多一点实干 :)",
           background: "#2196F3",
-          light: true,
-        },
-        {
-          name: "Restent Blog",
-          href: "https://blog.restent.win/",
-          avatar: "https://library.restent.win/images/icons/avatar.webp",
-          description: "面对黑暗，向往光明。",
-          background_type: "image",
-          background:
-              "https://i.yecdn.com/images/2021/07/13/68dd24d85519577d858c1e87ea186a17.jpg",
           light: true,
         },
         {
@@ -167,46 +120,61 @@ export default {
 .links-container {
   display: flex;
   align-items: center;
+  gap: 8px;
   flex-wrap: wrap;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
 
   .link {
     text-decoration: none !important;
-    @media screen and (max-width: 900px) {
-      width: 100%;
+
+    @media screen and (max-width: 700px) {
+      width: calc(100% - 3rem);
     }
-    @media screen and (min-width: 900px) {
+
+    @media screen and (min-width: 700px) {
       transition: all 0.2s ease;
-      &:hover,
-      &:focus {
-        box-shadow: 0 1.5px 2px #bbb;
+      &:hover {
+        box-shadow: 0 0 0 4px rgba(#000, .1);
       }
     }
-    color: black;
-    font-weight: normal;
+
+
     display: flex;
+    gap: 16px;
     align-items: center;
-    margin: 4px;
-    padding: 10px 16px;
+    padding: .6rem .8rem;
     border-radius: 5px;
     background-position: center;
     background-size: cover;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .2);
+    flex: 1 0 auto;
+    color: #212121;
+
+    &.light {
+      text-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+      color: white;
+    }
 
     .avatar {
       border-radius: 100%;
       width: 64px;
       height: 64px;
+      border: none;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
     }
 
     .link-content {
-      margin-left: 16px;
-
       .name {
-        font-size: 18px;
+        font-size: 1.2rem;
         font-weight: 500;
       }
 
       .description {
-        font-size: 12px;
+        font-size: .8rem;
+        font-weight: normal;
       }
 
       .name,
