@@ -12,6 +12,9 @@
       <div class="page" :class="{active: route.path === `/${x.filename}`}" v-for="x in pages"
            @click="router.push(`/${x.filename}`)">{{ x.title }}
       </div>
+      <div class="page" @click="openTab('https://github.com/Subilan/subilan.github.io')">
+        GitHub
+      </div>
     </div>
   </nav>
   <div class="sidebar-cover" @click.self="sidebar = false" :class="{active: sidebar}"></div>
@@ -27,6 +30,9 @@
         <div class="sidebar-item" :class="{active: route.path === `/${x.filename}`}" v-for="x in pages"
              @click="router.push(`/${x.filename}`)"><span class="mdi" :class="getPageIcon(x.title)"/>{{ x.title }}
         </div>
+        <div class="sidebar-item" @click="openTab('https://github.com/Subilan/subilan.github.io')">
+          GitHub
+        </div>
       </div>
     </div>
   </Transition>
@@ -35,7 +41,7 @@
 <script setup lang="ts">
 import SearchBox from './SearchBox.vue';
 import {useRoute, useRouter} from "vue-router";
-import {disableScroll, enableScroll, getPages, isPCWidth} from "@/utils";
+import {disableScroll, enableScroll, getPages, isPCWidth, openTab} from "@/utils";
 import {ref, watch} from "vue";
 
 const pages = getPages();
