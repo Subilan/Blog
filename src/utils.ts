@@ -48,3 +48,7 @@ export function enableScroll() {
     document.body.style.overflow = "";
     document.body.style.height = "";
 }
+
+export function openTab(url: string) {
+    window.open(url);
+}
