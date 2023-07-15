@@ -2,16 +2,16 @@
 
 这里是我的博客的存储库~
 
-- 博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.github.io> 访问。
-- 博客使用 Vue 3 编写，采用本地 Markdown 编写+`build.js` 编译为 Vue 组件后再 build 的模式构建。
-  - VuePress 1 (*2019.08*-*2023.07*)
-  - Vue 3 (*2023.07.15*-)
+- 博客的域名是 <https://subilan.win>，也可以通过 <https://subilan-github-io.vercel.app> 访问。
+- 博客使用 Vue 3 编写，采用本地 Markdown 编写+`build.js` 编译为 Vue 组件后再 build 的模式构建。网站托管使用 Vercel，目前正在琢磨怎么加速国内访问~
+  - VuePress 1 + GitHub Pages (*2019.08*-*2023.07*)
+  - Vue 3 + Vercel (*2023.07.15*-)
 
 ## 关于
 
 ### 友链申请
 
-- 参考：[博客的友链页面](https://subilan.win/Friends.html)
+- 参考：[博客的友链页面](https://subilan.win/Friends)
 
 无限期开放友链申请！可以通过直接向本项目提交 PR，发布 Issue、发送邮件等进行申请。欢迎来交朋友~申请友链有以下简单要求
 
