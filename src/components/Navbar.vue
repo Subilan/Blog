@@ -168,7 +168,7 @@ watch(() => sidebar.value, v => {
   position: fixed;
   top: 0;
   left: 0;
-  padding: .7rem 1.5rem;
+  padding: 1rem 1.5rem;
   background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
   height: 1.5rem;
