@@ -8,6 +8,8 @@
 import {useRoute} from "vue-router";
 import pages from "@/pages";
 import {getPosts} from "@/utils";
+import {onMounted} from "vue";
+import mediumZoom from "medium-zoom";
 
 const route = useRoute();
 const pagedata = pages[route.meta.uuid as string];
@@ -24,6 +26,10 @@ function getPrev() {
   if (index === sortedFilenames.length - 1) return index;
   return index + 1;
 }
+
+onMounted(() => {
+  mediumZoom(".content img")
+})
 </script>
 
 <style scoped lang="less">
