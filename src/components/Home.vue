@@ -78,7 +78,6 @@ const router = useRouter();
 
   .title, .desc {
     z-index: 20;
-
   }
 
   .title {
@@ -100,8 +99,17 @@ const router = useRouter();
 
   @media (min-width: 700px) {
     &:hover {
-      border-color: #009688;
-      transform: scale(1.1);
+      border-color: transparent;
+      background: #009688;
+      transform: scale(1.06);
+
+      .title {
+        color: white;
+      }
+
+      .desc, .meta {
+        color: rgba(255,255,255,.7);
+      }
     }
   }
 }
@@ -115,6 +123,7 @@ const router = useRouter();
   .mdi::before {
     font-size: 6rem;
     opacity: .5;
+    color: rgba(255,255,255,.7);
   }
 
   .mdi::before {
