@@ -25,6 +25,6 @@ The river never stops. He couldn't tell if some sound came from his beating hear
 
 The sunshine came after the rain was just wonderful. Blue gray mixed with gold.
 
-> I can't 'normally' stand the change, just like I can't stand changing the change to be changed by someone else."
+> I can't 'normally' stand the change, just like I can't stand changing the change to be changed by someone else.
 
 Truth be told, no one can understand his disappointment, at least for now. Ridiculousness was always on a par with *tommyrot*. How could Barren stick to his bottom line while fix it to some point so as to be invulnerable when under attack on such trivia and nothing?
