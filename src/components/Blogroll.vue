@@ -105,7 +105,7 @@ export default {
         {
           name: "Nocturne",
           href: "https://wynio.online",
-          avatar: "https://i.328888.xyz/2023/01/17/2LG3w.png",
+          avatar: "https://wynio.online/css/logo.png",
           description: "Ivory Tower",
           background: "#009999",
           light: true,
