@@ -22,10 +22,10 @@
 </template>
 
 <script lang="ts" setup>
-import {getCardIcon, getSortedPosts} from "@/utils";
+import {getCardIcon, getPosts} from "@/utils";
 import {useRouter} from "vue-router";
 
-const cardPages = getSortedPosts();
+const cardPages = getPosts();
 const router = useRouter();
 </script>
 
