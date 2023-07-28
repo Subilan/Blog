@@ -7,16 +7,24 @@ english: true
 
 # Barren Fungus
 
-**Barren Fungus** has lost all acquaintance with himself who was left behind a couple of years ago. Memories seemed missing but some of his will was still there. He can't tell why. No one can be sure about the appropriateness of telling him what he thought to be real can only be real in another reality in which he could find all his reality becomes real while other parts unsustainably remains.
+Barren Fungus has lost all acquaintance with himself. He used to consider himself a dynamic person. With season, circumstances, wealth, job... and even food changing, he kept changing and finally become someone else, totally. This, can be one of the most mysterious problems he has ever met in his life. That makes him unique in the river flow of the time.
 
-But such pity won't be a loss if never be told, though.
+Barren' memories are always totally and seemingly missing. Somehow, what he thought to be real can only be real in the reality he could never reach, where he could find some satisfying reality while other parts of it unsustainably remain. This won't be a pity if never be told, though.
 
-The darkness of cloud, however, to him, was kind of, beautiful. The sadness lying in the scenery was so eye-catching to him. Being half burning in the biting cold was such a werid experience for the most, but it consists some part of his reality, apparently. From a vistors' view, we have to say what appeared in his eyes appeared to be not that thing in his mind, while some parts appearing on both side can also be one kind of the common scenes which we would call it "filled with sadness in a Chinese way".
+The darkness of cloud with the rest of sunshine lit up mountains in a weird way. Barren fell in love with the scene, where sadness and hope seemed to be equal, equal and equal, just like being half burning in a winter biting cold.
 
-People in the scene was talking and silent, or to be precise, cannot be heard. They were doing something — something primitive, undeniable and... familiar. So magical, the rain came down as thousands of slim segments infiltrating Barren's skin. Their disapperance was just as stiff as some linear animation — from the most dynamic perspective.
+Cold air, green trees, dark sky. Wonderful. Thousands of slim segments were infiltrating Barren's skin. Something primitive, inevitable and... familiar filled him up.
 
-**悲しみの闇が夜に消えていくとき、どうすれば自分自身のために持っている悪から逃れることができますか？**
+Only the river flows, the wind blows. The sky is eternal, the mountains are perpetual.
 
-What still flowing in the river thousands of meters below cannot be found pure, literally, but Barren could see things inside clear. This is water, isn't it? "If only be told what others would never be told." He couldn't tell if the sound came from his beating heart, hollow mind or just the god hidding in the sky, where the sun was still shining. The fresh and sweet scent of tea leaves came just like comfort which was either futile or perfunctory during one's depression, or just the Thorns of Goodwill that comes to stab you unintentionally only when you are deperately not in desperated need of them.
+Barren could see things inside, clearly.
 
-The sunshine came after the rain was just wonderful. Building up a golden scene on blue gray was somehow "sexy" to some extend in some aspect for Barren. "I can't 'normally' stand the change, just like I can't stand to change the change to be changed by someone else." He was disappointed. Truth be told, no one can understand his disappointment, at least for now. Ridiculousness was always on a par with *tommyrot*. How could Barren stick to his bottom line while fix it to some point so as to be invulnerable when under attack on such trivia and nothing?
+The river. It's just, water, right?
+
+The river never stops. He couldn't tell if some sound came from his beating heart, hollow mind or just the god hidding in the sky, where the sun was still shining. The fresh and sweet scent of tea leaves came just like comfort which was either futile or perfunctory during one's depression, or just the Thorns of Goodwill that comes to stab you unintentionally only when you are deperately not in desperated need of them.
+
+The sunshine came after the rain was just wonderful. Blue gray mixed with gold.
+
+> I can't 'normally' stand the change, just like I can't stand changing the change to be changed by someone else."
+
+Truth be told, no one can understand his disappointment, at least for now. Ridiculousness was always on a par with *tommyrot*. How could Barren stick to his bottom line while fix it to some point so as to be invulnerable when under attack on such trivia and nothing?
