@@ -2,7 +2,7 @@ import posts from "@/posts";
 import pages from "@/pages";
 import search from '@/searchdata.json';
 
-export function getSortedPosts(): Post[] {
+export function getPosts(): Post[] {
     return posts;
 }
 

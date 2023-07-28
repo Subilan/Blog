@@ -7,11 +7,11 @@
 <script setup lang="ts">
 import {useRoute} from "vue-router";
 import pages from "@/pages";
-import {getSortedPosts} from "@/utils";
+import {getPosts} from "@/utils";
 
 const route = useRoute();
 const pagedata = pages[route.meta.uuid as string];
-const sortedFilenames = getSortedPosts().map(x => x.filename);
+const sortedFilenames = getPosts().map(x => x.filename);
 
 function getNext() {
   const index = sortedFilenames.indexOf(pagedata.filename);

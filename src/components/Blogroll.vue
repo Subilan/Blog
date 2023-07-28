@@ -143,7 +143,7 @@ export default {
       }
     }
 
-
+    cursor: pointer;
     display: flex;
     gap: 16px;
     align-items: center;

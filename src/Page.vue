@@ -6,16 +6,12 @@
 </template>
 
 <script setup lang="ts">
-import Navbar from "@/components/Navbar.vue";
 import {useRoute} from "vue-router";
 import {getPages} from "@/utils";
 import Home from "@/components/Home.vue";
 
 const route = useRoute();
 const pages = getPages();
-const pagedata = pages[route.meta.uuid as string];
-const sortedFilenames = getPages().map(x => x.filename);
-
 </script>
 
 <style scoped lang="less">
