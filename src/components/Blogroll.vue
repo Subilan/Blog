@@ -1,8 +1,7 @@
 <template>
   <div class="links-container">
-    <a
-        target="_blank"
-        :href="link.href"
+    <div
+        @click="openTab(link.href)"
         class="link"
         :style="{
           backgroundImage: link.background.startsWith('http') ? `url(${link.background})` : '',
@@ -23,19 +22,22 @@
         <span class="name">{{ link.name }}</span>
         <span class="description">{{ link.description }}</span>
       </div>
-    </a>
+    </div>
   </div>
 </template>
 
 <script>
+import {openTab} from "@/utils";
+
 export default {
+  methods: {openTab},
   data() {
     return {
       links: [
         {
           name: "WindSpirit IT",
           href: "https://www.leviatan.cn/",
-          avatar: "https://img.leviatan.cn/images/cat7ca3549fa0b56444.th.png",
+          avatar: "https://img.leviatan.cn/images/2023/04/03/f615de9f9baf900fdb99ed93f2a9ecb1.png",
           description: "跟随互联网发展的每一步",
           background: "#262626",
           light: true,
