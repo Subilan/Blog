@@ -76,7 +76,7 @@ interface SearchResult {
 let debounceTimer = 0;
 const debounce = (timeout: number) => (func: Function) => {
   clearTimeout(debounceTimer);
-  debounceTimer = setTimeout(() => func(), timeout);
+  debounceTimer = window.setTimeout(() => func(), timeout);
 }
 
 function getSearchResult() {
