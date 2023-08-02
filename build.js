@@ -169,27 +169,15 @@ async function buildPageComponent(fm, fileparsed, wordcount) {
 }
 
 function parse(raw) {
-    const reg1 = /:::\s?tip([\S\s]*?):::/g;
-    const reg2 = /:::\s?warning([\S\s]*?):::/g;
-    const reg3 = /:::\s?danger([\S\s]*?):::/g;
-    const res1 = reg1.exec(raw);
-    const res2 = reg2.exec(raw);
-    const res3 = reg3.exec(raw);
+    const match1 = Array.from(raw.matchAll(/:::\s?tip([\S\s]*?):::/g));
+    const match2 = Array.from(raw.matchAll(/:::\s?warning([\S\s]*?):::/g));
+    const match3 = Array.from(raw.matchAll(/:::\s?danger([\S\s]*?):::/g));
 
-    if (res1) {
-        const customBlockInner1 = res1[1];
-        raw = raw.replace(reg1, `<div class="notice tip">${md.render(customBlockInner1)}</div>`);
-    }
-
-    if (res2) {
-        const customBlockInner2 = res2[1];
-        raw = raw.replace(reg2, `<div class="notice warning">${md.render(customBlockInner2)}</div>`);
-    }
-
-    if (res3) {
-        const customBlockInner3 = res3[1];
-        raw = raw.replace(reg3, `<div class="notice danger">${md.render(customBlockInner3)}</div>`);
-    }
+    [match1, match2, match3].forEach(x => {
+        x.forEach(y => {
+            raw = raw.replace(y[0], `<div class="notice tip">${md.render(y[1])}</div>`);
+        })
+    })
 
     return md.render(raw);
 }
