@@ -74,11 +74,7 @@ onMounted(() => {
 
   > *::after {
     content: "·";
-    margin: 0 8px;
-
-    @media (max-width: 700px) {
-      margin: 0 4px;
-    }
+    margin: 0 .2rem;
   }
 
   > *:last-child::after {
