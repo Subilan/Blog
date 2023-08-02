@@ -172,13 +172,13 @@ function parse(raw) {
     const match1 = Array.from(raw.matchAll(/:::\s?tip([\S\s]*?):::/g));
     const match2 = Array.from(raw.matchAll(/:::\s?warning([\S\s]*?):::/g));
     const match3 = Array.from(raw.matchAll(/:::\s?danger([\S\s]*?):::/g));
-    const targetMatch = ['tip', 'warning', 'danger']
+    const targetMatch = ['tip', 'warning', 'danger'];
 
     [match1, match2, match3].forEach((x, i) => {
         x.forEach(y => {
             raw = raw.replace(y[0], `<div class="notice ${targetMatch[i]}">${md.render(y[1])}</div>`);
         })
-    })
+    });
 
     return md.render(raw);
 }
