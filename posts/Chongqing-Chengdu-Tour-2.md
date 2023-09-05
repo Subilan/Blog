@@ -101,11 +101,7 @@ desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领�
 
 ![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2587.jpeg)
 
-其实我也比较好奇这里水底长的是啥植物。
-
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2578.jpeg)
-
-下面就是几张从五花海开始向下进发图中拍到的图片啦，都很美是不是~
+其实我也比较好奇这里水底长的是啥植物。下面就是几张从五花海开始向下进发图中拍到的图片啦，都很美是不是~
 
 ![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2610.jpeg)
 
