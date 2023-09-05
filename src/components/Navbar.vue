@@ -71,6 +71,7 @@ watch(() => sidebar.value, v => {
 </script>
 
 <style lang="less" scoped>
+@import "../var.less";
 
 .sidebar-cover {
   position: absolute;
@@ -151,7 +152,7 @@ watch(() => sidebar.value, v => {
 
       &.active {
         background: #e0f2f1;
-        color: #009688;
+        color: @primary;
         font-weight: bold;
       }
     }
@@ -211,7 +212,7 @@ watch(() => sidebar.value, v => {
     &::after {
       content: " ";
       height: 2px;
-      background: #009688;
+      background: @primary;
       display: block;
       width: 100%;
       position: absolute;
