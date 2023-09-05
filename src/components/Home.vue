@@ -30,6 +30,7 @@ const router = useRouter();
 </script>
 
 <style lang="less" scoped>
+@import "../var.less";
 
 .cards {
   display: flex;
@@ -84,7 +85,7 @@ const router = useRouter();
     font-weight: bold;
     font-size: 2rem;
     line-height: 1.2;
-    color: #009688;
+    color: @primary;
     position: relative;
   }
 
@@ -100,7 +101,7 @@ const router = useRouter();
   @media (min-width: 700px) {
     &:hover {
       border-color: transparent;
-      background: #009688;
+      background: @primary;
       transform: scale(1.06);
 
       .title {

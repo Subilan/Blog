@@ -119,6 +119,8 @@ export default {
 </script>
 
 <style lang="less">
+@import "../var.less";
+
 .links-container {
   display: flex;
   align-items: center;

@@ -270,7 +270,7 @@ watch(searchDialogActive, v => {
     flex: 1;
     outline: none;
     border: none;
-    border-bottom: 2px solid #009688;
+    border-bottom: 2px solid @primary;
     .fontset-monospace;
   }
 }
@@ -289,7 +289,7 @@ watch(searchDialogActive, v => {
 .badge {
   display: inline-block;
   background: #e0f2f1;
-  color: #009688;
+  color: @primary;
   padding: .2rem .4rem;
   line-height: 1;
   border-radius: 5px;
@@ -309,7 +309,7 @@ watch(searchDialogActive, v => {
 .close-btn {
   display: block;
   background: #e0f2f1;
-  color: #009688;
+  color: @primary;
   font-size: 1.2rem;
   box-shadow: 0 1px 5px rgba(0, 0, 0, .2);
   border-radius: 100px;
