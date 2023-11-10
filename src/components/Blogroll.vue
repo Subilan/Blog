@@ -37,7 +37,7 @@ export default {
         {
           name: "WindSpirit IT",
           href: "https://www.leviatan.cn/",
-          avatar: "https://img.leviatan.cn/images/2023/04/03/f615de9f9baf900fdb99ed93f2a9ecb1.png",
+          avatar: "https://img.leviatan.cn/images/2023/10/22/cat2e4e9bd20b277dfe.md.png",
           description: "跟随互联网发展的每一步",
           background: "#262626",
           light: true,
