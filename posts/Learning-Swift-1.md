@@ -37,7 +37,7 @@ Swift 被 Apple 认为是具有 Apple 哲学的语言。我想，Apple 哲学的
 - It’s an **industrial-quality** programming language that’s as expressive and enjoyable as a **scripting language**.
 - The compiler is optimized for performance and the language is optimized for development, **without compromising on either.**
 
-你最好是 ^_^
+你最好是 \^_\^
 
 ## 基本的数据类型、变量和字符串
 
