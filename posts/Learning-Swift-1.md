@@ -1,7 +1,6 @@
 ---
 date: 2023/11/19
 cate: 代码
-hidden: true
 ---
 
 # Swift 学习笔记（一）——A Swift Tour
@@ -11,7 +10,8 @@ hidden: true
 这篇文章不是对原文的中文翻译（官方中文翻译：https://gitbook.swiftgg.team/swift/），其中掺杂了一些我个人的解读和想法。
 
 :::tip
-下面的「闲言」和「阅读笔记——About Swift」两节不算正文内容~
+1. 下面的「闲言」和「阅读笔记——About Swift」两节不算正文内容~
+2. 本文中的内容仅仅是基于阅读 *A Swift Tour* 后的认知所编写，不保证在将来会发生一些改变。如果本文中存在一些纰漏，将在将来的笔记里进行修正。
 :::
 
 ## 闲言
@@ -293,7 +293,7 @@ print(largest)
 
 对于 `while`，Swift 中仍然有 while 和 do-while 的区分，只不过后者改名叫做 repeat-while。和 `if` 一样，一个表达式的条件可以简写。
 
-此处还存在一种特殊的表达式 `m..<n` 和 `m...<n`，其中 `m` 和 `n` 为整数。这类似于 Python 中的 `range(n)`。`m..<n` 产生的是 `m, m+1, ..., n-1` 一共 n-m 个数，`m...<n` 产生的是 `m, m+1, ..., n` 一共 n-m+1 个数。这种表达式应该是用于替代通常的 `for (int i = 0; i < ...; i++)` 写法，从而全部换成 for-in 来解决。Swift 在这一点的设计上和 Python 有着异曲同工之妙。
+此处还存在一种特殊的表达式 `m..<n` 和 `m...n`，其中 `m` 和 `n` 为整数。这类似于 Python 中的 `range(n)`。`m..<n` 产生的是 `m, m+1, ..., n-1` 一共 n-m 个数，`m...n` 产生的是 `m, m+1, ..., n` 一共 n-m+1 个数。这种表达式应该是用于替代通常的 `for (int i = 0; i < ...; i++)` 写法，从而全部换成 for-in 来解决。Swift 在这一点的设计上和 Python 有着异曲同工之妙。
 
 ```swift
 let array = [0, 1, 2, 3, 4]
@@ -553,9 +553,260 @@ switch result {
 
 ### 7. 结构体
 
-结构体类似于类，可以拥有构造函数、属性、方法等。一个区别是，结构体的实例是静态的（相对于类的实例），在其传递的过程中，传递的是一种拷贝，而类的实例传递的是一种引用。同时，其还有这样的特性
+结构体类似于类，可以拥有构造函数、属性、方法等。一个区别是，结构体的实例可以被形容为是「静态」的（相对于类的实例），其传递的是一种拷贝，而类的实例在传递时表现为引用。同时，结构体还有这样的特性
 
 - 结构体之间不存在继承
 - 结构体没有反构造函数（deinitializer）
 - 当结构体被赋给常量时，其变量属性亦不可变
 
+根据上述特性，结构体可以理解为是一种主要用于携带静态数据，并可能带有不牵涉外部数据的一些方法的对象。例如，注册信息可以用结构体这样表示：
+
+```swift
+enum Level: Int {
+    case starter = 1
+    case two, three, four, five, six
+    case ultimate
+
+    func getDescription() -> String {
+        switch self {
+            case .starter:
+                return "Newbie"
+            // ...
+            default:
+                return "Level \(self.rawValue)"
+        }
+    }
+}
+
+struct RegistrationInformation {
+    var username: String
+    var password: String
+    var email: String
+    var level: Level
+
+    init(username: String, password: String, email: String, initialLevel: Int) {
+        self.username = username
+        self.password = password
+        self.email = email
+        self.level = Level(rawValue: initialLevel)
+    }
+
+    func getLevelDescription() -> String {
+        return self.level.getDescription()
+    }
+}
+
+var information = RegistrationInformation(username: username, password: password, email: email, initialLevel: 1)
+print(information.getLevelDescription())
+```
+
+此外，默认情况下一个结构体的方法不能直接修改其本身的变量属性。如果需要这样的方法，需要在 `func` 前显式地写上 `mutating`。
+
+## 异步和协程
+
+:::tip
+作为 Tour 的内容，此部分所写的较为粗略。
+:::
+
+和其它支持现代化对异步操作处理的语言一样，Swift 支持 async-await 模式。对这两个关键字的使用，也有如下常见的限制：
+
+- `await` 只能在被标记为 `async` 的函数中使用（有一项例外）
+- `await` 只能对被标记为 `async` 的函数使用
+
+若要定义一个异步函数，使用 `func K(...) async -> T` 的语法。使用它时，在对它的调用之前加上 `await` 即可。此外，Swift 还支持一种 `let async` 的写法。这种写法可以使一些异步操作并行执行后取值，使用这些值时再在量前加上 `await`。
+
+> Use `async let` to call an asynchronous function, letting it run in parallel with other asynchronous code. When you use the value it returns, write await.
+
+```swift
+func connectUser(to server: String) async {
+    async let userID = fetchUserID(from: server)
+    async let username = fetchUsername(from: server)
+    let greeting = await "Hello \(username), user ID \(userID)"
+    print(greeting)
+}
+
+Task {
+    await connectUser(to: "default")
+}
+```
+
+Swift 还提出了一种新的处理并发的模式，即 Actor 结构。将在后面的笔记中继续研究。
+
+## 协议和拓展
+
+### 1. 协议
+
+相比于 Java 中的 Abstract Class 和 Interface，Protocol 的模式能够更好（且更整齐）地反映「接受协议」、「接受约束」、「保持一致」的这种代码需求。同时，在 Protocol 中所声明的方法若需对目标的结构自身的属性进行修改，其前也要求显式地加上 `mutating`。
+
+```swift
+protocol Example {
+    var variableProperty: String
+    mutating func modify()
+}
+```
+
+协议可以被 Class、Enum、Struct 甚至类型（见下面的「拓展」）接受。Struct 内的 mutating function 前的 `mutating` 不能省略，而 Class 则不需要写 `mutating`，这是因为类本身就可以修改自身的变量属性。
+
+### 2. 拓展
+
+拓展（Extension）所针对的是 Swift 中的类型，这一概念使得类型也可以变得有无限可能。在拓展的过程中，也可以让类型去接收协议。一个很好理解的例子是为所有的 `Int` 加上绝对值的方法。
+
+```swift
+extension Int {
+    func absv() -> Int {
+        return abs(self)
+    }
+}
+
+print((-2).absv())
+```
+
+拓展中引入的方法也可以修改值本身（用 `self` 表示），这样的方法前面同样要加上 `mutating`。此外在这里需要注意的一点是 `.` 的优先级要高于 `-`，`-2.absv()` 的结果是 `-2`。
+
+## 异常处理
+
+### 1. Error 协议
+
+Swift 语言内置了一种 Error 协议（实际上这个协议是空的）。根据前文，多种结构可以接受 Error 协议；接受了 Error 协议以后就可以被用来表示一个异常。例如下面的 Enum 就可以用来表示异常。
+
+```swift
+enum HttpError: Error {
+    case NotFound
+    case InternalError
+    case Forbidden
+}
+```
+
+而实际上既然类型也可以通过 Extension 接受协议，甚至可以做出这样的效果来：
+
+```swift
+    func getError() -> String {
+        switch self {
+        case 1:
+            return "ErrorNameRepresentedByNumberOne"
+            // ...
+        default:
+            return "Error\(self)"
+        }
+    }
+}
+
+func throwSomeError() throws {
+    throw 2
+}
+
+do {
+    try throwSomeError()
+} catch let number as Int {
+    print("I am the number \(number) and represent the error \(number.getError())")
+}
+
+// 输出 I am the number 2 and represent the error Error2
+```
+
+### 2. do-catch 语句
+
+与其他语言 try-catch 不同，Swift 中的 try 关键字在 do 中被使用，且只会作用于部分语句（表达式），而非 try-catch 中的所有语句。例如
+
+```swift
+do {
+    print("Trying to retrieve a response")
+    let someResponse = try doSomething()
+    print(someResponse)
+} catch {
+    print(error)
+}
+```
+
+当 `doSomething` 抛出异常时，就会跳转至下面的 `catch` 中继续执行，且错误的默认名称是 `error`。除了什么也不带的 `catch` 以外，还有下面几种形式
+
+- `catch EnumCase {}`，使得后面的 block 中的内容仅在捕捉到 `EnumCase` 的枚举类型错误时执行
+- `catch let x as Type {}`，使得后面的 block 中的内容仅在捕捉到 `Type` 类型的量 `x` 时执行，且 `x` 可以在 block 中被使用。上面的一小节中的代码段就用到了它。
+- `catch is Type`，使得后面的 block 中的内容仅在捕捉到 `Type` 类型的错误时执行；这一点在文档中并没有提到。需要注意的是它和 `catch EnumCase` 的区别，`is` 后跟的必须是类型，例如枚举类型，但不能跟具体的枚举项。
+
+### 3. `try?` 语句
+
+`try?` 可以在 do-catch 外使用，它将一个表达式的值变成一个 Optional，当语句执行成功时 unwrap，throw 时为 `nil`。
+
+### 4. `defer` 关键字
+
+其实我并不清楚为什么要在这里介绍 `defer`，也许是因为它在异常抛出时的表现有一些特殊性吧。`defer` 后跟的是一段 block，在函数中使用，代表这段 block 会在函数结束执行（正常结束、return 或者 throw）时执行。所以 Swift 中的函数也可以拥有自己的「初始化」和「反初始化」代码，为了可读性可以将它们写在一起，初始化代码写在 `defer` 外面，反初始化写在 `defer` 里面，并放在函数代码的最开头。
+
+下面是文档中给出的一个例子：
+
+```swift
+var fridgeIsOpen = false
+let fridgeContent = ["milk", "eggs", "leftovers"]
+
+
+func fridgeContains(_ food: String) -> Bool {
+    fridgeIsOpen = true
+    defer {
+        fridgeIsOpen = false
+    }
+
+
+    let result = fridgeContent.contains(food)
+    return result
+}
+if fridgeContains("banana") {
+    print("Found a banana")
+}
+print(fridgeIsOpen)
+// Prints "false"
+```
+
+这是因为在现实意义上，操作 `frigeContains` 时必须要对 `fridgeIsOpen` 产生一种对称的修改，即从 `false` 到 `true` 再到 `false` 的改变。这一点在抽象意义上也可以被利用。我能够想象到的是在异步操作中根据对象的状态进行正确的处理，这种状态的变换如果具有一定的对称性，就可以通过上面的代码的类似逻辑来实现。
+
+## 泛型
+
+### 1. 函数泛型
+
+和有些语言一样，函数中的泛型写在参数列表前，用 `<>` 包含。
+
+```swift
+func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
+    var result: [Item] = []
+    for _ in 0..<numberOfTimes {
+         result.append(item)
+    }
+    return result
+}
+makeArray(repeating: "knock", numberOfTimes: 4)
+
+// 结果是 ["knock", "knock", "knock", "knock"]
+```
+
+上面的代码所用到泛型的地方是 `var result` 的空数组定义，以及对返回值的标注。
+
+### 2. 泛型作为参数
+
+若要将泛型用于类型的参数，是将其写在类型后，用 `<>` 包含。例如 Swift 标准库中的 Optional 类型可以这样实现：
+
+```swift
+enum OptionalValue<Wrapped> {
+    case none
+    case some(Wrapped) // 注意这里 some 括号里标注的不是形参名而是形参类型
+}
+```
+
+### 3. 泛型条件
+
+Swift 不仅支持了泛型，同时也在语言设计上支持了对泛型使用条件的约束。借助 `where` 可以直接声明一些泛型的适用条件，这使得一些确实需要的限制可以在编译阶段被明确表达，而不需要在运行时进行额外的检查，甚至对语言的底层进行一些操作。
+
+`where` 语句放在函数声明的最后，返回值类型的后面，格式是 `where 条件1, 条件2, ...`。例如：
+
+```swift
+func equal<A, B>(a: A, b: B) -> Bool where A == B {
+    return a == b
+}
+```
+
+上面的 `equal` 函数要求输入的 `A` 和 `B` 两种类型必须相等，它排除了一些类似于「跨类型进行相等性比较」的不必要操作。除了类型之间的 `==` 关系，还可以用 `:` 来指定对特定 protocol 的接受情况以及类的继承情况。文档中给出的例子为
+
+```swift
+func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
+    where T.Element: Equatable, T.Element == U.Element
+```
+
+其中 `where` 后给出的限制条件的意思是 `T.Element` 必须接受 `Equatable` 协议，且 `T.Element` 和 `U.Element` 类型相同。此外，`<T: Sequence, U: Sequence>` 的写法等价于 `<T, U> ... where T: Sequence, U: Sequence`。
