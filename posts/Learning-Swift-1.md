@@ -602,7 +602,7 @@ print(information.getLevelDescription())
 
 此外，默认情况下一个结构体的方法不能直接修改其本身的变量属性。如果需要这样的方法，需要在 `func` 前显式地写上 `mutating`。
 
-## 异步和协程
+## 异步
 
 :::tip
 作为 Tour 的内容，此部分所写的较为粗略。
