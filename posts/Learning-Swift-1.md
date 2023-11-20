@@ -680,6 +680,7 @@ enum HttpError: Error {
 而实际上既然类型也可以通过 Extension 接受协议，甚至可以做出这样的效果来：
 
 ```swift
+extension Int: Error {
     func getError() -> String {
         switch self {
         case 1:
