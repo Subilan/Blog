@@ -11,22 +11,24 @@
 - 切图大师 —— 会使用 Illustrator 和 Photoshop 进行*简单的*图片处理和图形设计。
 - 质感设计 —— 十分欣赏谷歌的 Material Design 设计体系。
 - 虚假果粉 —— 我的评价是：除了贵都挺好的。
-- 不会听歌 —— 爱听的歌听多了，就很不爱听了...BTW 听歌流派大部分为 Alternative 和 Pop。
+- 不会听歌 —— 其实就算是喜欢听的歌，听多了我也会不爱听。流派大部分为 Alternative，但有渐渐转向 Indie Rock 的趋势~
   - 认识的第一位歌手：Lady Gaga
-  - 最欣赏的歌手：St. Vincent
-  - 经常听的乐队：Arctic Monkeys, The Black Keys, Broken Bells, Glass Animals, Saint Motel
-  - 平时听的其它歌手/乐队：Penelope Scott, Shaky Graves, Mother Mother, Arcade Fire, The Score, Skott, Soler(粤语), Stealing Sheep
-  - 我扮演一个路人粉的角色：Taylor Swift, Lana Del Ray, Lorde, 谭维维, 朴树, 痛仰乐队, 草东没有派对, 陈靖霏
+  - 比较欣赏的歌手：St. Vincent
+  - 喜欢的乐队：Arctic Monkeys, The Black Keys, Broken Bells, Glass Animals, Saint Motel
+  - 平时听的其它歌手/乐队：Penelope Scott, Arcade Fire, The Score, Skott, Soler（粤语）, Stealing Sheep, 陈靖霏
+  - 我扮演一个路人粉的角色：Taylor Swift, Lana Del Ray, 朴树, 草东没有派对, 美秀集团
 - 是方块人 —— Minecraft 10 年玩家。
 - 伪二次元 —— 可能会看那么几部番。
 - 超敏星座 —— 在[十六星座](https://www.16personalities.com/ch/%E4%BA%BA%E6%A0%BC%E6%B5%8B%E8%AF%95)中，我是
   INFP-T（2019、2021、2023 年测试结果）。
 - あいうえ —— 日语初级兴趣爱好者。
-- 酒精过敏 —— 喝酒脸红没感觉，也就是不能喝酒[^1]。
+- 酒精过敏 —— 喝酒脸红没感觉，大概就是不能喝酒吧[^1]。
 
 ## 此博客
 
-本博客始创于 2019 年 8 月 16 日，使用 [VuePress](https://vuepress.vuejs.org) 搭建，免费运行在 GitHub Pages 上，运行成本只有域名的成本。起初是手动 build+push 部署，后来使用 GitHub Actions 自动部署。2023 年 7 月 15 日开始使用自行编写的前端和构建脚本构建，部署在 Vercel 上。
+本博客始创于 2019 年 8 月 16 日，使用 [VuePress](https://vuepress.vuejs.org) 搭建，免费运行在 GitHub Pages 上，运行成本只有域名的成本。起初是手动 build+push 部署，后来使用 GitHub Actions 自动部署。
+
+2023 年 7 月 15 日停止使用 VuePress，并仿照原有的构建模式，使用 Vue 3 对博客进行了重写。目前博客自动部署在 Vercel 上。
 
 我大概从 2016 年的 12 月份开始写博客，其实一开始的动机就是*跟风*。当初并不会这些东西，或者说完全没有概念，但是在摸索之下还是把博客搭起来了。一开始的时候没有什么构思，所以并没有写出什么有价值的内容，大多数是一些流水账，比如看过的电影的感受（但现在内容已完全丢失），或者是对博客本身维护的记录等等。
 
