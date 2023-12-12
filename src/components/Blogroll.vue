@@ -119,6 +119,7 @@ export default {
 					description: "一个有梦想的咸鱼",
 					background: "#2396FA",
 					light: true
+				}
       ],
     };
   },
