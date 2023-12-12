@@ -111,7 +111,14 @@ export default {
           description: "Ivory Tower",
           background: "#009999",
           light: true,
-        }
+        },
+				{
+					name: "布丁の小窝",
+					href: "https://www.furryowo.top/",
+					avatar: "https://dn-qiniu-avatar.qbox.me/avatar/7da7e82f04de94c795db0301c3397bb6",
+					description: "一个有梦想的咸鱼",
+					background: "#2396FA",
+					light: true
       ],
     };
   },
