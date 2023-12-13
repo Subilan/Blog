@@ -37,7 +37,7 @@
 若已确定满足以上需求，则可以从下面三个方式中选择一个申请友链。
 
 - **直接联系我** — 使用[联系](/Contact)页面里的联系方式联系我，并提供相关信息
-- **Pull Request** — 如果你有 GitHub 账号和使用经验，则可以自己手动向 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 提交 pull request。具体地，请依照项目中 `src/components/Blogroll.vue` 内的写法继续在该文件中添加内容。
+- **Pull Request** — 如果你有 GitHub 账号和使用经验，则可以自己手动向 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 提交 pull request。具体地，请依照项目中 [`src/components/blogrolls.json`](https://github.com/Subilan/Blog/blob/v2/src/components/blogrolls.json) 内的写法继续在该文件中添加内容。
 - **提交 Issue** — 如果你有 GitHub 账号，则可以在 [Subilan/subilan.github.io](https://github.com/Subilan/subilan.github.io) 项目中提交 Issue，注明友链申请和提供相关信息即可。
 
 申请时需要提供的信息的模板为：
