@@ -97,4 +97,4 @@ Warning: Detected "engines": { "node": "18.17.0" } in your `package.json` with m
 ![](https://s11.ax1x.com/2023/12/13/pifHPo9.png)
 *我tm直接 build success！*
 
-其实感觉问题不大，就是可能每次 commit 之前都要花个一两分钟来 build 一下。这样的操作估计得要持续到上面我想到的解决方法能实现的那一天了😅
+其实感觉问题不大，就是可能每次 commit 之前都要花个一两分钟来 build 一下（目前实测：本地 build 45s，Vercel 部署 5s）。这样的操作估计得要持续到上面我想到的解决方法能实现的那一天了😅
