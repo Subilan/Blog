@@ -31,7 +31,7 @@ desc: 好荒谬，就像经过精密数学计算以后算出来公交车上只�
 
 我怀着侥幸心理，选择了这一大段莫名其妙的 JSON 在 Google 上搜索。也不知道是运气好还是咋地，还真搜到了有人在 Issue 上的反馈（后来我发现再随便选然后搜，也搜不到了😓）。
 
-- https://github.com/orgs/community/discussions/69293
+- <https://github.com/orgs/community/discussions/69293>
 
 这个 Discussion 反馈的问题和我的基本上是一样的（也是使用 `vue-cli-service` 来构建的时候出现的，虽然这个故事和 Vue 关系应该不太大？），他是这么描述的：
 
@@ -43,7 +43,7 @@ desc: 好荒谬，就像经过精密数学计算以后算出来公交车上只�
 
 然后这个帖子指向了这个 Issue
 
-- https://github.com/webpack-contrib/thread-loader/issues/191
+- <https://github.com/webpack-contrib/thread-loader/issues/191>
 
 其中说到的 Actual Behaviour 和我遇到的一模一样，基本上可以确定了：
 
@@ -76,7 +76,7 @@ Warning: Detected "engines": { "node": "18.17.0" } in your `package.json` with m
 
 它竟然直接大胆地说 **only major Node.js Version can be selected**，也就是说我只能控制是不是 18 这一个大版本...那文档中说的这些，不就跟没说一样了。更何况表格中已经列出来了，结果实际上又不是这样。这真是让人无语到了极点了。去 GitHub 上找类似的问题，也只找到了这一篇：
 
-- https://github.com/vercel/vercel/discussions/8238
+- <https://github.com/vercel/vercel/discussions/8238>
 
 有位回答者刚开始是照搬文档中提到可以手动设置具体版本，结果发现并不是这样，于是就说只能设置 major 版本。同时引用了 [Vercel 文档](https://vercel.com/docs/runtimes#official-runtimes/node-js/node-js-version)中出现的这样一段话：
 
