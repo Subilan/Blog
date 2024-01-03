@@ -5,7 +5,7 @@
 <template>
   <footer>
     <div class="footer-text">
-      <div class="copyright">&copy; 2019~2023 Subilan ✨</div>
+      <div class="copyright">&copy; 2019~2024 Subilan ✨</div>
       <div class="built">Built with Vue 3 & markdown-it</div>
     </div>
   </footer>
