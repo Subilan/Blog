@@ -27,3 +27,4 @@ src/posts.ts
 src/pages.ts
 src/router.ts
 src/searchdata.json
+.vercel
