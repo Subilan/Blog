@@ -6,23 +6,30 @@
 
 关于我，大概有这么一些事情
 
-- 目标全栈 —— 学点前端，学点后端，再学点底层硬件和代码，人生结束了~🎉
-- 排版强迫 —— 对排版具有一定的敏感性和强迫症。
+- 赛博朋克 —— Cyberpunk 2077 100+ 小时忠实玩家！此数字还将不断攀升。
+- 信息爆炸 —— 感觉一辈子都要在互联网里度过了。
+- 维基百科 —— 时不时会去 Wikipedia 上看看或写写，来增长一下稍后就会忘记的知识。
+- 排版强迫 —— 对页面、文章等的排版、布局、字体搭配等具有强迫症。
 - 切图大师 —— 会使用 Illustrator 和 Photoshop 进行*简单的*图片处理和图形设计。
+- 字体收藏 —— 没错，就是喜欢收藏字体。正版或者盗版。
 - 质感设计 —— 十分欣赏谷歌的 Material Design 设计体系。
-- 虚假果粉 —— 我的评价是：除了贵都挺好的。
-- 不会听歌 —— 其实就算是喜欢听的歌，听多了我也会不爱听。流派大部分为 Alternative，但有渐渐转向 Indie Rock 的趋势~
-  - 认识的第一位歌手：Lady Gaga
-  - 比较欣赏的歌手：St. Vincent
-  - 喜欢的乐队：Arctic Monkeys, The Black Keys, Broken Bells, Glass Animals, Saint Motel
-  - 平时听的其它歌手/乐队：Penelope Scott, Arcade Fire, The Score, Skott, Soler（粤语）, Stealing Sheep, 陈靖霏
-  - 我扮演一个路人粉的角色：Taylor Swift, Lana Del Ray, 朴树, 草东没有派对, 美秀集团
+- 不是果粉 —— 虽然有苹果全家桶，但是不承认自己是果粉。Shut up and just use your f**king product.
+- 不会听歌 —— 喜欢听的歌，听多了也不爱听，所以经常处于歌荒中。基本不听华语，也不听各种 Pop（非刻意，单纯不喜欢）。流派大部分为 Alternative。音乐启蒙人：Lady Gaga。下面列出了目前或以前比较感兴趣的一些歌手或者乐队，来看看和你有没有共鸣吧。
+  - Lady Gaga, St. Vincent, Arctic Monkeys, The Black Keys, Broken Bells, Glass Animals, Saint Motel, Penelope Scott, Arcade Fire, The Score, Skott, Soler（粤语）, Stealing Sheep, 陈靖霏, 朴树, 草东没有派对, 美秀集团（台语）, Taylor Swift, Lana Del Ray
 - 是方块人 —— Minecraft 10 年玩家。
-- 伪二次元 —— 可能会看那么几部番。
-- 超敏星座 —— 在[十六星座](https://www.16personalities.com/ch/%E4%BA%BA%E6%A0%BC%E6%B5%8B%E8%AF%95)中，我是
+- 非二次元 —— 很难不以唯物主义视角审视二次元。
+- 超敏星座 —— 在荣格构建的[十六星座](https://www.16personalities.com/ch/%E4%BA%BA%E6%A0%BC%E6%B5%8B%E8%AF%95)中，我是
   INFP-T（2019、2021、2023 年测试结果）。
-- あいうえ —— 日语初级兴趣爱好者。
+- あいうえ —— 日语初级兴趣爱好者，能看懂部分片假名（笑）。
 - 酒精过敏 —— 喝酒脸红没感觉，大概就是不能喝酒吧[^1]。
+
+## 活动
+
+除去主业和游戏以外，我经常会有一些「课外活动」，来维持、增进和发挥自己的创造力。它们包括
+- 此博客
+- [Seati 模组服务器](https://seati.cc)
+- Flag: *Tisea 社区*
+- Minecraft Java 插件或模组开发等
 
 ## 此博客
 
