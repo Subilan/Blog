@@ -61,3 +61,4 @@ function countWords(text) {
 |  思想   |          $0.6$          |
 
 [^1]: 依据：[维基百科](https://zh.wikipedia.org/wiki/%E9%85%92%E7%B2%BE%E5%8F%8D%E5%BA%94)
+
