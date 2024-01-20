@@ -18,8 +18,7 @@
   - Lady Gaga, St. Vincent, Arctic Monkeys, The Black Keys, Broken Bells, Glass Animals, Saint Motel, Penelope Scott, Arcade Fire, The Score, Skott, Soler（粤语）, Stealing Sheep, 陈靖霏, 朴树, 草东没有派对, 美秀集团（台语）, Taylor Swift, Lana Del Ray
 - 是方块人 —— Minecraft 10 年玩家。
 - 非二次元 —— 很难不以唯物主义视角审视二次元。
-- 超敏星座 —— 在荣格构建的[十六星座](https://www.16personalities.com/ch/%E4%BA%BA%E6%A0%BC%E6%B5%8B%E8%AF%95)中，我是
-  INFP-T（2019、2021、2023 年测试结果）。
+- 超敏星座 —— 在荣格构建的[十六星座](https://www.16personalities.com/ch/%E4%BA%BA%E6%A0%BC%E6%B5%8B%E8%AF%95)中，我是 INFP-T（2019、2021、2023 年测试结果）。
 - あいうえ —— 日语初级兴趣爱好者，能看懂部分片假名（笑）。
 - 酒精过敏 —— 喝酒脸红没感觉，大概就是不能喝酒吧[^1]。
 
