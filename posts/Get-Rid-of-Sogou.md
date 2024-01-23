@@ -44,33 +44,33 @@ cate: 路径
 
 经过辗转我又来到了系统自带的输入法上。虽然这次事端就是系统自带输入法，但我对 macOS（至少在输入法这一个方面）还是有一定信心的。系统自带输入法的颜值不错（包括微软拼音），适合我这种性冷淡审美使用者，但 macOS 上的相关操作实在是过于非主流了：
 
-- 长按 <kbd>Caps Lock</kbd> 切换英文的大小写
-- 按下 <kbd>Caps Lock</kbd> 切换输入法
+- 长按<kbd>Caps Lock</kbd>切换英文的大小写
+- 按下<kbd>Caps Lock</kbd>切换输入法
   - 使用 Windows 的习惯中 Caps Lock 只是用来按一下切换大小写的
-- 按下 <kbd>🌐</kbd> 亦能切换输入法
-- 按下 <kbd>Control</kbd>+<kbd>空格</kbd> 亦能切换输入法
-  - Windows 上有类似的快捷键 <kbd>Win</kbd>+<kbd>空格</kbd>
+- 按下<kbd>🌐</kbd>亦能切换输入法
+- 按下<kbd>Control</kbd>+<kbd>空格</kbd>亦能切换输入法
+  - Windows 上有类似的快捷键<kbd>Win</kbd>+<kbd>空格</kbd>
 
-而且看来第二条也是沿用已久的果式习惯，因为 MacBook 的机身键盘上的 Caps Lock 的位置并不是写的 Caps Lock，而是「中/英」。此外，macOS 上也没有使用 <kbd>Shift</kbd> 来切换中英输入法的习惯。
+而且看来第二条也是沿用已久的果式习惯，因为 MacBook 的机身键盘上的 Caps Lock 的位置并不是写的 Caps Lock，而是「中/英」。此外，macOS 上也没有使用<kbd>Shift</kbd>来切换中英输入法的习惯。
 
 系统设置中有相关快捷键的修改设置，但是限制很多。
-- 首先，其只能修改 <kbd>Control</kbd>+<kbd>空格</kbd>这一快捷键，而还有 Caps Lock 这个按键需要整顿。
-- 其次，单个 <kbd>Shift</kbd> 按键在系统设置中并不是合法的，因此无法设置。
+- 首先，其只能修改<kbd>Control</kbd>+<kbd>空格</kbd>这一快捷键，而还有 Caps Lock 这个按键需要整顿。
+- 其次，单个<kbd>Shift</kbd>按键在系统设置中并不是合法的，因此无法设置。
 
 于是几经搜索找到了 macOS 上自定义快捷键的神器——[Karabiner-Elements](https://karabiner-elements.pqrs.org/)，其自身甚至是 [Public Domain](https://github.com/pqrs-org/Karabiner-Elements/blob/main/LICENSE.md) 的软件。其可以实现将一个快捷键映射到另外一个快捷键来实现完全自定义快捷键的效果。
 
-#### 1. 实现 <kbd>Shift</kbd> 切换中英文输入法
+#### 1. 实现<kbd>Shift</kbd>切换中英文输入法
 
-与搜狗输入法不同，其 <kbd>Shift</kbd> 切换是在输入法内部进行。系统切换到搜狗输入法以后，按下 <kbd>Shift</kbd> 实际上是在搜狗输入法自身的中英文模式中切换，与系统无关。下面要操作的是使 <kbd>Shift</kbd> 适用于系统的两个输入法之间的切换。
+与搜狗输入法不同，其<kbd>Shift</kbd> 切换是在输入法内部进行。系统切换到搜狗输入法以后，按下 <kbd>Shift</kbd> 实际上是在搜狗输入法自身的中英文模式中切换，与系统无关。下面要操作的是使 <kbd>Shift</kbd>适用于系统的两个输入法之间的切换。
 
-接下来的逻辑是将切换输入法的快捷键绑定到一个平时不会用到的快捷键上面，然后再通过 Karabiner-Elements 将 <kbd>Shift</kbd> 映射到这个快捷键上。考虑到在完整的键盘上会出现高于 <kbd>F12</kbd> 的按键（从 <kbd>F13</kbd> 到 <kbd>F19</kbd>），而 MacBook 自身的键盘并没这些键，所以从中挑选一个即可。
+接下来的逻辑是将切换输入法的快捷键绑定到一个平时不会用到的快捷键上面，然后再通过 Karabiner-Elements 将<kbd>Shift</kbd> 映射到这个快捷键上。考虑到在完整的键盘上会出现高于 <kbd>F12</kbd> 的按键（从 <kbd>F13</kbd>到 <kbd>F19</kbd>），而 MacBook 自身的键盘并没这些键，所以从中挑选一个即可。
 
-那么如何绑定到 <kbd>F13</kbd> 呢？幸好俺有一个外置的蓝牙键盘。键盘上标有 Windows 系统的 `PrtSc`、`ScrLk` 和 `Pause`，这些键其实在 macOS 上分别对应了 `F13` 到 `F15`。临时连接上蓝牙键盘，在绑定页面按下 `PrtSc`，就能将操作与 `F13` 绑定。
+那么如何绑定到<kbd>F13</kbd>呢？幸好俺有一个外置的蓝牙键盘。键盘上标有 Windows 系统的 <kbd>PrtSc</kbd>、<kbd>ScrLk</kbd> 和 <kbd>Pause</kbd>，这些键其实在 macOS 上分别对应了 <kbd>F13</kbd> 到 <kbd>F15</kbd>。临时连接上蓝牙键盘，在绑定页面按下 <kbd>PrtSc</kbd>，就能将操作与 <kbd>F13</kbd> 绑定。
 
 ![](https://s11.ax1x.com/2024/01/23/pFeQ3e1.png)
 *将切换到上一个输入法的快捷键设置为 F13*
 
-接下来用到 Karabiner-Elements 的映射功能，将 <kbd>Shift</kbd> 映射到 <kbd>F13</kbd> 即可。这一切通过在 Karabiner-Elements 的 Complex Modifications（复杂修改项）中编写一个简单的 JSON 描述文件来实现。
+接下来用到 Karabiner-Elements 的映射功能，将<kbd>Shift</kbd> 映射到 <kbd>F13</kbd>即可。这一切通过在 Karabiner-Elements 的 Complex Modifications（复杂修改项）中编写一个简单的 JSON 描述文件来实现。
 
 ```json
 {
@@ -101,7 +101,7 @@ cate: 路径
 }
 ```
 
-应用以后，按下左 <kbd>Shift</kbd> 相当于按下了 <kbd>F13</kbd>，于是切换了输入法。此时如果输入法只有系统自带的中文和英文，就产生了中英切换的效果，类似于使用搜狗的体验。
+应用以后，按下左<kbd>Shift</kbd>相当于按下了 <kbd>F13</kbd>，于是切换了输入法。此时如果输入法只有系统自带的中文和英文，就产生了中英切换的效果，类似于使用搜狗的体验。
 
 #### 2. 实现 Caps Lock 短按切换大小写+长按无效果
 
