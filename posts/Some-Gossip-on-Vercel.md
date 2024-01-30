@@ -7,11 +7,10 @@ desc: 好荒谬，就像经过精密数学计算以后算出来公交车上只�
 # 吐槽一下 Vercel 的大无语操作
 
 :::tip
-说是吐槽，发现不知不觉写成了流水账。看个乐呵就好 \^_\^'...
+说是吐槽，发现不知不觉写成了流水账。看个乐呵就好😅
 :::
 
 ![](https://s11.ax1x.com/2023/12/13/pifIWGV.png)
-*拱出去，拱得远远的*
 
 如你所见，这个网站自 2023 年 7 月被搬迁到了 Vercel 上面，采用 GitHub 托管源代码+Vercel 持续集成自动部署的模式来呈现。考虑到使用 Vercel 的一大原因，是 对 Vue 的路由相关考虑（**Wanna have ugly #Hashtag in URL or 404 on refresh???**），这是在搭建这样的低成本静态网站时经常会遇到的一类焦灼。
 
@@ -22,10 +21,10 @@ desc: 好荒谬，就像经过精密数学计算以后算出来公交车上只�
 首先，我尝试 redeploy，发现每次的表现不一致。上面的那一种表现是卡死无反应，一直持续到超时，而另外还有两种表现：
 
 ![](https://s11.ax1x.com/2023/12/13/pifIoqJ.png)
-*你没事吧？*
+*表现一：JSON 解析错误，但是幽灵字符*
 
 ![](https://s11.ax1x.com/2023/12/13/pifI7Z9.png)
-*你没事吧？？*
+*表现二：刷了一大堆啥啊*
 
 一种是随机位置出现 `Unexpected token [???random, mostly a blank] in JSON at position [???random]` 的报错，`???random` 中三个问号表示我的极度疑惑和严厉批评。另一种是先给一个莫名其妙的 `undefined:1`，然后输出一大段莫名其妙的 JSON。
 
@@ -95,6 +94,6 @@ Warning: Detected "engines": { "node": "18.17.0" } in your `package.json` with m
 所以现在我的 build 指令长这样：
 
 ![](https://s11.ax1x.com/2023/12/13/pifHPo9.png)
-*我tm直接 build success！*
+*俗话说：骗哥们可以但是别把自己给骗了*
 
 其实感觉问题不大，就是可能每次 commit 之前都要花个一两分钟来 build 一下（目前实测：本地 build 45s，Vercel 部署 5s）。这样的操作估计得要持续到上面我想到的解决方法能实现的那一天了😅
