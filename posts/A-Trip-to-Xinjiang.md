@@ -4,6 +4,19 @@ cate: 记录
 desc: 从未想象过，所以从未涉足过。粗浅地一次掠过，然后开始无休止的追寻。
 ---
 
+<style>
+  h3 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  h3 img {
+    width: auto !important;
+    display: inline-block;
+  }
+</style>
+
 # 北疆之旅（一）
 
 :::tip
