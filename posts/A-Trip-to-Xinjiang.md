@@ -288,7 +288,7 @@ iPhone 拍出的视频是 HDR 的，所以我想到的用摄屏的方法来尽�
 
 所以我提议一定要去看看。后来发现这使得这趟单调的公路路程丰富了不止一点。
 
-**独库公路**<img src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg" height="24px"/>实际上指的是联通**独**山子和**库**车的公路，之所以会出现一些新奇的地名，大概是因为是音译而并不具有其本身的意思。G30 上指向独库公路的出口，到达的是独山子这一地区，独山子是克拉玛依市的一个区，但是距离克拉玛依有 100 多公里。
+**独库公路**<img style="display: inline-block; width: auto; vertical-align: middle; margin: 0 8px;" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg" height="24px"/>实际上指的是联通**独**山子和**库**车的公路，之所以会出现一些新奇的地名，大概是因为是音译而并不具有其本身的意思。G30 上指向独库公路的出口，到达的是独山子这一地区，独山子是克拉玛依市的一个区，但是距离克拉玛依有 100 多公里。
 
 刚刚走上独库公路的时候，感觉相比于其他地方并没有什么特别的，只是路变得窄了一点。但越是往前走越是发现，道路的一侧变成了雪原。雾气也越来越大，直到完全遮蔽了前面的道路，能见度应该在 10m 以内。
 
