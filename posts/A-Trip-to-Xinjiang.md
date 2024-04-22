@@ -4,19 +4,6 @@ cate: 记录
 desc: 从未想象过，所以从未涉足过。粗浅地一次掠过，然后开始无休止的追寻。
 ---
 
-<style>
-  h3 {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  h3 img {
-    width: auto !important;
-    display: inline-block;
-  }
-</style>
-
 # 北疆之旅（一）
 
 :::tip
@@ -263,8 +250,11 @@ desc: 从未想象过，所以从未涉足过。粗浅地一次掠过，然后�
 以上就是这一天的所有行程。从天池下来天已经黑了，应该已经到了北京时间的七八点钟。
 
 到新疆之前，总是以为第一次到的地方会平平无奇，但其实不是，完全可以算作是一个很好的开端了——只是马牙山确实没有什么必要上去，对于南方人来说能够踏在天池不知多厚的冰面上的厚雪已经是十分新奇、令人舒爽的体验了～
-
-### 2 月 5 日 —— 乌鲁木齐至伊宁，独库公路 <img src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg" height="36px"/><img src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg" height="36px"/>
+<h3 style="display: flex; align-items: center; gap: 8px;">
+2 月 5 日 —— 乌鲁木齐至伊宁，独库公路
+<img style="width: auto;" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg" height="36px"/>
+<img style="width: auto;" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg" height="36px"/>
+</h3>
 
 玩完天池后的第二天，就从乌鲁木齐出发前往伊宁了，G30 连霍高速（连云港至霍尔果斯）可直达。以往听说较多的都是「伊犁」而不是「伊宁」，这次才搞清楚它们的关系——「伊宁市」位于「伊犁哈萨克自治州」。到达伊宁后休息一晚，前往其周围的天鹅泉，以及不远处的赛里木湖。
 
@@ -370,7 +360,9 @@ iPhone 拍出的视频是 HDR 的，所以我想到的用摄屏的方法来尽�
 
 羊肉汤和羊肉的味道都非常好，并没有很大的膻味，而咸味对我来说刚刚好。整体感觉这边的口味的确偏咸，而我又是重口味的，所以很适合我捏😋。
 
-### 2 月 6 日 —— 天鹅泉湿地公园，赛里木湖 <img src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg" height="36px"/>
+<h3 style="display: flex; align-items: center; gap: 8px;">
+2 月 6 日 —— 天鹅泉湿地公园，赛里木湖 <img style="width: auto" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg" height="36px"/>
+</h3>
 
 > 起初，一切都很顺利······
 
