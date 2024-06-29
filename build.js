@@ -200,34 +200,43 @@ try {
 (async () => {
     console.log("🚧 Reading files...")
 
-    const posts = await readdir("posts")
+    const posts = await readdir("posts", {
+        withFileTypes: true
+    })
     const postResult = [];
     const postRoutes = [];
 
     for (let p of posts) {
-        let filename = p.replace(".md", "");
-        let filecontent = (await readFile(`posts/${filename}.md`)).toString();
-        let wordcount = countWords(filecontent);
-        let filefrontmatter = fm(filecontent);
-        console.log(`📕 Building ${filename}.md`)
-        let fileparsed = parse(filefrontmatter.body);
-        let uuid = v5(filename, config.uuidNamespace);
-        let result = await buildPageComponent(filefrontmatter.attributes, fileparsed, wordcount)
-        await writeFile(`src/posts/${filename}.vue`, result.result);
-        if (!filefrontmatter.attributes.hidden) {
-            addSearch(filecontent, result.title, filename, "post")
+        if (p.isFile()) {
+            let filename = p.name.replace(".md", "");
+            let filecontent = (await readFile(`posts/${filename}.md`)).toString();
+            let wordcount = countWords(filecontent);
+            let filefrontmatter = fm(filecontent);
+            console.log(`📕 Building ${filename}.md`)
+            let fileparsed = parse(filefrontmatter.body);
+            let uuid = v5(filename, config.uuidNamespace);
+            let result = await buildPageComponent(filefrontmatter.attributes, fileparsed, wordcount)
+            await writeFile(`src/posts/${filename}.vue`, result.result);
+            if (!filefrontmatter.attributes.hidden) {
+                addSearch(filecontent, result.title, filename, "post")
+            }
+            postRoutes.push({
+                title: result.title,
+                filename: filename,
+                uuid: uuid
+            });
+            postResult.push({
+                "title": result.title,
+                "filename": filename,
+                "frontmatters": filefrontmatter.attributes,
+                "wordcount": wordcount
+            });
+        } else if (p.isDirectory()) {
+            fs.mkdirSync(`src/posts/${p.name}`)
+            fs.cpSync(`posts/${p.name}`, `src/posts/${p.name}`, {
+                recursive: true
+            })
         }
-        postRoutes.push({
-            title: result.title,
-            filename: filename,
-            uuid: uuid
-        });
-        postResult.push({
-            "title": result.title,
-            "filename": filename,
-            "frontmatters": filefrontmatter.attributes,
-            "wordcount": wordcount
-        });
     }
 
     const pages = await readdir("pages")
