@@ -130,7 +130,7 @@ let combinedEAcute: Character = "\u{65}\u{301}"          // e + ́
 
 上面两个字符都可以表示带有尖音符的 e，也就是 é。区别是第一个字符常量是由 `\u{E9}` 直接表示的 é，这是因为 U+00E9 表示的就是 LATIN SMALL LETTER E WITH ACUTE 这一单个字符，而第二个字符常量是由 `\u{65}` 即 e 字符和 `\u{301}` 尖音符附加符号「 ́ 」组合起来表示的。这两种表示都是合法的。
 
-:::tips
+:::tip
 注意这里的尖音符附加符号是一种组合附加符号（combining diacritical marks），与独立存在的类似于尖音符的符号有所区别。
 :::
 
