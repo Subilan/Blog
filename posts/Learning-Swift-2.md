@@ -79,7 +79,7 @@ Swift 中的多行字符串的设计我个人是很喜欢的，因为在其他�
 ### Strings Are Value Types
 
 :::tip
-这一部分的内容来自：https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters#Strings-Are-Value-Types
+这一部分的内容来自：<https://docs.swift.org/swift-book/documentation/the-swift-programming-language/stringsandcharacters#Strings-Are-Value-Types>
 :::
 
 Swift 文档中上的这一部分内容指出，在正常情况下 String 类型的值都是值传递的，这就保证了通过调用函数（方法）获取到的字符串类型在之后只能被明确指定地（explicitly）修改。即使是这样，Swift 的编译器也总是会保证拷贝操作只会在万不得已的情况下进行，从而优化性能。
@@ -233,7 +233,7 @@ Swift 中对这一点也有考虑。因此，U+0041 所代表的 LATIN CAPITAL L
 
 > String and character comparisons in Swift aren’t **locale-sensitive**.
 
-在这里我很好奇 locale-sensitive 所指的是一种什么样的判断性质。通过搜索发现已经有人在 StackOverflow 上提出了这样的问题，也有较为详细的解释，可参考 https://stackoverflow.com/questions/25713975/what-does-it-mean-that-string-and-character-comparisons-in-swift-are-not-locale。简而言之，与 locale-sensitive ordering 相对的应该是 lexicographical ordering，即字典序，Swift 对字符串的比较采取的是后者。
+在这里我很好奇 locale-sensitive 所指的是一种什么样的判断性质。通过搜索发现已经有人在 StackOverflow 上提出了这样的问题，也有较为详细的解释，可参考 <https://stackoverflow.com/questions/25713975/what-does-it-mean-that-string-and-character-comparisons-in-swift-are-not-locale>。简而言之，与 locale-sensitive ordering 相对的应该是 lexicographical ordering，即字典序，Swift 对字符串的比较采取的是后者。
 
 String 的 `hasPrefix(_:)` 和 `hasSuffix(_:)` 方法采用的是同样的比较方式。
 
