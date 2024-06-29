@@ -87,7 +87,7 @@ Swift 文档中上的这一部分内容指出，在正常情况下 String 类型
 ### 作为 Iterable
 
 String 类型的值作为 Iterable 时，实际上就是字符数组。所以
-```
+```swift
 for x in "XSWL" {
     print(x)
 }
