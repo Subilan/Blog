@@ -30,14 +30,6 @@
         "background": "#fff"
     },
     {
-        "name": "Ojhdt's Blog",
-        "href": "https://blog.ojhdt.com",
-        "avatar": "https://www.gravatar.com/avatar/af6911b4de2f5a357fa796a66e202272?s=128",
-        "description": "隐约雷鸣，阴霾天空",
-        "background": "#009688",
-        "light": true
-    },
-    {
         "name": "9527's Blog",
         "href": "https://9527dhx.top/",
         "avatar": "https://i.loli.net/2019/05/26/5cea282e596b167848.png",
@@ -83,5 +75,12 @@
         "description": "一个有梦想的咸鱼",
         "background": "#2396FA",
         "light": true
+    },
+    {
+        "name": "Doggy Lounge",
+        "href": "https://krtk.top",
+        "avatar": "https://krtk.top/images/takeo_avatar.png",
+        "description": "Forever on the Path of Learning",
+        "background": "#fff"
     }
 ]
