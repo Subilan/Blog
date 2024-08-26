@@ -550,6 +550,6 @@ TiLab 前端方面，部分借鉴了 Material Design 中的阴影、圆角和配
 
 上文较为简略地展示了这样一个平台是如何被构思和构建的，如果你感兴趣，也可以按照这样的模式自行开发，或者直接使用 Seati 目前开源的这套系统，或者为这套系统添加属于你自己的理解。如有任何疑问，欢迎在[本博客的 Issue](https://github.com/Subilan/Blog/issues) 中提出，或者[联系](/Contact)我。
 
-Seatide 在 2022 年就已经实现过了这一模式，如今经过重写，除去一些 Bug，TiLab 的工作依旧比预期的要好，可以节省大部分成本。TiLab 在开发的过程中还增添了许多其它功能，例如游戏时间统计、网页端聊天（WebSocket，参见 [Java-WebSocket](https://github.com/TooTallNate/Java-WebSocket)等，同时通过 BSS（费用）API，将消费数据实时公开给玩家以供参考。在将来亦可以根据需求推出更多的功能。
+Seatide 在 2022 年就已经实现过了这一模式，如今经过重写，除去一些 Bug，TiLab 的工作依旧比预期的要好，可以节省大部分成本。TiLab 在开发的过程中还增添了许多其它功能，例如游戏时间统计、网页端聊天（WebSocket，参见 [Java-WebSocket](https://github.com/TooTallNate/Java-WebSocket)）等，同时通过 BSS（费用）API，将消费数据实时公开给玩家以供参考。在将来亦可以根据需求推出更多的功能。
 
 可见，在开发这类平台的过程中，创造力是最大的局限。
