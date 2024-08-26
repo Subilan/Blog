@@ -92,7 +92,7 @@ OSS（或者腾讯云的 COS 等类似概念）是一种外部的独立空间，
 
 因此在挑选实例规格时，必须考虑到 CPU 的主频，好在阿里云提供了专门的高主频型实例。目前 Seati 采用的是 ecs.hfg8i（基频 3.3，睿频 3.9）、ecs.hfg7（基频 >=3.3，睿频 3.8）两种规格的实例。其中 ecs.hfg8i 库存较少，除了香港外只有 4 个内地地域可以购买，因此具有较高的释放风险。
 
-![ecshfg8i-storage](Economizing-Server-Cost/image0.png)
+![ecshfg8i-storage](./Economizing-Server-Cost/image0.png)
 *ecs.hfg8i 可购买的地域*
 
 参见：
@@ -150,7 +150,7 @@ go get github.com/alibabacloud-go/ecs-20140526/v4
 
 在编写对接阿里云 API 的代码之前，需要在 RAM 账户管理下面创建新的 AK，适当给予权限（为了方便可以直接给予 ECSFullAccess）。阿里云的每一个产品的 API 都具有一个独立的 endpoint，并且各个地域都是相互独立的，例如深圳地域的 ECS endpoint 是 `ecs.cn-shenzhen.aliyuncs.com`，其格式为 `[product_code].[region_id].aliyuncs.com`。
 
-![api-endpoint-format](Economizing-Server-Cost/image.png)
+![api-endpoint-format](./Economizing-Server-Cost/image.png)
 
 确定了 AK 和 endpoint 以后就可以调用 SDK 来创建 client 进而调用 API 来完成操作了。
 
@@ -234,7 +234,7 @@ request := &ecs.CreateInstanceRequest {
 
 以上各项可以按需省略。在这里需要注意的是，传入的各项参数必须使用 `tea` 包中对应类型的包装函数进行处理。对云盘的相关设置（可选）需要单独编写相应的 struct。
 
-![systemdisk-config](Economizing-Server-Cost/image-1.png)
+![systemdisk-config](./Economizing-Server-Cost/image-1.png)
 *文档中 SystemDisk 的相关设置*
 
 ```go
@@ -379,7 +379,7 @@ func RunMonitor() {
 
 这里的指令是指在阿里云 ECS 控制台的云助手中所创建好的指令，调用 InvokeCommand 时传入相应的命令 ID 即可。
 
-![ecs-commands](Economizing-Server-Cost/image-2.png)
+![ecs-commands](./Economizing-Server-Cost/image-2.png)
 *云助手后台的指令*
 
 以上操作应当为一次性操作，所以在数据表中应当保存有相应的一次性操作标识，或者应当识别是否已经 InvokeCommand 来确保不重复执行。
@@ -536,7 +536,7 @@ runScriptAsync("/path/to/oss-archive.sh").get(180);
 
 TiLab 前端方面，部分借鉴了 Material Design 中的阴影、圆角和配色，尤其是配色，采用 Material Design Palette 这一 Chrome 插件来完成，主色为 Teal（#009688）。
 
-![teal-colors](Economizing-Server-Cost/image-3.png)
+![teal-colors](./Economizing-Server-Cost/image-3.png)
 *Material Design Palette 中的 Teal 相关配色*
 
 字体方面，采用 ArrowType 出品的 Recursive（[Google Fonts](https://fonts.google.com/specimen/Recursive)，[官网](https://recursive.design)）。TiLab 的 Logo 和 favicon 中也采用的是这种字体，具体使用的是它的 casual 变体。
