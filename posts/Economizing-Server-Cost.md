@@ -541,6 +541,9 @@ TiLab 前端方面，部分借鉴了 Material Design 中的阴影、圆角和配
 
 字体方面，采用 ArrowType 出品的 Recursive（[Google Fonts](https://fonts.google.com/specimen/Recursive)，[官网](https://recursive.design)）。TiLab 的 Logo 和 favicon 中也采用的是这种字体，具体使用的是它的 casual 变体。
 
+![recursive-website](./Economizing-Server-Cost/image-4.png)
+*recursive.design 网站*
+
 部分组件的动态效果参考了 macOS 中的相关设计（菜单中的 help indicator 和 window-already-present 动画）。
 
 ## 总结
