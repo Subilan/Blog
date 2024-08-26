@@ -4,6 +4,8 @@
 
 - 博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.vercel.app> 访问。
 - 博客使用 Vue 3 编写，采用本地 Markdown 编写+`build.js` 编译为 Vue 组件后再 build 的模式构建。网站托管使用 Vercel，目前正在琢磨怎么加速国内访问~
+  - WordPress (*2016-2017*)
+  - Typecho (*2017-2019*)
   - VuePress 1 + GitHub Pages (*2019.08*-*2023.07*)
   - Vue 3 + Vercel (*2023.07.15*-)
  
