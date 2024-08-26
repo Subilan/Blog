@@ -370,10 +370,10 @@ func RunMonitor() {
    - 如果不存在，则跳过，继续检测
 2. 检测服务器的状态，这里用到 DescribeInstance
    - 如果为 `Pending`，则代表还在创建中，不进行操作
-   - 如果为 `Stopped`，则代表已经创建好没有启动（**注意：**CreateInstance 只负责创建不负责启动），立即调用 StartInstance
+   - 如果为 `Stopped`，则代表已经创建好没有启动（**注意：** CreateInstance 只负责创建不负责启动），立即调用 StartInstance
    - 如果为 `Starting`，则代表正在启动，不进行操作
    - 如果为 `Running`，则代表已经启动正在运行，此时执行接下来的逻辑
-3. 为服务器分配公网 IP 地址，这里用到 AllocatePublicIpAddress（**注意：**实例不自带公网 IP，需要像这样自行分配）
+3. 为服务器分配公网 IP 地址，这里用到 AllocatePublicIpAddress（**注意：** 实例不自带公网 IP，需要像这样自行分配）
 4. 等待云助手就绪，如果没有就绪就不进行任何操作，这里用到 DescribeCloudAssistantStatus
 5. 云助手就绪后，调用 InvokeCommand 执行指令
 
