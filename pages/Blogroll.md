@@ -18,9 +18,7 @@
 >
 > 网站地址：<https://subilan.win>
 >
-> 头像（圆）：<https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png>
->
-> 头像（方）：<https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar-big.jpg>
+> 头像：<https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png>
 
 ## 如何在本站上添加友链？
 
