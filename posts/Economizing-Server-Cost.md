@@ -1,10 +1,9 @@
 ---
 date: 2024/08/26
 cate: 代码
-desc: 真的从零开始
 ---
 
-# 从零开始搭建自动化 Minecraft 服务器管理平台
+# 自动化的 Minecraft 服务器管理平台
 
 这里所说的一样「自动化 Minecraft 服务器管理平台」即现在已经投入使用的 [TiLab](https://lab.seati.cc)。本文将讲述其具体用途和来历，以及大致的搭建过程。
 
