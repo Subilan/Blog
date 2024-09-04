@@ -16,7 +16,7 @@ jobs:
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Install dependencies
-        run: npm i
+        run: yarn
       - name: Build local data
         run: node data/build.cjs
       - name: Build Project Artifacts
