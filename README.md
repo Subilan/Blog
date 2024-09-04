@@ -3,7 +3,7 @@
 - 博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.vercel.app> 访问。
 - 博客使用 Nuxt 3 编写，采用本地 Markdown 编写+`build.cjs` 编译本地 json 数据后再被组件调用的模式。网站部署和托管使用 Vercel，图床使用阿里云 OSS。
     - WordPress (*2016-2017*)
-    - Typecho (*2017-2019*)
+    - Typecho, Hugo, Hexo (*2017-2019*)
     - VuePress 1 + GitHub Pages (*2019.08*-*2023.07*)
     - Vue 3 + GitHub Actions + Vercel (*2023.07.15*-*2024.09.04*)
     - Nuxt 3 + Vercel (*2024.09*-)
