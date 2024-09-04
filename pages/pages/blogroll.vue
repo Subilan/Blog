@@ -36,7 +36,7 @@
       <details>
         <summary><span>通过 Pull Request 添加友链的具体流程</span></summary>
         <ol>
-          <li>打开 <a target="_blank" class="external-link" href="https://github.com/Subilan/JustPress">https://github.com/Subilan/JustPress</a>
+          <li>打开 <a target="_blank" class="external-link" href="https://github.com/Subilan/Blog">https://github.com/Subilan/Blog</a>
           </li>
           <li>Fork 至你的个人账号，并对项目文件中的 <code>data/blogrolls.json</code> 进行修改，具体格式可参考文件内部已有内容
           </li>
