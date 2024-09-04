@@ -1,0 +1,144 @@
+pre[class^=language-] {
+  position: relative;
+}
+
+pre[class^=language-]::before {
+  position: absolute;
+  right: 1rem;
+  top: .8rem;
+  font-size: .75rem;
+  color: rgba(0, 0, 0, .3);
+  transition: all .2s ease;
+}
+
+pre[class^=language-]:hover::before {
+  color: rgba(0, 0, 0, .9);
+}
+
+pre[class~=language-yml]::before {
+  content: "yaml"
+}
+
+pre[class~=language-js]::before {
+  content: "js"
+}
+
+pre[class~=language-ts]::before {
+  content: "ts"
+}
+
+pre[class~=language-html]::before {
+  content: "html"
+}
+
+pre[class~=language-md]::before {
+  content: "md"
+}
+
+pre[class~=language-vue]::before {
+  content: "vue"
+}
+
+pre[class~=language-css]::before {
+  content: "css"
+}
+
+pre[class~=language-sass]::before {
+  content: "sass"
+}
+
+pre[class~=language-scss]::before {
+  content: "scss"
+}
+
+pre[class~=language-less]::before {
+  content: "less"
+}
+
+pre[class~=language-stylus]::before {
+  content: "stylus"
+}
+
+pre[class~=language-go]::before {
+  content: "go"
+}
+
+pre[class~=language-java]::before {
+  content: "java"
+}
+
+pre[class~=language-c]::before {
+  content: "c"
+}
+
+pre[class~=language-sh]::before {
+  content: "sh"
+}
+
+pre[class~=language-yaml]::before {
+  content: "yaml"
+}
+
+pre[class~=language-py]::before {
+  content: "py"
+}
+
+pre[class~=language-docker]::before {
+  content: "docker"
+}
+
+pre[class~=language-dockerfile]::before {
+  content: "dockerfile"
+}
+
+pre[class~=language-makefile]::before {
+  content: "makefile"
+}
+
+pre[class~=language-javascript]::before {
+  content: "js"
+}
+
+pre[class~=language-typescript]::before {
+  content: "ts"
+}
+
+pre[class~=language-markup]::before {
+  content: "html"
+}
+
+pre[class~=language-markdown]::before {
+  content: "md"
+}
+
+pre[class~=language-json]::before {
+  content: "json"
+}
+
+pre[class~=language-ruby]::before {
+  content: "rb"
+}
+
+pre[class~=language-python]::before {
+  content: "py"
+}
+
+pre[class~=language-bash]::before {
+  content: "sh"
+}
+
+pre[class~=language-php]::before {
+  content: "php"
+}
+
+pre[class~=language-sql]::before{
+  content: "sql";
+}
+
+pre[class~=language-shell]::before{
+  content: "sh";
+}
+
+pre[class~=language-swift]::before {
+  content: "swift";
+}

@@ -1,0 +1,86 @@
+$primaryTextColor: #004d40;
+$sansSerifFontWithoutDefault: -apple-system, BlinkMacSystemFont, ui-sans-serif, 'PingFang SC', 'Segoe UI', '微软雅黑', Microsoft YaHei UI;
+$sansSerifFont: $sansSerifFontWithoutDefault, sans-serif;
+$monospaceFont: Menlo, "Cascadia Code", "Cascadia Mono", Consolas, $sansSerifFontWithoutDefault, monospace;
+
+$navbarHeight: 55px;
+$navbarBottomOffset: 32px;
+
+$footerHeight: 100px;
+$footerMarginTop: 32px;
+
+html, body {
+  margin: 0;
+  font-family: $sansSerifFont;
+  scroll-behavior: smooth;
+}
+
+pre, pre code, input, code, kbd {
+  font-family: $monospaceFont;
+}
+
+h1, h4, h5, h6 {
+  margin: 8px 0;
+}
+
+h2 {
+  margin: 13px 0;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+blockquote:first-child {
+  margin-top: 0;
+}
+
+.spacer {
+  flex: 1;
+}
+
+details {
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 10px;
+  padding: 16px;
+  transition: all .2s ease;
+
+  &:hover {
+    border: 1px solid rgba(#004d40, .8);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
+  }
+
+  summary {
+    color: #004d40;
+    cursor: pointer;
+
+    &::marker {
+      content: none;
+    }
+
+    span {
+      transition: all .2s ease;
+    }
+
+    span::before {
+      content: '→';
+      display: inline-block;
+      margin-right: 8px;
+      transition: all .2s ease;
+    }
+  }
+
+  &[open] summary span::before {
+    transform: rotate(90deg);
+  }
+
+  &[open] {
+    background: rgba(#e0f2f1, .4);
+
+    summary span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}
