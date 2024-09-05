@@ -57,7 +57,7 @@ $darkPrimary: #1de9b6;
 
   section.stats .value, .articles .article h2, .articles .article .view-right-now-message, article a, details summary, .articles .article .bg-icon,
   .layout-post .extra span svg {
-    color: $darkPrimary;
+    color: $darkPrimary !important;
   }
 
   article h1, article h2 {
@@ -82,7 +82,7 @@ $darkPrimary: #1de9b6;
   }
 
   .search-btn, section.profile, section.stats, .articles .article, details, .create-commons-license, .create-commons-license a {
-    border: 1px solid rgba(255, 255, 255, .1)
+    border: 1px solid rgba(255, 255, 255, .1) !important;
   }
 
   section:not(.footnotes):hover, .search-btn:hover, .articles .article:hover, details:hover, .back-to-top:hover,
