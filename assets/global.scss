@@ -55,8 +55,9 @@ details {
     color: #004d40;
     cursor: pointer;
 
-    &::marker {
+    &::marker, &::-webkit-details-marker {
       content: none;
+      display: none;
     }
 
     span {
