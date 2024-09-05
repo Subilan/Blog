@@ -107,6 +107,7 @@ function render(content) {
                         date: res.date,
                         cate: res.cate,
                         hidden: res.hidden,
+                        wordCount: res.wordCount
                     });
 
                     postSearch.push({

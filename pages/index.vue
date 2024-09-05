@@ -5,6 +5,7 @@
       <h2>{{ x.title }}</h2>
       <div class="meta">
         <span>{{ x.date }}</span>
+        <span>约 {{ x.wordCount }} 字</span>
         <span v-if="x.cate">{{ x.cate }}</span>
       </div>
       <p v-if="x.desc">{{ x.desc }}</p>
@@ -98,7 +99,7 @@ function getIconForCategory(category) {
 
       span:not(:last-child)::after {
         content: '·';
-        margin: 0 8px;
+        margin: 0 5px;
       }
     }
 
