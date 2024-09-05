@@ -16,6 +16,7 @@
 <script setup lang="ts">
 import getPostDigests from "~/utils/getPostDigests";
 import {mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPencil} from "@mdi/js";
+import {definePageMeta} from "#imports";
 
 function getIconForCategory(category) {
   switch (category) {
@@ -29,6 +30,10 @@ function getIconForCategory(category) {
       return mdiArrowUpLeft;
   }
 }
+
+definePageMeta({
+  title: '首页'
+})
 </script>
 
 <style lang="scss" scoped>

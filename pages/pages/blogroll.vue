@@ -60,6 +60,10 @@
 
 <script setup>
 import blogrolls from '~/data/blogrolls.json'
+
+definePageMeta({
+  title: '友链'
+})
 </script>
 
 <style lang="scss" scoped>

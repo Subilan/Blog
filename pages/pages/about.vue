@@ -50,5 +50,8 @@
   object-fit: cover;
 }
 </style>
-<script setup lang="ts">
+<script setup>
+definePageMeta({
+  title: '关于'
+})
 </script>

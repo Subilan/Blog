@@ -14,4 +14,8 @@
 
 <script setup>
 import pgp from '~/data/pgp.js'
+
+definePageMeta({
+  title: 'PGP'
+})
 </script>
