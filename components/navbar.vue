@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import {mdiMagnify, mdiMenu} from "@mdi/js";
+import {mdiMagnify, mdiMenu, mdiThemeLightDark} from "@mdi/js";
 import {pages} from "~/data/config";
 import isMacOS from "~/utils/isMacOS";
 

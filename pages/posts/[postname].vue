@@ -16,12 +16,16 @@
 import getPostContent from "~/utils/getPostContent.js";
 import mediumZoom from "medium-zoom";
 import {mdiClockOutline, mdiFormatTextVariant, mdiShapeOutline} from "@mdi/js";
+import {usePreferredDark} from "@vueuse/core";
 
 const slug = useRoute().params.postname;
 const post = getPostContent(slug.toLowerCase());
+const dark = usePreferredDark();
 
 onMounted(() => {
-  mediumZoom('article .content img')
+  mediumZoom('article .content img', {
+    background: dark.value ? 'rgba(255, 255, 255, .2)' : 'rgba(0, 0, 0, .2)'
+  })
 })
 
 definePageMeta({

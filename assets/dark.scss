@@ -1,0 +1,171 @@
+$darkPrimary: #1de9b6;
+
+.dark {
+  body {
+    background: #212121;
+    color: white;
+  }
+
+  nav {
+    background: #212121;
+    color: white;
+    border-bottom-color: rgba(255, 255, 255, .2);
+
+    .site-title a, .nav-link-inner {
+      color: white;
+    }
+
+    .nav-link-inner:not(.router-link-exact-active):hover {
+      border-bottom-color: rgba($darkPrimary, .2);
+    }
+
+    .nav-link-inner.router-link-exact-active {
+      border-bottom-color: $darkPrimary;
+    }
+  }
+
+  section.profile, section.stats {
+    background: #212121;
+  }
+
+  section.profile {
+    .social {
+      svg {
+        fill: white;
+        color: white;
+      }
+    }
+
+    .navigations {
+      a {
+        color: white;
+      }
+
+      .router-link-exact-active, a:hover {
+        background: rgba($darkPrimary, .1);
+
+        svg {
+          color: $darkPrimary;
+        }
+      }
+    }
+
+    .navigations:hover .router-link-exact-active {
+      background: transparent;
+    }
+  }
+
+  section.stats .value, .articles .article h2, .articles .article .view-right-now-message, article a, details summary, .articles .article .bg-icon,
+  .layout-post .extra span svg {
+    color: $darkPrimary;
+  }
+
+  article h1, article h2 {
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+  }
+
+  details[open], article .notice.tip {
+    background: rgba($darkPrimary, .1);
+  }
+
+  article code {
+    background: rgba(255, 255, 255, .1);
+    color: white;
+  }
+
+  article pre code {
+    background: transparent;
+  }
+
+  article tr:nth-child(2n) {
+    background: rgba(#f6f8fa, .1);
+  }
+
+  .search-btn, section.profile, section.stats, .articles .article, details, .create-commons-license, .create-commons-license a {
+    border: 1px solid rgba(255, 255, 255, .1)
+  }
+
+  section:not(.footnotes):hover, .search-btn:hover, .articles .article:hover, details:hover, .back-to-top:hover,
+  .create-commons-license:hover, .create-commons-license a:hover, .search-result:hover {
+    border: 1px solid $darkPrimary !important;
+  }
+
+  .blogrolls .blogroll:hover {
+    border-color: transparent !important;
+  }
+
+  footer {
+    border-top: 1px solid rgba(255, 255, 255, .2);
+
+    .inner svg {
+      fill: white;
+    }
+  }
+
+  .back-to-top {
+    background: #2e2e2e;
+  }
+
+  .create-commons-license {
+    &, a {
+      background: transparent;
+      color: white;
+    }
+  }
+
+  .page-switcher {
+    .page {
+      background: #212121;
+      color: white;
+    }
+
+    .page:not(.router-link-exact-active) {
+      svg {
+        color: white;
+      }
+    }
+
+    .page.router-link-exact-active {
+      color: $darkPrimary;
+
+      svg {
+        color: $darkPrimary;
+      }
+    }
+  }
+
+  .search-modal {
+    &, input {
+      background: #212121;
+    }
+
+    input {
+      border-bottom-color: rgba(255, 255, 255, .2);
+      color: white;
+    }
+
+    input:hover {
+      border-bottom-color: rgba($darkPrimary, .4);
+    }
+
+    input:focus {
+      border-bottom-color: $darkPrimary !important;
+    }
+  }
+
+  .search-result strong {
+    color: black;
+  }
+
+  .search-result:hover, .search-result .data .bg {
+    background: rgba($darkPrimary, .1);
+  }
+
+  pre[class^=language-]::before {
+    color: rgba(255, 255, 255, .4)
+  }
+
+  pre[class^=language-]:hover::before {
+    color: white;
+  }
+}

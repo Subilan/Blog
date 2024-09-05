@@ -5,13 +5,14 @@
       <div class="spacer"/>
       <div class="icons">
         <WrittenByHuman/>
-        <img alt="creative-commons" src="https://mirrors.creativecommons.org/presskit/logos/cc.logo.svg"/>
+        <CreativeCommons/>
       </div>
     </div>
   </footer>
 </template>
 <script setup>
 import WrittenByHuman from "assets/svg/written-by-human.svg";
+import CreativeCommons from "assets/svg/creative-commons.svg";
 </script>
 
 <style lang="scss">
@@ -74,7 +75,7 @@ footer {
     }
   }
 
-  img, svg {
+  svg {
     height: 30px;
   }
 }

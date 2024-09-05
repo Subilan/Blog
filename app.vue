@@ -19,6 +19,9 @@ const titleWithSuffix = computed(() => {
   return `${route.meta.title} - Subilan's Blog`;
 });
 
+const darkMode = usePreferredDark();
+const forceMode = useState('force-mode', () => '');
+
 useHead({
   meta: [
     {
@@ -26,7 +29,10 @@ useHead({
       content: titleWithPrefix
     }
   ],
-  title: titleWithSuffix
+  title: titleWithSuffix,
+  htmlAttrs: {
+    class: ((darkMode.value && forceMode.value !== 'light') || forceMode.value === 'dark') ? 'dark' : ''
+  }
 })
 
 onMounted(() => {
