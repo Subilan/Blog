@@ -59,7 +59,7 @@ $darkPrimary: #1de9b6;
     }
   }
 
-  section.stats .value, .articles .article h2, .articles .article .view-right-now-message, article a, details summary, .articles .article .bg-icon,
+  section.stats .value, .articles .article h2, .articles .article .view-right-now-message, article a:not(.blogroll), details summary, .articles .article .bg-icon,
   .layout-post .extra span svg {
     color: $darkPrimary !important;
   }
