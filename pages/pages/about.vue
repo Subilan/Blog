@@ -33,6 +33,15 @@
         <p>Twitter / X 上主要发的是一些个人记录的无关紧要内容，作为个人的小型「想法资料库」使用。</p>
         <p>哔哩哔哩上，早期根据个人灵感和兴趣进行了一些音乐方面的剪辑，总体上主要发布一些灵感所构成的视频原型，或者旅行的视频剪辑（非 Vlog）。</p>
       </content-block>
+      <content-block>
+        <template #title>个人：关于游戏平台</template>
+        <p>虽然一般因为<del>自闭</del><em>自己待着</em>所以玩的都是单机游戏，但是一些难度不大的联机游戏也是可以玩的。如果你有兴趣，欢迎加（凑）一个好友哦！</p>
+        <ul>
+          <li><span style="display: inline-flex; align-items: center">Steam 好友代码&nbsp;<strong>355150742</strong><copy-btn content="355150742"/></span></li>
+          <li>英雄联盟国服 艾欧尼亚 <strong>累累的#26909</strong>（我只是个休闲游戏的黑铁）</li>
+          <li>英雄联盟台服 <em>待我日后补上</em></li>
+        </ul>
+      </content-block>
       <img src="@/assets/images/about-banner.jpg" alt="about-banner" class="about-banner"/>
       <em>赏花的猫</em>
     </div>
