@@ -90,6 +90,7 @@ function render(content) {
                 date: frontMatterResult.attributes.date,
                 desc: frontMatterResult.attributes.desc,
                 cate: frontMatterResult.attributes.cate,
+                ignoreOutdate: frontMatterResult.attributes.ignoreOutdate || false,
                 hidden: frontMatterResult.attributes.hidden || false,
                 title,
                 wordCount: countWordsCJK(content)
