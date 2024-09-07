@@ -286,3 +286,9 @@ article {
     }
   }
 }
+
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  background: #f6f8fa;
+}

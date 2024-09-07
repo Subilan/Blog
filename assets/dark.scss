@@ -6,6 +6,10 @@ $darkPrimary: #1de9b6;
     color: white;
   }
 
+  pre[class*="language-"] {
+    background: #2e2e2e;
+  }
+
   nav {
     background: #212121;
     color: white;

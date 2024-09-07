@@ -32,12 +32,6 @@
       text-shadow: none;
     }
   }
-  pre[class*="language-"] {
-    padding: 1em;
-    margin: .5em 0;
-    overflow: auto;
-    background: #2e2e2e;
-  }
   :not(pre) > code[class*="language-"] {
     padding: .1em .3em;
     border-radius: .3em;
