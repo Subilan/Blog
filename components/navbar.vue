@@ -112,6 +112,8 @@ const pageSwitcherModel = ref(false);
 
 .mobile-search-btn {
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   @media (min-width: 768px) {
     display: none;

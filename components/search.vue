@@ -125,6 +125,7 @@ onUnmounted(() => {
     transition: all .2s ease;
     line-height: 1.5;
     margin-bottom: 8px;
+    box-sizing: border-box;
 
     &:focus {
       border-bottom-color: #009688 !important;
@@ -152,11 +153,6 @@ onUnmounted(() => {
   transition: all .2s ease;
   border-radius: 10px;
   cursor: pointer;
-
-
-  @media (max-width: 768px) {
-    padding: 16px 0;
-  }
 
   &:hover {
     background: #e0f2f1;
