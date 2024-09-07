@@ -5,7 +5,7 @@
       <div class="extra">
         <span><icon :path="mdiClockOutline"/> {{ post.date }}</span>
         <span><icon :path="mdiFormatTextVariant"/> 约 {{ post.wordCount }} 字</span>
-        <span><icon :path="mdiShapeOutline"/> {{ post.cate }}</span>
+        <span v-if="post.cate"><icon :path="mdiShapeOutline"/> {{ post.cate }}</span>
       </div>
       <div class="content" v-html="post.content"/>
     </article>
