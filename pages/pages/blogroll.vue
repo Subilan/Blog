@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import blogrolls from '~/data/blogrolls.json'
+import blogrolls from '@/data/blogrolls.json'
 
 definePageMeta({
   title: '友链'

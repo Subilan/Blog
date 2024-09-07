@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import getPostContent from "~/utils/getPostContent.js";
+import getPostContent from "@/utils/getPostContent.js";
 import mediumZoom from "medium-zoom";
 import {mdiClockOutline, mdiFormatTextVariant, mdiShapeOutline} from "@mdi/js";
 import {usePreferredDark} from "@vueuse/core";

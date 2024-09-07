@@ -1,5 +1,5 @@
-import postsearch from '~/data/postsearch.json';
-import getNearestText from "~/utils/getNearestText.js";
+import postsearch from '@/data/postsearch.json';
+import getNearestText from "@/utils/getNearestText.js";
 
 export default function getSearchContent(keywords) {
     if (keywords === '') return [];

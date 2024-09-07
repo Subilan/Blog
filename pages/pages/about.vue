@@ -33,7 +33,7 @@
         <p>Twitter / X 上主要发的是一些个人记录的无关紧要内容，作为个人的小型「想法资料库」使用。</p>
         <p>哔哩哔哩上，早期根据个人灵感和兴趣进行了一些音乐方面的剪辑，总体上主要发布一些灵感所构成的视频原型，或者旅行的视频剪辑（非 Vlog）。</p>
       </details>
-      <img src="~/assets/images/about-banner.jpg" alt="about-banner" class="about-banner"/>
+      <img src="@/assets/images/about-banner.jpg" alt="about-banner" class="about-banner"/>
       <em>赏花的猫</em>
     </div>
   </article>

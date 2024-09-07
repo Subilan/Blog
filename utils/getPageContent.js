@@ -1,4 +1,4 @@
-import pages from '~/data/pages.json';
+import pages from '@/data/pages.json';
 
 export function getPageContent(slug) {
     const target = pages.filter(x => x.slug === slug);
