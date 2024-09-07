@@ -5,14 +5,12 @@
       <div class="spacer"/>
       <div class="icons">
         <WrittenByHuman/>
-        <CreativeCommons/>
       </div>
     </div>
   </footer>
 </template>
 <script setup>
 import WrittenByHuman from "assets/svg/written-by-human.svg";
-import CreativeCommons from "assets/svg/creative-commons.svg";
 </script>
 
 <style lang="scss">

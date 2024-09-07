@@ -18,11 +18,15 @@
         <icon :path="mdiArrowTopRight"/>
       </a>
     </div>
+    <div class="bg">
+      <CreativeCommons/>
+    </div>
   </div>
 </template>
 
 <script setup>
 import {mdiArrowTopRight} from "@mdi/js";
+import CreativeCommons from '@/assets/svg/creative-commons.svg';
 </script>
 
 <style lang="scss">
@@ -34,6 +38,20 @@ import {mdiArrowTopRight} from "@mdi/js";
   box-sizing: border-box;
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+
+  .bg {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    opacity: .08;
+    z-index: 1;
+
+    svg {
+      height: 100px;
+      color: #004d40;
+    }
+  }
 
   @media (max-width: 840px) {
     margin: 0 20px;
@@ -42,7 +60,7 @@ import {mdiArrowTopRight} from "@mdi/js";
   .links {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 16px;
 
     @media (max-width: 768px) {
@@ -59,6 +77,7 @@ import {mdiArrowTopRight} from "@mdi/js";
     display: flex;
     align-items: center;
     line-height: 1;
+    z-index: 2;
 
     @media (max-width: 768px) {
       justify-content: center;
