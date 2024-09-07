@@ -1,7 +1,11 @@
 const markdownit = require("markdown-it");
 const fs = require('fs/promises')
 const fm = require('front-matter');
-const getTitle = require('get-title-markdown');
+
+function getTitle(text) {
+    const regexResult = /#\s(.*)/.exec(text);
+    return regexResult[1];
+}
 
 function countWordsCJK(text) {
     return (text.match(/[\u00ff-\uffff]|\S+/g) || []).length;

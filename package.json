@@ -15,7 +15,6 @@
     "@nuxt/content": "^2.13.2",
     "@vueuse/core": "^11.0.3",
     "front-matter": "^4.0.2",
-    "get-title-markdown": "^2.0.1",
     "markdown-it": "^14.1.0",
     "markdown-it-external-links": "^0.0.6",
     "markdown-it-footnote": "^4.0.0",
