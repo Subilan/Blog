@@ -24,7 +24,7 @@ const dark = usePreferredDark();
 
 onMounted(() => {
   mediumZoom('article .content img', {
-    background: dark.value ? 'rgba(255, 255, 255, .2)' : 'rgba(0, 0, 0, .2)'
+    background: dark.value ? 'rgba(255, 255, 255, .2)' : 'rgba(0, 0, 0, .6)'
   })
 })
 
@@ -65,42 +65,6 @@ definePageMeta({
       width: 16px;
       color: #009688;
     }
-  }
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-p:first-child {
-  margin-top: 0;
-}
-
-.notice {
-  padding: 16px;
-  margin: 16px 0;
-
-  &.tip {
-    background: #e0f2f1;
-    border-left: 5px solid #009688;
-
-    strong {
-      color: #004d40;
-    }
-  }
-
-  &.warning {
-    background: #fff8e1;
-    border-left: 5px solid #ffc107;
-
-    strong {
-      color: #7d2c00;
-    }
-  }
-
-  &.danger {
-    background: #ffebee;
-    border-left: 5px solid #f44336;
   }
 }
 </style>
