@@ -1,7 +1,7 @@
 ---
 date: 2023/09/05
 cate: 记录
-desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领略不变的自然。「自然是不变的」或许正是在遭受别扭或劳累以后对我唯一有效的宽慰。
+desc: 本期看点：在乐山大佛竟遇上魔怔导游？！不知名偏僻寺庙受捐一百元竟反诅咒捐赠者「越来越穷」？这是人性的扭曲，还是道德的沦丧？不过，在关注这一切之前，还是让我们先欣赏一下九寨沟和黄龙的绝世美景吧！
 ---
 # 重庆—成都游记（下）
 
@@ -17,23 +17,23 @@ desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领�
 
 其实这是我第一次感受这么高的海拔，总担心自己会晕厥或者出现什么恐怖的症状。但是现实还是告诉我，海拔 3000 和 4000 还是有很大的区别的。这高原反应（不知道算不算是）体现在我的身上就是走起路来很费劲，看了看表发现，简单爬几步楼梯心率就上了 130，往后甚至能上 140。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/1.PNG)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/1.PNG)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/2.PNG)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/2.PNG)
 
 按照国际惯例的最高心率为 $220 - 年龄$ 的话，其实也妹有什么好担心的~
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2347.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2347.jpeg)
 *膨胀的薯片*
 
 走路上会经过汶川、茂县和松潘这几个我只听说过但从没想到这次旅途会经过的地方。听着导游讲解着这里的历史，也的确能让我想象出一些苦痛的回忆，即使我没有经历过——也可能是我太多愁善感了吧。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2279.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2279.jpeg)
 
 :::warning
 在路上会有很多看似和实则为前往九寨沟游客设计的超市或者餐馆。性价比就不提了，但他们会借着路途遥远的事实，声称「越往里面越贵」。后来发现实际上进去以后价钱虽然贵一点但是都差不多，但最外面的是最贵的。我所遇到的最坑的地方位于下面照片拍摄角度所在处。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2296.jpg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2296.jpg)
 *很坑*
 
 例如一碗自热米饭，正常价格￥12，九寨沟附近价格￥20，此地价格￥40，并声称越往里越贵。属于是纯纯大冤种超市了~
@@ -42,117 +42,117 @@ desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领�
 
 进了九寨沟景区大门以后，会到达九寨沟 Y 字形路线的最底端，然后就是通过乘坐免费的公交车一路前往 Y 字的交支点处，那里貌似有一种大本营的感觉。当然这只是路上导游介绍给我的感觉，实际上根本没到那里去过或者说停留过多久。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2411.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2411.jpeg)
 *景区入口*
  
 去景区的不乏有许多外国人。也难怪，因为在网上九寨沟的画风大概是这样的：
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/WX20230905-201135%402x.png)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/WX20230905-201135%402x.png)
 *维基百科*
 
 九寨沟景区内自带（简易版）导游，负责在乘车过程中的一些讲解，所以即使是在外面有了旅游团，导游并不一定会跟进去。当然，这也正合我意，可以在里面自由行了呢。公交车是遵循景区的调度的，也就是看景区哪个地方人相对少一点就让车把人拉到哪里去，并不是一站一站地停，也不是想去哪里就去哪里（除非走路，但是尊的很痛苦）。这也就让一部分人坐在车上突然没办法到计划中的目的地从而产生一种失控的感觉。
 
 没有到具体的地方，还是不知道九寨沟长什么样。但是这一次，在景区公交上就可以粗略地见识一下九寨沟的水大概是什么样子了。下图是九寨沟的地图，景区的公交会直接从入口将游客接到「诺日朗中心站」，在路上路过的景点都是可以在车窗里看到的（其实刚开始我还幻想着到时候往回走再看，结果...）。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/jiuzhaigou.jpg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/jiuzhaigou.jpg)
 *九寨沟地图*
 
 不过我的运气可能算是还好？虽然导游推荐的是先看右支，但是由于调度，我先把 Y 的左支看了，又让车直接带到了右支（本来准备去中间吃饭的），最后也成功到了中间。这种混乱最终又莫名完美完成路线的感觉还是比较奇妙的。左支和右支各自有对应的景点，车先是将游客送到尽头，然后让游客自行向中心走。在中途可能会存在一些站点，在这些站点可以上车坐到诺日朗中心站（但不能返回）。
 
 但是不得不说在两个支里走的过程还是比较折磨的，因为路途很远... 当天应该走了不下十几公里，那腿是真的要断了的感觉，为的只是一些照片。下面就是当时拍摄的一些照片（经过了一些压缩和格式转换）。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2423.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2423.jpeg)
 *长海*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2425.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2425.jpeg)
 *长海*
 
 先是到了**长海**，也就是左支的终点。那是第一次近距离接触九寨沟的水，所以给我的震撼还是蛮大的！那天天气很好，但是由于海拔高，当地的气温应该是个位数？总之就是特别特别冷，然后走路也比较累（更确切地说，并不是体力上的累，而是喘不过气）。但是因为气温比较能接受（我怕热不怕冷），所以走起路来并不难受，甚至还有点激动。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2433.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2433.jpeg)
 *五彩池*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2434.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2434.jpeg)
 *五彩池*
 
 没有记错的话，上面应该是叫五彩池，相比于长海就没有那么的广阔，据说这是因为枯水期。然后左支能看的就没了，这也是导游推荐先去右支的原因。
 
 右支的旅途并没有直接到原始森林，而是到了芳草海以后逐步往下。原始森林也确实感觉没有精力探索了...
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2456.jpg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2456.jpg)
 *芳草海*
 
 芳草海实际上是一片湿地，中间有贯穿的河流。里面生活着一些鸭子。再往下走就是天鹅海、箭竹海、熊猫海。值得一提的是，前往熊猫海的途中还有一段栈道，两边是水浸的小树林。这种景象的确能给人很多精神上的活力，因为水又清又蓝（或者绿？），空气很清新，气温也不高。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2473.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2473.jpeg)
 *箭竹海*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2494.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2494.jpeg)
 *清水流经的林地，流速不小*
 
 这里不乏一些倒在水体中的树木。在后面的五花海更加明显。下面应该是在熊猫海或者箭竹海里拍到的树木，富有美感。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2541.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2541.jpeg)
 
 在往五花海走的路上，遇到的一群鸭子也看起来清秀许多。它们是从远处慢慢游来的，这也是我第一次这么近距离接触鸭子，还蛮可爱的~
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2578.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2578.jpeg)
 *清秀的鸭子和它们在水里的倒影*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2587.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2587.jpeg)
 
 其实我也比较好奇这里水底长的是啥植物。下面就是几张从五花海开始向下进发图中拍到的图片啦，都很美是不是~
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2610.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2610.jpeg)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2623.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2623.jpeg)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2626.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2626.jpeg)
 
 过程中还发现树木上卡着的一颗石头，这让我不禁想起 2017 年的九寨沟地震...四川所在的地方地质灾害还是要比别的地方要频繁一些。我也从未料想到会在人们聚集的地方发生地震。想到这里，晚上就心有余悸，但是 iPhone 又没有地震提醒功能，我甚至还为了平复心情安装了一个 ICL。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2624.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2624.jpeg)
 
 再往下走，靠近诺日朗中心站的地方，就是珍珠滩瀑布。这里格外吸引人貌似就是因为这里曾经是西游记的取景地，但是不得不说这一点并不吸引我，我来这里也只是走流程...瀑布的话就是瀑布的样子，但是上面的滩流还是比较独特的。有种想在上面走一圈的冲动（？）
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2628.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2628.jpeg)
 *珍珠滩瀑布的「滩」*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2643.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2643.jpeg)
 *珍珠滩瀑布的「瀑」*
 
 基本上在左右支的游览内容就是这些，拍摄了几百张照片，也走了超多的路。实际上到了珍珠滩这里的时候我已经彻底走不动了，不得不原地坐下休息了 20 分钟左右才得以继续。但是...貌似休息了也没用啊 `^_^'''`。
 
 继续往下走就是镜海，但是当时实在是太累了就停下来吃饭了。总之游到这个时候总感觉有些视觉疲劳...但是最初看见这些海子的时候的惊讶，还是难以磨灭的。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2653.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2653.jpeg)
 *镜海，类似于长海*
 
 最后就来到了诺日朗中心站，向下步行大概 500m 左右就到了诺日朗瀑布。到这个时候我才发现我来的时候还是想太多，根本走不动！
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2660.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2660.jpeg)
 *诺日朗瀑布*
 
 看完具有象征性的诺日朗瀑布之后，就坐公交直接离开了~ 在这里公交在路上是会停站的，怎么来的时候没有发现...总之呢，九寨沟到这里就是看完了。也还算是比较满意吧，毕竟最后蓝蓝绿绿的都要视觉疲劳了，但的确这是难得一见的水景，搭配上这种气温，还是有点享受的。但是同时又有痛苦，那就是实在是太难走了！全程走路的动力就是看景，以及没车坐的现实。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2667.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2667.jpeg)
 *林间随手拍 1*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2670.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2670.jpeg)
 *林间随手拍 2*
 
 离开了九寨沟的下一站就是黄龙，虽然在地图上看黄龙距离九寨沟有 100 多公里，但实际上这算是整个路途中比较近的了...而且，走完黄龙以后给我的感觉就是，黄龙必须跟九寨沟在一起才能有人去，因为内容相对来说还是比较少的。黄龙景区内，大概就是去上面看一下黄龙沟里的五彩池，然后如果有体力的话再走下去（走过九寨沟，我是没体力了）看看沿途的原始森林和流水。
 
 山上的五彩池还是比较惊艳的。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2760.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2760.jpeg)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2775.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2775.jpeg)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2794.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2794.jpeg)
 
 这池里也不知道长的是什么藻类还是细菌之类的，给人的感觉很奇妙。7 月去的时候感觉黄龙似乎没水了？流水水量都很小。也不确定是不是一直都是这样的。五彩池下面还有一座寺庙，我也不信佛不知道能不能拍，无所谓了，还是放出来叭。这个烟雾缭绕——还是挺有感觉的~
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2732.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2732.jpeg)
 
 大概在五彩池下 200m 就是景区游览车和步行栈道的交叉点，在这里可以选择下山的方式。本来是准备坐车上山走下山的，结果没走几步（大概 300m？）就受不了了，来回简直要死要活的，还真是爬几步楼梯都费劲。最后不得不去坐游览车...但是走去的路依然很难熬啊啊啊啊啊啊啊啊！
 
@@ -180,11 +180,11 @@ desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领�
 
 过了公园以后，到了一个叫「千佛洞」的山洞里，不清楚是人造还是自然生成。洞里的墙上雕的全是佛像和菩萨像，也有一部分类似于和尚。这与导游先前给我们描述的比较符合，就是可能对我这类完全不感兴趣的人来说震撼没那么大。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2864.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2864.jpeg)
 
 还有一面墙上雕刻的是轮回的转盘，下面用标准的英语（不是机翻）写的有模有样的，也用上了一些佛学的专有名词。这一段英语的确帮助我更好地了解墙上刻的内容的含义，他是谁，他经历了什么，虽然都是传说。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2871.jpg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2871.jpg)
 *还是挺抽象的*
 
 而在这个过程中，我实际上算是短暂脱团了。因为当时一排同行的人就站在一个地方听着导游讲。我寻思讲讲佛像的含义，解读一下牌子上的内容，也没啥问题，我自己看我自己的得了。但是我听到的东西却越来越不对劲。导游开始举一些例子——「你相信**报应**吗？你相信**因果**吗？」然后说了一大堆现实中的因果，得出的结论大概是因果报应是肯定存在的，你种下什么的因，就会结什么样的果。
@@ -195,18 +195,18 @@ desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领�
 
 走过千佛洞，来到药师佛脚下。这里导游说了一句话，含义与「**无论谁，有钱或者没钱，来都一定要拜一下药师佛，因为只有拜过药师佛才能保你全家不受疾病的侵袭**」类似。当时的语气以及内容，给人的感觉就是「**如果你不拜，那就可能出现灾祸**」，而不是说有信仰的人拜拜即可。正当我在担忧会不会是一群人排着队去拜的时候，旁边供的莲花灯吸引了我的注意力，于是我又脱团去拍莲花灯。后来发现也有和我一样脱团出来的，其余的人正在跟随导游**学习拜佛的姿势**。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2874.jpg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2874.jpg)
 *药师佛*
 
 看到这莲花灯让我想起来，我还是生活在一个商业化的现代世界里，因为这灯也是花钱供的。莲花造型的蜡放在类似农村请客用的塑料碗里烧着，摆在药师佛的两边。我就暂且当它是一种虔诚，与我无关的虔诚。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2876.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2876.jpeg)
 *一排排的莲花灯 - 1*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2882.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2882.jpeg)
 *一排排的莲花灯 - 2*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2884.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2884.jpeg)
 *香炉*
 
 离开了这药师佛就要转向乐山大佛了。去乐山大佛的目的就是去看这个大佛雕像，然而，现实是进入景区以后是大佛的头顶，若想要看到大佛的全貌，则需要通过阶梯先下到底部再走上来。但是令人困扰的是这一路非常的狭窄，所以会出现十分离谱（不是一般离谱）的堵人景象。导游在到达那里之前就告诉所有人，可以选择下去再上来，只是会非常累，如果所有人一致选择不下去，则直接跳过进入下一个地方。到了现场我也确认了这一说法是真实的。*但其实下不下去对我来说意义并不大，我也就看个热闹，主要想去的还是峨眉山嘛。*
@@ -273,45 +273,45 @@ desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领�
 
 没错，峨眉山上也有许多寺庙，但这些寺庙的强度就要比乐山的小一些，导游讲的内容也正常。寺庙可以算是峨眉山上除了山以外的首要看点了。去峨眉山是为了到山顶上，也就是金顶（最开始我以为这是对山顶的美称，后来发现是寺庙名）。爬峨眉山还是比较麻烦和痛苦的，所以我选择的路线是一路转车加上小段步行再加上缆车。本团导游也会给出不到达金顶的路线，后来被证明是坑（因为有点像是白来），但是轻松。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2949.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2949.jpeg)
 *步行道路上准备好的泡面*
 
 其实还是比较庆幸那天天气是阴雨天，但是神奇的是依然能清晰地看见佛像和寺庙建筑。导游的意思大概是这也是在这种天气比较罕见的可见度了。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2985.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2985.jpeg)
 *稍微有太阳光露出来的时候的华藏寺*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3001.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3001.jpeg)
 *能见度高时的普贤菩萨*
 
 而且在这样的悬崖峭壁上，还看到了松鼠捏~
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2994.JPG)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2994.JPG)
 
 松鼠附近的地上凌乱的大概是垃圾和食物碎屑，看起来稍微有点不爽。总之还是了解到了这一片是经常有松鼠出没的。
 
 普贤菩萨底下是可以进去的，内部大概长这样：
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_2974.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_2974.jpeg)
 
 虽然不知道该不该说，但是看到其中有些年轻的面孔我就特别不理解，是家里腰缠万贯没别的事情做来峨眉山上追求信仰，还是觉得工作太累到这里来骗饭吃？哪种逻辑我都想不通年轻人在这里修个什么劲，也许是我太过于没有信仰了吧。他们在念经的同时，我看到了这两个二维码，竟然有一点想笑。
 
 下山就是看一些寺庙了，没啥好看的。就放个寺庙里的喵喵吧。不过这猫好像很老了，看上去特别沧桑的样子，尤其是第二只。
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3121.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3121.jpeg)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3124.JPG)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3124.JPG)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3132.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3132.jpeg)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3114.JPG)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3114.JPG)
 
 除了猫，还有...
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3140.JPG)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3140.JPG)
 *？*
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3138.JPG)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3138.JPG)
 *？*
 
 看到真的野生猴子在路上窜来窜去还是比较惊悚的，因为听说它们会抢东西。我就很害怕会把我手机抢掉。更离谱的是在一片幽暗的树林里全是猴群，还是上山的人用弹弓打散的。在一个转角处还看到不远处的猴子就立在栏杆上，等着行人过去。
@@ -320,14 +320,14 @@ desc: 无论是跋山涉水还是领略不同的人情，最终都是只为领�
 
 快要到终点的时候拍的，这才是我想象中的峨眉山景啊！
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/IMG_3179.jpeg)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/IMG_3179.jpeg)
 
 ## 彩蛋
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/WX20230905-232427%402x.png)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/WX20230905-232427%402x.png)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/WX20230905-232107%402x.png)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/WX20230905-232107%402x.png)
 
-![](https://xswl-1253679544.cos.ap-chongqing.myqcloud.com/images/2/fo.png)
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/2/fo.png)
 
 我想，若苦痛也可以算是一种乐趣来反复摆弄，那或许也的确是一种独特的精神财宝。
