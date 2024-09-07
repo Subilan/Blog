@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import getPostDigests from "~/utils/getPostDigests";
+import getPostDigests from "@/utils/getPostDigests";
 import {mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPencil} from "@mdi/js";
 import {definePageMeta} from "#imports";
 

@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import pgp from '~/data/pgp.js'
+import pgp from '@/data/pgp.js'
 
 definePageMeta({
   title: 'PGP'
