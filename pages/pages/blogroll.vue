@@ -16,8 +16,8 @@
       </a>
     </div>
     <div class="details">
-      <details>
-        <summary><span>如何在这里添加友链</span></summary>
+      <content-block>
+        <template #title>如何在这里添加友链</template>
         <p>友链是相互的，因此请考虑在你的网站上添加本站的友链，相关的信息可参考下面的「本站的友链信息」部分。</p>
         <p>如果你有在此添加友链的意向，欢迎联系我或者直接在 GitHub 上通过 pull request
           添加。联系时，请务必带上以下信息：</p>
@@ -33,9 +33,9 @@
           <li>最新的一篇博文需在近一年内发布，且博文总数超过三篇</li>
         </ul>
         <p>如果你对友链的展示样式有个性化的需求，欢迎随附说明。在没有任何附加说明的情况下，你的友链按钮背景会被呈现为白色。</p>
-      </details>
-      <details>
-        <summary><span>通过 Pull Request 添加友链的具体流程</span></summary>
+      </content-block>
+      <content-block>
+        <template #title>通过 Pull Request 添加友链的具体流程</template>
         <ol>
           <li>打开 <a target="_blank" class="external-link" href="https://github.com/Subilan/Blog">https://github.com/Subilan/Blog</a>
           </li>
@@ -43,16 +43,16 @@
           </li>
           <li>发起 pull request。合并以后你的友链就会出现在这里。</li>
         </ol>
-      </details>
-      <details>
-        <summary><span>本站的友链信息</span></summary>
+      </content-block>
+      <content-block>
+        <template #title>本站的友链信息</template>
         <p>如有意添加本站友链，请参考下面的信息。</p>
         <ul>
           <li v-for="x in Object.keys(thisInfo)">
             {{ x }}：{{ thisInfo[x] }}<copy-btn class="copy" :content="thisInfo[x]"/>
           </li>
         </ul>
-      </details>
+      </content-block>
     </div>
   </article>
 </template>
