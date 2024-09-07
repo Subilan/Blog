@@ -35,7 +35,7 @@
       </content-block>
       <content-block>
         <template #title>个人：关于游戏平台</template>
-        <p>虽然一般因为<del>自闭</del><em>自己待着</em>所以玩的都是单机游戏，但是一些难度不大的联机游戏也是可以玩的。如果你有兴趣，欢迎加（凑）一个好友哦！</p>
+        <p>虽然一般因为<del>自闭</del><em>自己待着</em>所以平时玩的都是单机游戏（其实也不经常玩），但是一些难度不大的联机游戏也是可以玩的。如果你有兴趣，欢迎加（凑）一个好友哦！</p>
         <ul>
           <li><span style="display: inline-flex; align-items: center">Steam 好友代码&nbsp;<strong>355150742</strong><copy-btn content="355150742"/></span></li>
           <li>英雄联盟国服 艾欧尼亚 <strong>累累的#26909</strong>（我只是个休闲游戏的黑铁）</li>
