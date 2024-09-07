@@ -2,7 +2,7 @@
   <navbar/>
   <div class="layout-default">
     <div class="left">
-      <section class="profile">
+      <section class="profile hoverable rounded">
         <div class="avatar">
           <img src="~/assets/avatar.jpg" alt="avatar"/>
           <span class="name">Subilan</span>
@@ -33,7 +33,7 @@
           &copy; 2019-{{ new Date().getFullYear() }} Subilan's Blog<br/>Built with Nuxt 3
         </div>
       </section>
-      <section class="stats">
+      <section class="stats hoverable rounded">
         <p>截至现在，这里...</p>
         <div class="stat" v-for="x in blogStats">
           <span class="prefix">{{ x[0] }}</span>
@@ -117,17 +117,8 @@ const blogStats = [
 }
 
 .left section {
-  border: 1px solid rgba(0, 0, 0, .1);
-  border-radius: 10px;
-  transition: all .2s ease;
   padding: 16px;
   background: white;
-
-  &:hover {
-    box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
-    border: 1px solid rgba(#004d40, .8);
-    transform: translateY(-4px);
-  }
 }
 
 .stats {

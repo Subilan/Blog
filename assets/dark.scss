@@ -85,10 +85,6 @@ $darkPrimary: #1de9b6;
     background: rgba(#f6f8fa, .1);
   }
 
-  .search-btn, section.profile, section.stats, .articles .article, details, .create-commons-license, .create-commons-license a {
-    border: 1px solid rgba(255, 255, 255, .1) !important;
-  }
-
   section:not(.footnotes):hover, .search-btn:hover, .articles .article:hover, details:hover, .back-to-top:hover,
   .create-commons-license:hover, .create-commons-license a:hover, .search-result:hover {
     border: 1px solid $darkPrimary !important;

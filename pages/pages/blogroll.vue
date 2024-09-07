@@ -18,7 +18,8 @@
     <div class="details">
       <details>
         <summary><span>如何在这里添加友链</span></summary>
-        <p>友链是相互的，如果你有在此添加友链的意向，欢迎联系我或者直接在 GitHub 上通过 pull request
+        <p>友链是相互的，因此请考虑在你的网站上添加本站的友链，相关的信息可参考下面的「本站的友链信息」部分。</p>
+        <p>如果你有在此添加友链的意向，欢迎联系我或者直接在 GitHub 上通过 pull request
           添加。联系时，请务必带上以下信息：</p>
         <ul>
           <li>你的头像文件所在地址</li>
@@ -31,7 +32,7 @@
           <li>域名为个人持有</li>
           <li>最新的一篇博文需在近一年内发布，且博文总数超过三篇</li>
         </ul>
-        <p>如果你对友链的展示样式有个性化的需求，欢迎随附说明。在没有任何附加说明的情况下，你的友链会被呈现为白色。</p>
+        <p>如果你对友链的展示样式有个性化的需求，欢迎随附说明。在没有任何附加说明的情况下，你的友链按钮背景会被呈现为白色。</p>
       </details>
       <details>
         <summary><span>通过 Pull Request 添加友链的具体流程</span></summary>
@@ -47,11 +48,9 @@
         <summary><span>本站的友链信息</span></summary>
         <p>如有意添加本站友链，请参考下面的信息。</p>
         <ul>
-          <li>网站名称：Subilan's Blog</li>
-          <li>网站介绍：Satellite yourself.</li>
-          <li>网站代表色：#009688</li>
-          <li>网站地址：https://subilan.win</li>
-          <li>头像：https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png</li>
+          <li v-for="x in Object.keys(thisInfo)">
+            {{ x }}：{{ thisInfo[x] }}<copy-btn class="copy" :content="thisInfo[x]"/>
+          </li>
         </ul>
       </details>
     </div>
@@ -60,6 +59,14 @@
 
 <script setup>
 import blogrolls from '@/data/blogrolls.json'
+
+const thisInfo = {
+  '网站名称': 'Subilan\'s Blog',
+  '网站介绍': 'Satellite yourself.',
+  '网站代表色': '#009688',
+  '网站地址': 'https://subilan.win',
+  '头像': 'https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png'
+}
 
 definePageMeta({
   title: '友链'
@@ -72,6 +79,16 @@ definePageMeta({
   flex-direction: column;
   gap: 16px;
   margin-top: 16px;
+}
+
+.copy {
+  opacity: 0;
+  pointer-events: none;
+}
+
+li:hover .copy {
+  opacity: 1;
+  pointer-events: all;
 }
 
 .blogrolls {

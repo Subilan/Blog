@@ -3,11 +3,11 @@
     <div class="mobile-menu-btn" @click="pageSwitcherModel = !pageSwitcherModel">
       <icon :path="mdiMenu"/>
     </div>
-    <img src="~/assets/avatar.jpg" alt="avatar"/>
+    <img src="@/assets/avatar.jpg" alt="avatar"/>
     <span class="site-title">
       <router-link to="/">Subilan's Blog</router-link>
     </span>
-    <div class="search-btn" @click="searchModal = true">
+    <div class="search-btn hoverable" @click="searchModal = true">
       <icon :path="mdiMagnify"/>
       搜索
       <client-only><span class="hotkey">{{ isMacOS() ? '⌘' : 'Ctrl' }}+K</span></client-only>
@@ -123,13 +123,11 @@ const pageSwitcherModel = ref(false);
   align-items: center;
   font-size: 14px;
   padding: 4px 6px;
-  border: 1px solid rgba(0, 0, 0, .1);
-  transition: all .2s ease;
   line-height: 1;
-  cursor: pointer;
   border-radius: 5px;
   gap: 4px;
   margin-left: 16px;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     display: none;
@@ -146,9 +144,7 @@ const pageSwitcherModel = ref(false);
   }
 
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 0 rgba(0, 0, 0, .1);
-    border: 1px solid rgba(#004d40, .8);
+    color: #004d40;
   }
 }
 </style>

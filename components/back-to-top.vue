@@ -1,6 +1,6 @@
 <template>
   <transition name="flowup">
-    <div @click="scrollToTop" class="back-to-top" v-if="showBackToTop">
+    <div @click="scrollToTop" class="back-to-top hoverable rounded" v-if="showBackToTop">
       <span class="words">返回顶部</span>
       <icon :path="mdiArrowUp"/>
     </div>
@@ -32,9 +32,6 @@ onMounted(() => {
 
 
 .back-to-top {
-  border: 1px solid rgba(0, 0, 0, .1);
-  border-radius: 10px;
-  transition: all .2s ease;
   padding: 12px 16px;
   cursor: pointer;
   background: white;
@@ -61,12 +58,6 @@ onMounted(() => {
 
   svg {
     height: 20px;
-  }
-
-  &:hover {
-    box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
-    border: 1px solid rgba(#004d40, .8);
-    transform: translateY(-4px);
   }
 }
 </style>

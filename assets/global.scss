@@ -292,3 +292,34 @@ pre[class*="language-"] {
   margin: .5em 0;
   background: #f6f8fa;
 }
+
+details, .hoverable {
+  border: 1px solid rgba(0, 0, 0, .1);
+  transition: all .2s ease;
+}
+
+details:hover, .hoverable:hover {
+  border-color: rgba(#004d40, .8);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
+}
+
+a.hoverable:hover {
+  color: #004d40;
+}
+
+.hoverable.less-shadow:hover {
+  box-shadow: 0 4px 0 rgba(0, 0, 0, .1);
+}
+
+.dark .hoverable, .dark details {
+  border-color: rgba(255,255,255,.1)
+}
+
+.dark .hoverable:hover, .dark details:hover {
+  border-color: dark.$darkPrimary;
+}
+
+.rounded, details:hover {
+  border-radius: 10px;
+}

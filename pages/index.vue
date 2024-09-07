@@ -1,6 +1,6 @@
 <template>
   <div class="articles">
-    <router-link class="article" v-for="x in getPostDigests()" :to="`/posts/${x.slug}`">
+    <router-link class="article hoverable rounded" v-for="x in getPostDigests()" :to="`/posts/${x.slug}`">
       <span class="view-right-now-message">打开 <icon :path="mdiArrowTopRight"/></span>
       <h2>{{ x.title }}</h2>
       <div class="meta">
@@ -47,11 +47,7 @@ definePageMeta({
     text-decoration: none;
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0, 0, 0, .1);
-    border-radius: 10px;
     padding: 20px;
-    cursor: pointer;
-    transition: all .2s ease;
 
     .view-right-now-message {
       opacity: 0;
@@ -74,12 +70,6 @@ definePageMeta({
         height: 14px;
         width: 14px;
       }
-    }
-
-    &:hover {
-      box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
-      transform: translateY(-2px);
-      border-color: rgba(#004d40, .8)
     }
 
     &:hover {
