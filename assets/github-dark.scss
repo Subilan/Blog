@@ -120,4 +120,8 @@
   .token.entity {
     cursor: help;
   }
+
+  .notice pre[class*=language-] {
+    border: 1px solid rgba(255,255,255,.1);
+  }
 }
