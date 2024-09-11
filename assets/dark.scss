@@ -12,6 +12,12 @@ $darkPrimary: #1de9b6;
     background: #2e2e2e;
   }
 
+  kbd {
+    background: #2e2e2e;
+    box-shadow: 0 1px 0 2px rgba($darkPrimary, 0.3);
+    color: $darkPrimary;
+  }
+
   article td, article th {
     border-color: #3e3e3e;
   }
