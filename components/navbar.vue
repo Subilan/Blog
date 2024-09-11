@@ -21,22 +21,34 @@
     <div class="mobile-search-btn" @click="searchModal = true">
       <icon :path="mdiMagnify"/>
     </div>
+    <client-only>
+      <div class="pc-dark-toggle-btn" @click="toggleDarkmode">
+        <icon :path="mdiWeatherSunny" v-if="!darkMode || forceMode === 'light'"/>
+        <icon :path="mdiWeatherNight" v-if="(darkMode && forceMode !== 'light') || forceMode === 'dark'"/>
+      </div>
+    </client-only>
   </nav>
   <search v-model="searchModal"/>
   <page-switcher v-model="pageSwitcherModel"/>
 </template>
 
 <script setup lang="ts">
-import {mdiMagnify, mdiMenu, mdiThemeLightDark} from "@mdi/js";
+import {mdiMagnify, mdiMenu, mdiMoonWaningCrescent, mdiThemeLightDark, mdiWeatherNight, mdiWeatherSunny} from "@mdi/js";
 import {pages} from "~/data/config";
 import isMacOS from "~/utils/isMacOS";
+import {usePreferredDark} from "@vueuse/core";
+import toggleDarkmode from "~/utils/toggleDarkmode";
 
 const searchModal = ref(false);
 const pageSwitcherModel = ref(false);
+
+const forceMode = useState('force-mode');
+const darkMode = usePreferredDark();
 </script>
 
 <style lang="scss">
 @use "@/assets/global";
+@use "@/assets/dark";
 
 .mobile-menu-btn {
   margin-right: 16px;
@@ -44,6 +56,34 @@ const pageSwitcherModel = ref(false);
 
   @media (min-width: 768px) {
     display: none;
+  }
+}
+
+.dark .pc-dark-toggle-btn:hover {
+  border-color: rgba(dark.$darkPrimary, .1);
+}
+
+.pc-dark-toggle-btn {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  cursor: pointer;
+  background: transparent;
+  border-radius: 100%;
+  height: 18px;
+  width: 18px;
+  transition: all .2s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: rgba(#1de9b6, .1);
+    border-color: rgba(0, 0, 0, .1);
+  }
+
+  svg {
+    height: 18px;
   }
 }
 

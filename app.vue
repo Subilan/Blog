@@ -18,9 +18,11 @@ const titleWithSuffix = computed(() => {
   }
   return `${route.meta.title} - Subilan's Blog`;
 });
+const darkClass = computed(() => (forceMode.value === 'dark' || (darkMode.value && forceMode.value !== 'light')) ? 'dark' : '')
 
+const darkModeCookie = useCookie('subilan-blog-dark-mode-indicator');
 const darkMode = usePreferredDark();
-const forceMode = useState('force-mode', () => '');
+const forceMode = useState('force-mode', () => darkModeCookie.value || '');
 
 useHead({
   meta: [
@@ -31,7 +33,7 @@ useHead({
   ],
   title: titleWithSuffix,
   htmlAttrs: {
-    class: ((darkMode.value && forceMode.value !== 'light') || forceMode.value === 'dark') ? 'dark' : ''
+    class: darkClass
   }
 })
 
