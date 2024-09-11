@@ -39,6 +39,7 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
   max-width: 800px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 
   .bg {
     position: absolute;
@@ -46,6 +47,10 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
     bottom: 16px;
     opacity: .08;
     z-index: 1;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
 
     svg {
       height: 100px;

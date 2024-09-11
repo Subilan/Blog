@@ -121,8 +121,13 @@ $darkPrimary: #1de9b6;
   }
 
   .create-commons-license {
-    &, a {
+    & {
       background: transparent;
+      color: white;
+    }
+
+    a {
+      background: #212121;
       color: white;
     }
   }
