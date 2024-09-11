@@ -55,6 +55,7 @@ definePageMeta({
   background: #fff8e1;
   padding: 16px;
   border: 2px dashed #ffc107;
+  color: black;
   border-radius: 10px;
   text-align: center;
 
