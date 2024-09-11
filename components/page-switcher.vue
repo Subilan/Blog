@@ -8,17 +8,58 @@
           {{ x.name }}
         </router-link>
       </transition>
+     <transition name="opacity" appear>
+       <div class="mobile-dark-toggle-btn-container">
+         <div class="mobile-dark-toggle-btn" @click="toggleDarkmode">
+           <icon :path="mdiWeatherSunny" v-if="!darkMode || forceMode === 'light'"/>
+           <icon :path="mdiWeatherNight" v-if="(darkMode && forceMode !== 'light') || forceMode === 'dark'"/>
+         </div>
+       </div>
+     </transition>
     </div>
   </transition>
 </template>
 
 <script setup>
 import {pages} from '~/data/config.js'
+import {mdiWeatherNight, mdiWeatherSunny} from "@mdi/js";
+import {usePreferredDark} from "@vueuse/core";
 
 const model = defineModel();
+
+const darkMode = usePreferredDark();
+const forceMode = useState('force-mode');
 </script>
 
 <style lang="scss">
+.mobile-dark-toggle-btn-container {
+  display: flex;
+  justify-content: center;
+
+  .mobile-dark-toggle-btn {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    bottom: 32px;
+    cursor: pointer;
+    transition: all .2s ease;
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
+
+.dark .mobile-dark-toggle-btn {
+  background: #212121;
+}
+
 .flowfromleft-enter-from,
 .flowfromleft-leave-to {
   transform: translateX(-100px);
