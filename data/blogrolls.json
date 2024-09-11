@@ -82,5 +82,12 @@
     "avatar": "https://krtk.top/images/takeo_avatar.png",
     "description": "Forever on the Path of Learning",
     "background": "#fff"
+  },
+  {
+    "name": "Restent Ou",
+    "href": "https://blog.gxres.net",
+    "avatar": "https://library.gxres.net/images/icons/avatar.webp",
+    "description": "静寂に問う 答えを求めて",
+    "background": "https://library.gxres.net/images/bg.webp"
   }
 ]
