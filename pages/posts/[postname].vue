@@ -50,6 +50,19 @@ definePageMeta({
   padding: 16px 0;
 }
 
+.dark .outdated-warning {
+  background: rgba(#fff8e1, .2);
+  border-color: rgba(#ffc107, .3);
+
+  h3, strong {
+    color: #ffc107;
+  }
+
+  p {
+    color: white;
+  }
+}
+
 .outdated-warning {
   margin-top: 16px;
   background: #fff8e1;
