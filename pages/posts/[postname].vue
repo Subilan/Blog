@@ -24,13 +24,12 @@ import {usePreferredDark} from "@vueuse/core";
 
 const slug = useRoute().params.postname;
 const post = getPostContent(slug.toLowerCase());
-const dark = usePreferredDark();
 
 const dayDelta = computed(() => (new Date().getTime() - new Date(post.date).getTime()) / (1000 * 3600 * 24));
 
 onMounted(() => {
   mediumZoom('article .content img', {
-    background: dark.value ? 'rgba(255, 255, 255, .2)' : 'rgba(0, 0, 0, .6)'
+    background: 'rgba(0, 0, 0, .6)'
   })
 })
 
