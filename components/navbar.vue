@@ -85,6 +85,10 @@ const darkMode = usePreferredDark();
   svg {
     height: 18px;
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .nav {
