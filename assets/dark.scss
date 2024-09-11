@@ -1,6 +1,8 @@
 $darkPrimary: #1de9b6;
 
 .dark {
+  color-scheme: dark;
+
   body {
     background: #212121;
     color: white;
@@ -8,6 +10,10 @@ $darkPrimary: #1de9b6;
 
   pre[class*="language-"] {
     background: #2e2e2e;
+  }
+
+  article td, article th {
+    border-color: #3e3e3e;
   }
 
   nav {
@@ -83,6 +89,14 @@ $darkPrimary: #1de9b6;
 
   article tr:nth-child(2n) {
     background: rgba(#f6f8fa, .1);
+  }
+
+  .create-commons-license a:hover {
+    color: $darkPrimary;
+  }
+
+  .create-commons-license .bg svg {
+    fill: white;
   }
 
   section:not(.footnotes):hover, .search-btn:hover, .articles .article:hover, details:hover, .back-to-top:hover,
