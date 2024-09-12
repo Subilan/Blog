@@ -23,7 +23,7 @@
     </div>
     <client-only>
       <div class="pc-dark-toggle-btn" @click="toggleDarkmode">
-        <icon :path="mdiWeatherSunny" v-if="!darkMode || forceMode === 'light'"/>
+        <icon :path="mdiWeatherSunny" v-if="(!darkMode && forceMode !== 'dark') || forceMode === 'light'"/>
         <icon :path="mdiWeatherNight" v-if="(darkMode && forceMode !== 'light') || forceMode === 'dark'"/>
       </div>
     </client-only>
