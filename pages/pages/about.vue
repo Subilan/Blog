@@ -1,9 +1,8 @@
 <template>
   <article>
     <h1>关于</h1>
-    <p>这里并不是技术博客，而是更类似自由发挥的一样空间。欢迎在 <a class="external-link" target="_blank"
-                                                                 href="https://github.com/Subilan/Blog/issues">GitHub
-      仓库的 Issue</a> 里评论或者一起探讨话题，这里并不会用到任何第三方的评论程序。</p>
+    <p><strong>Solitude Scroll</strong> 意为“孤独卷轴”。人生是一场斑斓的苦旅，掌舵的永远是我们自己。这里并不是技术博客，而是更类似自由发挥的一样空间，记录了自己过往实际或不切实际的经验和观点，并在有生之年应该会持续更新。</p>
+    <p>欢迎在 <a class="external-link" target="_blank" href="https://github.com/Subilan/Blog/issues">GitHub 仓库的 Issue</a> 里发表对文章的评论。本站目前不会用到任何第三方的评论程序。</p>
     <div class="details">
       <content-block>
         <template #title>博客：关于博客的过往</template>

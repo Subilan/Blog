@@ -8,15 +8,18 @@
 <script setup>
 import {useFavicon, usePreferredDark} from "@vueuse/core";
 import getPostContent from "~/utils/getPostContent.js";
+import getSiteName from "~/utils/getSiteName.js";
 
 const route = useRoute();
 
-const titleWithPrefix = computed(() => `Subilan's Blog - ${route.meta.title}`);
+const sitename = getSiteName();
+
+const titleWithPrefix = computed(() => `${sitename} - ${route.meta.title}`);
 const titleWithSuffix = computed(() => {
   if (route.params.postname) {
-    return `${getPostContent(route.params.postname).title} - Subilan's Blog`
+    return `${getPostContent(route.params.postname).title} - ${sitename}`
   }
-  return `${route.meta.title} - Subilan's Blog`;
+  return `${route.meta.title} - ${sitename}`;
 });
 const darkClass = computed(() => (forceMode.value === 'dark' || (darkMode.value && forceMode.value !== 'light')) ? 'dark' : '')
 

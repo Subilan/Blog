@@ -30,7 +30,7 @@
           </router-link>
         </div>
         <div class="footer">
-          &copy; 2019-{{ new Date().getFullYear() }} Subilan's Blog<br/>Built with Nuxt 3
+          &copy; 2019-{{ new Date().getFullYear() }} {{ sitename }}<br/>Built with Nuxt 3
         </div>
       </section>
       <section class="stats hoverable rounded">
@@ -61,13 +61,16 @@ import getTotalPostCount from "~/utils/getTotalPostCount.js";
 import getTotalPostSize from "~/utils/getTotalPostSize.js";
 import blogrolls from '~/data/blogrolls.json';
 import BackToTop from "~/components/back-to-top.vue";
+import getSiteName from "~/utils/getSiteName.js";
+
+const sitename = getSiteName();
 
 const blogStats = [
   ['发布了', getTotalPostCount(), '篇文章'],
   ['容纳了', `${(getTotalWordCount() / 1000).toFixed(1)}K`, '字'],
   ['链接了', `${blogrolls.length}`, '位伙伴'],
   ['存在了', (new Date().getFullYear() - 2019), '年'],
-  ['占用了', `${(getTotalPostSize() / 1000).toFixed(1)}`, 'KB']
+  ['总大小', `${(getTotalPostSize() / 1000).toFixed(1)}`, 'KB']
 ]
 </script>
 
