@@ -20,7 +20,7 @@ import {definePageMeta} from "#imports";
 
 function getIconForCategory(category) {
   switch (category) {
-    case '思想':
+    case '杂谈':
       return mdiFormatQuoteOpen;
     case '代码':
       return mdiCodeTags;
