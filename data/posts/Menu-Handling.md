@@ -4,7 +4,7 @@ desc: 一些强迫症方面的考虑和最终的成功实现
 cate: 代码
 ---
 
-# Menu 组件的基本处理和实现
+# Menu 组件的实现
 
 **Menu 组件**实际上并不是一个正统的称呼，但是也算是一个比较广泛使用的习惯性称呼。还有一些其它的 *de facto* 叫法，比如 Dropdown、MenuList 等。通俗来讲就是当一个被绑定的触发器被触发后所弹出的窗口。窗口内容通常表现为有序的列表，在某些实现里还有可能有部分的分割以及标题，例如
 - [Vuetify 的 Menu](https://vuetifyjs.com/en/components/menus/)
