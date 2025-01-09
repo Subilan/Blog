@@ -5,7 +5,7 @@
     </div>
     <img src="@/assets/avatar.jpg" alt="avatar"/>
     <span class="site-title">
-      <router-link to="/">Subilan's Blog</router-link>
+      <router-link to="/">{{ getSiteName() }}</router-link>
     </span>
     <div class="search-btn hoverable" @click="searchModal = true">
       <icon :path="mdiMagnify"/>
@@ -38,6 +38,7 @@ import {pages} from "~/data/config";
 import isMacOS from "~/utils/isMacOS";
 import {usePreferredDark} from "@vueuse/core";
 import toggleDarkmode from "~/utils/toggleDarkmode";
+import getSiteName from "../utils/getSiteName";
 
 const searchModal = ref(false);
 const pageSwitcherModel = ref(false);

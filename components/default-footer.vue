@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="inner">
-      <span>&copy; 2019-{{ new Date().getFullYear() }} Subilan's Blog<br/><small>Built with Nuxt 3 and 🤔</small></span>
+      <span>&copy; 2019-{{ new Date().getFullYear() }} {{getSiteName()}}<br/><small>Built with Nuxt 3 and 🤔</small></span>
       <div class="spacer"/>
       <div class="icons">
         <WrittenByHuman/>
@@ -11,6 +11,7 @@
 </template>
 <script setup>
 import WrittenByHuman from "assets/svg/written-by-human.svg";
+import getSiteName from "../utils/getSiteName.js";
 </script>
 
 <style lang="scss">
