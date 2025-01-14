@@ -90,5 +90,13 @@
     "description": "静寂に問う 答えを求めて",
     "background": "https://library.gxres.net/images/bg.webp",
     "light": true
+  },
+  {
+    "name": "Mashirl's Blog",
+    "href": "https://mashirl.com",
+    "avatar": "https://mashirl.com/images/avatar.jpg",
+    "description": "Keep it simple, stupid!",
+    "background": "e3fff9",
+    "light": true
   }
 ]
