@@ -97,6 +97,6 @@
     "avatar": "https://mashirl.com/images/avatar.jpg",
     "description": "Keep it simple, stupid!",
     "background": "#e3fff9",
-    "light": true
+    "light": false
   }
 ]
