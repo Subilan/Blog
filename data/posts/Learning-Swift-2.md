@@ -236,7 +236,7 @@ Swift 中对这一点也有考虑。因此，U+0041 所代表的 LATIN CAPITAL L
 在这里我很好奇 locale-sensitive 所指的是一种什么样的判断性质。通过搜索发现已经有人在 StackOverflow 上提出了这样的问题，也有较为详细的解释，可参考 <https://stackoverflow.com/questions/25713975/what-does-it-mean-that-string-and-character-comparisons-in-swift-are-not-locale>。
 
 :::tip
-所谓 locale-sensitive ordering 是指在比较字符的时候，采取相应语言中既有的语言学顺序，这种“语言”可以用 Locale 对象来构建出来。例如 $\textrm{A,B,C,}\cdots$ 就是英文语言中的 locale ordering。而这里所说的非 locale-sensitive 比较方式，就是一般意义上的字典序（lexicographical ordering）。在 Swift 中，这里的字典具体所指的是采用 D 形 Unicode 标准化（Unicode Normalization Form D）来对字符进行量化后的一系列结果。
+所谓 locale-sensitive ordering 是指在比较字符的时候，采取相应语言中既有的语言学顺序，这种“语言”可以用 Locale 对象来构建出来。例如 $\textrm{A,B,C,}\cdots$ 就是英文语言中的 locale ordering。而这里所说的非 locale-sensitive 比较方式，就是一般意义上的字典序（lexicographical ordering）。在 Swift 中，这里的字典具体所指的是采用 D 形 Unicode 标准化（[Unicode Normalization Form D](https://unicode.org/reports/tr15/#Norm_Forms)）来对字符进行量化后的一系列结果。
 
 值得注意的是，这种量化后的结果大概率会出现 A、B、C 等字符仍然是有序的情形（类似于 ASCII 里的那样），此时应当将其与 English-based ordering 区分开。
 :::
