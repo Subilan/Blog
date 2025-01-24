@@ -1,6 +1,6 @@
 <template>
   <navbar/>
-  <div class="layout-default">
+  <main class="layout-default">
     <div class="left">
       <section class="profile hoverable rounded">
         <div class="avatar">
@@ -46,7 +46,7 @@
       <slot/>
     </div>
     <default-footer class="default-layout-specific"/>
-  </div>
+  </main>
   <back-to-top/>
 </template>
 

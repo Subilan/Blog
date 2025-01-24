@@ -1,8 +1,8 @@
 <template>
   <navbar/>
-  <div class="layout-post">
+  <main class="layout-post">
     <slot/>
-  </div>
+  </main>
   <creative-commons-license/>
   <default-footer/>
   <back-to-top/>
