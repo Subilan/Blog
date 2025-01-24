@@ -18,7 +18,7 @@ import getPostDigests from "@/utils/getPostDigests";
 import {mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPencil} from "@mdi/js";
 import {definePageMeta} from "#imports";
 
-function getIconForCategory(category) {
+function getIconForCategory(category: string) {
   switch (category) {
     case '杂谈':
       return mdiFormatQuoteOpen;

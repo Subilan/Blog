@@ -36,6 +36,10 @@ onMounted(() => {
 definePageMeta({
   layout: 'post'
 })
+
+useSeoMeta({
+  articleModifiedTime: post.date.replace(/\//g, '-')
+})
 </script>
 
 <style lang="scss">

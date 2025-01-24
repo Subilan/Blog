@@ -12,5 +12,25 @@ export default defineNuxtConfig({
     plugins: [
         svgLoader()
     ]
+  },
+
+  site: {
+    url: 'https://subilan.win',
+    name: 'SolitudeScroll'
+  },
+
+  modules: ['@nuxtjs/sitemap'],
+
+  sitemap: {
+    sources: [
+      '/api/get-post-urls'
+    ]
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/sitemap.xml']
+    }
   }
 })
