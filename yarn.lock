@@ -5417,6 +5417,11 @@ nypm@^0.3.11, nypm@^0.3.8, nypm@^0.3.9:
     pkg-types "^1.2.0"
     ufo "^1.5.4"
 
+nzh@^1.0.14:
+  version "1.0.14"
+  resolved "https://registry.npmmirror.com/nzh/-/nzh-1.0.14.tgz#dd46c9ee0d2064eca60e10f3382860583df17c02"
+  integrity sha512-wKgaqCSZdrySvB4RWop5g+v6IDv2IErsT6rjq06Bg0yiT9hiHYZO12GMGx/xweGVLcO2lDjX5RqWD0S/Jy9z5Q==
+
 object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmmirror.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"

@@ -7,7 +7,7 @@
       <h2>{{ x.title }}</h2>
       <div class="meta">
         <span>{{ getAgo(x.date) }}</span>
-        <span>约 {{ x.wordCount }} 字</span>
+        <span>约{{ nzh.encode(wipeZeroAuto(x.wordCount)) }}字</span>
         <span v-if="x.cate">
           <icon size="16" :path="getIconForCategory(x.cate)" /> {{ x.cate }}
         </span>
@@ -18,8 +18,19 @@
 </template>
 <script setup lang="ts">
   import getPostDigests from "@/utils/getPostDigests";
-  import { mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPen, mdiPencil, mdiPencilOutline } from "@mdi/js";
+  import { mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPencilOutline } from "@mdi/js";
   import { definePageMeta } from "#imports";
+  import Nzh from "nzh";
+
+  const nzh = new Nzh({
+    ch: "〇一两三四五六七八九",
+    ch_u: "个十百千万亿兆京",
+    ch_f: "负",
+    ch_d: "点",
+    m_u: "元角分厘",
+    m_t: "人民币",
+    m_z: "正"
+  });
 
   function getIconForCategory(category: string) {
     switch (category) {
