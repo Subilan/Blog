@@ -1,31 +1,31 @@
 <template>
-  <navbar/>
+  <navbar />
   <main class="layout-default">
     <div class="left">
       <section class="profile card">
         <div class="avatar">
-          <nuxt-img format="webp" src="/avatar.jpg" alt="avatar"/>
+          <nuxt-img format="webp" src="/avatar.jpg" alt="avatar" />
           <span class="name">Subilan</span>
           <span class="bio">城市化的自我</span>
         </div>
         <div class="social">
           <a href="https://x.com/subilan1234" target="_blank">
-            <X/>
+            <X />
           </a>
           <a href="https://github.com/Subilan" target="_blank">
-            <GitHub/>
+            <GitHub />
           </a>
           <a href="mailto:christophersubilan@gmail.com">
-            <icon :path="mdiEmailOutline"/>
+            <icon :path="mdiEmailOutline" />
           </a>
           <a href="https://space.bilibili.com/35413001" target="_blank">
-            <Bilibili class="bilibili"/>
+            <Bilibili class="bilibili" />
           </a>
         </div>
         <div class="navigations">
           <router-link :to="x.to" v-for="x in pages">
-            <icon :path="x.icon" class="inactive-icon"/>
-            <icon :path="x.iconActive" class="active-icon"/>
+            <icon :path="x.icon" class="inactive-icon" />
+            <icon :path="x.iconActive" class="active-icon" />
             {{ x.name }}
           </router-link>
         </div>
@@ -33,39 +33,41 @@
       <section class="stats card">
         <p class="primary">统计信息</p>
         <ul>
-          <li>总共有 {{ blogStatsData.totalPosts }} 篇文章（最近更新于）</li>
-          <li>发布总字数约 {{ (blogStatsData.totalWords/10000).toFixed(1) }}W</li>
-          <li>连接了 {{  blogStatsData.totalBlogrolls }} 位伙伴的网站</li>
+          <li>最近更新 {{ getAgo(getPostDigests()[0].date) }}</li>
+          <li>文章总数 {{ blogStatsData.totalPosts }} 篇</li>
+          <li>总字数 ~{{ (blogStatsData.totalWords / 10000).toFixed(1) }}W</li>
+          <li>友链 {{ blogStatsData.totalBlogrolls }} 个</li>
         </ul>
       </section>
     </div>
     <div class="right">
-      <slot/>
+      <slot />
     </div>
-    <default-footer class="default-layout-specific"/>
+    <default-footer class="default-layout-specific" />
   </main>
-  <back-to-top/>
+  <back-to-top />
 </template>
 
 <script setup>
-import X from '~/assets/svg/x.svg';
-import GitHub from '~/assets/svg/github.svg';
-import Bilibili from '~/assets/svg/bilibili.svg'
-import {mdiEmailOutline} from "@mdi/js";
-import {pages} from "~/data/config.js";
-import getTotalWordCount from "~/utils/getTotalWordCount.js";
-import getTotalPostCount from "~/utils/getTotalPostCount.js";
-import blogrolls from '~/data/blogrolls.json';
-import BackToTop from "~/components/back-to-top.vue";
-import getSiteName from "~/utils/getSiteName.js";
+  import X from '~/assets/svg/x.svg';
+  import GitHub from '~/assets/svg/github.svg';
+  import Bilibili from '~/assets/svg/bilibili.svg'
+  import { mdiEmailOutline } from "@mdi/js";
+  import { pages } from "~/data/config.js";
+  import getTotalWordCount from "~/utils/getTotalWordCount.js";
+  import getTotalPostCount from "~/utils/getTotalPostCount.js";
+  import blogrolls from '~/data/blogrolls.json';
+  import BackToTop from "~/components/back-to-top.vue";
+  import getSiteName from "~/utils/getSiteName.js";
+  import getPostDigests from '~/utils/getPostDigests.js';
 
-const sitename = getSiteName();
+  const sitename = getSiteName();
 
-const blogStatsData = {
-  totalPosts: getTotalPostCount(),
-  totalWords: getTotalWordCount(),
-  totalBlogrolls: blogrolls.length,
-}
+  const blogStatsData = {
+    totalPosts: getTotalPostCount(),
+    totalWords: getTotalWordCount(),
+    totalBlogrolls: blogrolls.length,
+  }
 </script>
 
 <style lang="scss" scoped>
