@@ -5,10 +5,10 @@
       友链（blogroll）是一种将互联网上的一个个孤岛似的个人网站联系起来的一种高效方式。这使得各个网站可以彼此串通，使访问者有更多的机会光顾每一个相连接的网站。
     </blockquote>
     <div class="blogrolls">
-      <a class="blogroll" target="_blank" :href="x.href" v-for="x in blogrolls"
-         :class="{light: x.light, border: x.background === '#fff' || x.background === '#ffffff'}"
+      <a class="blogroll card" target="_blank" :href="x.href" v-for="x in blogrolls"
+         :class="{light: x.light}"
          :style="x.background.startsWith('http') ? `background-image: url(${x.background})` : `background: ${x.background}`">
-        <img :src="x.avatar" :alt="x.name"/>
+        <nuxt-img format="webp" :src="x.avatar" :alt="x.name"/>
         <div class="info">
           <div class="name">{{ x.name }}</div>
           <p>{{ x.description }}</p>
@@ -104,25 +104,19 @@ li:hover .copy {
   }
 
   .blogroll {
-    text-decoration: none;
     color: black;
     flex: 1 0 auto;
     display: flex;
     align-items: center;
-    border-radius: 10px;
     gap: 10px;
     padding: 16px;
-    border: 1px solid transparent;
-    transition: all .2s ease;
-    cursor: pointer;
     background-position: center;
     background-size: cover;
     min-height: 55px;
+    text-decoration: none;
 
     &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
-      border: 1px solid rgba(#004d40, .8) !important;
+      filter: brightness(80%);
     }
 
     .info {
@@ -150,10 +144,6 @@ li:hover .copy {
 
     &.light {
       color: white;
-    }
-
-    &.border {
-      border: 1px solid rgba(0, 0, 0, .1);
     }
   }
 }

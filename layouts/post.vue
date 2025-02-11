@@ -16,7 +16,7 @@ import BackToTop from "~/components/back-to-top.vue";
 </script>
 
 <style lang="scss">
-@use '@/assets/global.scss';
+@use '@/assets/var.scss';
 @use '@/assets/github-light.scss';
 @use '@/assets/github-dark.scss';
 
@@ -32,7 +32,7 @@ import BackToTop from "~/components/back-to-top.vue";
 }
 
 .layout-post {
-  margin-top: global.$navbarHeight + global.$navbarBottomOffset;
+  margin-top: var.$navbarHeight + var.$navbarBottomOffset;
 
   @media (max-width: 1000px) {
     padding: 0 20px;

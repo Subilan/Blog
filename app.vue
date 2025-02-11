@@ -47,3 +47,7 @@ onMounted(() => {
   })
 })
 </script>
+
+<style lang="scss">
+@use '@/assets/global';
+</style>

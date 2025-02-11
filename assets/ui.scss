@@ -1,0 +1,79 @@
+@use 'var';
+
+.transition {
+	transition: all 0.2s ease;
+}
+
+.default-bg {
+    background: white;
+}
+
+.simple-shadow {
+	box-shadow: 0 1px 1px rgba($color: #000000, $alpha: 0.2);
+}
+
+.dark .simple-shadow {
+	box-shadow: 0 1px 1px rgba($color: #fff, $alpha: 0.2);
+}
+
+.primary {
+	font-weight: bold;
+	color: var.$primaryTextColor;
+}
+
+.rounded {
+	border-radius: var.$defaultBorderRadius;
+}
+
+.dark .default-bg {
+    background-color: var.$darkPrimaryBlack;
+}
+
+.dark .primary {
+    color: var.$darkPrimary;
+}
+
+.area {
+    @extend .bordered, .rounded, .transition;
+}
+
+.clickable {
+	@extend .area;
+	cursor: pointer;
+    text-decoration: none;
+
+    &.no-cursor {
+        cursor: unset;
+    }
+
+	&:hover {
+		background: #efefef;
+	}
+}
+
+.dark .clickable:hover {
+    background: var.$darkSecondaryBlack;
+}
+
+.bordered {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .bordered {
+    border-color: rgba($color: white, $alpha: .1)
+}
+
+.card {
+	@extend .area, .simple-shadow, .default-bg;
+}
+
+.button {
+	@extend .clickable, .simple-shadow, .default-bg;
+	&:hover {
+		color: var.$primaryTextColor;
+	}
+}
+
+.dark .button:hover {
+    color: var.$darkPrimary;
+}

@@ -1,28 +1,41 @@
 <template>
   <footer>
     <div class="inner">
-      <span>&copy; 2019-{{ new Date().getFullYear() }} {{getSiteName()}}<br/><small>Built with Nuxt 3 and 🤔</small></span>
-      <div class="spacer"/>
+      <div class="left">
+        <div class="copyright">&copy; 2019-{{ new Date().getFullYear() }} {{ getSiteName() }}</div>
+        <div class="other">Built with Nuxt 3 and 🤔 ·
+          Written
+          size {{ (getTotalPostSize() / 1000).toFixed(1) }} KB · Running for {{ running }}</div>
+      </div>
+      <div class="spacer" />
       <div class="icons">
-        <WrittenByHuman/>
+        <WrittenByHuman />
       </div>
     </div>
   </footer>
 </template>
 <script setup>
-import WrittenByHuman from "assets/svg/written-by-human.svg";
-import getSiteName from "../utils/getSiteName.js";
+  import WrittenByHuman from "assets/svg/written-by-human.svg";
+  import getSiteName from "../utils/getSiteName.js";
+
+  const running = ref('');
+
+  onMounted(() => {
+    setInterval(() => {
+      running.value = getFormattedTimeFromBeginning();
+    }, 1000)
+  })
 </script>
 
 <style lang="scss">
-@use "@/assets/global.scss";
+@use "@/assets/var.scss";
 
 footer {
   margin-top: 32px;
   padding: 24px 32px;
   border-top: 1px solid rgba(0, 0, 0, .1);
   width: 100%;
-  height: global.$footerHeight;
+  height: var.$footerHeight;
   box-sizing: border-box;
   bottom: 0;
 
@@ -64,11 +77,18 @@ footer {
     }
   }
 
-  span {
-    font-size: 20px;
-    font-weight: 500;
+  .left {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
 
-    small {
+    .copyright {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .other {
       font-size: 14px;
       font-weight: normal;
     }

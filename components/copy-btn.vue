@@ -1,5 +1,5 @@
 <template>
-  <div class="copy-btn less-shadow" :class="{copyComplete}" @click="copy">
+  <div class="copy-btn button less-shadow" :class="{copyComplete}" @click="copy">
     <icon :path="copyComplete ? mdiCheck : mdiClipboardTextOutline"/> {{ copyComplete ? '复制成功' : '点击复制'}}
   </div>
 </template>
@@ -24,7 +24,9 @@ async function copy() {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@use '@/assets/var';
+
 .copy-btn {
   display: inline-flex;
   align-items: center;
@@ -36,15 +38,9 @@ async function copy() {
   vertical-align: middle;
   cursor: pointer;
   gap: 4px;
-  border: 1px solid rgba(0, 0, 0, .1);
-  transition: all .2s ease;
-
-  &:hover {
-    border-color: #009688;
-  }
 
   &.copyComplete {
-    background: #009688;
+    background: var.$primaryColor;
     color: white;
     border-color: transparent !important;
   }

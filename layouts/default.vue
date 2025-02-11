@@ -2,9 +2,9 @@
   <navbar/>
   <main class="layout-default">
     <div class="left">
-      <section class="profile hoverable rounded">
+      <section class="profile card">
         <div class="avatar">
-          <img src="~/assets/avatar.jpg" alt="avatar"/>
+          <nuxt-img format="webp" src="/avatar.jpg" alt="avatar"/>
           <span class="name">Subilan</span>
           <span class="bio">城市化的自我</span>
         </div>
@@ -29,17 +29,14 @@
             {{ x.name }}
           </router-link>
         </div>
-        <div class="footer">
-          &copy; 2019-{{ new Date().getFullYear() }} {{ sitename }}<br/>Built with Nuxt 3
-        </div>
       </section>
-      <section class="stats hoverable rounded">
-        <p>截至现在，这里...</p>
-        <div class="stat" v-for="x in blogStats">
-          <span class="prefix">{{ x[0] }}</span>
-          <span class="value">{{ x[1] }}</span>
-          <span class="suffix">{{ x[2] }}</span>
-        </div>
+      <section class="stats card">
+        <p class="primary">统计信息</p>
+        <ul>
+          <li>总共有 {{ blogStatsData.totalPosts }} 篇文章（最近更新于）</li>
+          <li>发布总字数约 {{ (blogStatsData.totalWords/10000).toFixed(1) }}W</li>
+          <li>连接了 {{  blogStatsData.totalBlogrolls }} 位伙伴的网站</li>
+        </ul>
       </section>
     </div>
     <div class="right">
@@ -54,33 +51,30 @@
 import X from '~/assets/svg/x.svg';
 import GitHub from '~/assets/svg/github.svg';
 import Bilibili from '~/assets/svg/bilibili.svg'
-import {mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiEmailOutline, mdiFormatQuoteOpen, mdiPencil} from "@mdi/js";
+import {mdiEmailOutline} from "@mdi/js";
 import {pages} from "~/data/config.js";
 import getTotalWordCount from "~/utils/getTotalWordCount.js";
 import getTotalPostCount from "~/utils/getTotalPostCount.js";
-import getTotalPostSize from "~/utils/getTotalPostSize.js";
 import blogrolls from '~/data/blogrolls.json';
 import BackToTop from "~/components/back-to-top.vue";
 import getSiteName from "~/utils/getSiteName.js";
 
 const sitename = getSiteName();
 
-const blogStats = [
-  ['发布了', getTotalPostCount(), '篇文章'],
-  ['容纳了', `${(getTotalWordCount() / 1000).toFixed(1)}K`, '字'],
-  ['链接了', `${blogrolls.length}`, '位伙伴'],
-  ['存在了', (new Date().getFullYear() - 2019), '年'],
-  ['总大小', `${(getTotalPostSize() / 1000).toFixed(1)}`, 'KB']
-]
+const blogStatsData = {
+  totalPosts: getTotalPostCount(),
+  totalWords: getTotalWordCount(),
+  totalBlogrolls: blogrolls.length,
+}
 </script>
 
 <style lang="scss" scoped>
-@use '@/assets/global';
+@use '@/assets/var';
 
 .layout-default {
   max-width: 1200px;
-  margin: global.$navbarHeight + global.$navbarBottomOffset auto 0;
-  padding-bottom: global.$footerHeight + global.$footerMarginTop;
+  margin: var.$navbarHeight + var.$navbarBottomOffset auto 0;
+  padding-bottom: var.$footerHeight + var.$footerMarginTop;
   display: flex;
   align-items: flex-start;
   gap: 28px;
@@ -121,7 +115,6 @@ const blogStats = [
 
 .left section {
   padding: 16px;
-  background: white;
 }
 
 .stats {
@@ -134,20 +127,11 @@ const blogStats = [
     font-size: 16px;
   }
 
-  .stat {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-
-    .prefix, .suffix {
-      color: #9b9b9b;
-    }
-
-    .value {
-      font-size: 25px;
-      font-weight: bold;
-      color: #004d40;
-    }
+  ul {
+    padding-left: 20px;
+    margin: 0;
+    line-height: 1.5;
+    list-style-type: circle;
   }
 }
 
@@ -279,5 +263,9 @@ const blogStats = [
       }
     }
   }
+}
+
+.dark .navigations a:not(.router-link-exact-active):hover {
+  background: rgba($color: var.$darkPrimary, $alpha: .1);
 }
 </style>
