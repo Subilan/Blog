@@ -1,7 +1,9 @@
-import dayjsinstance from '@/dayjsinstance'
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import 'dayjs/locale/zh-cn'
 
 export default function(targetDate, omit = false) {
-    dayjsinstance.locale('zh-cn');
-    return dayjsinstance(targetDate).fromNow(omit);
+    dayjs.extend(relativeTime)
+    dayjs.locale('zh-cn');
+    return dayjs(targetDate).fromNow(omit);
 }
