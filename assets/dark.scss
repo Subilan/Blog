@@ -7,13 +7,17 @@
 		background: rgba(255, 255, 255, 0.1);
 	}
 
+	blockquote {
+		border-left-color: #6e6e6e;
+	}
+
 	body {
 		background: var.$darkPrimaryBlack;
-		color: #ddd;
+		color: var.$darkTextColor;
 	}
 
 	pre[class*='language-'] {
-		background: var.$darkPrimaryBlack;
+		background: var.$darkSecondaryBlack;
 	}
 
 	kbd {
@@ -25,6 +29,21 @@
 	article td,
 	article th {
 		border-color: #3e3e3e;
+	}
+
+	article .notice {
+		background: var.$darkSecondaryBlack;
+		&.tip {
+			border-left-color: var.$darkPrimary;
+
+			.notice-title, a, strong {
+				color: var.$darkPrimary;
+
+				svg {
+					fill: var.$darkPrimary;
+				}
+			}
+		}
 	}
 
 	nav {
@@ -95,38 +114,13 @@
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	}
 
-	details[open],
-	article .notice.tip {
+	details[open] {
 		background: rgba(var.$darkPrimary, 0.1) !important;
 	}
 
-	article .notice.tip {
-		strong {
-			color: var.$darkPrimary;
-		}
-	}
-
-	article .notice.warning {
-		background: rgba(#fff8e1, 0.1);
-		color: white;
-
-		strong {
-			color: #ffc107;
-		}
-	}
-
-	article .notice.danger {
-		background: rgba(#ffebee, 0.1);
-		color: white;
-
-		strong {
-			color: #f44336;
-		}
-	}
-
 	article code {
-		background: rgba(255, 255, 255, 0.1);
-		color: white;
+		background: var.$darkSecondaryBlack;
+		color: var.$darkTextColor;
 	}
 
 	article pre code {

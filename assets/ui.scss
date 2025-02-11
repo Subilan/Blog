@@ -42,6 +42,10 @@
 	cursor: pointer;
     text-decoration: none;
 
+    &:visited:not(:hover) {
+        color: unset;
+    }
+
     &.no-cursor {
         cursor: unset;
     }
