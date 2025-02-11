@@ -22,12 +22,6 @@
 
 更多请查看[博客的关于页面](https://subilan.win/pages/about)。
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Subilan/Blog&type=Date)](https://star-history.com/#Subilan/Blog&Date)
-
-如果可以的话请帮我点亮星星，十分感谢！
-
 ## 协议
 
 MIT
