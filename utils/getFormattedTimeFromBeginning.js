@@ -6,7 +6,7 @@ export default function() {
     dayjs.locale('en-us');
     dayjs.extend(relativeTime);
     dayjs.extend(duration);
-    const dur = dayjs.duration(dayjs().diff(dayjs('2019-08-17')))
+    const dur = dayjs.duration(dayjs().diff(dayjs('2019-08-17'), 'day'))
 
-    return dur.format('Y[y]H[h]m[m]s[s]')
+    return dur + ' days';
 }

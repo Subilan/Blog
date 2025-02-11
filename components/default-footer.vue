@@ -3,9 +3,9 @@
     <div class="inner">
       <div class="left">
         <div class="copyright">&copy; 2019-{{ new Date().getFullYear() }} {{ getSiteName() }}</div>
-        <div class="other">Built with Nuxt 3 and 🤔 ·
+        <div class="other">Built with Nuxt 3 and 🤔<br/>
           Written
-          size {{ (getTotalPostSize() / 1000).toFixed(1) }} KB · Running for {{ running }}</div>
+          size {{ (getTotalPostSize() / 1000).toFixed(1) }} KB · {{ running }} from start </div>
       </div>
       <div class="spacer" />
       <div class="icons">
@@ -38,6 +38,8 @@ footer {
   height: var.$footerHeight;
   box-sizing: border-box;
   bottom: 0;
+  display: flex;
+  align-items: center;
 
   @media (max-width: 768px) {
     height: unset;
@@ -54,6 +56,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 16px;
+    width: 100%;
 
     @media (max-width: 768px) {
       flex-direction: column;
