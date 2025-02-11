@@ -6,7 +6,7 @@
       </span>
       <h2>{{ x.title }}</h2>
       <div class="meta">
-        <span>{{ x.date }}</span>
+        <span>{{ getAgo(x.date) }}</span>
         <span>约 {{ x.wordCount }} 字</span>
         <span v-if="x.cate">
           <icon size="16" :path="getIconForCategory(x.cate)" /> {{ x.cate }}
