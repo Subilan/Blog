@@ -4,12 +4,12 @@
 
 ## 关于
 
-- 本站开放友链申请，可以直接向本项目提交 PR，发布 Issue 或联系我等方式来申请。详情请参考[博客的友链页面](https://subilan.win/pages/blogroll)。
-- 本站所使用的主题参考了 [VuePress](https://vuepress.vuejs.org/) 的默认主题，并经过了两次迭代。
+- 博客开放友链申请，如需添加，可考虑直接向本项目提交 PR，发布 Issue 或联系我。详细要求请参考[博客的友链页面](https://subilan.win/pages/blogroll)。
+- 本站所使用的主题参考了 [VuePress](https://vuepress.vuejs.org/) 的默认主题，并经过了三次迭代（最近一次是 2025 年 2 月）。
 - 网站
   - 目录结构
       - `src`, `public` — 前端相关的开发文件
-      - `data` — 数据文件，包括编写的 markdown 文件（`data/posts`）
+      - `data` — 数据文件，包括编写的 Markdown 文件（`data/posts`），友链数据等
       - `data/build.cjs` — 构建脚本
   - 本仓库开放 Pull Request，可用于添加友链、纠正错误。
   - 本站域名 https://subilan.win 长期续费
@@ -21,6 +21,12 @@
   - （当前）**Nuxt 3 + Vercel** (*2024.09*-)
 
 更多请查看[博客的关于页面](https://subilan.win/pages/about)。
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Subilan/Blog&type=Date)](https://star-history.com/#Subilan/Blog&Date)
+
+如果可以的话请帮我点亮星星，十分感谢！
 
 ## 协议
 
