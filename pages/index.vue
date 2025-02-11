@@ -1,39 +1,42 @@
 <template>
   <div class="articles">
-    <router-link class="article hoverable rounded" v-for="x in getPostDigests()" :to="`/posts/${x.slug}`">
-      <span class="view-right-now-message">打开 <icon :path="mdiArrowTopRight"/></span>
+    <router-link class="article card clickable" v-for="x in getPostDigests()" :to="`/posts/${x.slug}`">
+      <span class="view-right-now-message">打开
+        <icon :path="mdiArrowTopRight" />
+      </span>
       <h2>{{ x.title }}</h2>
       <div class="meta">
         <span>{{ x.date }}</span>
         <span>约 {{ x.wordCount }} 字</span>
-        <span v-if="x.cate">{{ x.cate }}</span>
+        <span v-if="x.cate">
+          <icon size="16" :path="getIconForCategory(x.cate)" /> {{ x.cate }}
+        </span>
       </div>
       <p v-if="x.desc">{{ x.desc }}</p>
-      <icon size="120" class="bg-icon" v-if="x.cate" :path="getIconForCategory(x.cate)"/>
     </router-link>
   </div>
 </template>
 <script setup lang="ts">
-import getPostDigests from "@/utils/getPostDigests";
-import {mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPencil} from "@mdi/js";
-import {definePageMeta} from "#imports";
+  import getPostDigests from "@/utils/getPostDigests";
+  import { mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPen, mdiPencil, mdiPencilOutline } from "@mdi/js";
+  import { definePageMeta } from "#imports";
 
-function getIconForCategory(category: string) {
-  switch (category) {
-    case '杂谈':
-      return mdiFormatQuoteOpen;
-    case '代码':
-      return mdiCodeTags;
-    case '记录':
-      return mdiPencil;
-    case '路径':
-      return mdiArrowUpLeft;
+  function getIconForCategory(category: string) {
+    switch (category) {
+      case '杂谈':
+        return mdiFormatQuoteOpen;
+      case '代码':
+        return mdiCodeTags;
+      case '记录':
+        return mdiPencilOutline;
+      case '路径':
+        return mdiArrowUpLeft;
+    }
   }
-}
 
-definePageMeta({
-  title: '首页'
-})
+  definePageMeta({
+    title: '首页'
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -95,6 +98,15 @@ definePageMeta({
       span:not(:last-child)::after {
         content: '·';
         margin: 0 5px;
+      }
+
+      span {
+        display: inline-flex;
+        align-items: center;
+
+        svg {
+          margin-right: 4px;
+        }
       }
     }
 

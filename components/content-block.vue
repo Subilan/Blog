@@ -1,5 +1,5 @@
 <template>
-  <details>
+  <details class="card clickable no-cursor">
     <summary><icon :path="mdiArrowRight"/><span><slot name="title"/></span></summary>
     <slot/>
   </details>
@@ -10,16 +10,7 @@ import {mdiArrowRight} from "@mdi/js";
 
 <style lang="scss">
 details {
-  border: 1px solid rgba(0, 0, 0, .1);
-  border-radius: 10px;
   padding: 16px;
-  transition: all .2s ease;
-
-  &:hover {
-    border: 1px solid rgba(#004d40, .8);
-    transform: translateY(-4px);
-    box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
-  }
 
   summary {
     color: #004d40;
@@ -50,7 +41,9 @@ details {
   }
 
   &[open] {
-    background: rgba(#e0f2f1, .4);
+    &, &:hover {
+      background: rgba(#e0f2f1, .4);
+    }
 
     summary span {
       font-size: 18px;

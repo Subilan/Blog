@@ -3,11 +3,11 @@
     <div class="mobile-menu-btn" @click="pageSwitcherModel = !pageSwitcherModel">
       <icon :path="mdiMenu"/>
     </div>
-    <img src="@/assets/avatar.jpg" alt="avatar"/>
+    <nuxt-img src="/avatar.jpg" format="webp" alt="avatar"/>
     <span class="site-title">
       <router-link to="/">{{ getSiteName() }}</router-link>
     </span>
-    <div class="search-btn hoverable" @click="searchModal = true">
+    <div class="search-btn button" @click="searchModal = true">
       <icon :path="mdiMagnify"/>
       搜索
       <client-only><span class="hotkey">{{ isMacOS() ? '⌘' : 'Ctrl' }}+K</span></client-only>
@@ -22,7 +22,7 @@
       <icon :path="mdiMagnify"/>
     </div>
     <client-only>
-      <div class="pc-dark-toggle-btn" @click="toggleDarkmode">
+      <div class="pc-dark-toggle-btn button" @click="toggleDarkmode">
         <icon :path="mdiWeatherSunny" v-if="(!darkMode && forceMode !== 'dark') || forceMode === 'light'"/>
         <icon :path="mdiWeatherNight" v-if="(darkMode && forceMode !== 'light') || forceMode === 'dark'"/>
       </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import {mdiMagnify, mdiMenu, mdiMoonWaningCrescent, mdiThemeLightDark, mdiWeatherNight, mdiWeatherSunny} from "@mdi/js";
+import {mdiMagnify, mdiMenu, mdiWeatherNight, mdiWeatherSunny} from "@mdi/js";
 import {pages} from "~/data/config";
 import isMacOS from "~/utils/isMacOS";
 import {usePreferredDark} from "@vueuse/core";
@@ -48,8 +48,7 @@ const darkMode = usePreferredDark();
 </script>
 
 <style lang="scss">
-@use "@/assets/global";
-@use "@/assets/dark";
+@use "@/assets/var";
 
 .mobile-menu-btn {
   margin-right: 16px;
@@ -61,7 +60,7 @@ const darkMode = usePreferredDark();
 }
 
 .dark .pc-dark-toggle-btn:hover {
-  border-color: rgba(dark.$darkPrimary, .1);
+  border-color: rgba(var.$darkPrimary, .1);
 }
 
 .pc-dark-toggle-btn {
@@ -77,10 +76,11 @@ const darkMode = usePreferredDark();
   width: 18px;
   transition: all .2s ease;
   border: 1px solid transparent;
+  border-color: rgba(0, 0, 0, .1);
 
   &:hover {
     background: rgba(#1de9b6, .1);
-    border-color: rgba(0, 0, 0, .1);
+    
   }
 
   svg {
@@ -104,7 +104,7 @@ const darkMode = usePreferredDark();
   width: 100%;
   box-sizing: border-box;
   z-index: 100;
-  height: global.$navbarHeight;
+  height: var.$navbarHeight;
 
   @media print {
     display: none;
@@ -188,10 +188,6 @@ const darkMode = usePreferredDark();
   .hotkey {
     font-size: 10px;
     color: #aaa;
-  }
-
-  &:hover {
-    color: #004d40;
   }
 }
 </style>

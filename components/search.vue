@@ -5,7 +5,7 @@
         <div class="search-modal" v-if="model">
           <input tabindex="100" placeholder="输入标题或正文关键词" v-model="search" type="text"/>
           <div class="search-results" v-if="results.length > 0">
-            <div @keydown.enter="navigateTo(`/posts/${x.slug}`); model = false" class="search-result" v-for="(x, i) in results" :tabindex="100+i" @click="navigateTo(`/posts/${x.slug}`); model = false">
+            <div @keydown.enter="navigateTo(`/posts/${x.slug}`); model = false" class="search-result card clickable" v-for="(x, i) in results" :tabindex="100+i" @click="navigateTo(`/posts/${x.slug}`); model = false">
               <h2>{{ x.title }}</h2>
               <div class="meta">
                 <span>{{ x.date }}</span>
@@ -60,7 +60,7 @@ onUnmounted(() => {
 </script>
 
 <style lang="scss">
-@use '@/assets/global.scss';
+@use '@/assets/var.scss';
 
 .search-note {
   color: #aaa;
@@ -128,11 +128,11 @@ onUnmounted(() => {
     box-sizing: border-box;
 
     &:focus {
-      border-bottom-color: #009688 !important;
+      border-bottom-color: var.$primaryColor;
     }
 
     &:hover {
-      border-bottom-color: rgba(#009688, .4);
+      border-bottom-color: rgba(var.$primaryColor, .4);
     }
   }
 }
@@ -149,17 +149,6 @@ onUnmounted(() => {
 
 .search-result {
   padding: 16px;
-  border: 1px solid transparent;
-  transition: all .2s ease;
-  border-radius: 10px;
-  cursor: pointer;
-
-  &:hover {
-    background: #e0f2f1;
-    border: 1px solid rgba(#004d40, .8);
-    box-shadow: 0 6px 0 rgba(0, 0, 0, .1);
-    transform: translateY(-2px);
-  }
 
   strong {
     background: #fcf900;
@@ -193,7 +182,7 @@ onUnmounted(() => {
     align-items: center;
     gap: 16px;
     font-size: 14px;
-    font-family: global.$monospaceFont;
+    font-family: var.$monospaceFont;
 
     @media (max-width: 768px) {
       font-size: 12px;

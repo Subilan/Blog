@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     name: 'SolitudeScroll'
   },
 
-  modules: ['@nuxtjs/sitemap'],
+  modules: ['@nuxtjs/sitemap', '@nuxt/image'],
 
   sitemap: {
     sources: [
