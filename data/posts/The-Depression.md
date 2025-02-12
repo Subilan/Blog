@@ -2,6 +2,7 @@
 desc: 如何才能真正掌控自己。
 date: 2021/11/27
 cate: 杂谈
+hidden: true
 ---
 
 # 过去的一切
@@ -38,25 +39,13 @@ cate: 杂谈
 这篇文章是用markdown写的，也就是md。有少部分latex公式的渲染也许会有问题，如果影响观感可以联系christophersubilan@gmail.com（双休日）。
 ```
 
-:::tip
-**效果**
-
-这篇文章是用markdown写的，也就是md。有少部分latex公式的渲染也许会有问题，如果影响观感可以联系christophersubilan@gmail.com（双休日）。
-:::
-
 而我只要不是在赶时间或者追求效率的情况下，会写成这个样子
 
 ```
 这篇文章是用 **M**ark**d**own 写的。部分 $\mathrm{\LaTeX}$ 公式的渲染也许会有问题，若影响观感可联系 [christophersubilan@gmail.com](mailto:christophersubilan@gmail.com)，双休日可答复。
 ```
 
-:::tip
-**效果**
-
-这篇文章是用 **M**ark**d**own 写的。部分 $\mathrm{\LaTeX}$ 公式的渲染也许会有问题，若影响观感可联系 [christophersubilan@gmail.com](mailto:christophersubilan@gmail.com)，双休日可答复。
-:::
-
-这也许也是一种强迫症？
+这也许也是一种强迫症。
 
 可以说，我的情绪一直是波动的。就好比是朴树的专辑《我去 2000 年》里的两首歌，一首《妈妈，我...》里的愤世嫉俗，
 
