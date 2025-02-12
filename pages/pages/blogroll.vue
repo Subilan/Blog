@@ -116,7 +116,7 @@ li:hover .copy {
     text-decoration: none;
 
     &:hover {
-      filter: brightness(80%);
+      filter: brightness(90%);
     }
 
     .info {

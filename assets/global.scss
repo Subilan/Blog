@@ -81,8 +81,7 @@ article {
 	}
 
 	a {
-		overflow-wrap: break-word;
-		color: #009688;
+		color: var.$primaryColor;
 		text-decoration: none;
 		font-weight: 500;
 
@@ -92,7 +91,7 @@ article {
 	}
 
 	code {
-		color: #004d40;
+		color: var.$primaryTextColor;
 		padding: 0.25rem 0.5rem;
 		vertical-align: middle;
 		margin: 0;
@@ -237,8 +236,6 @@ article {
 
 	a.external-link {
 		margin-right: 3px;
-		display: inline-flex;
-		align-items: baseline;
 
 		&::after {
 			content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjE1cHgiIGhlaWdodD0iMTVweCIgZmlsbD0iI2FhYSI+PHBhdGggZD0iTTUsMTcuNTlMMTUuNTksN0g5VjVIMTlWMTVIMTdWOC40MUw2LjQxLDE5TDUsMTcuNTlaIiAvPjwvc3ZnPg==');
