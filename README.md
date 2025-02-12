@@ -1,4 +1,4 @@
-# Subilan's Blog
+# SolitudeScroll
 
 此博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.vercel.app> 访问。博客使用 Nuxt 3 编写，采用本地 Markdown 编写+`build.cjs` 编译本地 json 数据后再被组件调用的模式。网站部署和托管使用 Vercel，图床使用阿里云 OSS。
 
