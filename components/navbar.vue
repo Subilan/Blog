@@ -96,8 +96,6 @@ const darkMode = usePreferredDark();
   display: flex;
   align-items: center;
   background: white;
-  border-bottom: 1px solid rgba(0, 0, 0, .1);
-  box-shadow: 0 0 5px rgba(0, 0, 0, .1);
   padding: 12px 16px;
   position: fixed;
   top: 0;

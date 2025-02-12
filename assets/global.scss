@@ -17,7 +17,10 @@ kbd {
 	font-family: var.$monospaceFont;
 }
 
-h1,
+h1 {
+	margin: 0;
+}
+
 h4,
 h5,
 h6 {
@@ -52,10 +55,6 @@ article {
 	font-size: 16px;
 	line-height: 1.8;
 	word-break: break-word;
-
-	@media (max-width: 768px) {
-		font-size: 15px;
-	}
 
 	ul,
 	ol {
@@ -119,7 +118,6 @@ article {
 	h1,
 	h2 {
 		position: relative;
-		border-bottom: 1px solid #eaecef;
 		cursor: pointer;
 
 		&:hover {
