@@ -109,11 +109,6 @@
 		color: var.$darkPrimary;
 	}
 
-	article h1,
-	article h2 {
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-	}
-
 	details[open] {
 		background: rgba(var.$darkPrimary, 0.1) !important;
 	}

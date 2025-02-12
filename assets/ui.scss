@@ -12,6 +12,10 @@
 	box-shadow: 0 1.2px 1px rgba($color: #000000, $alpha: 0.1);
 }
 
+.complex-shadow {
+    box-shadow: 0 1.5px 5px rgba($color: #000000, $alpha: 0.05);
+}
+
 .dark .simple-shadow {
 	box-shadow: 0 1px 1px rgba($color: #fff, $alpha: 0.2);
 }
@@ -80,4 +84,20 @@
 
 .dark .button:hover {
     color: var.$darkPrimary;
+}
+
+.bottom-border {
+    border-bottom: 1px solid #eaecef;
+}
+
+.dark .bottom-border {
+    border-bottom-color: rgba($color: #fff, $alpha: .1);
+}
+
+article h1:not(:first-child), article h2, article .extra {
+    @extend .bottom-border;
+}
+
+.nav {
+    @extend .bottom-border, .complex-shadow;
 }

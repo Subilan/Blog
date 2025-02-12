@@ -121,6 +121,7 @@
   display: flex;
   align-items: center;
   font-size: 14px;
+  padding-bottom: 8px;
 
   span:not(:last-child)::after {
     content: '·';
