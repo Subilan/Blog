@@ -1,6 +1,6 @@
 <template>
   <div class="articles">
-    <router-link class="article card clickable" v-for="x in getPostDigests()" :to="`/posts/${x.slug}`">
+    <router-link class="article card clickable"  v-for="x in getPostDigests()" :to="`/posts/${x.slug}`">
       <span class="view-right-now-message">打开
         <icon :path="mdiArrowTopRight" />
       </span>

@@ -32,6 +32,8 @@ const forceMode = useState('force-mode');
 </script>
 
 <style lang="scss">
+@use '@/assets/var';
+
 .mobile-dark-toggle-btn-container {
   display: flex;
   justify-content: center;
@@ -57,7 +59,7 @@ const forceMode = useState('force-mode');
 }
 
 .dark .mobile-dark-toggle-btn {
-  background: #212121;
+  background: var.$darkPrimaryBlack;
 }
 
 .flowfromleft-enter-from,
@@ -109,11 +111,11 @@ const forceMode = useState('force-mode');
   svg {
     height: 32px;
     width: 32px;
-    color: #009688;
+    color: var.$primaryColor;
   }
 
   &.router-link-exact-active {
-    background: #009688;
+    background: var.$primaryColor;
     color: white;
 
     .inactive-icon {
