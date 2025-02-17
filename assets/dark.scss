@@ -26,6 +26,10 @@
 		color: var.$darkPrimary;
 	}
 
+	article .toc-container .toc ul li a:not(.active) {
+		color: rgba(var.$darkTextColor, .5);
+	}
+
 	article td,
 	article th {
 		border-color: #3e3e3e;

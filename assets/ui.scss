@@ -97,14 +97,14 @@
 }
 
 .bottom-border {
-    border-bottom: 1px solid #eaecef;
+    border-bottom: 1px solid var.$lineColorLight;
 }
 
 .dark .bottom-border {
-    border-bottom-color: rgba($color: #fff, $alpha: .1);
+    border-bottom-color: var.$lineColorDark;
 }
 
-article h1:not(:first-child), article h2, article .extra {
+article .header-wrapper, article .extra {
     @extend .bottom-border;
 }
 
@@ -114,4 +114,8 @@ article h1:not(:first-child), article h2, article .extra {
 
 .blogroll {
     @extend .holdable;
+}
+
+.toc::before {
+    @extend .bottom-border;
 }
