@@ -203,7 +203,7 @@ slugify('я люблю единорогов');
 - 无明确含义的特殊符号，如 `$#%` 被直接去掉。这个库也提供了自定义的替换方案，所以你可以定制地将 `$` 替换成 `dollar-sign`、`#` 替换成 `hashtag`、`%` 替换成 `percentage` 等有意义的字符串。
 - 西里尔文被替换成了对应的拉丁转写
 
-遗憾的是这个库并不支持中文，相关的讨论在 [sindresorhus/transliterate 的第一个 Issue](https://github.com/sindresorhus/transliterate/issues/1) 里，在这里他们提出了用拼音、拼音加上数字注音、加上笔画数等来防止混淆等，但至今仍然没有得出结论或实现（这是 2018 年的 Issue）。
+遗憾的是这个库并不支持中文，相关的讨论在 [sindresorhus/transliterate 的第一个 Issue](https://github.com/sindresorhus/transliterate/issues/1) 里，在这里他们提出了用拼音、拼音加上数字注音、加上笔画数等来防止混淆，甚至用 GPT 来为中文标题生成一个英文的 slug（这样就不需要考虑中文的处理了），等等，但至今仍然没有得出结论，也没有实现（这是 2018 年的 Issue）。
 
 ![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/chinese-is-currently-not-supported.png)
 *残念 desu*
