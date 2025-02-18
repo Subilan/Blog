@@ -8,6 +8,14 @@
     background: white;
 }
 
+.default-text-color {
+    color: #000000;
+}
+
+.dark .default-text-color {
+    color: var.$darkTextColor;
+}
+
 .simple-shadow {
 	box-shadow: 0 1.5px 1px rgba($color: #000000, $alpha: 0.1);
 }
@@ -86,7 +94,7 @@
 }
 
 .button {
-	@extend .clickable, .simple-shadow, .default-bg;
+	@extend .clickable, .simple-shadow, .default-bg, .default-text-color;
 	&:hover {
 		color: var.$primaryTextColor;
 	}

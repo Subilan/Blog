@@ -1,11 +1,11 @@
 <template>
-  <navbar/>
+  <navbar />
   <main class="layout-post">
-    <slot/>
+    <slot />
   </main>
-  <creative-commons-license/>
-  <default-footer/>
-  <back-to-top/>
+  <creative-commons-license />
+  <default-footer />
+  <back-to-top />
 </template>
 
 <script setup>

@@ -19,47 +19,113 @@
         </h3>
         <p>你正阅读的文章的发布日期距今已经有 <strong>{{ dayAgo }}</strong>了，其中的部分信息、个人观点或者措辞习惯等可能已经发生改变，因此仅供参考，请酌情阅读。</p>
       </div>
+      <div class="toc-container">
+        <div class="toc">
+          <ul>
+            <li v-for="x in post.headings">
+              <a :href="`#${x.heading.s}`">
+                {{ x.heading.t }}
+              </a>
+              <ul v-if="x.children.length > 0">
+                <li v-for="y in x.children">
+                  <a :href="`#${y.s}`">
+                    {{ y.t }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="content" v-html="post.content" />
     </article>
   </div>
 </template>
 
 <script setup>
-  import getPostContent from "@/utils/getPostContent.js";
-  import mediumZoom from "medium-zoom";
-  import { mdiClockAlertOutline, mdiClockOutline, mdiFormatTextVariant, mdiShapeOutline } from "@mdi/js";
+import getPostContent from "@/utils/getPostContent.js";
+import mediumZoom from "medium-zoom";
+import { mdiClockAlertOutline, mdiClockOutline, mdiFormatTextVariant, mdiShapeOutline } from "@mdi/js";
 
-  const slug = useRoute().params.postname;
-  const post = getPostContent(slug.toLowerCase());
+const slug = useRoute().params.postname;
+const post = getPostContent(slug.toLowerCase());
 
-  const dayDelta = computed(() => (new Date().getTime() - new Date(post.date).getTime()) / (1000 * 3600 * 24));
-  const dayAgo = computed(() => getAgo(post.date, true));
+const childrenMap = {};
+post.headings.map(x => x.children.map(y => {
+  return {
+    parent: x.heading.s,
+    current: y.s
+  }
+})).flat().forEach(x => {
+  childrenMap[x.current] = x.parent;
+})
 
-  onMounted(() => {
-    mediumZoom('article .content img', {
-      background: 'rgba(0, 0, 0, .6)'
-    })
-  })
+const dayDelta = computed(() => (new Date().getTime() - new Date(post.date).getTime()) / (1000 * 3600 * 24));
+const dayAgo = computed(() => getAgo(post.date, true));
 
-  definePageMeta({
-    layout: 'post',
-    middleware: [
-      (to, from) => {
-        const slug = to.params.postname;
+onMounted(() => {
+  mediumZoom('article .content img', {
+    background: 'rgba(0, 0, 0, .6)'
+  });
 
-        if (getPostContent(slug) === null) {
-          return abortNavigation(createError({
-            statusCode: 404,
-            statusMessage: 'Page Not Found'
-          }));
-        }
+  document.addEventListener('scroll', e => {
+    const tocElements = Array.from(document.querySelectorAll('.toc a'));
+    const viewportElements = Array.from(document.querySelectorAll('[data-section]')).filter(el => isElementInViewport(el));
+    const viewportSectionNames = viewportElements.map(y => y.getAttribute('data-section'));
+
+    const uniqueNames = viewportSectionNames.filter((x, i) => viewportSectionNames.indexOf(x) === i).map(u => {
+      return {
+        s: u,
+        n: viewportElements.filter(el => el.getAttribute('data-section') === u).reduce((a, b) => a + b.clientHeight, 0)
       }
-    ]
-  })
+    })
 
-  useSeoMeta({
-    articleModifiedTime: post.date.replace(/\//g, '-')
+    const uniqueNamePortions = uniqueNames.map(u => {
+      return {
+        s: u.s,
+        p: u.n / window.innerHeight
+      }
+    });
+
+    let maxPortion = 0;
+    let maxPortionSlug = '';
+    for (let u of uniqueNamePortions) {
+      if (u.p >= maxPortion) {
+        maxPortionSlug = u.s; // 最终需要的
+        maxPortion = u.p;
+      }
+    }
+
+    const maxPortionParentSlug = hasKey(childrenMap, maxPortionSlug) ? childrenMap[maxPortionSlug] : '';
+
+    tocElements.filter(x => x.getAttribute('href') !== '#' + maxPortionSlug && x.getAttribute('href') !== '#' + maxPortionParentSlug).forEach(el => el.classList.remove('active'));
+    const targetTocElement = document.querySelector(`.toc a[href="#${maxPortionSlug}"]`);
+    const targetTocElementParent = hasKey(childrenMap, maxPortionSlug) ? document.querySelector(`.toc a[href="#${maxPortionParentSlug}"]`) : null;
+
+    if (targetTocElement !== null) targetTocElement.classList.add('active');
+    if (targetTocElementParent !== null) targetTocElementParent.classList.add('active');
   })
+})
+
+definePageMeta({
+  layout: 'post',
+  middleware: [
+    (to, from) => {
+      const slug = to.params.postname;
+
+      if (getPostContent(slug) === null) {
+        return abortNavigation(createError({
+          statusCode: 404,
+          statusMessage: 'Page Not Found'
+        }));
+      }
+    }
+  ]
+})
+
+useSeoMeta({
+  articleModifiedTime: post.date.replace(/\//g, '-')
+})
 </script>
 
 <style lang="scss">
