@@ -35,6 +35,11 @@
 		border-color: #3e3e3e;
 	}
 
+	article .toc-container .toc > ul li a:hover,
+	article .toc > ul > li ul a.active {
+		color: #fff;
+	}
+
 	article .notice {
 		background: var.$darkSecondaryBlack;
 		&.tip {

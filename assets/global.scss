@@ -80,9 +80,10 @@ article {
 	.toc {
 		position: fixed;
 		z-index: 500;
-		
+
 		> ul {
-			&, li ul {
+			&,
+			li ul {
 				margin: 0;
 				list-style: none;
 			}
@@ -91,22 +92,29 @@ article {
 				a:not(.active) {
 					color: #bbb;
 					font-weight: normal;
-					transition: all .2s ease;
+					transition: all 0.2s ease;
 
-					img, code, kbd {
+					img,
+					code,
+					kbd {
 						filter: grayscale(100%) opacity(30%);
-						transition: all .2s ease;
+						transition: all 0.2s ease;
 					}
 
 					&:hover {
-						color: #000;
-						img, code, kbd {
+						img,
+						code,
+						kbd {
 							filter: unset;
 						}
 					}
 				}
 
 				a {
+					&:hover {
+						color: black;
+					}
+					
 					img {
 						max-height: 20px;
 						border-radius: 2px;
@@ -114,19 +122,21 @@ article {
 					}
 				}
 			}
-			
-			> li ul a.active {
-				color: #000;
-				position: relative;
 
-				&::before {
-					content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiMwMDk2ODgiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+");
-					position: absolute;
-					height: 24px;
-					width: 24px;
-					transform: translateX(calc(-100% - 2px)) translateY(-44%) scale(.8);
-					top: 50%;
-					transition: all .2s ease;
+			> li ul a {
+				&.active {
+					color: black;
+					position: relative;
+
+					&::before {
+						content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiMwMDk2ODgiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+');
+						position: absolute;
+						height: 24px;
+						width: 24px;
+						transform: translateX(calc(-100% - 2px)) translateY(-44%) scale(0.8);
+						top: 50%;
+						transition: all 0.2s ease;
+					}
 				}
 			}
 		}
@@ -156,7 +166,12 @@ article {
 		padding-bottom: 8px;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		margin: 8px 0;
 	}
 
