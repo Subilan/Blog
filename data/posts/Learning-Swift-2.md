@@ -243,7 +243,7 @@ Swift 中对这一点也有考虑。因此，U+0041 所代表的 LATIN CAPITAL L
 
 String 的 `hasPrefix(_:)` 和 `hasSuffix(_:)` 方法采用的是同样的比较方式。
 
-## 集合
+## 集合类型
 
 Swift 中有三种集合类型（collection types），即数组（array）、集合（set）和字典（dictionary）。
 - 数组是有序的同类元素组合
