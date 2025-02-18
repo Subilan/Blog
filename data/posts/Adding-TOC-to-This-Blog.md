@@ -21,11 +21,12 @@ Fun Fact:
 
 -   `a` 元素的名字就是 anchor。这是它本来的含义。而在现代语境下，`a` 元素已经和超链接的概念强绑定了，主要依靠的是它的 `href`（hyper reference）属性。
 -   接住上面的来说。由于 `a` 元素在印象中就是超链接的意思，许多人认为它的 `href` 属性是必需的（required），所以会习惯性将空链接的 `href` 填为 `#`。然而 `#` 本身的含义，只是一个空的 URI fragment，并非“哪里都不是”。这个 `href` 参数也是可带可不带。**只有当 `a` 元素带有 `href` 时，才是严格意义上的超链接。**
-    :::
+
+:::
 
 对于包含了 fragment 的 URL，浏览器的一个默认的行为就是将其对应的锚点元素移动到视口以内，这就是 TOC 运作的基础。
 
-所以简单而言，在 HTML 中可用的 TOC 的一个表示，就是具有层级关系的一系列同页超链接（same-page hyperlinks），其中层级用于向用户反映这些链接之间关系，超链接则允许用户进行上文所提及的交互功能。自然，我们的 TOC 主要由 `ul`、`li` 和 `a` 三种元素构成。
+所以简单而言，在 HTML 中可用的 TOC 的一个表示，就是具有层级关系的一系列同页超链接（same-document hyperlinks），其中层级用于向用户反映这些链接之间关系，超链接则允许用户进行上文所提及的交互功能。自然，我们的 TOC 主要由 `ul`、`li` 和 `a` 三种元素构成。
 
 ## 做个调包侠
 
@@ -168,7 +169,41 @@ while ((m = headingRegex.exec(content)) !== null) {
 </template>
 ```
 
-这里用到了 `v-html`，实现了插件无法所满足的显示复杂内容的功能。接下来，我们需要为这些 `a` 标签添加 `href` 属性，使得它们可以交互。这就涉及到前文所提到的锚点。那么，锚点的内容应该是怎样的呢？
+这里用到了 `v-html`，实现了插件无法所满足的显示复杂内容的功能。接下来，我们需要为这些 `a` 标签添加 `href` 属性，使得它们可以交互。这就涉及到前文所提到的锚点。有了标识符，就有了锚点，该如何选择呢？
 
-### 构造锚点内容
+### 构造锚点标识符
 
+锚点标识符本质上就是一个字符串，用于唯一标识一个锚点，在这里是标题。
+
+锚点标识符一般是由锚点的内容所决定的（因为这是确保其“唯一”最简单的依据）。人们在阅读文章时，专注的是其内容，因而对于一个标题的 permalink，我们希望其可读性高一些。对这一点继续加以考虑，就形成了普遍使用的一种锚点标识符模式，称之为 slugification（slug 也有蛞蝓🐌的意思）。Slug 的好处很明显：人类可读（human-readable），SEO 自然也良好。
+
+但这些都是基于英文的理想化考虑。受制于 URL 自身的标准，对于非 ASCII 字符，这些需求就显得苍白无力了。而且我们并不能将中文原封不动地塞进 slug 里面。
+
+为此，人们想出了利用拉丁转写、去除注音符号等方法，来实现非 ASCII 字符的 slugification。`markdown-it-anchor` 的作者推荐了 [sindresorhus/slugify](https://github.com/sindresorhus/slugify)，这是一个用来将不同语言的内容转化为 slug 的库，其本质操作就是前面所提到的两点：转写和去除。下面是它的使用例子：
+
+```
+import slugify from '@sindresorhus/slugify';
+
+slugify('I ♥ Dogs');
+//=> 'i-love-dogs'
+
+slugify('  Déjà Vu!  ');
+//=> 'deja-vu'
+
+slugify('fooBar 123 $#%');
+//=> 'foo-bar-123'
+
+slugify('я люблю единорогов');
+//=> 'ya-lyublyu-edinorogov'
+```
+
+可以看到
+- `♥` 这种特殊符号，被代表其含义的英文单词 `love` 所替换。
+- 带有注音、着重等修饰符的字母，其修饰符被去掉，例如 `Déjà Vu`（法语）被替换成 `deja-vu`
+- 无明确含义的特殊符号，如 `$#%` 被直接去掉。这个库也提供了自定义的替换方案，所以你可以定制地将 `$` 替换成 `dollar-sign`、`#` 替换成 `hashtag`、`%` 替换成 `percentage` 等有意义的字符串。
+- 西里尔文被替换成了对应的拉丁转写
+
+遗憾的是这个库并不支持中文，相关的讨论在 [sindresorhus/transliterate 的第一个 Issue](https://github.com/sindresorhus/transliterate/issues/1) 里，在这里他们提出了用拼音、拼音加上数字注音、加上笔画数等来防止混淆等，但至今仍然没有得出结论或实现（这是 2018 年的 Issue）。
+
+![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/chinese-is-currently-not-supported.png)
+*残念 desu*
