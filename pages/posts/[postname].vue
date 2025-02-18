@@ -19,7 +19,7 @@
         </h3>
         <p>你正阅读的文章的发布日期距今已经有 <strong>{{ dayAgo }}</strong>了，其中的部分信息、个人观点或者措辞习惯等可能已经发生改变，因此仅供参考，请酌情阅读。</p>
       </div>
-      <div class="toc-container">
+      <div class="toc-container" v-if="post.headings.length > 0">
         <div class="toc">
           <div class="toc-container-header">目录</div>
           <ul>
