@@ -21,16 +21,13 @@
       </div>
       <div class="toc-container">
         <div class="toc">
+          <div class="toc-container-header">目录</div>
           <ul>
             <li v-for="x in post.headings">
-              <a :href="`#${x.heading.s}`">
-                {{ x.heading.t }}
-              </a>
+              <a :href="`#${x.heading.s}`" v-html="x.heading.t" />
               <ul v-if="x.children.length > 0">
                 <li v-for="y in x.children">
-                  <a :href="`#${y.s}`">
-                    {{ y.t }}
-                  </a>
+                  <a :href="`#${y.s}`" v-html="y.t" />
                 </li>
               </ul>
             </li>
@@ -63,14 +60,15 @@ post.headings.map(x => x.children.map(y => {
 const dayDelta = computed(() => (new Date().getTime() - new Date(post.date).getTime()) / (1000 * 3600 * 24));
 const dayAgo = computed(() => getAgo(post.date, true));
 
-onMounted(() => {
-  mediumZoom('article .content img', {
-    background: 'rgba(0, 0, 0, .6)'
-  });
+function scrollLoop() {
+  const tocElements = Array.from(document.querySelectorAll('.toc a'));
+  const viewportElements = Array.from(document.querySelectorAll('[data-section]')).filter(el => isElementInViewport(el));
 
-  document.addEventListener('scroll', e => {
-    const tocElements = Array.from(document.querySelectorAll('.toc a'));
-    const viewportElements = Array.from(document.querySelectorAll('[data-section]')).filter(el => isElementInViewport(el));
+  let maxPortion = 0;
+  let maxPortionSlug = '';
+  let maxPortionParentSlug = '';
+
+  if (viewportElements.length > 0) {
     const viewportSectionNames = viewportElements.map(y => y.getAttribute('data-section'));
 
     const uniqueNames = viewportSectionNames.filter((x, i) => viewportSectionNames.indexOf(x) === i).map(u => {
@@ -86,9 +84,6 @@ onMounted(() => {
         p: u.n / window.innerHeight
       }
     });
-
-    let maxPortion = 0;
-    let maxPortionSlug = '';
     for (let u of uniqueNamePortions) {
       if (u.p >= maxPortion) {
         maxPortionSlug = u.s; // 最终需要的
@@ -96,15 +91,25 @@ onMounted(() => {
       }
     }
 
-    const maxPortionParentSlug = hasKey(childrenMap, maxPortionSlug) ? childrenMap[maxPortionSlug] : '';
+    maxPortionParentSlug = hasKey(childrenMap, maxPortionSlug) ? childrenMap[maxPortionSlug] : '';
+  }
 
-    tocElements.filter(x => x.getAttribute('href') !== '#' + maxPortionSlug && x.getAttribute('href') !== '#' + maxPortionParentSlug).forEach(el => el.classList.remove('active'));
-    const targetTocElement = document.querySelector(`.toc a[href="#${maxPortionSlug}"]`);
-    const targetTocElementParent = hasKey(childrenMap, maxPortionSlug) ? document.querySelector(`.toc a[href="#${maxPortionParentSlug}"]`) : null;
+  tocElements.filter(x => x.getAttribute('href') !== '#' + maxPortionSlug && x.getAttribute('href') !== '#' + maxPortionParentSlug).forEach(el => el.classList.remove('active'));
+  const targetTocElement = document.querySelector(`.toc a[href="#${maxPortionSlug}"]`);
+  const targetTocElementParent = hasKey(childrenMap, maxPortionSlug) ? document.querySelector(`.toc a[href="#${maxPortionParentSlug}"]`) : null;
 
-    if (targetTocElement !== null) targetTocElement.classList.add('active');
-    if (targetTocElementParent !== null) targetTocElementParent.classList.add('active');
-  })
+  if (targetTocElement !== null) targetTocElement.classList.add('active');
+  if (targetTocElementParent !== null) targetTocElementParent.classList.add('active');
+}
+
+onMounted(() => {
+  mediumZoom('article .content img', {
+    background: 'rgba(0, 0, 0, .6)'
+  });
+
+  scrollLoop();
+
+  document.addEventListener('scroll', e => scrollLoop())
 })
 
 definePageMeta({

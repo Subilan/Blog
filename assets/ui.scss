@@ -124,6 +124,6 @@ article .header-wrapper, article .extra {
     @extend .holdable;
 }
 
-.toc::before {
+.toc .toc-container-header {
     @extend .bottom-border;
 }
