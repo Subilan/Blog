@@ -122,7 +122,15 @@ function processHTML(html, headings) {
 
     const { document } = window;
 
-    for (const h of document.querySelectorAll('h1:not([id]), h2:not([id]), h3:not([id])')) {
+    // Remove slugification result by markdown-it-anchor
+    for (const headerWrapper of document.querySelectorAll('.header-wrapper')) {
+        const tg = headerWrapper.querySelector('h2, h3');
+        if (tg === null) continue;
+        headerWrapper.parentNode.replaceChild(tg.cloneNode(true), headerWrapper);
+    }
+
+    // Manually build permalink
+    for (const h of document.querySelectorAll('h2, h3')) {
         const slug = slugify(h.innerHTML);
         h.setAttribute('id', slug)
         const wrapper = document.createElement('div');
@@ -201,8 +209,7 @@ function render(content) {
                 visuallyHiddenClass: 'hidden',
                 wrapper: ['<div class="header-wrapper">', '</div>'],
                 placement: 'before',
-                symbol: HEADING_SYMBOL,
-                slugify
+                symbol: HEADING_SYMBOL
             })
         });
 
