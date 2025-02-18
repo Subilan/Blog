@@ -46,8 +46,12 @@ function getHeadings(content) {
 }
 
 function processHTML(html, headings) {
+    console.log('Post processing rendered HTML.')
+
     const { JSDOM } = require('jsdom');
     const { DOMSelector } = require('@asamuzakjp/dom-selector');
+
+    console.log(`Loading DOM`)
 
     const { window } = new JSDOM(`<!DOCTYPE html><main>${html}</main>`, {
         // https://github.com/asamuzaK/domSelector?tab=readme-ov-file#monkey-patch-jsdom
@@ -122,12 +126,17 @@ function processHTML(html, headings) {
 
     const { document } = window;
 
+    console.log('Reverting markdown-it-anchor result.');
+
     // Remove slugification result by markdown-it-anchor
     for (const headerWrapper of document.querySelectorAll('.header-wrapper')) {
         const tg = headerWrapper.querySelector('h2, h3');
         if (tg === null) continue;
+        console.log(`Removed slug ${tg.getAttribute('id')}.`);
         headerWrapper.parentNode.replaceChild(tg.cloneNode(true), headerWrapper);
     }
+
+    console.log('Building permalinks.');
 
     // Manually build permalink
     for (const h of document.querySelectorAll('h2, h3')) {
@@ -136,8 +145,11 @@ function processHTML(html, headings) {
         const wrapper = document.createElement('div');
         wrapper.classList.add('header-wrapper');
         wrapper.innerHTML = `<${h.tagName.toLowerCase()} id="${slug}" tabindex="-1">${h.innerHTML}</${h.tagName.toLowerCase()}><a class="header-anchor" href="#${slug}"><span aria-hidden="true">${HEADING_SYMBOL}</span></a>`;
+        console.log(`Built slug ${slug}.`);
         h.parentNode.replaceChild(wrapper, h);
     }
+
+    console.log('Adding section information to visible elements.')
 
     const headingsFlat = headings.map(x => [
         { h: 2, t: x.heading.t, s: x.heading.s }, ...x.children.map(y => {
@@ -150,7 +162,7 @@ function processHTML(html, headings) {
         const nextOne = headingsFlat[i + 1];
         const selector = BETWEEN_SELECTOR_TEMPLATE.replace('#1', `.header-wrapper:has(h${thisOne.h}[id="${thisOne.s}"])`).replace(/#2/g, `.header-wrapper:has(h${nextOne.h}[id="${nextOne.s}"])`);
 
-        console.log(selector);
+        console.log(`Selecting between h${thisOne.h} ${thisOne.s} and h${nextOne.h} ${thisOne.s}.`);
 
         for (const el of document.querySelectorAll(selector)) {
             el.setAttribute('data-section', thisOne.s);
@@ -161,10 +173,14 @@ function processHTML(html, headings) {
         const lastOne = headingsFlat[headingsFlat.length - 1];
         const lastSelector = AFTER_SELECTOR_TEMPLATE.replace('#1', `.header-wrapper:has(h${lastOne.h}[id="${lastOne.s}"])`);
 
+        console.log(`Selecting rest, after h${lastOne.h} ${lastOne.s}.`);
+
         for (const el of document.querySelectorAll(lastSelector)) {
             el.setAttribute('data-section', lastOne.s);
         }
     }
+
+    console.log('HTML post processing completed.')
 
     return document.querySelector('main').innerHTML;
 }
@@ -183,6 +199,8 @@ function stripHtml(html) {
 }
 
 function render(content) {
+    console.log(`Rendering using markdown-it.`);
+
     const pluginAnchor = require('markdown-it-anchor');
     const md = markdownit({
         html: true,
@@ -213,6 +231,8 @@ function render(content) {
             })
         });
 
+    console.log(`Rendering notice blocks.`);
+
     const match1 = Array.from(content.matchAll(/:::\s?tip([\S\s]*?):::/g));
     const match2 = Array.from(content.matchAll(/:::\s?warning([\S\s]*?):::/g));
     const match3 = Array.from(content.matchAll(/:::\s?danger([\S\s]*?):::/g));
@@ -238,6 +258,8 @@ function render(content) {
         });
     });
 
+    console.log(`Render completed.`)
+
     return md.render(content);
 }
 
@@ -255,6 +277,8 @@ function render(content) {
     for (let type of ['posts']) {
         const filenames = await fs.readdir(`${dataDir}/${type}`);
         for (let filename of filenames) {
+            console.log(`Start building ${filename}.`);
+
             const targetPath = `${dataDir}/${type}/${filename}`;
             const fileStat = await fs.stat(targetPath);
             if (!fileStat.isFile()) continue;
@@ -272,6 +296,8 @@ function render(content) {
             const contentWithoutTitle = frontMatterResult.body.replace('# ' + title, '').trim();
 
             const rendered = render(contentWithoutTitle);
+
+            console.log('Retrieving heading list.')
 
             const headings = getHeadings(rendered);
 
@@ -297,7 +323,11 @@ function render(content) {
                 // }
 
                 case 'posts': {
+                    console.log(`Push content ${res.title}.`)
+
                     postContents.push(res);
+
+                    console.log(`Push digest ${res.title}.`)
 
                     postDigests.push({
                         title: res.title,
@@ -308,6 +338,8 @@ function render(content) {
                         hidden: res.hidden,
                         wordCount: res.wordCount
                     });
+
+                    console.log(`Push search ${res.title}.`)
 
                     postSearch.push({
                         title: res.title,
@@ -327,8 +359,10 @@ function render(content) {
         }
     }
 
+    console.log(`Writing files`)
+
     await fs.writeFile(`${dataDir}/posts.json`, JSON.stringify(postContents));
-    await fs.writeFile(`${dataDir}/test001.json`, JSON.stringify(postContents.filter(x => x.title.includes('北疆'))));
+    // await fs.writeFile(`${dataDir}/test001.json`, JSON.stringify(postContents.filter(x => x.title.includes('北疆'))));
     // await fs.writeFile(`${dataDir}/pages.json`, JSON.stringify(pageContents));
     await fs.writeFile(`${dataDir}/postdigests.json`, JSON.stringify(postDigests));
     await fs.writeFile(`${dataDir}/postsearch.json`, JSON.stringify(postSearch));
