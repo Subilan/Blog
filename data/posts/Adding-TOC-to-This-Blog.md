@@ -445,7 +445,7 @@ const uniqueNamePortions = viewportSectionNames.filter((x, i) => viewportSection
     s: u,
     n,
     p: n / viewportElements.length // [!code --]
-    // 或者也可以替换为视口内容元素 height 之和 // [!code ++]
+    // window.innerHeight 也可以替换为视口内容元素 height 之和 // [!code ++]
     p: n / window.innerHeight // [!code ++]
   }
 })
