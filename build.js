@@ -301,7 +301,8 @@ async function render(content) {
     const start = new Date();
 
     // get script dir
-    const dataDir = import.meta.dirname;
+    const currentDir = import.meta.dirname;
+    const dataDir = `${currentDir}/data`;
 
     const pageContents = [];
     const postContents = [];
