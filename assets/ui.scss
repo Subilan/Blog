@@ -85,11 +85,7 @@
     border-color: rgba($color: white, $alpha: .1)
 }
 
-.dark .shiki {
-    @extend .bordered;
-}
-
-.notice .shiki {
+.shiki {
     @extend .bordered;
 }
 
