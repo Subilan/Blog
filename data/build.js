@@ -186,11 +186,19 @@ function processHTML(html, headings) {
         if (languageMatch === null) continue;
 
         const languageName = languageMatch[1];
+        const preContainer = document.createElement('div');
+        preContainer.classList.add('pre-container');
+
         const label = document.createElement('div');
         label.classList.add('language-label');
         label.innerHTML = languageName;
 
-        code.parentNode.appendChild(label);
+        const pre = code.parentNode;
+
+        preContainer.appendChild(label);
+        preContainer.appendChild(pre.cloneNode(true))
+
+        pre.parentNode.replaceChild(preContainer, pre);
     }
 
     console.log('Building permalinks.');
