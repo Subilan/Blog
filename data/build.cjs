@@ -219,17 +219,7 @@ function render(content) {
         .use(require('markdown-it-sup'))
         .use(require('markdown-it-sup'))
         .use(require('markdown-it-footnote'))
-        .use(require('markdown-it-mathjax3'), {})
-        .use(pluginAnchor, {
-            permalink: pluginAnchor.permalink.linkAfterHeader({
-                style: 'visually-hidden',
-                assistiveText,
-                visuallyHiddenClass: 'hidden',
-                wrapper: ['<div class="header-wrapper">', '</div>'],
-                placement: 'before',
-                symbol: HEADING_SYMBOL
-            })
-        });
+        .use(require('markdown-it-mathjax3'), {});
 
     console.log(`Rendering notice blocks.`);
 
