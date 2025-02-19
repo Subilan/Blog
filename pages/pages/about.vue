@@ -13,7 +13,7 @@
           <li>2017-2019: Hexo, Hugo 短期尝试，Typecho 使用后遭遇删库跑路</li>
           <li>2019-2023: VuePress 1 + GitHub Pages</li>
           <li>2023-2024: Vue 3 + GitHub Actions + Vercel</li>
-          <li>当前: Nuxt 3 + GitHub Actions + Vercel</li>
+          <li>当前: Nuxt 3 + Vercel</li>
         </ul>
         <p>最开始<em>正式</em>接触博客（个人网站）这种信息媒介是 2016 年，当时使用的是
           WordPress，搭配上面的预制主题。后来先后更换了 Hugo、Hexo、Typecho（用得最久），经历了私有主机商的删库跑路之后，于
@@ -25,7 +25,7 @@
             href="https://github.com/Subilan/Blog" class="external-link"
             target="_blank">https://github.com/Subilan/Blog</a>。
         </p>
-        <p>博客使用的持续集成与托管平台是 <a href="https://vercel.com" class="external-link" target="_blank">Vercel</a>，通过 GitHub Actions 对接到项目里。</p>
+        <p>博客使用的持续集成与托管平台是 <a href="https://vercel.com" class="external-link" target="_blank">Vercel</a>。</p>
       </content-block>
       <content-block>
         <template #title>个人：关于个人兴趣</template>
