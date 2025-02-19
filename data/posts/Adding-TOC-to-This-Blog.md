@@ -41,7 +41,7 @@ Fun Fact:
 
 -   **位置不灵活**：如果你只是希望文章的开头/结尾/某个位置能够有一个 TOC 存在，那么它的确能满足你的需求。但是我想要的是侧边的效果，所以还需要额外的 CSS 修改。
 -   **没有高亮**：高亮并不是 TOC 的硬性需求，但是我还是希望有。这是没有采用它的根本原因。
--   **不支持一些特殊的标题**：这还是我的特殊需求 😋。在例如 [Swift 学习笔记（一）——A Swift Tour](/posts/learning-swift-1)、[北疆之旅（一）](/posts/a-journey-to-xinjiang-1) 这样的文章中，常常有在标题元素里再加各种元素，如 `img`、`code` 的用法，虽然不标准，但可以让它们的显示效果更加丰富。这样的标题并不能被正确识别。
+-   **不支持一些特殊的标题**：这还是我的特殊需求 😋。在例如 [Swift 学习笔记（一）——A Swift Tour](/posts/learning-swift-1)、[北疆之旅（一）](/posts/a-journey-to-xinjiang-1) 这样的文章中，常常有在标题元素里再加各种元素，如 `img`、`code` 的用法，虽然不标准[^1]，但可以让它们的显示效果更加丰富。这样的标题并不能被正确识别。
 
 另外 `markdown-it-anchor` 也有一个限制：它不支持 Markdown 中自定义的 HTML 块的识别，所以 `<h2>...</h2>` 而非 `## ...` 表示的二级标题会被忽略，相应的 permalink 也不会形成。这一点作者也在 README 中[明确提到了](https://github.com/valeriangalliat/markdown-it-anchor?tab=readme-ov-file#parsing-headings-from-html-blocks)。
 
@@ -207,3 +207,13 @@ slugify('я люблю единорогов');
 
 ![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/chinese-is-currently-not-supported.png)
 *残念 desu*
+
+综合上述考虑，我决定还是不多加修改，直接照搬 `markdown-it-anchor` 所使用的默认 `slugify` 函数，并限制了其输出的长度。
+
+```javascript
+const slugify = s => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-').substring(0, 50));
+```
+
+
+
+[^1]: 正如文中“构造锚点标识符”部分的内容所述，这样做会导致 slugify 的过程需要额外考虑对这些标签的处理来增加可读性，如不做处理则会让 URL 显得比较混乱（中间带有 HTML 标签）。
