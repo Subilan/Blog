@@ -1,9 +1,55 @@
-const markdownit = require("markdown-it");
-const fs = require('fs/promises')
-const fm = require('front-matter');
+import MarkdownIt from 'markdown-it';
+import fs from 'fs/promises';
+import fm from 'front-matter';
+import pluginSub from 'markdown-it-sub';
+import pluginSup from 'markdown-it-sup';
+import pluginMathjax3 from 'markdown-it-mathjax3';
+import pluginShiki from '@shikijs/markdown-it';
+import pluginFootnote from 'markdown-it-footnote';
+import pluginExternalLinks from 'markdown-it-external-links';
+import { DOMSelector } from '@asamuzakjp/dom-selector';
+import { JSDOM } from 'jsdom';
+
+import {
+    transformerMetaHighlight,
+    transformerMetaWordHighlight,
+    transformerNotationDiff,
+    transformerNotationErrorLevel,
+    transformerNotationFocus,
+    transformerNotationHighlight,
+} from '@shikijs/transformers'
+
+const md = MarkdownIt({
+    html: true,
+    linkify: true,
+    breaks: true,
+    langPrefix: 'language-'
+})
+    .use(pluginExternalLinks, {
+        externalTarget: '_blank',
+        externalRel: 'noopener noreferrer'
+    })
+    .use(pluginSup)
+    .use(pluginSub)
+    .use(pluginFootnote)
+    .use(pluginMathjax3)
+    .use(await pluginShiki({
+        themes: {
+            light: 'github-light',
+            dark: 'github-dark',
+        },
+        transformers: [
+            transformerNotationDiff(),
+            transformerNotationErrorLevel(),
+            transformerNotationFocus(),
+            transformerNotationHighlight(),
+            transformerMetaHighlight(),
+            transformerMetaWordHighlight()
+        ]
+    }));
+
 
 const slugify = s => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-').substring(0, 50));
-const assistiveText = title => `永久链接`;
 const HEADING_SYMBOL = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>永久链接</title><path d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z" /></svg>';
 const BETWEEN_SELECTOR_TEMPLATE = '#1 ~ :not( #2 ~ * ):not( #2 )';
 const AFTER_SELECTOR_TEMPLATE = '#1 ~ *';
@@ -47,10 +93,6 @@ function getHeadings(content) {
 
 function processHTML(html, headings) {
     console.log('Post processing rendered HTML.')
-
-    const { JSDOM } = require('jsdom');
-    const { DOMSelector } = require('@asamuzakjp/dom-selector');
-
     console.log(`Loading DOM`)
 
     const { window } = new JSDOM(`<!DOCTYPE html><main>${html}</main>`, {
@@ -136,6 +178,21 @@ function processHTML(html, headings) {
     //     headerWrapper.parentNode.replaceChild(tg.cloneNode(true), headerWrapper);
     // }
 
+    console.log('Adding language labels');
+
+    for (const code of document.querySelectorAll('code[class^="language-"]')) {
+        const languageMatch = code.getAttribute('class').match(/language-([A-Za-z#\+]+)/);
+
+        if (languageMatch === null) continue;
+
+        const languageName = languageMatch[1];
+        const label = document.createElement('div');
+        label.classList.add('language-label');
+        label.innerHTML = languageName;
+
+        code.parentNode.appendChild(label);
+    }
+
     console.log('Building permalinks.');
 
     // Manually build permalink
@@ -198,29 +255,8 @@ function stripHtml(html) {
     return html.replace(/<[^>]*>?/gm, '');
 }
 
-function render(content) {
+async function render(content) {
     console.log(`Rendering using markdown-it.`);
-
-    const pluginAnchor = require('markdown-it-anchor');
-    const md = markdownit({
-        html: true,
-        linkify: true,
-        breaks: true,
-        langPrefix: 'language-'
-    })
-        .use(require('markdown-it-external-links'), {
-            externalTarget: '_blank',
-            externalRel: 'noopener noreferrer'
-        })
-        .use(require('markdown-it-highlight-lines'))
-        .use(require('markdown-it-prism'), {
-            defaultLanguage: 'plaintext'
-        })
-        .use(require('markdown-it-sup'))
-        .use(require('markdown-it-sup'))
-        .use(require('markdown-it-footnote'))
-        .use(require('markdown-it-mathjax3'), {});
-
     console.log(`Rendering notice blocks.`);
 
     const match1 = Array.from(content.matchAll(/:::\s?tip([\S\s]*?):::/g));
@@ -257,7 +293,7 @@ function render(content) {
     const start = new Date();
 
     // get script dir
-    const dataDir = __dirname;
+    const dataDir = import.meta.dirname;
 
     const pageContents = [];
     const postContents = [];
@@ -285,7 +321,7 @@ function render(content) {
 
             const contentWithoutTitle = frontMatterResult.body.replace('# ' + title, '').trim();
 
-            const rendered = render(contentWithoutTitle);
+            const rendered = await render(contentWithoutTitle);
 
             console.log('Retrieving heading list.')
 
@@ -359,7 +395,7 @@ function render(content) {
 
     const end = new Date();
 
-    console.log(`OK: built ${postContents.length} posts and ${pageContents.length} pages in ${end.getTime() - start.getTime()}ms.`)
+    console.log(`OK: built ${postContents.length} posts and ${pageContents.length} pages in ${((end.getTime() - start.getTime()) / 1000).toFixed(2)}s.`)
 
     const postStat = await fs.stat(`${dataDir}/posts.json`);
     // const pageStat = await fs.stat(`${dataDir}/pages.json`);
