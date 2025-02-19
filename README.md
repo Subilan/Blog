@@ -10,7 +10,7 @@
   - 目录结构
       - `src`, `public` — 前端相关的开发文件
       - `data` — 数据文件，包括编写的 Markdown 文件（`data/posts`），友链数据等
-      - `data/build.cjs` — 构建脚本
+      - `build.js` — 构建脚本
   - 本仓库开放 Pull Request，可用于添加友链、纠正错误。
   - 本站域名 https://subilan.win 长期续费
 - 曾经使用过的博客程序
