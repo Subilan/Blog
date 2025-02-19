@@ -15,17 +15,27 @@
 	background-color: #fafafa !important;
 }
 
-.shiki .language-label {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
-	font-size: 12px;
-	opacity: 0.2;
-	pointer-events: none;
-	transition: all 0.2s ease;
+.shiki {
+	position: relative;
 }
 
-.shiki:hover {
+.pre-container {
+	position: relative;
+
+	.language-label {
+		position: absolute;
+		line-height: 1;
+		top: 1rem;
+		right: 1rem;
+		font-size: 12px;
+		opacity: 0.2;
+		z-index: 20;
+		pointer-events: none;
+		transition: all 0.2s ease;
+	}
+}
+
+.pre-container:hover {
 	.language-label {
 		opacity: 1;
 	}
@@ -46,13 +56,69 @@
 	.shiki .line.highlighted span {
 		background-color: #1f1f1f !important;
 	}
+
+	.shiki .line.diff.remove {
+		&, span {
+			background-color: #423436 !important;
+		}
+	
+		span, &::before {
+			color: #f44336 !important;
+		}
+	}
+	
+	.shiki .line.diff.add {
+		&, span {
+			background-color: #333e3d !important;
+		}
+	
+		span, &::before {
+			color: #1de9b6 !important;
+		}
+	}
 }
 
-.shiki .line.highlighted {
-	width: calc(100% + 32px);
-	display: inline-block;
-	transition: all .2s ease;
-	margin: 0px -16px;
-	padding: 0px 16px;
-	box-sizing: border-box;
+.shiki .line.diff.remove {
+    &::before {
+        content: '-';
+        position: absolute;
+    }
+
+    &, span {
+        background-color: #ffebee !important;
+    }
+
+    span, &::before {
+        color: #f44336 !important;
+    }
+}
+
+.shiki .line.diff.add {
+    &::before {
+        content: '+';
+        position: absolute;
+    }
+
+    &, span {
+        background-color: #e0f2f1 !important;
+    }
+
+    span, &::before {
+        color: #009688 !important;
+    }
+}
+
+
+.shiki {
+	.line {
+		&.diff,
+		&.highlighted {
+			width: calc(100% + 32px);
+			display: inline-block;
+			transition: all 0.2s ease;
+			margin: 0px -16px;
+			padding: 0px 16px;
+			box-sizing: border-box;
+		}
+	}
 }
