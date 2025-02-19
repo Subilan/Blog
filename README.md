@@ -1,26 +1,45 @@
 # SolitudeScroll
 
-此博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.vercel.app> 访问。博客使用 Nuxt 3 编写，采用本地 Markdown 编写+`build.cjs` 编译本地 json 数据后再被组件调用的模式。网站部署和托管使用 Vercel，图床使用阿里云 OSS。
+## 关于本站
 
-## 关于
+此博客的域名是 <https://subilan.win>，也可以通过 <https://subilan.vercel.app> 访问。博客使用 Nuxt 3 编写，采用本地 Markdown 编写+`build.js` 编译为本地 JSON 数据后再被组件调用的模式。
 
-- 博客开放友链申请，如需添加，可考虑直接向本项目提交 PR，发布 Issue 或联系我。详细要求请参考[博客的友链页面](https://subilan.win/pages/blogroll)。
-- 本站所使用的主题参考了 [VuePress](https://vuepress.vuejs.org/) 的默认主题，并经过了三次迭代（最近一次是 2025 年 2 月）。
-- 网站
-  - 目录结构
-      - `src`, `public` — 前端相关的开发文件
-      - `data` — 数据文件，包括编写的 Markdown 文件（`data/posts`），友链数据等
-      - `build.js` — 构建脚本
-  - 本仓库开放 Pull Request，可用于添加友链、纠正错误。
-  - 本站域名 https://subilan.win 长期续费
-- 曾经使用过的博客程序
-  - WordPress (*2016-2017*)
-  - Typecho, Hugo, Hexo (*2017-2019*)
-  - VuePress 1 + GitHub Pages (*2019.08*-*2023.07*)
-  - Vue 3 + GitHub Actions + Vercel (*2023.07.15*-*2024.09.04*)
-  - （当前）**Nuxt 3 + Vercel** (*2024.09*-)
+本站所使用的主题参考了 [VuePress](https://vuepress.vuejs.org/) 的默认主题，并经过了三次迭代（最近一次是 2025 年 2 月）。
+
+-   曾经使用过的博客程序
+    -   WordPress (_2016-2017_)
+    -   Typecho, Hugo, Hexo (_2017-2019_)
+    -   VuePress 1 + GitHub Pages (_2019.08_-_2023.07_)
+    -   Vue 3 + GitHub Actions + Vercel (_2023.07.15_-_2024.09.04_)
+    -   （当前）**Nuxt 3 + Vercel** (_2024.09_-)
 
 更多请查看[博客的关于页面](https://subilan.win/pages/about)。
+
+## 友链申请
+
+博客开放友链申请，如需添加，可考虑直接向本项目提交 PR 或者发布 Issue。详细要求请参考[博客的友链页面](https://subilan.win/pages/blogroll)。
+
+## 目录结构
+
+|                  目录或文件                  |                                        介绍                                        |
+| :------------------------------------------: | :--------------------------------------------------------------------------------: |
+| `src`, `public`, `assets`, `components`, ... |                                 前端相关的开发文件                                 |
+|                    `data`                    | 数据文件，包括编写的 Markdown 文件（`data/posts`），友链数据（`blogrolls.json`）等 |
+|                  `build.js`                  |                                      编译脚本                                      |
+
+## 主要依赖库
+
+-   Nuxt 3 / Vue 3
+-   [markdown-it](https://github.com/markdown-it/markdown-it)
+-   [Shiki 式](https://shiki.style/)
+-   [dayjs](https://day.js.org)
+-   [Material Design Icons](https://materialdesignicons.com/)
+
+## 运行环境
+
+-   Node.js 22 LTS
+-   Vercel（部署）
+-   阿里云 OSS（图床）
 
 ## 协议
 
