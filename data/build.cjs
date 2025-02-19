@@ -126,15 +126,15 @@ function processHTML(html, headings) {
 
     const { document } = window;
 
-    console.log('Reverting markdown-it-anchor result.');
+    // console.log('Reverting markdown-it-anchor result.');
 
-    // Remove slugification result by markdown-it-anchor
-    for (const headerWrapper of document.querySelectorAll('.header-wrapper')) {
-        const tg = headerWrapper.querySelector('h2, h3');
-        if (tg === null) continue;
-        console.log(`Removed slug ${tg.getAttribute('id')}.`);
-        headerWrapper.parentNode.replaceChild(tg.cloneNode(true), headerWrapper);
-    }
+    // // Remove slugification result by markdown-it-anchor
+    // for (const headerWrapper of document.querySelectorAll('.header-wrapper')) {
+    //     const tg = headerWrapper.querySelector('h2, h3');
+    //     if (tg === null) continue;
+    //     console.log(`Removed slug ${tg.getAttribute('id')}.`);
+    //     headerWrapper.parentNode.replaceChild(tg.cloneNode(true), headerWrapper);
+    // }
 
     console.log('Building permalinks.');
 
