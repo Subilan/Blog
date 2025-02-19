@@ -1,6 +1,7 @@
 @use 'dark';
 @use 'ui';
 @use 'var';
+@use 'highlight';
 
 html,
 body {
@@ -226,14 +227,14 @@ article {
 	pre {
 		border-radius: 6px;
 		position: relative;
-		padding: 1.25rem 1.5rem;
+		padding: 1rem;
 		margin: 0.85rem 0;
+		overflow-x: auto;
 
 		code {
 			padding: 0;
 			background: transparent;
 			border-radius: 0;
-			overflow: auto;
 			max-width: 100%;
 			display: block;
 		}

@@ -85,6 +85,14 @@
     border-color: rgba($color: white, $alpha: .1)
 }
 
+.dark .shiki {
+    @extend .bordered;
+}
+
+.notice .shiki {
+    @extend .bordered;
+}
+
 .card {
 	@extend .area, .simple-shadow, .default-bg;
 }

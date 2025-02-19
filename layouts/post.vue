@@ -17,8 +17,6 @@ import BackToTop from "~/components/back-to-top.vue";
 
 <style lang="scss">
 @use '@/assets/var.scss';
-@use '@/assets/github-light.scss';
-@use '@/assets/github-dark.scss';
 
 .flowup-enter-active,
 .flowup-leave-active {

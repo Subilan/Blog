@@ -19,7 +19,7 @@
     "dayjs": "^1.11.13",
     "front-matter": "^4.0.2",
     "jsdom": "^26.0.0",
-    "markdown-it": "^14.1.0",
+    "markdown-it": "latest",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-external-links": "^0.0.6",
     "markdown-it-footnote": "^4.0.0",
@@ -38,7 +38,10 @@
   },
   "devDependencies": {
     "@asamuzakjp/dom-selector": "^6.4.0",
+    "@shikijs/markdown-it": "^3.0.0",
+    "@shikijs/transformers": "^3.0.0",
     "node-html-parser": "^7.0.1",
     "sass": "^1.77.8"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
