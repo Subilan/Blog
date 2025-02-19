@@ -21,7 +21,7 @@ Fun Facts:
 
 -   `a` 元素的名字就是 anchor。这是它本来的含义。而在现代语境下，`a` 元素已经和超链接的概念强绑定了，主要依靠的是它的 `href`（hyper reference）属性。
 -   接住上面的来说。由于 `a` 元素在印象中就是超链接的意思，许多人认为它的 `href` 属性是必需的（required），所以会习惯性将空链接的 `href` 填为 `#`。然而 `#` 本身的含义，只是一个空的 URI fragment，并非“哪里都不是”。这个 `href` 参数也是可带可不带。**只有当 `a` 元素带有 `href` 时，才是严格意义上的超链接。**
-:::
+    :::
 
 对于包含了 fragment 的 URL，浏览器的一个默认的行为就是将其对应的锚点元素移动到视口以内，这就是 TOC 运作的基础。
 
@@ -253,17 +253,13 @@ for (const h of document.querySelectorAll('h2, h3')) {
 
 有了 permalink 以后，再修改 TOC 的相关代码，就得到了具有交互的 TOC。
 
-```vue
+```vue {4,6}
 <template>
 	<ul>
 		<li v-for="x in headings">
-			<a v-html="x.text" /> // [!code --]
-      <a v-html="x.text" :href="x.slug" /> // [!code ++]
+			<a v-html="x.text" :href="x.slug" />
 			<ul v-if="x.children.length > 0">
-				<li v-for="y in x.children">
-          <a v-html="y" /> // [!code --] 
-          <a v-html="y.text" :href="y.slug" /> // [!code ++]
-        </li>
+				<a v-html="y.text" :href="y.slug" />
 			</ul>
 		</li>
 	</ul>
@@ -354,11 +350,14 @@ h2 p p p h2 h3 p p table p p h3 p pre p h2 p p p
 为了得到这样的选择器，需要用到我们先前构建出来的 headings 数据。前面的这一数据是带有层级结构的。此处根据上面的推理，并不需要这种层级，只需将这些标题按照正确的顺序，从前往后排列成一个一维数组。这一过程代码如下：
 
 ```javascript
-const headingsFlat = headings.map(x => [
-    { h: 2, text: x.text, slug: x.slug }, ...x.children.map(y => {
-        return { h: 3, text: y.text, slug: y.slug };
-    })
-]).flat();
+const headingsFlat = headings
+	.map(x => [
+		{ h: 2, text: x.text, slug: x.slug },
+		...x.children.map(y => {
+			return { h: 3, text: y.text, slug: y.slug };
+		})
+	])
+	.flat();
 ```
 
 我们实现了下面的转换：
@@ -388,13 +387,13 @@ const headingsFlat = headings.map(x => [
 
 ```javascript
 for (let i = 0; i < headingsFlat.length - 1; i++) {
-    const thisOne = headingsFlat[i];
-    const nextOne = headingsFlat[i + 1];
-    const selector = "#1 ~ :not( #2 ~ * ):not( #2 )".replace('#1', `.heading-wrapper:has(h${thisOne.h}[id="${thisOne.s}"])`).replace(/#2/g, `.heading-wrapper:has(h${nextOne.h}[id="${nextOne.s}"])`);
+	const thisOne = headingsFlat[i];
+	const nextOne = headingsFlat[i + 1];
+	const selector = '#1 ~ :not( #2 ~ * ):not( #2 )'.replace('#1', `.heading-wrapper:has(h${thisOne.h}[id="${thisOne.s}"])`).replace(/#2/g, `.heading-wrapper:has(h${nextOne.h}[id="${nextOne.s}"])`);
 
-    for (const el of document.querySelectorAll(selector)) {
-        el.setAttribute('data-section', thisOne.s);
-    }
+	for (const el of document.querySelectorAll(selector)) {
+		el.setAttribute('data-section', thisOne.s);
+	}
 }
 
 // 以上代码未处理最后一个标题元素之后的内容元素
@@ -411,10 +410,10 @@ const viewportElements = Array.from(document.querySelectorAll('[data-section]'))
 
 有了上面的标记，可以很容易地计算出一些相关的指标。
 
-- 当前视口中各部分元素的占比
-- 当前视口中各部分元素的高度占比
-- 当前视口中各部分元素的宽度占比
-- ...
+-   当前视口中各部分元素的占比
+-   当前视口中各部分元素的高度占比
+-   当前视口中各部分元素的宽度占比
+-   ...
 
 其中前两个指标最为重要，它们的计算也很简单。例如第一个指标的计算方法如下：
 
@@ -423,14 +422,16 @@ const viewportElements = Array.from(document.querySelectorAll('[data-section]'))
 const viewportSectionNames = viewportElements.map(y => y.getAttribute('data-section'));
 
 // 统计当前视口中存在的每一个 slug 对应的元素总数或者比例
-const uniqueNamePortions = viewportSectionNames.filter((x, i) => viewportSectionNames.indexOf(x) === i).map(u => {
-  let n = viewportSectionNames.filter(x => x === u).length;
-  return {
-    s: u,
-    n,
-    p: n / viewportElements.length
-  }
-})
+const uniqueNamePortions = viewportSectionNames
+	.filter((x, i) => viewportSectionNames.indexOf(x) === i)
+	.map(u => {
+		let n = viewportSectionNames.filter(x => x === u).length;
+		return {
+			s: u,
+			n,
+			p: n / viewportElements.length
+		};
+	});
 ```
 
 事实证明这一指标还无法正确反映当前用户视口的“主要内容”，因为没有考虑观感上的因素。所以我们可以考虑使用第二个指标，计算元素的高度占比。
