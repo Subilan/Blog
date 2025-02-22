@@ -26,6 +26,10 @@
 		color: var.$darkPrimary;
 	}
 
+	article .header-wrapper .header-anchor svg {
+		fill: var.$darkTextColor;
+	}
+
 	article .toc-container .toc ul li a:not(.active) {
 		color: rgba(var.$darkTextColor, .5);
 	}
@@ -125,6 +129,10 @@
 	article code {
 		background: var.$darkSecondaryBlack;
 		color: var.$darkTextColor;
+	}
+
+	article .notice code {
+		background: var.$darkPrimaryBlack;
 	}
 
 	article pre code {
