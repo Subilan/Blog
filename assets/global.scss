@@ -401,6 +401,20 @@ pre[class*='language-'] {
 		}
 	}
 
+	&.thought {
+		border-left: 2px solid #2196f3;
+
+		.notice-title,
+		a,
+		strong {
+			color: #2196f3;
+
+			svg {
+				fill: #2196f3;
+			}
+		}
+	}
+
 	&.tip {
 		border-left: 2px solid var.$primaryColor;
 
