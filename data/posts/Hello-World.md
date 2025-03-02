@@ -1,12 +1,10 @@
 ---
-desc: Hi. 欢迎来到我的博客！
+desc: 一个寻常的 Hello World
 date: 2019/08/17
 ---
 # Hello World
 
 Hi. 欢迎来到我的博客！
-
-<!-- more -->
 
 ## Hello
 

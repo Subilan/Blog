@@ -5,54 +5,50 @@ cate: 路径
 ---
 # 使用 VuePress 搭建博客
 
-> **前排提醒:** 你也许需要一定的前端基础（非传统前端）才能读懂此篇文章的内容。
-
-我认为 Vue 的生态是有够好的了——有 Router，有 Vuex，还有更多，都是非常有用处的。其中就包含 VuePress，原本是尤雨溪先生用来提高写文档效率而写的一个小作品，现在被发展后可以用作电子书/教程编写和博客的编写。本篇文章介绍的是后者，实际上两者是相通的。
+> **前排提醒:** 你也许需要一定的前端基础才能读懂此篇文章的内容。
 
 ## 流程
 
-VuePress 与其它静态博客软件的发布流程基本一样——写完文章后 `build` 成为静态文件。所以如果是 Hexo 或者 Hugo 用户看到这篇文章中的流程也许会感觉很熟悉，不过这里还是提到一下。
+VuePress 与其它静态博客软件的发布流程基本一样。写完文章后 `build` 成为静态文件，然后托管给 Web 服务器供用户访问。Hexo 或者 Hugo 用户可能对这样的流程也许会感觉很熟悉。
 
-也正因为是静态文件，所以可以使用 GitHub 托管——当然也可以使用你自己的主机，仅需将网站根目录设置为 `build` 产生的静态文件的目录即可。这会在下文中提到。
+也正因为是静态文件，所以可以使用 GitHub 这样的平台来免费托管，而无需投入更多的成本。当然也可以使用你自己的主机。
 
-## 安装
+## 安装 VuePress
 
 首先选择一个你想要用来作为博客源代码放置之处的文件夹，**下文中如果没有特殊声明，所有的文件、目录均指创建在此文件夹里**。
 
-通过 npm 和 yarn 均可安装。本文主要使用 npm。
+通过 npm 和 yarn 均可安装 VuePress。本文主要使用 npm。
 
 ```sh
 npm install -D vuepress
 # 或者 yarn add -D vuepress
 ```
 
-需要注意的一点是，这种方式是以本地依赖（dependencies）的形式安装 VuePress，它会在当前目录生成一个 `node_modules` 文件夹并自动安装 JavaScript、Vue 等所需要的依赖。
+需要注意的一点是，这种方式是以本地依赖（dependencies）的形式安装 VuePress，它会在当前目录生成一个 `node_modules` 文件夹并自动安装运行时所需要的依赖。也正因此，在本文后面出现的指令无法以 `vuepress` 开头，因为 VuePress 没有被全局安装。
 
-在本文后面出现的指令均无法以 `vuepress` 开头，因为 VuePress 没有被全局安装。
-
-安装完成之后，就可以开始搭建了。
+这一步完成之后，就可以开始搭建了。
 
 ## 搭建
 
-个人还是建议将你的博客的源代码托管到 GitHub 上，哪怕私有也好。当然，你也可以选择部署到自己的 Git 服务器上。这样做就有这些好处
+个人建议将你的博客的源代码托管到 GitHub 上，或者部署在自己的 Git 服务器上。这样做就有这些好处：
 
-1. 一个算是比较简单的双重备份吧，当你的数据消失后，可以通过 Git Log 找到；
-2. 一些插件需要通过 Git 的提交日志获得你提交某篇文章的具体时刻，然后才能够显示日期或者 XX ago。
+1. 自带版本管理，算是一种备份。如果你的一些本地数据被误删，可能可以通过 Git Log 找到
+2. VuePress 需要通过 Git 的提交日志获得你提交某篇文章的具体时刻来显示 times ago 相关信息
 
-那么首先我们创建一个专门放置「文章」的目录（区分于「独立页面」，这样做可以避免混淆），名称可以自取，例如 `archives`、`articles`、`posts`、`docs` 等均可表达这个意思，也是传统博客程序中常用的。
+我们创建一个专门放置“文章”的目录（区分于“独立页面”），名称自取。一些可用的名称包括：`articles`、`posts`、`docs`···
 
 ```sh
 mkdir posts
 cd posts
 ```
 
-然后就可以在这个文件夹里进行写作了，写作仅需在此文件夹里建立不同的 Markdown 文件，VuePress 会自动识别到你的文章。
+然后就可以在这个文件夹里进行写作了。仅需在此文件夹里建立不同的 Markdown 文件即可开始。VuePress 会自动识别到你的文章。
 
-VuePress 的写作使用 Markdown 文件进行，路由会自动将你的 Markdown 文件名称在实际 production 中转换成文件名 + `.html` 的形式。
+VuePress 的写作使用 Markdown 文件进行，路由模块会将你的 Markdown 文件在实际 production 中对应到文件名 + `.html` 的路径位置。
 
-例如 `docs/Hello-World.md` 将会被转化为 `docs/Hello-World.html`，而在根目录的 `Hello.md` 将会被转化为 `Hello.html`，这也是为什么需要专门创建一个文件夹用来放置文章的原因，根目录里只需要放置独立页面即可，这样从路由层面看来会更加友好。
+例如 `docs/Hello-World.md` 将会被对应到 `/docs/Hello-World.html`，在根目录的 `Hello.md` 会被对应到 `/Hello.html`。这就是为什么需要专门创建一个文件夹用来放置“文章”。根目录里只需要放置独立页面即可，这样从 SEO 层面看来会更加友好。
 
-到目前为止，你的博客目录应该为这个样子
+到目前为止，你的博客目录大概是这个样子
 
 ```
 .
@@ -64,9 +60,7 @@ VuePress 的写作使用 Markdown 文件进行，路由会自动将你的 Markdo
 
 ## 写作与发布
 
-如果你的环境已经搭建完毕，那么你可以选择在纯 Markdown 下进行写作，然后直接 `push` 到你的仓库中去。
-
-而如果你想要实时预览自己的文章在博客上的样子，或者调试一些应用层面的东西，你就需要启动开发服务器。
+环境搭建完毕以后，每一篇文章都可以用 Markdown 来完成，然后直接 `push` 到你的仓库中去。如果你想要在本地实时预览自己的文章在博客上的样子，或者调试一些的东西，你就需要启动开发服务器。
 
 与 Vue 的开发服务器相同，VuePress 的服务器也是支持热重载的。
 
@@ -79,9 +73,9 @@ vuepress dev .
 npx vuepress dev .
 ```
 
-这样，在默认情况下会在 <https://localhost:8080> 开放你的开发服务器，访问即可看到你的网站。
+默认情况下会在 <https://localhost:8080> 开放你的开发服务器，访问即可看到你的网站（本地）。
 
-最后，写完了就可以进行构建了——将你的网站样式和内容编译成静态网页。
+当你觉得一切就绪，就可以进行构建了——将你的网站样式和内容编译成静态网页。
 
 ```sh
 vuepress build .
@@ -89,17 +83,17 @@ vuepress build .
 npx vuepress build .
 ```
 
-默认情况下这个静态网页会被保存到 `.vuepress/dist` 内，在后文会介绍修改方法。
+默认情况下，编译的结果（其中包含 `index.html`）会被保存到 `.vuepress/dist` 内。
 
 ## 配置、主题、插件
 
-VuePress 之所以适合开发者，是因为它可以通过配置、主题和插件三方面高程度个性化——当然，是在你会 Vue 而且会看 VuePress 的 API 的前提下。
+VuePress 之所以适合开发者来进行独立写作，是因为它可以通过配置、主题和插件三方面高程度个性化。当然，是在你会 Vue 而且会看 VuePress 的文档的前提下。
 
-VuePress 的配置文件存储在 `.vuepress` 里，一般情况下是没有这个文件夹的，我们可以自己创建。
+VuePress 的配置文件存储在 `.vuepress` 里，但一开始是没有这个文件夹的，我们可以自己创建。
 
-进入后，创建 `config.js`，这就是 VuePress 的配置文件。
+进入 `.vuepress` 后，我们创建 `config.js`，这就是 VuePress 的配置文件。
 
-`config.js` 在写入一个语句之后即可当作一般的 JSON 文件来使用——它比 JSON 要宽松得多。
+`config.js` 的主要内容就是一个 object，因此在写入一个语句之后即可当作一般的 JSON 文件来使用，*甚至还比 JSON 语法松弛很多。*
 
 ```js
 module.export = {
@@ -110,7 +104,7 @@ module.export = {
 
 具体配置项目可以参考 VuePress 官方文档的[配置](https://vuepress.vuejs.org/zh/guide/basic-config.html#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)
 
-要切换主题，首先使用 npm 安装你想要的主题，比如
+要切换主题，可使用 npm 安装你想要的主题，比如
 
 ```sh
 npm install vuepress-theme-example --save-dev
@@ -128,7 +122,7 @@ module.export = {
 
 即可。
 
-在这里需要注意的一点是，VuePress 的所有主题、Plugin，根据官方的建议，均是以 `vuepress-theme-` 和 `vuepress-plugin-` 开头。也正因此，安装以他们开头的主题或插件，在填写的时候则可以省略 `vuepress-theme-` 这样的开头。当然，这只是一般情况，具体请以你所看到的主题或插件为准。
+在这里需要注意的一点是，VuePress 的所有主题、Plugin，根据官方的建议，均是以 `vuepress-theme-` 和 `vuepress-plugin-` 开头。也正因此，安装以他们开头的主题或插件，在填写的时候则可以省略 `vuepress-theme-` 这样的开头。这只是一般情况，具体请以你所看到的主题或插件为准。
 
 关于 VuePress 原版主题的相关配置可以看官方文档的[默认主题](https://vuepress.vuejs.org/zh/default-theme-config/)。
 
