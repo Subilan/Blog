@@ -54,7 +54,7 @@
       <!--        </ul>-->
       <!--      </content-block>-->
       <img src="@/assets/images/about-banner.jpg" alt="about-banner" class="about-banner" />
-      <em>赏花的猫</em>
+      <em>赏花的猫 - 摄于 2024 年 8 月，深圳四月咖啡</em>
     </div>
   </article>
 </template>
