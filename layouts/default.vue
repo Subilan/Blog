@@ -37,8 +37,8 @@
           <li>文章总数 {{ blogStatsData.totalPosts }} 篇</li>
           <li>总字数 ~{{ (blogStatsData.totalWords / 10000).toFixed(1) }}W</li>
           <li>友链 {{ blogStatsData.totalBlogrolls }} 个</li>
-          <li>独立访客 {{ totalSessionLoading ? '...' : totalSessions }}</li>
-          <li>访问次数 {{ totalSessionLoading ? '...' : totalViews }}</li>
+          <li>近七日独立访客 {{ totalSessionLoading ? '...' : totalSessions }}</li>
+          <li>近七日访问次数 {{ totalSessionLoading ? '...' : totalViews }}</li>
         </ul>
       </section>
     </div>
