@@ -61,7 +61,7 @@
 import blogrolls from '@/data/blogrolls.json'
 
 const thisInfo = {
-  '网站名称': 'Subilan\'s Blog',
+  '网站名称': 'SolitudeScroll',
   '网站介绍': 'Satellite yourself.',
   '网站代表色': '#009688',
   '网站地址': 'https://subilan.win',
