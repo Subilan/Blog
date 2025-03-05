@@ -9,16 +9,16 @@
           <span class="bio">城市化的自我</span>
         </div>
         <div class="social">
-          <a href="https://x.com/subilan1234" target="_blank">
+          <a href="https://x.com/subilan1234" target="_blank" aria-label="Go to my X personal profile.">
             <X />
           </a>
-          <a href="https://github.com/Subilan" target="_blank">
+          <a href="https://github.com/Subilan" target="_blank" aria-label="Go to my GitHub personal profile.">
             <GitHub />
           </a>
-          <a href="mailto:christophersubilan@gmail.com">
+          <a href="mailto:christophersubilan@gmail.com" aria-label="Email me now">
             <icon :path="mdiEmailOutline" />
           </a>
-          <a href="https://space.bilibili.com/35413001" target="_blank">
+          <a href="https://space.bilibili.com/35413001" target="_blank" aria-label="Go to my Bilibili space">
             <Bilibili class="bilibili" />
           </a>
         </div>
