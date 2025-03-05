@@ -75,12 +75,12 @@
   const totalViews = ref(0);
   const totalSessionLoading = ref(true);
 
-  onMounted(async () => {
-    const pageviewRes = await $fetch<PageviewRes>('/api/get-page-views');
-    totalSessionLoading.value = false;
-    totalSessions.value = pageviewRes.sessions.reduce((a, b) => a + b.y, 0);
-    totalViews.value = pageviewRes.pageviews.reduce((a, b) => a + b.y, 0);
-  })
+  // onMounted(async () => {
+  //   const pageviewRes = await $fetch<PageviewRes>('/api/get-page-views');
+  //   totalSessionLoading.value = false;
+  //   totalSessions.value = pageviewRes.sessions.reduce((a, b) => a + b.y, 0);
+  //   totalViews.value = pageviewRes.pageviews.reduce((a, b) => a + b.y, 0);
+  // })
 </script>
 
 <style lang="scss" scoped>
