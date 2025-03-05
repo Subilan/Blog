@@ -1,36 +1,38 @@
 import svgLoader from 'vite-svg-loader';
 
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+	compatibilityDate: '2024-04-03',
+	devtools: { enabled: true },
 
-  devServer: {
-    port: 3030
-  },
+	runtimeConfig: {
+    umamiEndpoint: 'https://analytics.subilan.win',
+		umamiUsername: '',
+		umamiPassword: ''
+	},
 
-  vite: {
-    plugins: [
-        svgLoader()
-    ]
-  },
+	devServer: {
+		port: 3030
+	},
 
-  site: {
-    url: 'https://subilan.win',
-    name: 'SolitudeScroll'
-  },
+	vite: {
+		plugins: [svgLoader()]
+	},
 
-  modules: ['@nuxtjs/sitemap', '@nuxt/image'],
+	site: {
+		url: 'https://subilan.win',
+		name: 'SolitudeScroll'
+	},
 
-  sitemap: {
-    sources: [
-      '/api/get-post-urls'
-    ]
-  },
+	modules: ['@nuxtjs/sitemap', '@nuxt/image'],
 
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/sitemap.xml']
-    }
-  }
-})
+	sitemap: {
+		sources: ['/api/get-post-urls']
+	},
+
+	nitro: {
+		prerender: {
+			crawlLinks: true,
+			routes: ['/sitemap.xml']
+		}
+	}
+});
