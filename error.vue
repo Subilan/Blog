@@ -1,7 +1,7 @@
 <template>
     <div class="error-container">
         <div class="inner card">
-            <p class="title"><strong>维护界面: {{ error.statusCode }}</strong> — {{ error.statusMessage }}</p>
+            <p class="title"><strong>维护界面: {{ error.statusCode }}</strong> — {{ error.message.split('Require stack')[0] }}</p>
             <p v-if="error.statusCode === 404">
                 此页面不存在，请检查 URL 拼写是否正确。
             </p>
