@@ -37,6 +37,8 @@
           <li>文章总数 {{ blogStatsData.totalPosts }} 篇</li>
           <li>总字数 ~{{ (blogStatsData.totalWords / 10000).toFixed(1) }}W</li>
           <li>友链 {{ blogStatsData.totalBlogrolls }} 个</li>
+          <li>独立访客 {{ totalSessionLoading ? '...' : totalSessions }}</li>
+          <li>访问次数 {{ totalSessionLoading ? '...' : totalViews }}</li>
         </ul>
       </section>
     </div>
@@ -48,7 +50,7 @@
   <back-to-top />
 </template>
 
-<script setup>
+<script setup lang="ts">
   import X from '~/assets/svg/x.svg';
   import GitHub from '~/assets/svg/github.svg';
   import Bilibili from '~/assets/svg/bilibili.svg'
@@ -61,6 +63,8 @@
   import getSiteName from "~/utils/getSiteName.js";
   import getPostDigests from '~/utils/getPostDigests.js';
 
+  type PageviewRes = { pageviews: { x: string, y: number }[], sessions: { x: string, y: number }[] }
+
   const sitename = getSiteName();
 
   const blogStatsData = {
@@ -68,6 +72,17 @@
     totalWords: getTotalWordCount(),
     totalBlogrolls: blogrolls.length,
   }
+
+  const totalSessions = ref(0);
+  const totalViews = ref(0);
+  const totalSessionLoading = ref(true);
+
+  onMounted(async () => {
+    const pageviewRes = await $fetch<PageviewRes>('/api/get-page-views');
+    totalSessionLoading.value = false;
+    totalSessions.value = pageviewRes.sessions.reduce((a, b) => a + b.y, 0);
+    totalViews.value = pageviewRes.pageviews.reduce((a, b) => a + b.y, 0);
+  })
 </script>
 
 <style lang="scss" scoped>
