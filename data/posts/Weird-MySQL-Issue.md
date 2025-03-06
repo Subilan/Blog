@@ -6,15 +6,7 @@ cate: 记录
 
 # 记一次奇怪的 MySQL 错误解决
 
-今天部署一个 PHP 后端的时候，发现在本地（Windows）测试可以连上数据库，而在生产环境（Ubuntu 20.04）上却报 Permission denied 错误，密码都是正确的。看来还是 Ubuntu 更注重安全😅...随便去 Google 了一下发现如果要用 root 登录必须得加上 `sudo`？太奇妙了，于是一秒想到去创建一个新的用户。
-
-*错误大概是这样的，一个很平凡的 Access denied。*
-
-```log
-(HY000/1698): Access denied for user 'root'@'localhost'
-```
-
-然后我就去创建新的用户了，具体流程老生常谈了。
+今天部署一个 PHP 后端的时候，发现在本地（Windows）测试可以连上数据库，而在生产环境（Ubuntu 20.04）上却报 Permission denied 错误，密码都是正确的。看来还是 Ubuntu 更注重安全😅...于是马上去创建了一个新用户 `rootp`，具体方法老生常谈了。
 
 ```sql
 CREATE USER 'rootp'@'localhost' IDENTIFIED BY '...'; -- 不是 root 就可以
