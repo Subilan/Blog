@@ -4,14 +4,9 @@ desc: 抛弃近乎迷惑的 session。
 cate: 代码
 ---
 
-# 简单的登录系统
+# 用 PHP 实现简单的登录系统
 
-先前一直在想登录系统到底该怎样简洁地实现。在这里，*简洁*是指能够满足最基本的用户识别需求，而没有其它更多方面的需求，例如验证方面、安全方面等等。因而概括来说，我们所要实现的只是
-登录以后储存状态，根据该状态判定访问权限。
-
-:::tip
-🐘 本文代码使用 PHP 实现。
-:::
+先前一直在想 PHP 内登录系统到底该怎样简洁地实现。在这里，*简洁*是指能够满足最基本的用户识别需求，而没有其它更多方面的需求。因而概括来说，我们所要实现的只是登录以后储存状态，根据该状态判定访问权限。
 
 ## 基本思路
 
@@ -70,9 +65,8 @@ function decrypt($message, $key)
     }
 }
 ```
-而实际上，这两个函数都并不完全安全。在后文，我们会介绍更为安全的版本。
 
-这两函数便负责了加密和解密。接下来 Token 内容的组织便很容易了。我们可以使用最简单的，那就是 JSON。例如
+其中 key 是用于加密的密码，应该妥善保管。这两函数便负责了加密和解密。接下来 Token 内容的组织便很容易了。我们可以使用最简单的，那就是 JSON。例如
 
 ```php
 $token = json_encode([
@@ -100,9 +94,7 @@ localStorage.setItem('xxx-login-token', r);
 
 > On disk until deleted by user (delete cache) or by the app. 
 
-<small>来自 <a href='http://www.gwtproject.org/doc/latest/DevGuideHtml5Storage.html' target='_blank'>GWTProject</a></small>
-
-所以实际上不需要担心 localStorage 被无缘无故清掉。换句话说，Token 将会在 localStorage 中长期存在。
+所以 Token 将会在 localStorage 中长期存在。
 
 在这里出现了一个问题：localStorage 在定义上是属于用户的东西，用户可以完全管理其内容，可以添加、读取和修改其内容，这会对 Token 的安全性造成什么影响？
 
@@ -114,7 +106,7 @@ Token 的利用主要体现在请求上，且有多种。在这里我们演示�
 
 比如，每次 route 跳转到敏感页面，我们就可以执行这样一个函数：
 
-```typescript
+```javascript
 function checkAuth() {
   let token = localStorage.getItem("xxx-login-token");
   return new Promise((r, j) => {
@@ -160,13 +152,13 @@ function checkToken(string $token)
 }
 ```
 
-具体应用中还可以添加更多验证方式在里面。验证成功，就会返回一个 true。如果过期，那么就会直接返回 false。如果是无效的 Token，根据上面的 encrypt 和 decrypt 函数，会产生一个 Exception。如果产生这个 Exception，就代表通过验证的一个或多个必要条件不满足，自然就能判定这个 Token 无效。
+具体应用中还可以添加更多验证方式在里面。验证成功，就会返回一个 `true`。如果过期，那么就会直接返回 `false`。如果是无效的 Token，根据上面的 encrypt 和 decrypt 函数，会产生一个 Exception。如果产生这个 Exception，就代表通过验证的一个或多个必要条件不满足，自然就能判定这个 Token 无效。
 
 ### Token renew & expire 策略
 
 如果 Token 过期了，我们将把它当作无效 Token 同等处理，即 `checkToken(x)` 函数永远返回 false。
 
-至于 Token 的更新以及销毁，前者会发生在登录时。由于 Token 已经被（近乎）永远存在了前端，所以过期的 Token 并没有必要直接删除。每次登录的时候，如果 Token 没有过期，那么直接跳转到相关页面，如果 Token 过期了，那么就返回一个新的 Token。执行 localStorage 的 setItem 语句直接覆盖旧 Token 即可。而对于销毁，则是用户专门在 Token 有效的时候执行了相关的操作，这个时候就不需要和后端沟通，而前端直接删去 localStorage 中 Token 对应的数据即可，由于前面路由逻辑的存在，页面刷新以后一切就跟没有登录一样了。
+至于 Token 的更新以及销毁，前者会发生在登录时。由于 Token 已经被（近乎）永远存在了前端，所以过期的 Token 并没有必要直接删除。每次登录的时候，如果 Token 没有过期，那么直接跳转到相关页面，如果 Token 过期了，那么就返回一个新的 Token。执行 localStorage 的 setItem 语句直接覆盖旧 Token 即可。对于销毁，是用户专门在 Token 有效的时候执行了相关的操作，这个时候就不需要和后端沟通，而前端直接删去 localStorage 中 Token 对应的数据即可，由于前面路由逻辑的存在，页面刷新以后一切就跟没有登录一样了。
 
 ### 更安全的 encrypt 和 decrypt
 
@@ -244,8 +236,4 @@ function hashEquals($a, $b)
 
 ## 总结
 
-这是一个相对来说特别简单的登录或者说是验证系统。主要的代码都写在了加密和解密上。对于这样一个系统，是肯定存在漏洞的，因而不能用来当作一个特别重要系统的主要验证方式。但是通过完善，还是可以看到这个系统的有效性的。
-
-这个系统在浏览器无痕模式下是无法记录 Token 的，这点和正常的登录也类似。
-
-这个系统不止 PHP 能实现，而能在所有的语言中实现。
+这是一个相对来说特别简单的登录或者说是验证系统。主要的代码都写在了加密和解密上。对于这样一个系统，是肯定存在漏洞的，因而不能用来当作一个特别重要系统的主要验证方式。但是通过完善，还是可以看到这个系统的有效性的。这个系统在浏览器无痕模式下是无法记录 Token 的，这点和正常的登录也类似。
