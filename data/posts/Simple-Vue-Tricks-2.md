@@ -34,10 +34,6 @@ Vue.prototype.$states = reactive(states)
 
 ## 6. `v-model` 的使用
 
-:::tip
-`v-model` 是常用的 Vue Directive 之一。在这里清晰地介绍其用法。
-:::
-
 在编写 checkbox、dialog 等组件的时候，经常需要在父组件内控制子组件的状态。例如
 
 ```html
