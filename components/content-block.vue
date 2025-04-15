@@ -9,11 +9,13 @@ import {mdiArrowRight} from "@mdi/js";
 </script>
 
 <style lang="scss">
+@use "@/assets/var";
+
 details {
   padding: 16px;
 
   summary {
-    color: #004d40;
+    color: var.$primaryTextColor;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -42,7 +44,7 @@ details {
 
   &[open] {
     &, &:hover {
-      background: rgba(#e0f2f1, .4);
+      background: rgba($color: var.$primaryColor, $alpha: .04)
     }
 
     summary span {

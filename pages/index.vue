@@ -1,5 +1,5 @@
 <template>
-  <div class="articles">
+  <!-- <div class="articles">
     <router-link class="article card clickable"  v-for="x in getPostDigests()" :to="`/posts/${x.slug}`">
       <span class="view-right-now-message">打开
         <icon :path="mdiArrowTopRight" />
@@ -14,11 +14,57 @@
       </div>
       <p v-if="x.desc">{{ x.desc }}</p>
     </router-link>
+  </div> -->
+  <div class="introduction">
+    <div class="navigation">
+      <router-link to="/pages/blogroll">友链</router-link>
+      <router-link to="/pages/pgp">PGP</router-link>
+      <router-link to="/pages/about">关于</router-link>
+    </div>
+    <div class="avatar">
+      <img src="/avatar.jpg" />
+    </div>
+    <div class="introduction-content">
+      <h2>Welcome to the <em>Solitude Scroll</em>.</h2>
+      <p>欢迎来到<strong>孤独卷轴</strong>。这里并不是技术博客，而是更类似自由发挥的一样空间，记录了自己过往实际或不切实际的经验和观点，并在有生之年应该会持续更新。</p>
+    </div>
+    <div class="social-media">
+      <a href="https://x.com/subilan1234" target="_blank" aria-label="Go to my X personal profile.">
+        <X class="x" />
+      </a>
+      <a href="https://github.com/Subilan" target="_blank" aria-label="Go to my GitHub personal profile.">
+        <GitHub class="github" />
+      </a>
+      <a href="mailto:christophersubilan@gmail.com" aria-label="Email me now">
+        <icon :path="mdiEmailOutline" />
+      </a>
+      <a href="https://space.bilibili.com/35413001" target="_blank" aria-label="Go to my Bilibili space">
+        <Bilibili class="bilibili" />
+      </a>
+    </div>
+  </div>
+  <div class="articles-mono">
+    <div class="article-mono" v-for="x in getPostDigests()">
+      <div class="date">
+        {{ getAgo(x.date) }}
+      </div>
+      <div class="art">
+        <h2>
+          <router-link class="article-mono" :to="`/posts/${x.slug}`">
+            {{ x.title }}
+          </router-link>
+        </h2>
+        <p v-if="x.desc">{{ x.desc }}</p>
+      </div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
+  import X from '~/assets/svg/x.svg';
+  import GitHub from '~/assets/svg/github.svg';
+  import Bilibili from '~/assets/svg/bilibili.svg'
   import getPostDigests from "@/utils/getPostDigests";
-  import { mdiArrowTopRight, mdiArrowUpLeft, mdiCodeTags, mdiFormatQuoteOpen, mdiPencilOutline } from "@mdi/js";
+  import { mdiArrowUpLeft, mdiCodeTags, mdiEmailOutline, mdiFormatQuoteOpen, mdiPencilOutline } from "@mdi/js";
   import { definePageMeta } from "#imports";
   import Nzh from "nzh";
 
@@ -51,87 +97,201 @@
 </script>
 
 <style lang="scss" scoped>
-.articles {
+@use "@/assets/var";
+
+$divgap: 24px;
+
+.introduction {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  align-items: flex-start;
+  border-bottom: 1px solid var.$lineColorLight;
+  padding-bottom: $divgap;
+  gap: 12px;
+  position: relative;
 
-  .article {
-    color: unset;
-    text-decoration: none;
-    overflow: hidden;
-    position: relative;
-    padding: 20px;
+  .navigation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-    .view-right-now-message {
-      opacity: 0;
-      color: #004d40;
-      transition: all .2s ease;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      transform: translate(-4px, 4px);
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 2px;
+    a {
+      color: black;
+      opacity: .4;
 
-      @media (max-width: 768px) {
-        display: none;
-      }
-
-      svg {
-        height: 14px;
-        width: 14px;
-      }
-    }
-
-    &:hover {
-      .view-right-now-message {
+      &:hover {
         opacity: 1;
-        transform: translate(0);
       }
     }
+  }
 
+  img {
+    height: 100px;
+  }
+
+  .introduction-content {
     h2 {
-      margin-top: 0;
-      margin-bottom: 4px;
-      color: #004d40;
       font-size: 28px;
+      margin: 8px 0;
+      line-height: 1;
     }
 
-    .meta {
+    p {
+      margin: 0;
+    }
+  }
+
+  .social-media {
+    display: flex;
+    gap: 12px;
+
+    a {
       display: flex;
+      justify-content: center;
       align-items: center;
-      color: #aaa;
-      font-size: 14px;
+      color: #000;
 
-      span:not(:last-child)::after {
-        content: '·';
-        margin: 0 5px;
-      }
-
-      span {
-        display: inline-flex;
-        align-items: center;
-
-        svg {
-          margin-right: 4px;
+      &:hover {
+        svg.bilibili {
+          fill: #479fd1;
         }
       }
     }
 
-    p {
-      line-height: 1.8;
-      margin-top: 16px;
-      margin-bottom: 0;
+    svg {
+      height: 24px;
+      fill: #000;
+    }
+
+    svg.x, svg.github {
+      height: 20px;
     }
   }
 }
 
+.articles-mono {
+  padding-top: $divgap;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  .article-mono {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+
+    .date {
+      width: 10%;
+      text-align: right;
+    }
+
+    .art {
+      width: 90%;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        line-height: 1;
+        font-weight: normal;
+
+        a {
+          color: var.$primaryColor;
+        }
+      }
+
+      p {
+        color: #aaa;
+        margin-top: 0;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+// .articles {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 28px;
+
+//   .article {
+//     color: unset;
+//     text-decoration: none;
+//     overflow: hidden;
+//     position: relative;
+//     padding: 20px;
+
+//     .view-right-now-message {
+//       opacity: 0;
+//       color: var.$primaryTextColor;
+//       transition: all .2s ease;
+//       position: absolute;
+//       right: 20px;
+//       top: 20px;
+//       transform: translate(-4px, 4px);
+//       font-size: 14px;
+//       display: flex;
+//       align-items: center;
+//       gap: 2px;
+
+//       @media (max-width: 768px) {
+//         display: none;
+//       }
+
+//       svg {
+//         height: 14px;
+//         width: 14px;
+//       }
+//     }
+
+//     &:hover {
+//       .view-right-now-message {
+//         opacity: 1;
+//         transform: translate(0);
+//       }
+//     }
+
+//     h2 {
+//       margin-top: 0;
+//       margin-bottom: 4px;
+//       color: var.$primaryTextColor;
+//       font-size: 28px;
+//     }
+
+//     .meta {
+//       display: flex;
+//       align-items: center;
+//       color: #aaa;
+//       font-size: 14px;
+
+//       span:not(:last-child)::after {
+//         content: '·';
+//         margin: 0 5px;
+//       }
+
+//       span {
+//         display: inline-flex;
+//         align-items: center;
+
+//         svg {
+//           margin-right: 4px;
+//         }
+//       }
+//     }
+
+//     p {
+//       line-height: 1.8;
+//       margin-top: 16px;
+//       margin-bottom: 0;
+//     }
+//   }
+// }
+
 
 .bg-icon {
-  color: #009688;
+  color: var.$primaryColor;
   opacity: 0;
   position: absolute;
   right: -20px;

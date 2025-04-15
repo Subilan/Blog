@@ -131,3 +131,7 @@ article .header-wrapper, article .extra {
 .toc .toc-container-header {
     @extend .bottom-border;
 }
+
+.back-btn {
+    @extend .button;
+}

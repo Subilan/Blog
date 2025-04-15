@@ -2,11 +2,6 @@
   <div class="create-commons-license card">
     <div class="title">
       本博客的原创内容采用 CC BY-SA 4.0 协议授权
-      <div class="icons">
-        <img alt="cc" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
-        <img alt="by" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
-        <img alt="sa" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
-      </div>
     </div>
     <p><strong>欢迎评论、指正或者转载。</strong>转载需遵守 CC BY-SA 4.0（署名—相同方式共享）协议。可前往 GitHub 仓库发布
       Issue 进行评论（可带上 comment 的 tag 以区分）。</p>
@@ -30,6 +25,8 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
 </script>
 
 <style lang="scss">
+@use '@/assets/var';
+
 .create-commons-license {
   padding: 16px;
   border-radius: 10px;
@@ -45,7 +42,7 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
     position: absolute;
     right: 16px;
     bottom: 16px;
-    opacity: .08;
+    opacity: .05;
     z-index: 1;
 
     @media (max-width: 768px) {
@@ -54,7 +51,7 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
 
     svg {
       height: 100px;
-      color: #004d40;
+      color: var.$darkPrimary;
     }
   }
 
@@ -101,15 +98,6 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-    }
-
-    .icons {
-      display: flex;
-      gap: 8px;
-
-      img {
-        height: 22px;
-      }
     }
   }
 

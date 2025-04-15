@@ -1,9 +1,8 @@
 <template>
   <article>
     <h1>友链</h1>
-    <blockquote>
-      友链（blogroll）是一种将互联网上的一个个孤岛似的个人网站联系起来的一种高效方式。这使得各个网站可以彼此串通，使访问者有更多的机会光顾每一个相连接的网站。
-    </blockquote>
+    <p>友链（blogroll）是一种将互联网上的一个个孤岛似的个人网站联系起来的一种高效方式。这使得各个网站可以彼此串通，使访问者有更多的机会光顾每一个相连接的网站。</p>
+    <p>下面收录了本站自创建以来记录的博客网站链接。</p>
     <div class="blogrolls">
       <a class="blogroll card" target="_blank" :href="x.href" v-for="x in blogrolls"
          :class="{light: x.light}"
@@ -29,7 +28,7 @@
         <p>在联系之前，请注意本站对友链的目标网站有以下需求：</p>
         <ul>
           <li>全站开启 HTTPS</li>
-          <li>域名为个人持有</li>
+          <li>域名为个人持有或使用权威二级域名（*.github.io, *.js.org, *.edu, etc）</li>
           <li>最新的一篇博文需在近一年内发布，且博文总数超过三篇</li>
         </ul>
         <p>如果你对友链的展示样式有个性化的需求，欢迎随附说明。在没有任何附加说明的情况下，你的友链按钮背景会被呈现为白色。</p>
