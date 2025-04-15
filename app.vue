@@ -21,11 +21,7 @@ const titleWithSuffix = computed(() => {
   }
   return `${route.meta.title} - ${sitename}`;
 });
-const darkClass = computed(() => (forceMode.value === 'dark' || (darkMode.value && forceMode.value !== 'light')) ? 'dark' : '')
-
-const darkModeCookie = useCookie('subilan-blog-dark-mode-indicator');
 const darkMode = usePreferredDark();
-const forceMode = useState('force-mode', () => darkModeCookie.value || '');
 
 useHead({
   meta: [
@@ -36,7 +32,7 @@ useHead({
   ],
   title: titleWithSuffix,
   htmlAttrs: {
-    class: darkClass
+    class: darkMode.value ? 'dark' : ''
   }
 })
 

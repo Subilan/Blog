@@ -65,7 +65,7 @@
   import GitHub from '~/assets/svg/github.svg';
   import Bilibili from '~/assets/svg/bilibili.svg'
   import getPostDigests from "@/utils/getPostDigests";
-  import { mdiArrowUpLeft, mdiCodeTags, mdiEmailOutline, mdiFormatQuoteOpen, mdiPencilOutline } from "@mdi/js";
+  import { mdiArrowUpLeft, mdiCodeTags, mdiEmailOutline, mdiFormatQuoteOpen, mdiPencilOutline, mdiWeatherSunny } from "@mdi/js";
   import { definePageMeta } from "#imports";
   import Nzh from "nzh";
 
@@ -102,6 +102,19 @@
 
 $divgap: 30px;
 
+.dark .introduction .social-media svg {
+  fill: var.$darkPrimary;
+  color: var.$darkPrimary;
+}
+
+.dark .introduction {
+  border-bottom-color: var.$lineColorDark;
+}
+
+.dark .introduction .navigation a {
+  color: var.$darkPrimary;
+}
+
 .introduction {
   display: flex;
   flex-direction: column;
@@ -119,7 +132,7 @@ $divgap: 30px;
     gap: 12px;
 
     a {
-      color: black;
+      color: var.$primaryColor;
       opacity: .4;
 
       @media (min-width: 768px) {
@@ -169,7 +182,7 @@ $divgap: 30px;
 
   .social-media {
     display: flex;
-    gap: 12px;
+    gap: 16px;
 
     a {
       display: flex;
@@ -194,6 +207,10 @@ $divgap: 30px;
       height: 20px;
     }
   }
+}
+
+.dark .articles-mono .article-mono .art h2 a {
+  color: var.$darkPrimary;
 }
 
 .articles-mono {
