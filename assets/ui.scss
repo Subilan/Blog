@@ -5,15 +5,15 @@
 }
 
 .default-bg {
-    background: white;
+	background: white;
 }
 
 .default-text-color {
-    color: #000000;
+	color: #000000;
 }
 
 .dark .default-text-color {
-    color: var.$darkTextColor;
+	color: var.$darkTextColor;
 }
 
 .simple-shadow {
@@ -21,7 +21,7 @@
 }
 
 .complex-shadow {
-    box-shadow: 0 1.5px 5px rgba($color: #000000, $alpha: 0.05);
+	box-shadow: 0 1.5px 5px rgba($color: #000000, $alpha: 0.05);
 }
 
 .dark .simple-shadow {
@@ -38,43 +38,51 @@
 }
 
 .dark .default-bg {
-    background-color: var.$darkPrimaryBlack;
+	background-color: var.$darkPrimaryBlack;
 }
 
 .dark .primary {
-    color: var.$darkPrimary;
+	color: var.$darkPrimary;
 }
 
 .area {
-    @extend .bordered, .rounded, .transition;
+	@extend .bordered, .rounded, .transition;
 }
 
 .clickable {
 	@extend .area, .holdable;
 	cursor: pointer;
-    text-decoration: none;
+	text-decoration: none;
 
-    &.no-cursor {
-        cursor: unset;
-    }
+	&.no-cursor {
+		cursor: unset;
+	}
 
-	&:hover {
-		background: #efefef;
+	@media (min-width: 768px) {
+		&:hover {
+			background: #efefef;
+		}
 	}
 }
 
 .holdable {
-    &:active {
-        box-shadow: inset 0 -2px 10px 0 rgba($color: #000000, $alpha: 0.05);
-    }
+	@media (min-width: 768px) {
+		&:active {
+			box-shadow: inset 0 -2px 10px 0 rgba($color: #000000, $alpha: 0.05);
+		}
+	}
 }
 
-.dark .clickable:active {
-    box-shadow: none;
+@media (min-width: 768px) {
+	.dark .clickable:active {
+		box-shadow: none;
+	}
 }
 
-.dark .clickable:hover {
-    background: var.$darkSecondaryBlack;
+@media (min-width: 768px) {
+	.dark .clickable:hover {
+		background: var.$darkSecondaryBlack;
+	}
 }
 
 .bordered {
@@ -82,11 +90,11 @@
 }
 
 .dark .bordered {
-    border-color: rgba($color: white, $alpha: .1)
+	border-color: rgba($color: white, $alpha: 0.1);
 }
 
 .shiki {
-    @extend .bordered;
+	@extend .bordered;
 }
 
 .card {
@@ -94,44 +102,48 @@
 }
 
 .card a.clickable:visited:not(:hover) {
-    color: unset;
+	color: unset;
 }
 
 .button {
 	@extend .clickable, .simple-shadow, .default-bg, .default-text-color;
-	&:hover {
-		color: var.$primaryTextColor;
+
+	@media (min-width: 768px) {
+		&:hover {
+			color: var.$primaryTextColor;
+		}
 	}
 }
 
 .dark .button:hover {
-    color: var.$darkPrimary;
+	color: var.$darkPrimary;
 }
 
 .bottom-border {
-    border-bottom: 1px solid var.$lineColorLight;
+	border-bottom: 1px solid var.$lineColorLight;
 }
 
 .dark .bottom-border {
-    border-bottom-color: var.$lineColorDark;
+	border-bottom-color: var.$lineColorDark;
 }
 
-article .header-wrapper, article .extra {
-    @extend .bottom-border;
+article .header-wrapper,
+article .extra {
+	@extend .bottom-border;
 }
 
 .nav {
-    @extend .bottom-border, .complex-shadow;
+	@extend .bottom-border, .complex-shadow;
 }
 
 .blogroll {
-    @extend .holdable;
+	@extend .holdable;
 }
 
 .toc .toc-container-header {
-    @extend .bottom-border;
+	@extend .bottom-border;
 }
 
 .back-btn {
-    @extend .button;
+	@extend .button;
 }

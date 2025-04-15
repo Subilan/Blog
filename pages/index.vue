@@ -26,7 +26,7 @@
       <img draggable="false" src="/avatar.jpg" />
     </div>
     <div class="introduction-content">
-      <h2>Welcome to the <em>Solitude Scroll</em>.</h2>
+      <h2>Welcome to the <em>Solitude Scroll</em></h2>
       <p>欢迎来到<strong>孤独卷轴</strong>。这里并不是技术博客，而是更类似自由发挥的一样空间，记录了自己过往实际或不切实际的经验和观点，并在有生之年应该会持续更新。</p>
     </div>
     <div class="social-media">
@@ -55,7 +55,7 @@
             {{ x.title }}
           </router-link>
         </h2>
-        <p v-if="x.desc">{{ x.desc }}</p>
+        <p v-if="x.desc || x.descShort">{{ x.descShort || x.desc }}</p>
       </div>
     </div>
   </div>
@@ -108,7 +108,6 @@ $divgap: 30px;
   align-items: flex-start;
   border-bottom: 1px solid var.$lineColorLight;
   padding-bottom: $divgap;
-  gap: 12px;
   position: relative;
 
   .navigation {
@@ -123,21 +122,44 @@ $divgap: 30px;
       color: black;
       opacity: .4;
 
-      &:hover {
-        opacity: 1;
+      @media (min-width: 768px) {
+        &:hover {
+          opacity: 1;
+        }
       }
+    }
+
+    @media (max-width: 768px) {
+      position: static;
+      margin-bottom: 16px;
     }
   }
 
   img {
     height: 100px;
+
+    @media (max-width: 768px) {
+      height: 150px;
+    }
   }
 
   .introduction-content {
+    margin-bottom: 16px;
+
     h2 {
       font-size: 28px;
       margin: 8px 0;
       line-height: 1;
+
+      @media (max-width: 768px) {
+        line-height: 1.2;
+      }
+
+      em {
+        @media (max-width: 768px) {
+          display: block;
+        }
+      }
     }
 
     p {
@@ -167,7 +189,8 @@ $divgap: 30px;
       fill: #000;
     }
 
-    svg.x, svg.github {
+    svg.x,
+    svg.github {
       height: 20px;
     }
   }
@@ -184,19 +207,37 @@ $divgap: 30px;
     align-items: flex-start;
     gap: 32px;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .date {
       width: 10%;
       text-align: right;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        text-align: left;
+      }
     }
 
     .art {
       width: 90%;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
 
       h2 {
         margin-top: 0;
         margin-bottom: 8px;
         line-height: 1;
         font-weight: normal;
+
+        @media (max-width: 768px) {
+          line-height: 1.5;
+        }
 
         a {
           color: var.$primaryColor;
