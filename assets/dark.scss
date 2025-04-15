@@ -31,7 +31,7 @@
 	}
 
 	article .toc-container .toc ul li a:not(.active) {
-		color: rgba(var.$darkTextColor, .5);
+		color: rgba(var.$darkTextColor, 0.5);
 	}
 
 	article td,
@@ -46,15 +46,14 @@
 
 	article .notice {
 		background: var.$darkSecondaryBlack;
-		&.tip {
-			border-left-color: var.$darkPrimary;
 
-			.notice-title, a, strong {
-				color: var.$darkPrimary;
+		.notice-title,
+		a,
+		strong {
+			color: var.$darkPrimary;
 
-				svg {
-					fill: var.$darkPrimary;
-				}
+			svg {
+				fill: var.$darkPrimary;
 			}
 		}
 	}
