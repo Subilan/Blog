@@ -118,7 +118,8 @@
 	article p > a:not(.blogroll),
 	article sup a,
 	article table a,
-	article ul a {
+	article ul a,
+	article em a {
 		color: var.$darkPrimary;
 	}
 
