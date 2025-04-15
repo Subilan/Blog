@@ -456,11 +456,11 @@ pre[class*='language-'] {
 }
 
 .medium-zoom--opened .medium-zoom-overlay {
-	z-index: 1000;
+	z-index: 2000;
 }
 
 .medium-zoom-image--opened {
-	z-index: 1100;
+	z-index: 2100;
 	object-fit: contain;
 }
 
