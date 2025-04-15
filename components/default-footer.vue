@@ -57,6 +57,10 @@ footer {
     flex-direction: column;
     gap: 16px;
 
+    @media (max-width: 768px) {
+      align-items: flex-start;
+    }
+
     .cc-icons {
       display: flex;
       gap: 4px;

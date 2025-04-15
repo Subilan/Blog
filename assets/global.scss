@@ -472,12 +472,17 @@ pre[class*='language-'] {
 	position: fixed;
 	top: 32px;
 	left: 32px;
-	height: 40px;
-	width: 40px;
+	height: 44px;
+	width: 44px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 100%;
+	z-index: 500;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 
 	svg {
 		height: 22px;
