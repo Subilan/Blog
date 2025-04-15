@@ -1,4 +1,5 @@
 @import "./fonts/literata/literata.css";
+@import "./fonts/noto-serif-sc/noto-serif-sc.css";
 
 // $darkPrimary: #00d0b4;
 // $darkPrimaryBlack: #212121;
@@ -23,7 +24,7 @@ $primaryTextColor: #000;
 
 $sansSerifFontWithoutDefault: -apple-system, BlinkMacSystemFont, ui-sans-serif, 'PingFang SC', 'Segoe UI', '微软雅黑', Microsoft YaHei UI;
 $sansSerifFont: $sansSerifFontWithoutDefault, sans-serif;
-$serifFont: ui-serif, 'Literata', '宋体-简', '宋体', SimSun, serif;
+$serifFont: 'Literata', 'Noto Serif SC', '宋体-简', '宋体', NSimSun, SimSun, serif;
 $monospaceFont: Menlo, 'Cascadia Code', 'Cascadia Mono', Consolas, $sansSerifFontWithoutDefault, monospace;
 
 $defaultBorderRadius: 8px;
