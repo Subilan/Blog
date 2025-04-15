@@ -3,13 +3,18 @@
     <div class="inner">
       <div class="left">
         <div class="copyright">&copy; 2019-{{ new Date().getFullYear() }} {{ getSiteName() }}</div>
-        <div class="other">Built with Nuxt 3 and 🤔<br/>
+        <div class="other">Built with Nuxt 3 and 🤔<br />
           Written
           size {{ (getTotalPostSize() / 1000).toFixed(1) }} KB · {{ running }} from start </div>
       </div>
       <div class="spacer" />
       <div class="icons">
         <WrittenByHuman />
+        <div class="cc-icons">
+            <img alt="cc" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+            <img alt="by" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
+            <img alt="sa" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
+        </div>
       </div>
     </div>
   </footer>
@@ -48,8 +53,18 @@ footer {
 
   .icons {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    flex-direction: column;
     gap: 16px;
+
+    .cc-icons {
+      display: flex;
+      gap: 4px;
+
+      img {
+        height: 20px;
+      }
+    }
   }
 
   .inner {

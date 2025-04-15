@@ -1,4 +1,10 @@
-$darkPrimary: #00d0b4;
+@import "./fonts/literata/literata.css";
+
+// $darkPrimary: #00d0b4;
+// $darkPrimaryBlack: #212121;
+// $darkSecondaryBlack: #2d2d2d;
+// $darkTextColor: #ddd;
+$darkPrimary: #fff;
 $darkPrimaryBlack: #212121;
 $darkSecondaryBlack: #2d2d2d;
 $darkTextColor: #ddd;
@@ -6,15 +12,24 @@ $darkTextColor: #ddd;
 $lineColorLight: #eaecef;
 $lineColorDark: rgba($color: #fff, $alpha: .1);
 
-$primaryTextColor: #004d40;
-$primaryColor: #009688;
+$darkLineColorLight: #000;
+$darkLineColorDark: #fff;
+
+// $primaryTextColor: #004d40;
+// $primaryColor: #009688;
+
+$primaryColor: #000;
+$primaryTextColor: #000;
+
 $sansSerifFontWithoutDefault: -apple-system, BlinkMacSystemFont, ui-sans-serif, 'PingFang SC', 'Segoe UI', '微软雅黑', Microsoft YaHei UI;
 $sansSerifFont: $sansSerifFontWithoutDefault, sans-serif;
+$serifFont: ui-serif, 'Literata', '宋体-简', '宋体', SimSun, serif;
 $monospaceFont: Menlo, 'Cascadia Code', 'Cascadia Mono', Consolas, $sansSerifFontWithoutDefault, monospace;
 
-$defaultBorderRadius: 10px;
+$defaultBorderRadius: 8px;
 
-$navbarHeight: 55px;
+// $navbarHeight: 55px;
+$navbarHeight: 0;
 $navbarBottomOffset: 32px;
 
 $footerHeight: 120px;

@@ -73,7 +73,7 @@
 		}
 	
 		span, &::before {
-			color: #1de9b6 !important;
+			color: #4caf50 !important;
 		}
 	}
 }
@@ -99,12 +99,16 @@
         position: absolute;
     }
 
-    &, span {
-        background-color: #e0f2f1 !important;
-    }
+    & {
+		background-color: #e8f5e9 !important;
+	}
+
+	span {
+		background-color: transparent !important;
+	}
 
     span, &::before {
-        color: #009688 !important;
+        color: #4caf50 !important;
     }
 }
 

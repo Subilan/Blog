@@ -1,7 +1,10 @@
 <template>
-  <navbar />
+  <!-- <navbar /> -->
+  <div v-if="useRoute().name !== 'index'" class="back-btn" @click="useRouter().go(-1)">
+    <icon :path="mdiArrowLeft" />
+  </div>
   <main class="layout-default">
-    <div class="left">
+    <!-- <div class="left">
       <section class="profile card">
         <div class="avatar">
           <nuxt-img format="webp" src="/avatar.jpg" alt="avatar" />
@@ -39,20 +42,16 @@
           <li>友链 {{ blogStatsData.totalBlogrolls }} 个</li>
         </ul>
       </section>
-    </div>
+    </div> -->
     <div class="right">
       <slot />
     </div>
-    <default-footer class="default-layout-specific" />
   </main>
+  <default-footer/>
   <back-to-top />
 </template>
 
 <script setup lang="ts">
-  import X from '~/assets/svg/x.svg';
-  import GitHub from '~/assets/svg/github.svg';
-  import Bilibili from '~/assets/svg/bilibili.svg'
-  import { mdiEmailOutline } from "@mdi/js";
   import { pages } from "~/data/config.js";
   import getTotalWordCount from "~/utils/getTotalWordCount.js";
   import getTotalPostCount from "~/utils/getTotalPostCount.js";
@@ -60,6 +59,7 @@
   import BackToTop from "~/components/back-to-top.vue";
   import getSiteName from "~/utils/getSiteName.js";
   import getPostDigests from '~/utils/getPostDigests.js';
+import { mdiArrowLeft } from "@mdi/js";
 
   type PageviewRes = { pageviews: { x: string, y: number }[], sessions: { x: string, y: number }[] }
 
@@ -87,19 +87,15 @@
 @use '@/assets/var';
 
 .layout-default {
-  max-width: 1200px;
+  max-width: 800px;
   margin: var.$navbarHeight + var.$navbarBottomOffset auto 0;
-  padding-bottom: var.$footerHeight + var.$footerMarginTop;
+  // padding-bottom: var.$footerHeight + var.$footerMarginTop;
   display: flex;
   align-items: flex-start;
   gap: 28px;
   position: relative;
 
-  @media (max-width: 1300px) {
-    max-width: 800px;
-  }
-
-  @media (max-width: 1000px) {
+  @media (max-width: 800px) {
     max-width: 100%;
     padding: 0 20px;
     box-sizing: border-box;
@@ -121,11 +117,7 @@
 }
 
 .right {
-  width: 75%;
-
-  @media (max-width: 1300px) {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 .left section {
@@ -238,10 +230,10 @@
       border-radius: 20px;
 
       &:not(.router-link-exact-active):hover {
-        background: #e0f2f1;
+        background: rgba($color: var.$primaryColor, $alpha: .1);
 
         svg {
-          color: #009688;
+          color: var.$primaryColor;
         }
       }
 
@@ -256,11 +248,11 @@
 
     .router-link-exact-active {
       border-radius: 20px;
-      background: #e0f2f1;
+      background: rgba($color: var.$primaryColor, $alpha: .1);
 
       .active-icon {
         display: block;
-        color: #009688;
+        color: var.$primaryColor;
       }
 
       .inactive-icon {

@@ -13,9 +13,15 @@
           <icon :path="mdiShapeOutline" /> {{ post.cate }}
         </span>
       </div>
-      <div class="outdated-warning card" v-if="dayDelta >= 730 && !post.ignoreOutdate">
+      <!-- <div class="outdated-warning card" v-if="dayDelta >= 730 && !post.ignoreOutdate">
         <h3>
           <icon :path="mdiClockAlertOutline" /> 可能过时的信息
+        </h3>
+        <p>你正阅读的文章的发布日期距今已经有 <strong>{{ dayAgo }}</strong>了，其中的部分信息、个人观点或者措辞习惯等可能已经发生改变，因此仅供参考，请酌情阅读。</p>
+      </div> -->
+      <div class="outdated-warning-mono card" v-if="dayDelta >= 730 && !post.ignoreOutdate">
+        <h3>
+          <em>Heads Up!</em><br/><small>可能过时的信息</small>
         </h3>
         <p>你正阅读的文章的发布日期距今已经有 <strong>{{ dayAgo }}</strong>了，其中的部分信息、个人观点或者措辞习惯等可能已经发生改变，因此仅供参考，请酌情阅读。</p>
       </div>
@@ -135,6 +141,7 @@ useSeoMeta({
 
 <style lang="scss">
 @use "@/assets/languagenames";
+@use "@/assets/var";
 
 .container {
   max-width: 800px;
@@ -145,48 +152,60 @@ useSeoMeta({
   padding: 16px 0;
 }
 
-.dark .outdated-warning {
-  background: rgba(#fff8e1, .2);
-  border-color: rgba(#ffc107, .3);
-
-  h3,
-  strong {
-    color: #ffc107;
-  }
-
-  p {
-    color: white;
-  }
-}
-
-.outdated-warning {
-  margin-top: 16px;
-  background: #fff8e1;
-  padding: 16px;
-  border: 1px dashed #ffc107;
-  color: black;
-  border-radius: 10px;
-  text-align: center;
-
-  p {
-    margin: 8px 0;
-  }
-
-  h3,
-  strong {
-    color: #bf360c;
-  }
-
+.outdated-warning-mono {
   h3 {
     font-size: 20px;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    line-height: 1.5;
   }
+
+  border: 1px dashed var.$darkLineColorLight;
+  border-radius: var.$defaultBorderRadius;
+  padding: 16px;
+  margin-top: 16px;
 }
+
+// .dark .outdated-warning {
+//   background: rgba(#fff8e1, .2);
+//   border-color: rgba(#ffc107, .3);
+
+//   h3,
+//   strong {
+//     color: #ffc107;
+//   }
+
+//   p {
+//     color: white;
+//   }
+// }
+
+// .outdated-warning {
+//   margin-top: 16px;
+//   background: #fff8e1;
+//   padding: 16px;
+//   border: 1px dashed #ffc107;
+//   color: black;
+//   border-radius: 10px;
+//   text-align: center;
+
+//   p {
+//     margin: 8px 0;
+//   }
+
+//   h3,
+//   strong {
+//     color: #bf360c;
+//   }
+
+//   h3 {
+//     font-size: 20px;
+//     margin: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 8px;
+//     line-height: 1.5;
+//   }
+// }
 
 .extra {
   display: flex;
@@ -207,7 +226,7 @@ useSeoMeta({
 
     svg {
       width: 16px;
-      color: #009688;
+      color: var.$primaryColor;
     }
   }
 }

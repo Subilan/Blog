@@ -22,11 +22,7 @@
 <script setup>
     import { mdiArrowLeft } from '@mdi/js';
 
-    const props = defineProps({
-        error: {
-            type: Function
-        }
-    })
+    const props = defineProps(['error'])
 
     const handleError = () => clearError({ redirect: '/' })
 </script>
