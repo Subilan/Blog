@@ -20,9 +20,10 @@
       <router-link to="/pages/blogroll">友链</router-link>
       <router-link to="/pages/pgp">PGP</router-link>
       <router-link to="/pages/about">关于</router-link>
+      <a target="_blank" href="https://photos.subilan.win">相册</a>
     </div>
     <div class="avatar">
-      <img src="/avatar.jpg" />
+      <img draggable="false" src="/avatar.jpg" />
     </div>
     <div class="introduction-content">
       <h2>Welcome to the <em>Solitude Scroll</em>.</h2>
@@ -99,7 +100,7 @@
 <style lang="scss" scoped>
 @use "@/assets/var";
 
-$divgap: 24px;
+$divgap: 30px;
 
 .introduction {
   display: flex;
