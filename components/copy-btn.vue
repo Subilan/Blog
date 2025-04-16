@@ -26,6 +26,7 @@ async function copy() {
 
 <style lang="scss" scoped>
 @use '@/assets/var';
+@use '@/assets/ui';
 
 .copy-btn {
   display: inline-flex;
@@ -38,9 +39,12 @@ async function copy() {
   vertical-align: middle;
   cursor: pointer;
   gap: 4px;
+  background: var(--bg);
+
+  @include ui.Button;
 
   &.copyComplete {
-    background: var.$primaryColor;
+    background: var(--bg-dim);
     color: white;
     border-color: transparent !important;
   }

@@ -1,8 +1,6 @@
 <template>
   <!-- <navbar /> -->
-  <div v-if="useRoute().name !== 'index'" class="back-btn" @click="useRouter().go(-1)">
-    <icon :path="mdiArrowLeft" />
-  </div>
+  <back-btn v-if="useRoute().name !== 'index'" />
   <main class="layout-default">
     <!-- <div class="left">
       <section class="profile card">
@@ -47,7 +45,7 @@
       <slot />
     </div>
   </main>
-  <default-footer/>
+  <default-footer />
   <back-to-top />
 </template>
 
@@ -56,10 +54,9 @@
   import getTotalWordCount from "~/utils/getTotalWordCount.js";
   import getTotalPostCount from "~/utils/getTotalPostCount.js";
   import blogrolls from '~/data/blogrolls.json';
-  import BackToTop from "~/components/back-to-top.vue";
   import getSiteName from "~/utils/getSiteName.js";
   import getPostDigests from '~/utils/getPostDigests.js';
-import { mdiArrowLeft } from "@mdi/js";
+  import { mdiArrowLeft } from "@mdi/js";
 
   type PageviewRes = { pageviews: { x: string, y: number }[], sessions: { x: string, y: number }[] }
 
@@ -230,10 +227,10 @@ import { mdiArrowLeft } from "@mdi/js";
       border-radius: 20px;
 
       &:not(.router-link-exact-active):hover {
-        background: rgba($color: var.$primaryColor, $alpha: .1);
+        background: rgba(var(--primary), $alpha: .1);
 
         svg {
-          color: var.$primaryColor;
+          color: var(--primary);
         }
       }
 
@@ -248,11 +245,11 @@ import { mdiArrowLeft } from "@mdi/js";
 
     .router-link-exact-active {
       border-radius: 20px;
-      background: rgba($color: var.$primaryColor, $alpha: .1);
+      background: rgba(var(--primary), $alpha: .1);
 
       .active-icon {
         display: block;
-        color: var.$primaryColor;
+        color: var(--primary);
       }
 
       .inactive-icon {
@@ -270,9 +267,5 @@ import { mdiArrowLeft } from "@mdi/js";
       }
     }
   }
-}
-
-.dark .navigations a:not(.router-link-exact-active):hover {
-  background: rgba($color: var.$darkPrimary, $alpha: .1);
 }
 </style>

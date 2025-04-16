@@ -153,15 +153,16 @@ useSeoMeta({
 }
 
 .outdated-warning-mono {
-  h3 {
-    font-size: 20px;
-    margin: 0;
-  }
-
-  border: 1px dashed var.$darkLineColorLight;
+  border: 1px dashed var(--primary);
   border-radius: var.$defaultBorderRadius;
   padding: 16px;
   margin-top: 16px;
+  
+  h3 {
+    font-size: 20px;
+    margin: 0;
+    border-bottom: none;
+  }
 }
 
 // .dark .outdated-warning {
@@ -226,7 +227,7 @@ useSeoMeta({
 
     svg {
       width: 16px;
-      color: var.$primaryColor;
+      color: var(--primary);
     }
   }
 }

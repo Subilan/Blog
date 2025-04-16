@@ -1,18 +1,58 @@
 @use 'var';
 
-.dark .shiki,
-.dark .shiki span {
+@mixin shiki-code-dark {
 	color: var(--shiki-dark) !important;
-	background-color: var.$darkSecondaryBlack !important;
 	/* Optional, if you also want font styles */
 	font-style: var(--shiki-dark-font-style) !important;
 	font-weight: var(--shiki-dark-font-weight) !important;
 	text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
+@mixin shiki-line-dark {
+	.line.highlighted,
+	.line.highlighted span {
+		background-color: #2d2d2d !important;
+	}
+
+	.line.diff.remove {
+		&,
+		span {
+			background-color: #423436 !important;
+		}
+
+		span,
+		&::before {
+			color: #f44336 !important;
+		}
+	}
+
+	.line.diff.add {
+		&,
+		span {
+			background-color: #333e3d !important;
+		}
+
+		span,
+		&::before {
+			color: #4caf50 !important;
+		}
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.shiki,
+	.shiki span {
+		@include shiki-code-dark();
+	}
+
+	.shiki code {
+		@include shiki-line-dark();
+	}
+}
+
 .shiki,
 .shiki span {
-	background-color: #fafafa !important;
+	background-color: var(--bg-dim) !important;
 }
 
 .shiki {
@@ -51,55 +91,30 @@
 	background-color: #eaeaea !important;
 }
 
-.dark {
-	.shiki .line.highlighted,
-	.shiki .line.highlighted span {
-		background-color: #1f1f1f !important;
-	}
-
-	.shiki .line.diff.remove {
-		&, span {
-			background-color: #423436 !important;
-		}
-	
-		span, &::before {
-			color: #f44336 !important;
-		}
-	}
-	
-	.shiki .line.diff.add {
-		&, span {
-			background-color: #333e3d !important;
-		}
-	
-		span, &::before {
-			color: #4caf50 !important;
-		}
-	}
-}
-
 .shiki .line.diff.remove {
-    &::before {
-        content: '-';
-        position: absolute;
-    }
+	&::before {
+		content: '-';
+		position: absolute;
+	}
 
-    &, span {
-        background-color: #ffebee !important;
-    }
+	&,
+	span {
+		background-color: #ffebee !important;
+	}
 
-    span, &::before {
-        color: #f44336 !important;
-    }
+	span,
+	&::before {
+		color: #f44336 !important;
+	}
 }
 
 .shiki .line.diff.add {
-    &::before {
-        content: '+';
-        position: absolute;
-    }
+	&::before {
+		content: '+';
+		position: absolute;
+	}
 
-    & {
+	& {
 		background-color: #e8f5e9 !important;
 	}
 
@@ -107,11 +122,11 @@
 		background-color: transparent !important;
 	}
 
-    span, &::before {
-        color: #4caf50 !important;
-    }
+	span,
+	&::before {
+		color: #4caf50 !important;
+	}
 }
-
 
 .shiki {
 	.line {

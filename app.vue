@@ -30,9 +30,19 @@ useHead({
       content: titleWithPrefix
     }
   ],
+  link: [
+    {
+      rel: 'stylesheet',
+      href: '/fonts/literata/literata.css'
+    },
+    {
+      rel: 'stylesheet',
+      href: '/fonts/noto-serif-sc/noto-serif-sc.css'
+    }
+  ],
   title: titleWithSuffix,
   htmlAttrs: {
-    class: darkMode.value ? 'dark' : ''
+    // class: darkMode.value ? 'dark' : ''
   }
 })
 
