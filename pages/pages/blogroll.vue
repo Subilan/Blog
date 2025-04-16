@@ -73,6 +73,9 @@
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/var';
+@use '@/assets/ui';
+
 .details {
   display: flex;
   flex-direction: column;
@@ -115,6 +118,9 @@
     background-size: cover;
     min-height: 55px;
     text-decoration: none;
+    border-radius: var.$defaultBorderRadius;
+    
+    @include ui.Button;
 
     @media (min-width: 768px) {
       &:hover {

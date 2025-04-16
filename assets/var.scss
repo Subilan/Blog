@@ -1,27 +1,3 @@
-@import "./fonts/literata/literata.css";
-@import "./fonts/noto-serif-sc/noto-serif-sc.css";
-
-// $darkPrimary: #00d0b4;
-// $darkPrimaryBlack: #212121;
-// $darkSecondaryBlack: #2d2d2d;
-// $darkTextColor: #ddd;
-$darkPrimary: #ddd;
-$darkPrimaryBlack: #212121;
-$darkSecondaryBlack: #2d2d2d;
-$darkTextColor: #ddd;
-
-$lineColorLight: #eaecef;
-$lineColorDark: rgba($color: #fff, $alpha: .1);
-
-$darkLineColorLight: #000;
-$darkLineColorDark: #fff;
-
-// $primaryTextColor: #004d40;
-// $primaryColor: #009688;
-
-$primaryColor: #000;
-$primaryTextColor: #000;
-
 $sansSerifFontWithoutDefault: -apple-system, BlinkMacSystemFont, ui-sans-serif, 'PingFang SC', 'Segoe UI', '微软雅黑', Microsoft YaHei UI;
 $sansSerifFont: $sansSerifFontWithoutDefault, sans-serif;
 $serifFont: 'Literata', 'Noto Serif SC', '宋体-简', '宋体', NSimSun, SimSun, serif;
@@ -35,3 +11,41 @@ $navbarBottomOffset: 32px;
 
 $footerHeight: 120px;
 $footerMarginTop: 32px;
+
+$primary_light: #000;
+$primary_dark: #ddd;
+
+$textColor_light: #000;
+$textColor_dark: #cfcfcf;
+
+$color_dim_dim_light: #eaeaea;
+$color_dim_dim_dark: rgba(255, 255, 255, 0.1);
+
+$color_dim_light: #aaa;
+$color_dim_dark: #888;
+
+$bg_light: #fff;
+$bg_dark: #0f0f0f;
+
+$bg_dim_light: #f9f9f9;
+$bg_dim_dark: #212121;
+
+:root {
+    --primary: #{$primary_light};
+    --dimdim: #{$color_dim_dim_light};
+	--dim: #{$color_dim_light};
+    --text: #{$textColor_light};
+    --bg: #{$bg_light};
+    --bg-dim: #{$bg_dim_light};
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #{$primary_dark};
+        --dimdim: #{$color_dim_dim_dark};
+        --dim: #{$color_dim_dark};
+        --text: #{$textColor_dark};
+        --bg: #{$bg_dark};
+        --bg-dim: #{$bg_dim_dark};
+    }
+}

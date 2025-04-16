@@ -33,7 +33,7 @@
 </script>
 
 <style lang="scss">
-@use "@/assets/var.scss";
+@use "@/assets/var";
 
 footer {
   margin-top: 32px;
@@ -45,6 +45,7 @@ footer {
   bottom: 0;
   display: flex;
   align-items: center;
+  border-top: 1px solid var(--dimdim);
 
   @media (max-width: 768px) {
     height: unset;

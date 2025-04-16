@@ -1,6 +1,6 @@
 <template>
   <transition name="flowup">
-    <div @click="scrollToTop" class="back-to-top button" v-if="showBackToTop">
+    <div @click="scrollToTop" class="back-to-top button noprint" v-if="showBackToTop">
       <span class="words">返回顶部</span>
       <icon :path="mdiArrowUp"/>
     </div>
@@ -24,12 +24,14 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@use "@/assets/var";
+@use "@/assets/ui";
+
 .words {
   @media (max-width: 768px) {
     display: none;
   }
 }
-
 
 .back-to-top {
   padding: 12px 16px;
@@ -41,6 +43,9 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   line-height: 1;
+  border-radius: var.$defaultBorderRadius;
+
+  @include ui.Button;
 
   @media (max-width: 768px) {
     width: 25px;
