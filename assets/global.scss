@@ -1,13 +1,23 @@
-@use 'dark';
-@use 'ui';
 @use 'var';
 @use 'highlight';
+@use 'ui';
+
+@media (prefers-color-scheme: dark) {
+	html {
+		color-scheme: dark;
+	}
+}
 
 html,
 body {
 	margin: 0;
 	font-family: var.$serifFont;
 	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--bg);
+	color: var(--text);
 }
 
 pre,
@@ -82,6 +92,10 @@ article {
 		position: fixed;
 		z-index: 500;
 
+		.toc-container-header {
+			border-bottom: 1px solid var(--dimdim);
+		}
+
 		> ul {
 			&,
 			li ul {
@@ -91,7 +105,7 @@ article {
 
 			li {
 				a:not(.active) {
-					color: #bbb;
+					color: var(--dim);
 					font-weight: normal;
 					transition: all 0.2s ease;
 
@@ -113,7 +127,7 @@ article {
 
 				a {
 					&:hover {
-						color: black;
+						color: var(--text);
 					}
 
 					img {
@@ -124,20 +138,22 @@ article {
 				}
 			}
 
-			> li ul a {
+			> li a {
 				&.active {
-					color: black;
+					color: var(--text);
 					position: relative;
 					font-weight: bold;
+				}
+			}
 
-					&::before {
-						content: '※';
-						position: absolute;
-						height: 24px;
-						width: 24px;
-						left: calc(-1em - 2px);
-						transition: all 0.2s ease;
-					}
+			> li ul a.active {
+				&::before {
+					content: '※';
+					position: absolute;
+					height: 24px;
+					width: 24px;
+					left: calc(-1em - 2px);
+					transition: all 0.2s ease;
 				}
 			}
 		}
@@ -181,6 +197,12 @@ article {
 		line-height: 1.4;
 	}
 
+	h1,
+	h2,
+	h3 {
+		border-bottom: 1px solid var(--dimdim);
+	}
+
 	.header-wrapper {
 		position: relative;
 
@@ -194,6 +216,7 @@ article {
 				height: 20px;
 				width: 20px;
 				margin-right: 4px;
+				fill: var(--text);
 			}
 		}
 
@@ -205,7 +228,7 @@ article {
 	}
 
 	a {
-		color: var.$primaryColor;
+		color: var(--primary);
 		text-decoration: none;
 		font-weight: 500;
 
@@ -215,12 +238,12 @@ article {
 	}
 
 	code {
-		color: var.$primaryTextColor;
+		color: var(--text);
 		padding: 0.25rem 0.5rem;
 		vertical-align: middle;
 		margin: 0;
 		font-size: 0.85em;
-		background-color: #f6f8fa;
+		background-color: var(--bg-dim);
 		border-radius: 3px;
 	}
 
@@ -230,6 +253,7 @@ article {
 		padding: 1rem;
 		margin: 0.85rem 0;
 		overflow-x: auto;
+		border: 1px solid var(--dimdim);
 
 		code {
 			padding: 0;
@@ -242,8 +266,8 @@ article {
 
 	blockquote {
 		font-size: 1rem;
-		color: #999;
-		border-left: 0.2rem solid #dfe2e5;
+		color: var(--dim);
+		border-left: 0.2rem solid var(--dim);
 		margin: 1rem 0;
 		padding: 0.25rem 0 0.25rem 1rem;
 
@@ -280,7 +304,7 @@ article {
 		border: none;
 		display: block;
 		width: 100%;
-		background: #eaecef;
+		background: var(--dimdim);
 		height: 1px;
 	}
 
@@ -298,20 +322,20 @@ article {
 
 	td,
 	th {
-		border: 1px solid #dfe2e5;
+		border: 1px solid var(--dimdim);
 		padding: 0.6em 1em;
 	}
 
 	tr:nth-child(2n) {
-		background-color: #f6f8fa;
+		background-color: var(--bg-dim);
 	}
 
 	tr {
-		border-top: 1px solid #dfe2e5;
+		border-top: 1px solid var(--dimdim);
 	}
 
 	kbd {
-		box-shadow: 0 1px 0 2px rgba(var.$primaryColor, 0.1);
+		box-shadow: 0 1px 0 2px;
 		padding: 0.05rem 0.3rem;
 		font-size: 80%;
 		margin: 0 4px;
@@ -319,7 +343,7 @@ article {
 		transform: translateY(-2px);
 		vertical-align: middle;
 		border-radius: 5px;
-		background: white;
+		background: var(--bg);
 		line-height: 1.2;
 	}
 
@@ -352,40 +376,16 @@ article {
 pre[class*='language-'] {
 	padding: 1em;
 	margin: 0.5em 0;
-	background: #f6f8fa;
-}
-
-.hoverable {
-	@extend .bordered;
-	transition: all 0.2s ease;
-}
-
-.hoverable:hover {
-	border-color: rgba(#004d40, 0.8);
-	transform: translateY(-4px);
-	box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1);
-}
-
-.hoverable.less-shadow:hover {
-	box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
-}
-
-.dark .bordered {
-	border-color: rgba(255, 255, 255, 0.1);
-}
-
-.dark .hoverable:hover {
-	border-color: var.$darkPrimary;
-}
-
-.dark .notice {
-	border-color: var.$darkLineColorDark;
+	background: var(--bg);
 }
 
 .notice {
 	padding: 16px;
 	margin: 16px 0;
-	border-color: var.$darkLineColorLight;
+	border-color: var(--dim);
+	background: var(--bg);
+	border: 1px solid var(--primary);
+	border-radius: var.$defaultBorderRadius;
 
 	&:first-child {
 		margin-top: 0;
@@ -403,6 +403,12 @@ pre[class*='language-'] {
 
 		svg {
 			height: 22px;
+			fill: var(--primary);
+		}
+
+		a,
+		strong {
+			color: var(--primary);
 		}
 	}
 
@@ -464,10 +470,6 @@ pre[class*='language-'] {
 	object-fit: contain;
 }
 
-.create-commons-license a {
-	@extend .clickable;
-}
-
 .back-btn {
 	position: fixed;
 	top: 32px;
@@ -480,11 +482,20 @@ pre[class*='language-'] {
 	border-radius: 100%;
 	z-index: 500;
 
+	@include ui.Button;
+
 	@media (max-width: 768px) {
 		display: none;
 	}
 
 	svg {
 		height: 22px;
+	}
+}
+
+.noprint,
+.noprint * {
+	@media print {
+		display: none !important;
 	}
 }

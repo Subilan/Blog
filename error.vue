@@ -46,16 +46,12 @@
             margin: 0 32px;
         }
 
-        a {
-            color: var.$primaryColor;
+        a, .title {
+            color: var(--primary);
         }
 
         h2 {
             font-size: 48px;
-        }
-
-        .title {
-            color: var.$primaryTextColor;
         }
 
         .button {

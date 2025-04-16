@@ -1,5 +1,5 @@
 <template>
-  <details class="card clickable no-cursor">
+  <details>
     <summary><icon :path="mdiArrowRight"/><span><slot name="title"/></span></summary>
     <slot/>
   </details>
@@ -10,12 +10,16 @@ import {mdiArrowRight} from "@mdi/js";
 
 <style lang="scss">
 @use "@/assets/var";
+@use "@/assets/ui";
 
 details {
   padding: 16px;
+  border-radius: var.$defaultBorderRadius;
+
+  @include ui.Button;
 
   summary {
-    color: var.$primaryTextColor;
+    color: var(--text);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -44,7 +48,7 @@ details {
 
   &[open] {
     &, &:hover {
-      background: rgba($color: var.$primaryColor, $alpha: .04)
+      background: var(--bg-dim);
     }
 
     summary span {

@@ -102,24 +102,11 @@
 
 $divgap: 30px;
 
-.dark .introduction .social-media svg {
-  fill: var.$darkPrimary;
-  color: var.$darkPrimary;
-}
-
-.dark .introduction {
-  border-bottom-color: var.$lineColorDark;
-}
-
-.dark .introduction .navigation a {
-  color: var.$darkPrimary;
-}
-
 .introduction {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-bottom: 1px solid var.$lineColorLight;
+  border-bottom: 1px solid var(--dimdim);
   padding-bottom: $divgap;
   position: relative;
 
@@ -132,7 +119,7 @@ $divgap: 30px;
     gap: 12px;
 
     a {
-      color: var.$primaryColor;
+      color: var(--primary);
       opacity: .4;
 
       @media (min-width: 768px) {
@@ -188,7 +175,7 @@ $divgap: 30px;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #000;
+      color: var(--text);
 
       &:hover {
         svg.bilibili {
@@ -199,7 +186,7 @@ $divgap: 30px;
 
     svg {
       height: 24px;
-      fill: #000;
+      fill: var(--text);
     }
 
     svg.x,
@@ -207,10 +194,6 @@ $divgap: 30px;
       height: 20px;
     }
   }
-}
-
-.dark .articles-mono .article-mono .art h2 a {
-  color: var.$darkPrimary;
 }
 
 .articles-mono {
@@ -257,7 +240,7 @@ $divgap: 30px;
         }
 
         a {
-          color: var.$primaryColor;
+          color: var(--primary);
         }
       }
 
@@ -350,7 +333,7 @@ $divgap: 30px;
 
 
 .bg-icon {
-  color: var.$primaryColor;
+  color: var(--primary);
   opacity: 0;
   position: absolute;
   right: -20px;
