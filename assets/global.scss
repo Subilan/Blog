@@ -8,6 +8,12 @@
 	}
 }
 
+@media print {
+	code .line {
+		white-space: break-spaces;
+	}
+}
+
 html,
 body {
 	margin: 0;
@@ -200,7 +206,9 @@ article {
 	h1,
 	h2,
 	h3 {
-		border-bottom: 1px solid var(--dimdim);
+		@media screen {
+			border-bottom: 1px solid var(--dimdim);
+		}
 	}
 
 	.header-wrapper {
@@ -488,14 +496,11 @@ pre[class*='language-'] {
 		display: none;
 	}
 
+	@media print {
+		display: none;
+	}
+
 	svg {
 		height: 22px;
-	}
-}
-
-.noprint,
-.noprint * {
-	@media print {
-		display: none !important;
 	}
 }
