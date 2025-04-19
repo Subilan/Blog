@@ -1,6 +1,6 @@
 $sansSerifFontWithoutDefault: -apple-system, BlinkMacSystemFont, ui-sans-serif, 'PingFang SC', 'Segoe UI', '微软雅黑', Microsoft YaHei UI;
 $sansSerifFont: $sansSerifFontWithoutDefault, sans-serif;
-$serifFont: 'Literata', 'Noto Serif SC', '宋体-简', '宋体', NSimSun, SimSun, serif;
+$serifFont: 'Literata', 'Noto Serif SC', 'embedded__NotoSerifSC', '宋体-简', '宋体', NSimSun, SimSun, serif;
 $monospaceFont: Menlo, 'Cascadia Code', 'Cascadia Mono', Consolas, $sansSerifFontWithoutDefault, monospace;
 
 $defaultBorderRadius: 8px;
