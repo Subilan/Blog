@@ -14,14 +14,18 @@ const route = useRoute();
 
 const sitename = getSiteName();
 
-const titleWithPrefix = computed(() => `${sitename} - ${route.meta.title}`);
+const titleWithPrefix = computed(() => {
+  if (route.params.postname) {
+    return `${sitename} - ${getPostContent(route.params.postname).title}`
+  }
+  return `${sitename} - ${route.meta.title}`;
+});
 const titleWithSuffix = computed(() => {
   if (route.params.postname) {
     return `${getPostContent(route.params.postname).title} - ${sitename}`
   }
   return `${route.meta.title} - ${sitename}`;
 });
-const darkMode = usePreferredDark();
 
 useHead({
   meta: [
@@ -51,7 +55,7 @@ onMounted(() => {
   useFavicon('/avatar.jpg', {
     rel: 'icon'
   })
-})
+});
 </script>
 
 <style lang="scss">

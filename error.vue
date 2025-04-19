@@ -1,7 +1,8 @@
 <template>
     <div class="error-container">
         <div class="inner card">
-            <p class="title"><strong>维护界面: {{ error.statusCode }}</strong> — {{ error.message.split('Require stack')[0] }}</p>
+            <p class="title"><strong>维护界面: {{ error.statusCode }}</strong> — {{ error.message.split('Require stack')[0]
+                }}</p>
             <p v-if="error.statusCode === 404">
                 此页面不存在，请检查 URL 拼写是否正确。
             </p>
@@ -13,7 +14,9 @@
                     href="mailto:christophersubilan@gmail.com">christophersubilan@gmail.com</a>。
             </p>
             <div class="actions right mobile-center">
-                <button class="button" @click="handleError"><icon :path="mdiArrowLeft"/>回到主页</button>
+                <button class="button" @click="handleError">
+                    <icon :path="mdiArrowLeft" />回到主页
+                </button>
             </div>
         </div>
     </div>
@@ -46,7 +49,8 @@
             margin: 0 32px;
         }
 
-        a, .title {
+        a,
+        .title {
             color: var(--primary);
         }
 
@@ -71,7 +75,7 @@
 
 .actions {
     display: flex;
-    
+
     &.mobile-center {
         @media (max-width: 768px) {
             justify-content: center !important;
