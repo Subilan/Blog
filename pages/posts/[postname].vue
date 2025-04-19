@@ -137,6 +137,12 @@ definePageMeta({
 useSeoMeta({
   articleModifiedTime: post.date.replace(/\//g, '-')
 })
+
+defineOgImageComponent('blog-post', {
+  postTitle: post.title,
+  date: post.date,
+  wordCount: post.wordCount
+})
 </script>
 
 <style lang="scss">

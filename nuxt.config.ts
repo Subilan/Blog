@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 
 	runtimeConfig: {
-    umamiEndpoint: 'https://analytics.subilan.win',
+		umamiEndpoint: 'https://analytics.subilan.win',
 		umamiUsername: '',
 		umamiPassword: ''
 	},
@@ -23,7 +23,7 @@ export default defineNuxtConfig({
 		name: 'SolitudeScroll'
 	},
 
-	modules: ['@nuxtjs/sitemap', '@nuxt/image'],
+	modules: ['@nuxtjs/sitemap', '@nuxt/image', 'nuxt-og-image'],
 
 	sitemap: {
 		sources: ['/api/get-post-urls']
@@ -36,11 +36,36 @@ export default defineNuxtConfig({
 		}
 	},
 
-  app: {
-    head: {
-      htmlAttrs: {
-        lang: 'zh'
-      }
-    }
-  }
+	app: {
+		head: {
+			htmlAttrs: {
+				lang: 'zh'
+			}
+		}
+	},
+
+	ogImage: {
+		fonts: [
+			{
+				name: 'Noto Serif SC',
+				weight: 700,
+				path: '/fonts/noto-serif-sc/noto-serif-sc-v31-chinese-simplified_latin-700.ttf'
+			},
+			{
+				name: 'Noto Serif SC',
+				weight: 400,
+				path: '/fonts/noto-serif-sc/noto-serif-sc-v31-chinese-simplified_latin-regular.ttf'
+			},
+			{
+				name: 'Literata',
+				weight: 400,
+				path: '/fonts/literata/literata-v35-latin-regular.ttf'
+			},
+			{
+				name: 'Literata',
+				weight: 700,
+				path: '/fonts/literata/literata-v35-latin-700.ttf'
+			}
+		]
+	}
 });
