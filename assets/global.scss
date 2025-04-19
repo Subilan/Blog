@@ -208,6 +208,7 @@ article {
 	h3 {
 		@media screen {
 			border-bottom: 1px solid var(--dimdim);
+			padding-bottom: 8px;
 		}
 	}
 
@@ -218,7 +219,7 @@ article {
 			position: absolute;
 			top: 50%;
 			display: none;
-			transform: translateX(-100%) translateY(-45%);
+			transform: translateX(-100%) translateY(-40%);
 
 			svg {
 				height: 20px;
@@ -390,9 +391,8 @@ pre[class*='language-'] {
 .notice {
 	padding: 16px;
 	margin: 16px 0;
-	border-color: var(--dim);
 	background: var(--bg);
-	border: 1px solid var(--primary);
+	border: 1px solid var(--dim);
 	border-radius: var.$defaultBorderRadius;
 
 	&:first-child {
