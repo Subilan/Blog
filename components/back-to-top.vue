@@ -43,6 +43,7 @@ onMounted(() => {
   align-items: center;
   gap: 8px;
   line-height: 1;
+  background: var(--bg);
   border-radius: var.$defaultBorderRadius;
 
   @include ui.Button;
