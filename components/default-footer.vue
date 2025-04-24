@@ -11,7 +11,9 @@
       <div class="icons">
         <div class="badges">
           <WrittenByHuman />
-          <img src="https://lmnt.me/files/images/badges/made-on-macintosh.gif" />
+          <a href="https://www.apple.com/mac/" target="_blank">
+            <img src="https://lmnt.me/files/images/badges/made-on-macintosh.gif" />
+          </a>
         </div>
         <div class="cc-icons">
           <img alt="cc" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
@@ -70,7 +72,7 @@ footer {
       align-items: center;
       gap: 8px;
 
-      img {
+      a, img {
         height: 31px;
       }
 
