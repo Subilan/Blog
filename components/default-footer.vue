@@ -9,11 +9,14 @@
       </div>
       <div class="spacer" />
       <div class="icons">
-        <WrittenByHuman />
+        <div class="badges">
+          <WrittenByHuman />
+          <img src="https://lmnt.me/files/images/badges/made-on-macintosh.gif" />
+        </div>
         <div class="cc-icons">
-            <img alt="cc" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
-            <img alt="by" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
-            <img alt="sa" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
+          <img alt="cc" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+          <img alt="by" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
+          <img alt="sa" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
         </div>
       </div>
     </div>
@@ -60,6 +63,20 @@ footer {
 
     @media (max-width: 768px) {
       align-items: flex-start;
+    }
+
+    .badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      img {
+        height: 31px;
+      }
+
+      img {
+        image-rendering: pixelated;
+      }
     }
 
     .cc-icons {
