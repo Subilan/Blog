@@ -98,5 +98,13 @@
     "description": "Keep it simple, stupid!",
     "background": "#e3fff9",
     "light": false
+  },
+  {
+    "name": "Bokey Space",
+    "href": "https://bokey.space/",
+    "avatar": "https://bokey-space.oss-cn-shenzhen.aliyuncs.com/pro/global/my-avatar.png",
+    "description": "留下自己的痕迹",
+    "background": "#161616",
+    "light": true
   }
 ]
