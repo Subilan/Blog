@@ -81,7 +81,8 @@
     "href": "https://krtk.top",
     "avatar": "https://krtk.top/images/takeo_avatar.png",
     "description": "Forever on the Path of Learning",
-    "background": "#fff"
+    "background": "#fff",
+    "hidden": true
   },
   {
     "name": "Restent Ou",

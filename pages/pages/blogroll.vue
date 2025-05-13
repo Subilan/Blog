@@ -4,7 +4,7 @@
     <p>友链（blogroll）是一种将互联网上的一个个孤岛似的个人网站联系起来的一种高效方式。这使得各个网站可以彼此串通，使访问者有更多的机会光顾每一个相连接的网站。</p>
     <p>下面收录了本站自创建以来记录的博客网站链接。</p>
     <div class="blogrolls">
-      <a class="blogroll card" target="_blank" :href="x.href" v-for="x in blogrolls" :class="{ light: x.light }"
+      <a class="blogroll card" target="_blank" :href="x.href" v-for="x in blogrolls.filter(x => !x.hidden)" :class="{ light: x.light }"
         :style="x.background.startsWith('http') ? `background-image: url(${x.background})` : `background: ${x.background}`">
         <nuxt-img format="webp" :src="x.avatar" :alt="x.name" />
         <div class="info">
