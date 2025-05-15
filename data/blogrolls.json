@@ -78,11 +78,10 @@
   },
   {
     "name": "Doggy Lounge",
-    "href": "https://krtk.top",
-    "avatar": "https://krtk.top/images/takeo_avatar.png",
+    "href": "https://blog.krtk.top",
+    "avatar": "https://blog.krtk.top/images/takeo_avatar.png",
     "description": "Forever on the Path of Learning",
-    "background": "#fff",
-    "hidden": true
+    "background": "#fff"
   },
   {
     "name": "Restent Ou",
