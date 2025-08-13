@@ -1,0 +1,46 @@
+@use './fonts';
+@use './themes/classic/colors.scss' as *;
+@use './themes/typecho/colors.scss' as *;
+
+@mixin Day($name) {
+	@if $name == 'classic' {
+		@include ClassicColorsDay;
+	} @else if $name == 'typecho' {
+		@include TypechoColorsDay;
+	}
+}
+
+@mixin Night($name) {
+	@if $name == 'classic' {
+		@include ClassicColorsNight;
+	} @else if $name == 'typecho' {
+		@include TypechoColorsNight;
+	}
+
+	color-scheme: dark;
+}
+
+@mixin Theme($name) {
+	@include fonts.FontSetting();
+
+	&.color-night.style-#{$name} {
+		@include Day($name);
+	}
+
+	&.color-day.style-#{$name} {
+		@include Night($name);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		&.color-auto.style-#{$name} {
+			@include Night($name);
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		&.color-auto.style-#{$name} {
+			@include Day($name);
+		}
+	}
+}
+
