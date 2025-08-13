@@ -1,11 +1,15 @@
 <template>
   <details class="button">
-    <summary><icon :path="mdiArrowRight"/><span><slot name="title"/></span></summary>
-    <slot/>
+    <summary>
+      <icon :path="mdiArrowRight" /><span>
+        <slot name="title" />
+      </span>
+    </summary>
+    <slot />
   </details>
 </template>
 <script setup lang="ts">
-import {mdiArrowRight} from "@mdi/js";
+  import { mdiArrowRight } from "@mdi/js";
 </script>
 
 <style lang="scss">
@@ -14,10 +18,11 @@ import {mdiArrowRight} from "@mdi/js";
 
 details {
   padding: 16px;
+  border-radius: var(--border-radius);
+
   @include ui.SimpleBorder();
 
   summary {
-    border-radius: var(--border-radius);
     color: var(--text);
     cursor: pointer;
     display: flex;
@@ -31,7 +36,8 @@ details {
       display: flex;
     }
 
-    &::marker, &::-webkit-details-marker {
+    &::marker,
+    &::-webkit-details-marker {
       content: none;
       display: none;
     }
@@ -46,7 +52,9 @@ details {
   }
 
   &[open] {
-    &, &:hover {
+
+    &,
+    &:hover {
       background: var(--bg-dim);
     }
 
