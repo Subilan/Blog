@@ -9,8 +9,11 @@
         <div class="modal-title">
           <span>{{ title }}</span>
           <div class="spacer" />
-          <div class="icon-btn small noborder" @click="model = false">
-            <icon :path="mdiClose" />
+          <div class="title-end">
+            <slot name="title-end" />
+            <div class="icon-btn small noborder" @click="model = false">
+              <icon :path="mdiClose" />
+            </div>
           </div>
         </div>
         <hr :style="{ borderWidth: noDivider ? '0' : '1px' }" />
@@ -104,6 +107,12 @@
     .modal-title {
       display: flex;
       align-items: center;
+
+      .title-end {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
 
       >span {
         font-weight: bold;

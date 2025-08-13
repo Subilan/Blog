@@ -83,6 +83,10 @@ article {
 	word-break: break-word;
 	position: relative;
 
+	@media (max-width: 768px) {
+		font-size: 15px;
+	}
+
 	.content {
 		> p:first-of-type {
 			margin-top: 0;
