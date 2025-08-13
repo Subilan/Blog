@@ -1,8 +1,6 @@
 <template>
   <!-- <navbar /> -->
-  <div class="back-btn" @click="useRouter().go(-1)">
-    <icon :path="mdiArrowLeft" />
-  </div>
+  <back-btn/>
   <main class="layout-post">
     <slot />
   </main>
@@ -15,7 +13,6 @@
   import CreativeCommonsLicense from "~/components/creative-commons-license.vue";
   import DefaultFooter from "~/components/default-footer.vue";
   import BackToTop from "~/components/back-to-top.vue";
-  import { mdiArrowLeft } from "@mdi/js";
 </script>
 
 <style lang="scss">

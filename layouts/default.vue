@@ -1,6 +1,6 @@
 <template>
   <!-- <navbar /> -->
-  <back-btn v-if="useRoute().name !== 'index'" />
+  <theme-btn />
   <main class="layout-default">
     <!-- <div class="left">
       <section class="profile card">
@@ -50,13 +50,10 @@
 </template>
 
 <script setup lang="ts">
-  import { pages } from "~/data/config.js";
   import getTotalWordCount from "~/utils/getTotalWordCount.js";
   import getTotalPostCount from "~/utils/getTotalPostCount.js";
   import blogrolls from '~/data/blogrolls.json';
   import getSiteName from "~/utils/getSiteName.js";
-  import getPostDigests from '~/utils/getPostDigests.js';
-  import { mdiArrowLeft } from "@mdi/js";
 
   type PageviewRes = { pageviews: { x: string, y: number }[], sessions: { x: string, y: number }[] }
 

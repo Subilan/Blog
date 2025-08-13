@@ -1,6 +1,7 @@
 @use 'var';
 @use 'highlight';
 @use 'ui';
+@use 'transitions';
 
 @media (prefers-color-scheme: dark) {
 	html {
@@ -14,10 +15,16 @@
 	}
 }
 
+hr {
+	border: none;
+	border-bottom: 1px solid var(--dimdim);
+	margin: 8px 0;
+}
+
 html,
 body {
 	margin: 0;
-	font-family: var.$serifFont;
+	font-family: var(--main-font);
 	scroll-behavior: smooth;
 }
 
@@ -31,7 +38,7 @@ pre code,
 input,
 code,
 kbd {
-	font-family: var.$monospaceFont;
+	font-family: var(--monospace-font);
 }
 
 h1 {
@@ -478,19 +485,30 @@ pre[class*='language-'] {
 	object-fit: contain;
 }
 
-.back-btn {
-	position: fixed;
-	top: 32px;
-	left: 32px;
+.icon-btn {
 	height: 44px;
 	width: 44px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-radius: 100%;
-	z-index: 500;
 
-	@include ui.Button;
+	&.small {
+		height: 32px;
+		width: 32px;
+
+		svg {
+			height: 19px;
+		}
+	}
+	
+	&.noborder {
+		@include ui.Button(0);
+	}
+
+	&:not(.noborder) {
+		@include ui.Button;
+	}
 
 	@media (max-width: 768px) {
 		display: none;
@@ -502,5 +520,19 @@ pre[class*='language-'] {
 
 	svg {
 		height: 22px;
+	}
+
+	&.topleft,
+	&.topright {
+		position: fixed;
+		top: 32px;
+	}
+
+	&.topleft {
+		left: 32px;
+	}
+
+	&.topright {
+		right: 32px;
 	}
 }

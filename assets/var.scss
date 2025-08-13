@@ -1,7 +1,4 @@
-$sansSerifFontWithoutDefault: -apple-system, BlinkMacSystemFont, ui-sans-serif, 'PingFang SC', 'Segoe UI', '微软雅黑', Microsoft YaHei UI;
-$sansSerifFont: $sansSerifFontWithoutDefault, sans-serif;
-$serifFont: 'Literata', 'Noto Serif SC', '宋体-简', '宋体', NSimSun, SimSun, serif;
-$monospaceFont: Menlo, 'Cascadia Code', 'Cascadia Mono', Consolas, $sansSerifFontWithoutDefault, monospace;
+@use './fonts';
 
 $defaultBorderRadius: 8px;
 
@@ -30,22 +27,44 @@ $bg_dark: #0f0f0f;
 $bg_dim_light: #f9f9f9;
 $bg_dim_dark: #212121;
 
-:root {
-    --primary: #{$primary_light};
-    --dimdim: #{$color_dim_dim_light};
+@mixin Day {
+	--primary: #{$primary_light};
+	--dimdim: #{$color_dim_dim_light};
 	--dim: #{$color_dim_light};
-    --text: #{$textColor_light};
-    --bg: #{$bg_light};
-    --bg-dim: #{$bg_dim_light};
+	--text: #{$textColor_light};
+	--bg: #{$bg_light};
+	--bg-dim: #{$bg_dim_light};
+
+	@include fonts.FontSetting();
+}
+
+@mixin Night {
+	--primary: #{$primary_dark};
+	--dimdim: #{$color_dim_dim_dark};
+	--dim: #{$color_dim_dark};
+	--text: #{$textColor_dark};
+	--bg: #{$bg_dark};
+	--bg-dim: #{$bg_dim_dark};
+
+	@include fonts.FontSetting();
+}
+
+:root.color-night {
+	@include Night();
+}
+
+:root.color-day {
+	@include Day();
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --primary: #{$primary_dark};
-        --dimdim: #{$color_dim_dim_dark};
-        --dim: #{$color_dim_dark};
-        --text: #{$textColor_dark};
-        --bg: #{$bg_dark};
-        --bg-dim: #{$bg_dim_dark};
-    }
+	:root.color-auto {
+		@include Night();
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root.color-auto {
+		@include Day();
+	}
 }
