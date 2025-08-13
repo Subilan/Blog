@@ -1,0 +1,22 @@
+@import '@/assets/components/link.scss';
+
+@mixin TocTypecho {
+	> ul li {
+		a {
+            @extend .link;
+		}
+
+		a:not(.active) {
+            opacity: .3;
+		}
+
+		a:hover,
+		a.active {
+			opacity: 1;
+		}
+
+		a.active::before {
+			left: 0;
+		}
+	}
+}

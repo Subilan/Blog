@@ -1,0 +1,29 @@
+@mixin TocClassic {
+	> ul li {
+		a:not(.active) {
+			color: var(--dim);
+
+			img,
+			code,
+			kbd,
+			& {
+				transition: all 0.2s ease;
+			}
+		}
+
+        a:hover {
+            color: var(--text);
+        }
+
+        a.active {
+            color: var(--text);
+            font-weight: bold;
+            position: relative;
+
+            &::before {
+				left: calc(-1em - 2px);
+				transition: all 0.2s ease;
+            }
+        }
+	}
+}
