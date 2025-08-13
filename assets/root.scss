@@ -2,14 +2,14 @@
 
 :root {
 	&.style-classic {
+		--border-radius: 10px;
+		
 		@include Theme('classic');
-
-        --border-radius: 10px;
 	}
 
 	&.style-typecho {
+		--border-radius: 5px;
+
 		@include Theme('typecho');
-        
-        --border-radius: 5px;
 	}
 }
