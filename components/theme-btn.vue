@@ -12,9 +12,9 @@
     <section>
       <p>字体 <small style="color: var(--dim)">*中文字体将自动适应。</small></p>
       <div class="grid">
-        <div class="grid-item" @click="themeFont = font" :class="{ active: themeFont === font }"
-          :style="{ fontFamily: `${font}, ${isSerif(font) ? 'serif' : 'sans-serif'}` }" v-for="font in fonts">
-          {{ font }}
+        <div class="grid-item font-preview" @click="themeFont = font" :class="{ active: themeFont === font }"
+          v-for="font in fonts">
+          <img :src="`/font-preview/${font.replace(/\s/g, '-').toLowerCase()}.png`" />
         </div>
       </div>
     </section>
@@ -31,8 +31,7 @@
       <p>页面样式</p>
       <div class="grid">
         <div class="grid-item" @click="themeStyle = style.value"
-          :class="`style-${style.value} ${themeStyle === style.value ? 'active' : ''}`"
-          v-for="style in styles">
+          :class="`style-${style.value} ${themeStyle === style.value ? 'active' : ''}`" v-for="style in styles">
           {{ style.name }}
         </div>
       </div>
@@ -88,6 +87,20 @@
 </script>
 
 <style lang="scss" scoped>
+:root.color-night {
+  .font-preview img {
+    filter: invert(1);
+  }
+}
+
+:root.color-auto {
+  @media (prefers-color-scheme: dark) {
+    .font-preview img {
+      filter: invert(1);
+    }
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -97,8 +110,19 @@
     border: 1px solid var(--dimdim);
     border-radius: 5px;
     padding: 8px;
-    text-align: center;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &.font-preview {
+      min-height: 1.5em;
+
+
+      img {
+        height: 14px;
+      }
+    }
 
     p,
     small {
