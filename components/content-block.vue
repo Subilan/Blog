@@ -14,10 +14,10 @@ import {mdiArrowRight} from "@mdi/js";
 
 details {
   padding: 16px;
-  border-radius: var.$defaultBorderRadius;
   @include ui.SimpleBorder();
 
   summary {
+    border-radius: var(--border-radius);
     color: var(--text);
     cursor: pointer;
     display: flex;

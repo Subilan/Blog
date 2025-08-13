@@ -28,6 +28,7 @@ $typechoBgTertiaryDark: #444;
 	--bg-dim: #{$typechoBgSecondaryLight};
 	--bg-dim-dim: #{$typechoBgTertiaryLight};
 	--base: black;
+	--typecho-red: #DB3B14;
 }
 
 @mixin TypechoColorsNight {
@@ -39,4 +40,5 @@ $typechoBgTertiaryDark: #444;
 	--bg-dim: #{$typechoBgSecondaryDark};
 	--bg-dim-dim: #{$typechoBgTertiaryDark};
 	--base: white;
+	--typecho-red: #DB3B14;
 }

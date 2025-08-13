@@ -158,9 +158,20 @@ defineOgImageComponent('blog-post', {
   padding: 16px 0;
 }
 
-.outdated-warning-mono {
+:root.style-classic .outdated-warning-mono {
+  border-radius: 10px;
   border: 1px dashed var(--primary);
-  border-radius: var.$defaultBorderRadius;
+}
+
+:root.style-typecho .outdated-warning-mono {
+  background-color: var(--bg-dim);
+  border-radius: 5px;
+  h3 {
+    color: var(--typecho-red);
+  }
+}
+
+.outdated-warning-mono {
   padding: 16px;
   margin-top: 16px;
   

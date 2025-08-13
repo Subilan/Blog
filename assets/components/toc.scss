@@ -5,10 +5,6 @@
 	position: fixed;
 	z-index: 500;
 
-	.toc-container-header {
-		border-bottom: 1px solid var(--dimdim);
-	}
-
 	> ul {
 		&,
 		li ul {
@@ -61,8 +57,16 @@
 
 :root.style-classic .toc {
     @include TocClassic;
+
+	.toc-container-header {
+		border-bottom: 1px solid var(--dimdim);
+	}
 }
 
 :root.style-typecho .toc {
     @include TocTypecho;
+
+	.toc-container-header {
+		border-bottom: 1px dotted var(--dimdim);
+	}
 }

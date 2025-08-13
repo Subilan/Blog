@@ -3,16 +3,21 @@
 @mixin TocTypecho {
 	> ul li {
 		a {
-            @extend .link;
+			@extend .link;
 		}
 
 		a:not(.active) {
-            opacity: .3;
+			opacity: 0.3;
 		}
 
 		a:hover,
 		a.active {
 			opacity: 1;
+		}
+
+		a.active {
+			color: var(--base);
+			border-bottom: none;
 		}
 
 		a.active::before {

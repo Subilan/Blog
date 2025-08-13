@@ -2,16 +2,33 @@
 	background: var(--bg-dim);
 	border-radius: 6px;
 
-	.notice-title {
-		color: #db3b14;
+	&.tip {
+		.notice-title {
+			color: var(--primary);
 
-		svg {
-			fill: #db3b14;
+			svg {
+				fill: var(--primary);
+			}
+		}
+
+		a,
+		strong {
+			color: var(--primary);
 		}
 	}
 
-	a,
-	strong {
-		color: #db3b14;
+	&:not(.tip) {
+		.notice-title {
+			color: var(--typecho-red);
+
+			svg {
+				fill: var(--typecho-red);
+			}
+		}
+
+		a,
+		strong {
+			color: var(--typecho-red);
+		}
 	}
 }

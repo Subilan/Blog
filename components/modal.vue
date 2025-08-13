@@ -61,17 +61,19 @@
 @mixin ModalClassic {
   background: var(--bg);
   padding: 24px;
-  border-radius: 20px;
   color: var(--text);
 
   @include ui.SimpleShadow();
 }
 
 @mixin ModalTypecho {
-  background: var(--bg);
+  background: var(--bg-dim);
   padding: 20px;
-  border-radius: 10px;
   color: var(--text);
+
+  .modal-title {
+    color: #DB3B14;
+  }
 }
 
 .modal-overlay {
@@ -97,6 +99,7 @@
 
   .modal {
     width: 600px;
+    border-radius: var(--border-radius);
 
     .modal-title {
       display: flex;
