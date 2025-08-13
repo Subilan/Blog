@@ -1,5 +1,5 @@
 <template>
-  <details>
+  <details class="button">
     <summary><icon :path="mdiArrowRight"/><span><slot name="title"/></span></summary>
     <slot/>
   </details>
@@ -15,8 +15,7 @@ import {mdiArrowRight} from "@mdi/js";
 details {
   padding: 16px;
   border-radius: var.$defaultBorderRadius;
-
-  @include ui.Button;
+  @include ui.SimpleBorder();
 
   summary {
     color: var(--text);

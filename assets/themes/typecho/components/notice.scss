@@ -1,0 +1,17 @@
+@mixin NoticeTypecho {
+	background: var(--bg-dim);
+	border-radius: 6px;
+
+	.notice-title {
+		color: #db3b14;
+
+		svg {
+			fill: #db3b14;
+		}
+	}
+
+	a,
+	strong {
+		color: #db3b14;
+	}
+}

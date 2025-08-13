@@ -1,0 +1,19 @@
+.link:not(.blogroll) {
+		text-decoration: none;
+		color: var(--primary);
+}
+
+:root.style-classic .link:not(.blogroll) {
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+:root.style-typecho .link:not(.blogroll) {
+	border-bottom: 1px solid var(--dimdim);
+
+	&:hover {
+		border-bottom: none;
+		color: var(--base);
+	}
+}
