@@ -1,5 +1,5 @@
 <template>
-    <div class="back-btn noprint" @click="useRouter().go(-1)">
+    <div class="icon-btn topleft noprint" @click="useRouter().go(-1)">
         <icon :path="mdiArrowLeft" />
     </div>
 </template>

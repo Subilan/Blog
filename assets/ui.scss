@@ -21,8 +21,8 @@
     }
 }
 
-@mixin Button {
-    border: 1px solid var(--dimdim);
+@mixin Button($withBorder: 1px) {
+    border: $withBorder solid var(--dimdim);
     cursor: pointer;
 
     @include clickable();

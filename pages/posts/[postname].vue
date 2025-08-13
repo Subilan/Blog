@@ -48,7 +48,7 @@
 <script setup>
 import getPostContent from "@/utils/getPostContent.js";
 import mediumZoom from "medium-zoom";
-import { mdiClockAlertOutline, mdiClockOutline, mdiFormatTextVariant, mdiShapeOutline } from "@mdi/js";
+import { mdiClockOutline, mdiFormatTextVariant, mdiShapeOutline } from "@mdi/js";
 
 const slug = useRoute().params.postname;
 const post = getPostContent(slug.toLowerCase());

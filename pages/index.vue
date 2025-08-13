@@ -60,6 +60,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
   import X from '~/assets/svg/x.svg';
   import GitHub from '~/assets/svg/github.svg';
