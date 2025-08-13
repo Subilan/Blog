@@ -58,6 +58,22 @@
 @use '@/assets/var';
 @use '@/assets/ui';
 
+@mixin ModalClassic {
+  background: var(--bg);
+  padding: 24px;
+  border-radius: 20px;
+  color: var(--text);
+
+  @include ui.SimpleShadow();
+}
+
+@mixin ModalTypecho {
+  background: var(--bg);
+  padding: 20px;
+  border-radius: 10px;
+  color: var(--text);
+}
+
 .modal-overlay {
   position: fixed;
   height: 100vh;
@@ -81,12 +97,6 @@
 
   .modal {
     width: 600px;
-    background: var(--bg);
-    padding: 24px;
-    border-radius: 20px;
-    color: var(--text);
-
-    @include ui.simple-shadow;
 
     .modal-title {
       display: flex;
@@ -98,5 +108,13 @@
       }
     }
   }
+}
+
+:root.style-typecho .modal {
+  @include ModalTypecho;
+}
+
+:root.style-classic .modal {
+  @include ModalClassic;
 }
 </style>

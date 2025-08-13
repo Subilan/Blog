@@ -1,4 +1,6 @@
 @use './fonts';
+@use './themes/classic/colors.scss' as *;
+@use './themes/typecho/colors.scss' as *;
 
 $defaultBorderRadius: 8px;
 
@@ -9,62 +11,54 @@ $navbarBottomOffset: 32px;
 $footerHeight: 120px;
 $footerMarginTop: 32px;
 
-$primary_light: #000;
-$primary_dark: #ddd;
-
-$textColor_light: #000;
-$textColor_dark: #cfcfcf;
-
-$color_dim_dim_light: #eaeaea;
-$color_dim_dim_dark: rgba(255, 255, 255, 0.1);
-
-$color_dim_light: #aaa;
-$color_dim_dark: #888;
-
-$bg_light: #fff;
-$bg_dark: #0f0f0f;
-
-$bg_dim_light: #f9f9f9;
-$bg_dim_dark: #212121;
-
-@mixin Day {
-	--primary: #{$primary_light};
-	--dimdim: #{$color_dim_dim_light};
-	--dim: #{$color_dim_light};
-	--text: #{$textColor_light};
-	--bg: #{$bg_light};
-	--bg-dim: #{$bg_dim_light};
-
-	@include fonts.FontSetting();
-}
-
-@mixin Night {
-	--primary: #{$primary_dark};
-	--dimdim: #{$color_dim_dim_dark};
-	--dim: #{$color_dim_dark};
-	--text: #{$textColor_dark};
-	--bg: #{$bg_dark};
-	--bg-dim: #{$bg_dim_dark};
-
-	@include fonts.FontSetting();
-}
-
-:root.color-night {
-	@include Night();
-}
-
-:root.color-day {
-	@include Day();
-}
-
-@media (prefers-color-scheme: dark) {
-	:root.color-auto {
-		@include Night();
+@mixin Day($name) {
+	@if $name == 'classic' {
+		@include ClassicColorsDay;
+	} @else if $name == 'typecho' {
+		@include TypechoColorsDay;
 	}
 }
 
-@media (prefers-color-scheme: light) {
-	:root.color-auto {
-		@include Day();
+@mixin Night($name) {
+	@if $name == 'classic' {
+		@include ClassicColorsNight;
+	} @else if $name == 'typecho' {
+		@include TypechoColorsNight;
+	}
+
+	color-scheme: dark;
+}
+
+@mixin Theme($name) {
+	@include fonts.FontSetting();
+
+	&.color-night.style-#{$name} {
+		@include Day($name);
+	}
+
+	&.color-day.style-#{$name} {
+		@include Night($name);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		&.color-auto.style-#{$name} {
+			@include Night($name);
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		&.color-auto.style-#{$name} {
+			@include Day($name);
+		}
+	}
+}
+
+:root {
+	&.style-classic {
+		@include Theme('classic');
+	}
+
+	&.style-typecho {
+		@include Theme('typecho');
 	}
 }

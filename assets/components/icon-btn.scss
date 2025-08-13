@@ -1,0 +1,39 @@
+@use '../themes/classic/components/icon-btn.scss' as *;
+@use '../themes/typecho/components/icon-btn.scss' as *;
+@use '../ui' as *;
+
+.icon-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+
+	@media print {
+		display: none;
+	}
+
+	&.topleft,
+	&.topright {
+		position: fixed;
+		top: 32px;
+	}
+
+	&.topleft {
+		left: 32px;
+	}
+
+	&.topright {
+		right: 32px;
+	}
+}
+
+:root.style-typecho .icon-btn {
+	@include IconBtnTypecho;
+}
+
+:root.style-classic .icon-btn {
+	@include IconBtnClassic;
+}

@@ -84,8 +84,8 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
     color: var(--text);
     text-decoration: none;
     background: var(--bg);
-
-    @include ui.Button;
+    
+    @include ui.SimpleBorder;
 
     @media (max-width: 768px) {
       justify-content: center;

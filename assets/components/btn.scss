@@ -1,0 +1,10 @@
+@use '../themes/classic/components/btn.scss' as *;
+@use '../themes/typecho/components/btn.scss' as *;
+
+:root.style-classic .button {
+    @include ButtonClassic;
+}
+
+:root.style-typecho .button {
+    @include ButtonTypecho;
+}

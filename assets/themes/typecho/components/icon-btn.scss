@@ -1,0 +1,22 @@
+@use './btn.scss' as *;
+
+@mixin IconBtnTypecho {
+    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+    
+    svg {
+        height: 20px;
+    }
+
+    &.small {
+        width: 27px;
+        height: 27px;
+
+        svg {
+            height: 18px;
+        }
+    }
+
+    @include ButtonTypecho;
+}
