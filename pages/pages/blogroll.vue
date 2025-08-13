@@ -118,7 +118,7 @@
     background-size: cover;
     min-height: 55px;
     text-decoration: none;
-    border-radius: var.$defaultBorderRadius;
+    border-radius: var(--border-radius);
 
     @media (min-width: 768px) {
       &:hover {
