@@ -35,11 +35,12 @@
     })
   });
 
-  const { themeFont, themeColor, themePalette } = useTheme();
+  const { themeFont, themeColor, themeStyle } = useTheme();
 
   const htmlClasses = computed(() => [
     `font-${themeFont.value.replace(/\s/g, '-')}`,
-    `color-${themeColor.value}`
+    `color-${themeColor.value}`,
+    `style-${themeStyle.value}`
   ]);
   const currentFontSheets = computed(() => useFontSheets(themeFont.value).value);
 

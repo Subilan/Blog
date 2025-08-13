@@ -9,9 +9,19 @@
 	opacity: 0;
 }
 
-.fade-enter-active,
-.fade-leave-active,
-.smoothzoom-enter-active,
-.smoothzoom-leave-active {
-	transition: all 0.2s ease;
+.flowup-enter-from,
+.flowup-leave-to {
+	opacity: 0;
+	transform: translateY(5px);
+}
+
+:root.style-classic {
+	.fade-enter-active,
+	.fade-leave-active,
+	.smoothzoom-enter-active,
+	.smoothzoom-leave-active,
+	.flowup-enter-active,
+	.flowup-leave-active {
+		transition: all 0.2s ease;
+	}
 }
