@@ -31,7 +31,6 @@
 </script>
 
 <style lang="scss" scoped>
-@use '@/assets/var';
 
 .error-container {
     height: 100vh;
@@ -39,10 +38,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', '微软雅黑', 'Microsoft Yahei', sans-serif;
 
     .inner {
         padding: 16px;
         width: 520px;
+        border: 1px solid #eee;
+        border-radius: 5px;
 
         @media (max-width: 768px) {
             width: 100%;
@@ -51,7 +53,7 @@
 
         a,
         .title {
-            color: var(--primary);
+            color: black;
         }
 
         h2 {
@@ -64,6 +66,18 @@
             align-items: center;
             gap: 4px;
             font-size: 14px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background: #eee;
+            }
+
+            &:active {
+                background: #ddd;
+            }
 
             svg {
                 height: 15px;
