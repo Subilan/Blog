@@ -7,39 +7,59 @@
       Issue 进行评论（可带上 comment 的 tag 以区分）。</p>
     <div class="links">
       <a class="button" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">在 CreativeCommons 上查看协议
-        <icon :path="mdiArrowTopRight"/>
+        <icon :path="mdiArrowTopRight" />
       </a>
       <a class="button" href="https://github.com/Subilan/Blog/issues" target="_blank">打开 Issue 页面
-        <icon :path="mdiArrowTopRight"/>
+        <icon :path="mdiArrowTopRight" />
       </a>
     </div>
     <div class="bg">
-      <CreativeCommons/>
+      <CreativeCommons />
     </div>
   </div>
 </template>
 
 <script setup>
-import {mdiArrowTopRight} from "@mdi/js";
-import CreativeCommons from '@/assets/svg/creative-commons.svg';
+  import { mdiArrowTopRight } from "@mdi/js";
+  import CreativeCommons from '@/assets/svg/creative-commons.svg';
 </script>
 
 <style lang="scss">
 @use '@/assets/var';
 @use '@/assets/ui';
 
+:root.style-classic .create-commons-license {
+
+  &,
+  a {
+    background: var(--bg);
+  }
+}
+
+:root.style-typecho .create-commons-license {
+
+  &,
+  a {
+    background: var(--bg-dim);
+
+  }
+
+  .title {
+    color: var(--typecho-red);
+  }
+}
+
 .create-commons-license {
   padding: 16px;
   border-radius: 10px;
-  background: var(--bg);
   color: var(--text);
   box-sizing: border-box;
   max-width: 800px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  border-radius: var.$defaultBorderRadius;
   border: 1px solid var(--dimdim);
+  border-radius: var(--border-radius);
 
   .bg {
     position: absolute;
@@ -80,11 +100,10 @@ import CreativeCommons from '@/assets/svg/creative-commons.svg';
     align-items: center;
     line-height: 1;
     z-index: 2;
-    border-radius: var.$defaultBorderRadius;
     color: var(--text);
     text-decoration: none;
-    background: var(--bg);
-    
+    border-radius: var(--border-radius);
+
     @include ui.SimpleBorder;
 
     @media (max-width: 768px) {

@@ -276,7 +276,7 @@ $divgap: 30px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px 0;
+  padding-top: 32px;
 
   .article-typecho {
     border-radius: 5px;

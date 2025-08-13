@@ -1,0 +1,15 @@
+@use './colors.scss' as *;
+
+:root {
+	&.style-classic {
+		@include Theme('classic');
+
+        --border-radius: 10px;
+	}
+
+	&.style-typecho {
+		@include Theme('typecho');
+        
+        --border-radius: 5px;
+	}
+}

@@ -23,6 +23,7 @@ $bg_dim_dark: #212121;
 	--text: #{$textColor_light};
 	--bg: #{$bg_light};
 	--bg-dim: #{$bg_dim_light};
+	--base: black;
 }
 
 @mixin ClassicColorsNight {
@@ -32,4 +33,5 @@ $bg_dim_dark: #212121;
 	--text: #{$textColor_dark};
 	--bg: #{$bg_dark};
 	--bg-dim: #{$bg_dim_dark};
+	--base: white;
 }
