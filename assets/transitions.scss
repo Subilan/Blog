@@ -1,0 +1,17 @@
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
+
+.smoothzoom-enter-from,
+.smoothzoom-leave-to {
+	transform: scale(0.97);
+	opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active,
+.smoothzoom-enter-active,
+.smoothzoom-leave-active {
+	transition: all 0.2s ease;
+}

@@ -1,0 +1,36 @@
+$serifSuffix: '宋体-简', '宋体', NSimSun, SimSun, serif;
+$sansSuffix: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', '微软雅黑', 'Microsoft Yahei UI', sans-serif;
+
+@mixin FontSetting {
+	--monospace-font: Menlo, 'Cascadia Code', 'Cascadia Mono', Consolas, #{$sansSuffix}, monospace;
+
+	&.font-Literata {
+		--main-font: 'Literata', 'Noto Serif SC', #{$serifSuffix};
+	}
+
+    &.font-IBM-Plex-Sans {
+        --main-font: 'IBM Plex Sans', 'Segoe UI', 'IBM Plex Sans SC', #{$sansSuffix};
+    }
+
+    &.font-Open-Sans {
+        --main-font: 'Open Sans', #{$sansSuffix};
+    }
+
+    &.font-Fira-Sans {
+        --main-font: 'Fira Sans', #{$sansSuffix};
+    }
+
+    &.font-Inter {
+        --main-font: 'Inter', #{$sansSuffix};
+    }
+
+    &.font-Noto-Sans {
+        --main-font: 'Noto Sans SC', #{$sansSuffix};
+
+        em {
+            font-style: normal;
+            transform: skewX(-8deg);
+            display: inline-block;
+        }
+    }
+}
