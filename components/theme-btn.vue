@@ -41,7 +41,7 @@
   import fonts from '~/utils/types/fonts';
 
   const themeModal = ref(false);
-  const { themeFont, themeColor, themePalette } = useTheme();
+  const { themeFont, themeColor, themeStyle: themePalette } = useTheme();
 
   const serifFonts: AvailableFont[] = ['Literata']
 

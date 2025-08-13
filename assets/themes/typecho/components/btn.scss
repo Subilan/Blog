@@ -1,0 +1,7 @@
+@use './clickable.scss' as *;
+
+@mixin ButtonTypecho {
+	cursor: pointer;
+
+	@include ClickableTypecho();
+}

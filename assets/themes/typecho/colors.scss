@@ -1,0 +1,40 @@
+$typechoPrimaryLight: #005f9e;
+$typechoPrimaryDark: #004572;
+
+$typechoTextColorLight: #000;
+$typechoTextColorDark: #cfcfcf;
+
+$typechoTertiaryLight: #eaeaea;
+$typechoTertiaryDark: rgba(255, 255, 255, 0.1);
+
+$typechoSecondaryLight: #aaa;
+$typechoSecondaryDark: #888;
+
+$typechoBgLight: #fff;
+$typechoBgDark: #0f0f0f;
+
+$typechoBgSecondaryLight: #f6f6f3;
+$typechoBgSecondaryDark: #333;
+
+$typechoBgTertiaryLight: #efefeb;
+$typechoBgTertiaryDark: #444;
+
+@mixin TypechoColorsDay {
+	--primary: #{$typechoPrimaryLight};
+	--dimdim: #{$typechoTertiaryLight};
+	--dim: #{$typechoSecondaryLight};
+	--text: #{$typechoTextColorLight};
+	--bg: #{$typechoBgLight};
+	--bg-dim: #{$typechoBgSecondaryLight};
+	--bg-dim-dim: #{$typechoBgTertiaryLight};
+}
+
+@mixin TypechoColorsNight {
+	--primary: #{$typechoPrimaryDark};
+	--dimdim: #{$typechoTertiaryDark};
+	--dim: #{$typechoSecondaryDark};
+	--text: #{$typechoTextColorDark};
+	--bg: #{$typechoBgDark};
+	--bg-dim: #{$typechoBgSecondaryDark};
+	--bg-dim-dim: #{$typechoBgTertiaryDark};
+}

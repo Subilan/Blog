@@ -2,30 +2,30 @@
   <transition name="flowup">
     <div @click="scrollToTop" class="back-to-top button noprint" v-if="showBackToTop">
       <span class="words">返回顶部</span>
-      <icon :path="mdiArrowUp"/>
+      <icon :path="mdiArrowUp" />
     </div>
   </transition>
 </template>
 
 <script setup>
-import {mdiArrowUp} from "@mdi/js";
+  import { mdiArrowUp } from "@mdi/js";
 
-const showBackToTop = ref(false);
+  const showBackToTop = ref(false);
 
-function scrollToTop() {
-  window.scrollTo({top: 0})
-}
+  function scrollToTop() {
+    window.scrollTo({ top: 0 })
+  }
 
-onMounted(() => {
-  window.addEventListener('scroll', () => {
-    showBackToTop.value = window.scrollY >= window.innerHeight * 0.8;
+  onMounted(() => {
+    window.addEventListener('scroll', () => {
+      showBackToTop.value = window.scrollY >= window.innerHeight * 0.8;
+    })
   })
-})
 </script>
 
 <style lang="scss" scoped>
 @use "@/assets/var";
-@use "@/assets/ui";
+@use '@/assets/ui';
 
 .words {
   @media (max-width: 768px) {
@@ -44,9 +44,11 @@ onMounted(() => {
   gap: 8px;
   line-height: 1;
   background: var(--bg);
-  border-radius: var.$defaultBorderRadius;
+  border-radius: 5px;
 
-  @include ui.Button;
+  @include ui.SimpleShadow();
+  @include ui.Transition();
+  @include ui.SimpleBorder();
 
   @media (max-width: 768px) {
     width: 25px;

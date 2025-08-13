@@ -1,0 +1,35 @@
+$primary_light: #000;
+$primary_dark: #ddd;
+
+$textColor_light: #000;
+$textColor_dark: #cfcfcf;
+
+$color_dim_dim_light: #eaeaea;
+$color_dim_dim_dark: rgba(255, 255, 255, 0.1);
+
+$color_dim_light: #aaa;
+$color_dim_dark: #888;
+
+$bg_light: #fff;
+$bg_dark: #0f0f0f;
+
+$bg_dim_light: #f9f9f9;
+$bg_dim_dark: #212121;
+
+@mixin ClassicColorsDay {
+	--primary: #{$primary_light};
+	--dimdim: #{$color_dim_dim_light};
+	--dim: #{$color_dim_light};
+	--text: #{$textColor_light};
+	--bg: #{$bg_light};
+	--bg-dim: #{$bg_dim_light};
+}
+
+@mixin ClassicColorsNight {
+	--primary: #{$primary_dark};
+	--dimdim: #{$color_dim_dim_dark};
+	--dim: #{$color_dim_dark};
+	--text: #{$textColor_dark};
+	--bg: #{$bg_dark};
+	--bg-dim: #{$bg_dim_dark};
+}

@@ -1,0 +1,8 @@
+@use './clickable.scss' as *;
+
+@mixin ButtonClassic($withBorder: 1px) {
+	border: $withBorder solid var(--dimdim);
+	cursor: pointer;
+
+	@include ClickableClassic();
+}

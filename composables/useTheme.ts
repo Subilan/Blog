@@ -6,7 +6,7 @@ export default function () {
 		themeColor: useCookie('subilanblog-theme-color', {
 			default: () => 'auto'
 		}),
-		themePalette: useCookie('subilanblog-theme-palette', {
+		themeStyle: useCookie('subilanblog-theme-style', {
 			default: () => 'classic'
 		})
 	};

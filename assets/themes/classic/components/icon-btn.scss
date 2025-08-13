@@ -1,0 +1,28 @@
+@use './btn.scss' as *;
+
+@mixin IconBtnClassic {
+	border-radius: 100%;
+	height: 44px;
+	width: 44px;
+
+	svg {
+		height: 22px;
+	}
+
+	&.small {
+		height: 32px;
+		width: 32px;
+
+		svg {
+			height: 19px;
+		}
+	}
+
+	&.noborder {
+		@include ButtonClassic(0);
+	}
+
+	&:not(.noborder) {
+		@include ButtonClassic;
+	}
+}

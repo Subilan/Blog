@@ -1,0 +1,13 @@
+@use '@/assets/ui' as *;
+
+@mixin ClickableTypecho {
+    @media (min-width: 768px) {
+        &:hover {
+            background-color: var(--bg-dim);
+        }
+
+        &:active {
+            background-color: var(--bg-dim-dim);
+        }
+    }
+}
