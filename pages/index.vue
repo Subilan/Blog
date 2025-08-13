@@ -147,6 +147,7 @@ $divgap: 30px;
     display: flex;
     align-items: center;
     gap: 12px;
+    text-decoration: underline;
 
     @media (max-width: 768px) {
       position: static;
