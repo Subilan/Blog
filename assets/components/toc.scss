@@ -1,0 +1,68 @@
+@use '../themes/classic/components/toc.scss' as *;
+@use '../themes/typecho/components/toc.scss' as *;
+
+.toc {
+	position: fixed;
+	z-index: 500;
+
+	.toc-container-header {
+		border-bottom: 1px solid var(--dimdim);
+	}
+
+	> ul {
+		&,
+		li ul {
+			margin: 0;
+			list-style: none;
+		}
+
+		li {
+			a:not(.active) {
+				font-weight: normal;
+
+				img,
+				code,
+				kbd {
+					filter: grayscale(100%) opacity(30%);
+				}
+
+				&:hover {
+					img,
+					code,
+					kbd {
+						filter: unset;
+					}
+				}
+			}
+
+			a {
+				img {
+					max-height: 20px;
+					border-radius: 2px;
+					vertical-align: middle;
+				}
+			}
+		}
+
+		> li ul a.active {
+			&::before {
+				content: '※';
+				position: absolute;
+				height: 24px;
+				width: 24px;
+			}
+		}
+	}
+
+	> ul {
+		padding: 0;
+	}
+}
+
+:root.style-classic .toc {
+    @include TocClassic;
+}
+
+:root.style-typecho .toc {
+    @include TocTypecho;
+}

@@ -1,5 +1,6 @@
 <template>
   <!-- <navbar /> -->
+  <back-btn v-if="$route.name !== 'index'" />
   <theme-btn />
   <main class="layout-default">
     <!-- <div class="left">

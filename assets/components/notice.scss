@@ -1,0 +1,82 @@
+@use '../themes/classic/components/notice.scss' as *;
+@use '../themes/typecho/components/notice.scss' as *;
+
+.notice {
+	padding: 16px;
+	margin: 16px 0;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.notice-title {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-weight: bold;
+
+		svg {
+			height: 22px;
+		}
+	}
+
+	// &.thought {
+	// 	.notice-title,
+	// 	a,
+	// 	strong {
+	// 		color: #2196f3;
+
+	// 		svg {
+	// 			fill: #2196f3;
+	// 		}
+	// 	}
+	// }
+
+	// &.tip {
+	// 	.notice-title,
+	// 	a,
+	// 	strong {
+	// 		color: var.$primaryColor;
+
+	// 		svg {
+	// 			fill: var.$primaryColor;
+	// 		}
+	// 	}
+	// }
+
+	// &.warning {
+	// 	.notice-title,
+	// 	a,
+	// 	strong {
+	// 		color: #ffa000;
+
+	// 		svg {
+	// 			fill: #ffa000;
+	// 		}
+	// 	}
+	// }
+
+	// &.danger {
+	// 	.notice-title,
+	// 	a,
+	// 	strong {
+	// 		color: #f44336;
+
+	// 		svg {
+	// 			fill: #f44336;
+	// 		}
+	// 	}
+	// }
+}
+
+:root.style-classic .notice {
+	@include NoticeClassic;
+}
+
+:root.style-typecho .notice {
+	@include NoticeTypecho;
+}

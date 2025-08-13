@@ -17,10 +17,10 @@
   </div> -->
   <div class="introduction">
     <div class="navigation">
-      <router-link to="/pages/blogroll">友链</router-link>
-      <router-link to="/pages/pgp">PGP</router-link>
-      <router-link to="/pages/about">关于</router-link>
-      <a target="_blank" href="https://photos.subilan.win">相册</a>
+      <router-link class="link" to="/pages/blogroll">友链</router-link>
+      <router-link class="link" to="/pages/pgp">PGP</router-link>
+      <router-link class="link" to="/pages/about">关于</router-link>
+      <a class="link" target="_blank" href="https://photos.subilan.win">相册</a>
     </div>
     <div class="avatar">
       <img draggable="false" src="/avatar.jpg" />
@@ -31,7 +31,7 @@
     </div>
     <div class="social-media">
       <a href="https://x.com/subilan1234" target="_blank" aria-label="Go to my X personal profile.">
-        <X class="x" />
+        <XSocial class="x" />
       </a>
       <a href="https://github.com/Subilan" target="_blank" aria-label="Go to my GitHub personal profile.">
         <GitHub class="github" />
@@ -44,25 +44,42 @@
       </a>
     </div>
   </div>
-  <div class="articles-mono">
-    <div class="article-mono" v-for="x in getPostDigests()">
-      <div class="date">
-        {{ getAgo(x.date) }}
-      </div>
-      <div class="art">
-        <h2>
-          <router-link class="article-mono" :to="`/posts/${x.slug}`">
-            {{ x.title }}
-          </router-link>
-        </h2>
-        <p v-if="x.desc || x.descShort">{{ x.descShort || x.desc }}</p>
+  <template v-if="themeStyle === 'classic'">
+    <div class="articles-classic">
+      <div class="article-classic" v-for="x in getPostDigests()">
+        <div class="date">
+          {{ getAgo(x.date) }}
+        </div>
+        <div class="art">
+          <h2>
+            <router-link :to="`/posts/${x.slug}`">
+              {{ x.title }}
+            </router-link>
+          </h2>
+          <p v-if="x.desc || x.descShort">{{ x.descShort || x.desc }}</p>
+        </div>
       </div>
     </div>
-  </div>
+  </template>
+
+  <template v-else-if="themeStyle === 'typecho'">
+    <div class="articles-typecho">
+      <div class="article-typecho" v-for="x in getPostDigests()">
+        <h3>{{ x.title }}</h3>
+        <div class="meta">
+          <span><span class="sub">发布于</span> {{ getAgo(x.date) }}</span>
+          <span v-if="x.cate"><span class="sub">分类</span> {{ x.cate }}</span>
+          <span><span class="sub">约</span> {{ x.wordCount }} <span class="sub">字</span></span>
+        </div>
+        <p>{{ x.descShort || x.desc }}</p>
+        <router-link class="link" :to="`/posts/${x.slug}`">阅读全文 &raquo;</router-link>
+      </div>
+    </div>
+  </template>
 </template>
 
 <script setup lang="ts">
-  import X from '~/assets/svg/x.svg';
+  import XSocial from '~/assets/svg/x.svg';
   import GitHub from '~/assets/svg/github.svg';
   import Bilibili from '~/assets/svg/bilibili.svg'
   import getPostDigests from "@/utils/getPostDigests";
@@ -95,13 +112,25 @@
 
   definePageMeta({
     title: '首页'
-  })
+  });
+
+  const { themeFont, themeColor, themeStyle } = useTheme();
 </script>
 
 <style lang="scss" scoped>
 @use "@/assets/var";
 
 $divgap: 30px;
+
+:root.style-classic .introduction .navigation a {
+  opacity: .4;
+
+  @media (min-width: 768px) {
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
 
 .introduction {
   display: flex;
@@ -118,17 +147,6 @@ $divgap: 30px;
     display: flex;
     align-items: center;
     gap: 12px;
-
-    a {
-      color: var(--primary);
-      opacity: .4;
-
-      @media (min-width: 768px) {
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
 
     @media (max-width: 768px) {
       position: static;
@@ -197,13 +215,13 @@ $divgap: 30px;
   }
 }
 
-.articles-mono {
+.articles-classic {
   padding-top: $divgap;
   display: flex;
   flex-direction: column;
   gap: 32px;
 
-  .article-mono {
+  .article-classic {
     display: flex;
     align-items: flex-start;
     gap: 32px;
@@ -249,6 +267,42 @@ $divgap: 30px;
         color: #aaa;
         margin-top: 0;
         line-height: 1.5;
+      }
+    }
+  }
+}
+
+.articles-typecho {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
+
+  .article-typecho {
+    border-radius: 5px;
+    border: 1px solid var(--dimdim);
+    padding: 14px;
+
+    h3 {
+      font-size: 22px;
+      margin-top: 0;
+    }
+
+    .meta {
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+
+      >span {
+        &:not(:last-of-type)::after {
+          content: '·';
+          margin: 0 4px;
+        }
+      }
+
+
+      .sub {
+        opacity: .6;
       }
     }
   }

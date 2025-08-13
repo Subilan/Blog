@@ -1,0 +1,16 @@
+@mixin NoticeClassic {
+	background: var(--bg);
+	border: 1px solid var(--dim);
+	border-radius: 10px;
+
+	.notice-title {
+		svg {
+			fill: var(--primary);
+		}
+	}
+
+	a,
+	strong {
+		color: var(--primary);
+	}
+}

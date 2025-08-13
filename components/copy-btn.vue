@@ -41,8 +41,6 @@ async function copy() {
   gap: 4px;
   background: var(--bg);
 
-  @include ui.Button;
-
   &.copyComplete {
     background: var(--bg-dim);
     color: white;

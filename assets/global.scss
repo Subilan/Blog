@@ -3,6 +3,8 @@
 @use 'ui';
 @use 'transitions';
 @use 'components';
+@import '@/assets/components/link.scss';
+
 
 @media print {
 	code .line {
@@ -96,81 +98,6 @@ article {
 		}
 	}
 
-	.toc {
-		position: fixed;
-		z-index: 500;
-
-		.toc-container-header {
-			border-bottom: 1px solid var(--dimdim);
-		}
-
-		> ul {
-			&,
-			li ul {
-				margin: 0;
-				list-style: none;
-			}
-
-			li {
-				a:not(.active) {
-					color: var(--dim);
-					font-weight: normal;
-					transition: all 0.2s ease;
-
-					img,
-					code,
-					kbd {
-						filter: grayscale(100%) opacity(30%);
-						transition: all 0.2s ease;
-					}
-
-					&:hover {
-						img,
-						code,
-						kbd {
-							filter: unset;
-						}
-					}
-				}
-
-				a {
-					&:hover {
-						color: var(--text);
-					}
-
-					img {
-						max-height: 20px;
-						border-radius: 2px;
-						vertical-align: middle;
-					}
-				}
-			}
-
-			> li a {
-				&.active {
-					color: var(--text);
-					position: relative;
-					font-weight: bold;
-				}
-			}
-
-			> li ul a.active {
-				&::before {
-					content: '※';
-					position: absolute;
-					height: 24px;
-					width: 24px;
-					left: calc(-1em - 2px);
-					transition: all 0.2s ease;
-				}
-			}
-		}
-
-		> ul {
-			padding: 0;
-		}
-	}
-
 	p img {
 		max-height: 500px;
 		object-fit: contain;
@@ -239,13 +166,8 @@ article {
 	}
 
 	a {
-		color: var(--primary);
-		text-decoration: none;
+		@extend .link;
 		font-weight: 500;
-
-		&:hover {
-			text-decoration: underline;
-		}
 	}
 
 	code {
@@ -388,87 +310,6 @@ pre[class*='language-'] {
 	padding: 1em;
 	margin: 0.5em 0;
 	background: var(--bg);
-}
-
-.notice {
-	padding: 16px;
-	margin: 16px 0;
-	background: var(--bg);
-	border: 1px solid var(--dim);
-	border-radius: var.$defaultBorderRadius;
-
-	&:first-child {
-		margin-top: 0;
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	.notice-title {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-		font-weight: bold;
-
-		svg {
-			height: 22px;
-			fill: var(--primary);
-		}
-
-		a,
-		strong {
-			color: var(--primary);
-		}
-	}
-
-	// &.thought {
-	// 	.notice-title,
-	// 	a,
-	// 	strong {
-	// 		color: #2196f3;
-
-	// 		svg {
-	// 			fill: #2196f3;
-	// 		}
-	// 	}
-	// }
-
-	// &.tip {
-	// 	.notice-title,
-	// 	a,
-	// 	strong {
-	// 		color: var.$primaryColor;
-
-	// 		svg {
-	// 			fill: var.$primaryColor;
-	// 		}
-	// 	}
-	// }
-
-	// &.warning {
-	// 	.notice-title,
-	// 	a,
-	// 	strong {
-	// 		color: #ffa000;
-
-	// 		svg {
-	// 			fill: #ffa000;
-	// 		}
-	// 	}
-	// }
-
-	// &.danger {
-	// 	.notice-title,
-	// 	a,
-	// 	strong {
-	// 		color: #f44336;
-
-	// 		svg {
-	// 			fill: #f44336;
-	// 		}
-	// 	}
-	// }
 }
 
 .medium-zoom--opened .medium-zoom-overlay {
