@@ -64,7 +64,7 @@
 
   <template v-else-if="themeStyle === 'typecho'">
     <div class="articles-typecho">
-      <div class="article-typecho" v-for="x in getPostDigests()">
+      <div class="article-typecho" v-for="x in getPostDigests()" @click="() => isMobile() ? $router.push(`/posts/${x.slug}`) : undefined">
         <h3>{{ x.title }}</h3>
         <div class="meta">
           <span><span class="sub">发布于</span> {{ getAgo(x.date) }}</span>
