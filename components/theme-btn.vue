@@ -4,6 +4,11 @@
   </div>
 
   <modal no-divider v-model="themeModal" title="设置主题">
+    <template #title-end>
+      <div class="icon-btn small noborder" @click="resetTheme">
+        <icon :path="mdiRefresh" />
+      </div>
+    </template>
     <section>
       <p>字体 <small style="color: var(--dim)">*中文字体将自动适应。</small></p>
       <div class="grid">
@@ -25,10 +30,10 @@
     <section>
       <p>页面样式</p>
       <div class="grid">
-        <div class="grid-item" @click="themePalette = palette.value"
-          :class="`palette-${palette.value} ${themePalette === palette.value ? 'active' : ''}`"
-          v-for="palette in palettes">
-          {{ palette.name }}
+        <div class="grid-item" @click="themeStyle = style.value"
+          :class="`style-${style.value} ${themeStyle === style.value ? 'active' : ''}`"
+          v-for="style in styles">
+          {{ style.name }}
         </div>
       </div>
     </section>
@@ -36,12 +41,12 @@
 </template>
 
 <script lang="ts" setup>
-  import { mdiPaletteOutline } from '@mdi/js';
+  import { mdiPaletteOutline, mdiRefresh } from '@mdi/js';
   import type { AvailableFont } from '~/utils/types/fonts';
   import fonts from '~/utils/types/fonts';
 
   const themeModal = ref(false);
-  const { themeFont, themeColor, themeStyle: themePalette } = useTheme();
+  const { themeFont, themeColor, themeStyle } = useTheme();
 
   const serifFonts: AvailableFont[] = ['Literata']
 
@@ -49,7 +54,7 @@
     return serifFonts.includes(font);
   }
 
-  const palettes = [
+  const styles = [
     {
       value: 'classic',
       name: '白纸黑字'
@@ -73,7 +78,13 @@
       value: 'night',
       name: '夜间'
     }
-  ]
+  ];
+
+  function resetTheme() {
+    themeColor.value = 'auto';
+    themeFont.value = 'Literata';
+    themeStyle.value = 'classic';
+  }
 </script>
 
 <style lang="scss" scoped>

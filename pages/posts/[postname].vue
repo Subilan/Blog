@@ -244,7 +244,7 @@ defineOgImageComponent('blog-post', {
 
     svg {
       width: 16px;
-      color: var(--primary);
+      color: var(--base);
     }
   }
 }

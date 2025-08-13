@@ -39,17 +39,6 @@
 	}
 }
 
-@media (prefers-color-scheme: dark) {
-	.shiki,
-	.shiki span {
-		@include shiki-code-dark();
-	}
-
-	.shiki code {
-		@include shiki-line-dark();
-	}
-}
-
 .shiki,
 .shiki span {
 	background-color: var(--bg-dim) !important;

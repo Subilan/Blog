@@ -1,5 +1,5 @@
 $typechoPrimaryLight: #005f9e;
-$typechoPrimaryDark: #004572;
+$typechoPrimaryDark: rgb(0, 140, 210);
 
 $typechoTextColorLight: #000;
 $typechoTextColorDark: #cfcfcf;
@@ -14,10 +14,10 @@ $typechoBgLight: #fff;
 $typechoBgDark: #0f0f0f;
 
 $typechoBgSecondaryLight: #f6f6f3;
-$typechoBgSecondaryDark: #333;
+$typechoBgSecondaryDark: #202020;
 
 $typechoBgTertiaryLight: #efefeb;
-$typechoBgTertiaryDark: #444;
+$typechoBgTertiaryDark: #3a3a3a;
 
 @mixin TypechoColorsDay {
 	--primary: #{$typechoPrimaryLight};

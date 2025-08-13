@@ -1,4 +1,5 @@
 @use './fonts';
+@use './highlight.scss' as *;
 @use './themes/classic/colors.scss' as *;
 @use './themes/typecho/colors.scss' as *;
 
@@ -16,6 +17,14 @@
 	} @else if $name == 'typecho' {
 		@include TypechoColorsNight;
 	}
+	.shiki,
+	.shiki span {
+		@include shiki-code-dark();
+	}
+
+	.shiki code {
+		@include shiki-line-dark();
+	}
 
 	color-scheme: dark;
 }
@@ -24,11 +33,11 @@
 	@include fonts.FontSetting();
 
 	&.color-night.style-#{$name} {
-		@include Day($name);
+		@include Night($name);
 	}
 
 	&.color-day.style-#{$name} {
-		@include Night($name);
+		@include Day($name);
 	}
 
 	@media (prefers-color-scheme: dark) {
@@ -43,4 +52,3 @@
 		}
 	}
 }
-
