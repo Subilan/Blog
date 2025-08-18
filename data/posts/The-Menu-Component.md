@@ -6,7 +6,9 @@ cate: 代码
 
 # Menu 组件的实现
 
-**Menu 组件**实际上并不是一个正统的称呼，但是也算是一个比较广泛使用的习惯性称呼。还有一些其它的 *de facto* 叫法，比如 Dropdown、MenuList 等。通俗来讲就是当一个被绑定的触发器被触发后所弹出的窗口。窗口内容通常表现为有序的列表，在某些实现里还有可能有部分的分割以及标题，例如
+在这里所说的一样 **Menu 组件**，具体是指类似于下拉框的一种动态面板。这种组件根据功能上的细微差别，还有一些其它的约定俗成叫法，比如 Dropdown、ComboBox 甚至 OptionList 等。本质上可以理解为一个已绑定有事件的触发器被触发后所弹出的悬浮内容。悬浮内容通常表现为有序的列表，在某些实现里还有可能有部分的分割以及标题。
+
+常见的各种组件库内都有类似的组件，例如
 - [Vuetify 的 Menu](https://vuetifyjs.com/en/components/menus/)
 - [MUI 的 react-menu](https://mui.com/material-ui/react-menu/)
 - [VueMaterial 的 Menu](https://www.creative-tim.com/vuematerial/components/menu)
@@ -17,10 +19,10 @@ cate: 代码
 
 在本文所述的 Menu 中包含两种元素：
 
-- **触发器**（Activator） — 即触发 Menu 的元素，通常是 Button，在必要情况下可以是任何 *link-related*[^1] 元素。
+- **触发器**（Activator） — 即触发 Menu 的元素，通常是 Button，在必要情况下可以是任何 *link-like*[^1] 元素。
 - **本体** — 即 Menu 本体，默认应当处于隐藏的、不可点击状态
 
-[^1]: *link-related* 在这里具体是指任何可以当作是“链接”作用的元素，一些原生的例子包含 `a`、`button`，当然还可以根据用途重新自定义新的。
+[^1]: *link-like* 在这里具体是指任何可以当作是“链接”作用的元素，一些原生的例子包含 `a`、`button`，当然还可以根据用途重新自定义新的。
 
 :::warning
 本文中的代码仅仅作说明作用，不能保证正常运行。
@@ -121,15 +123,15 @@ function toggleMenu() {
 }
 ```
 
-`pointer-events` 属性固然好用，但是不加研究仍然可能触碰到雷区。一些对 `pointer-events: none` 的肤浅理解包括，它可以让鼠标“直接透过”被应用 `pointer-events: none` 的元素而不产生任何交互。这在某些情况下也许是对的，但并不是 `pointer-events: none` 所表达的本质。[MDN 上对 `pointer-events: none` 的解释](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#:~:text=The%20element%20is,capture/bubble%20phases.)是这样说的。
+`pointer-events` 属性看似好用，但如果不加研究则可能会被坑。一些对 `pointer-events: none` 的肤浅理解包括，它可以让鼠标“直接透过”被应用 `pointer-events: none` 的元素而不产生任何交互。这在某些情况下也许是对的，但并不是 `pointer-events: none` 所表达的本质。[MDN 上对 `pointer-events: none` 的解释](https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events#:~:text=The%20element%20is,capture/bubble%20phases.)是这样说的。
 
 > `pointer-events: none` - The element is never the target of pointer events; however, pointer events may target its descendant elements if those descendants have pointer-events set to some other value. In these circumstances, pointer events will trigger event listeners on this parent element as appropriate on their way to/from the descendant during the event capture/bubble phases.
 
-简单而言，就是该属性仅仅屏蔽了元素自身的事件，但是对于其子代元素（descendant）的事件冒泡/监听仍然会有相关的反应。此外还有一点便是，“直接透过”的效果只能发生在被屏蔽事件的元素处于某一父元素的包装下的情况，其透过后所指对象是父元素。
+简单而言，就是该属性仅仅屏蔽了元素自身的事件，但是对于其子代元素（descendant）的事件冒泡/监听仍然会有相关的反应。所谓“直接透过”必有一个对象，即透过的“落点”。在这种考虑下，“透过”的效果只能发生在被屏蔽事件的元素处于某一父元素的包装下的情况，其透过后所指对象是父元素。
 
-例如一个 box 里装了一个 button，对该 button 设置 `pointer-events: none`，那么鼠标在 button 上的 events 相当于传递给了 box，这就是“透过”。然而，如果在某种布局设定下， button 对 box 有溢出，溢出的部分位于 box 的外部，且该部分下遮挡了 button2，那么无论如何点击 button，button2 都无法接收到点击事件，因为 button2 与 button 虽然有布局上的遮挡但是没有直接的父—子关系，这一点就不能称为“透过”，而只能算作“完全遮挡”。
+例如一个 box 里装了一个 button，对该 button 设置 `pointer-events: none`，那么鼠标在 button 上的 events 相当于传递给了 box，这就是“透过”。然而，如果在某种布局设定下， button 对 box 有溢出，溢出的部分位于 box 的外部，且该部分下遮挡了 button2，这时无论鼠标放在 button 的哪一个部分，button2 都不可能接收到“透过来的”事件，因为 button2 与 button 虽然有布局上的遮挡，但是没有直接的父—子关系，这一点就不能称为“透过”，而是“完全遮挡”。
 
-因此，为了避免这样的意外发生，我们最好还是避免使用 `pointer-events` 事件。当然，如果 Menu 满足上述的一些条件，使用起来也不会有太大的问题。
+因此，为了避免这样“出乎意料“的情况发生，我们最好还是避免在一些复杂的布局场景里使用 `pointer-events`。
 
 ### 解决方案一：`z-index` 的切换
 
