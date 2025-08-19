@@ -30,3 +30,5 @@ postdigests.json
 postsearch.json
 
 run.local.sh
+
+.last_commit
