@@ -9,7 +9,7 @@
         <icon :path="mdiRefresh" />
       </div>
     </template>
-    <section>
+    <!-- <section>
       <p>字体 <small style="color: var(--dim)">*中文字体将自动适应。</small></p>
       <div class="grid">
         <div class="grid-item font-preview" @click="themeFont = font" :class="{ active: themeFont === font }"
@@ -17,7 +17,7 @@
           <img :src="`/font-preview/${font.replace(/\s/g, '-').toLowerCase()}.png`" />
         </div>
       </div>
-    </section>
+    </section> -->
     <section>
       <p>颜色</p>
       <div class="grid">
@@ -27,7 +27,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <!-- <section>
       <p>页面样式</p>
       <div class="grid">
         <div class="grid-item" @click="themeStyle = style.value"
@@ -35,7 +35,7 @@
           {{ style.name }}
         </div>
       </div>
-    </section>
+    </section> -->
   </modal>
 </template>
 
@@ -85,66 +85,3 @@
     themeStyle.value = 'classic';
   }
 </script>
-
-<style lang="scss" scoped>
-:root.color-night {
-  .font-preview img {
-    filter: invert(1);
-  }
-}
-
-:root.color-auto {
-  @media (prefers-color-scheme: dark) {
-    .font-preview img {
-      filter: invert(1);
-    }
-  }
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-
-  .grid-item {
-    border: 1px solid var(--dimdim);
-    border-radius: 5px;
-    padding: 8px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    &.font-preview {
-      min-height: 1.5em;
-
-
-      img {
-        height: 14px;
-      }
-    }
-
-    p,
-    small {
-      font-size: 12px;
-      color: var(--dim);
-    }
-
-    &.active {
-      border-color: var(--dim);
-    }
-  }
-}
-
-section {
-  margin: 16px 0;
-
-  &:first-child {
-    margin-top: 0;
-  }
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-</style>

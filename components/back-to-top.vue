@@ -1,70 +1,39 @@
 <template>
   <transition name="flowup">
-    <div @click="scrollToTop" class="back-to-top button noprint" v-if="showBackToTop">
-      <span class="words">返回顶部</span>
-      <icon :path="mdiArrowUp" />
+    <div @click="scrollToTop"
+      class="border border-neutral-100 shadow-sm hover:bg-neutral-50 active:bg-neutral-100 fixed right-20 bottom-20 bg-white flex items-center gap-2 py-3 px-4.5 rounded-lg cursor-pointer transition-all"
+      v-if="showBackToTop">
+      <span>返回顶部</span>
+      <icon class="h-[20px] w-[20px]" :path="mdiArrowUp" />
     </div>
   </transition>
 </template>
 
 <script setup>
-  import { mdiArrowUp } from "@mdi/js";
+import { mdiArrowUp } from "@mdi/js";
 
-  const showBackToTop = ref(false);
+const showBackToTop = ref(false);
 
-  function scrollToTop() {
-    window.scrollTo({ top: 0 })
-  }
-
-  onMounted(() => {
-    window.addEventListener('scroll', () => {
-      showBackToTop.value = window.scrollY >= window.innerHeight * 0.8;
-    })
-  })
-</script>
-
-<style lang="scss" scoped>
-@use "@/assets/var";
-@use '@/assets/ui';
-
-.words {
-  @media (max-width: 768px) {
-    display: none;
-  }
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-.back-to-top {
-  padding: 12px 16px;
-  cursor: pointer;
-  position: fixed;
-  bottom: 48px;
-  right: 64px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  line-height: 1;
-  background: var(--bg);
-  border-radius: 5px;
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    showBackToTop.value = window.scrollY >= window.innerHeight * 0.8;
+  })
+})
+</script>
 
-  @include ui.SimpleShadow();
-  @include ui.Transition();
-  @include ui.SimpleBorder();
+<style lang="css">
+.flowup-enter-active,
+.flowup-leave-active {
+  transition: all .2s ease;
+}
 
-  @media (max-width: 768px) {
-    width: 25px;
-    height: 25px;
-    padding: 15px;
-    border-radius: 100%;
-    justify-content: center;
-    right: 48px;
-
-    svg:not(html) {
-      height: 25px;
-    }
-  }
-
-  svg {
-    height: 20px;
-  }
+.flowup-enter-from,
+.flowup-leave-to {
+  opacity: 0;
+  transform: translateY(15px);
 }
 </style>

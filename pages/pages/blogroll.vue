@@ -1,157 +1,52 @@
 <template>
-  <article>
+  <article class="prose-lg">
     <h1>友链</h1>
     <p>友链（blogroll）是一种将互联网上的一个个孤岛似的个人网站联系起来的一种高效方式。这使得各个网站可以彼此串通，使访问者有更多的机会光顾每一个相连接的网站。</p>
-    <p>下面收录了本站自创建以来记录的博客网站链接。</p>
-    <div class="blogrolls">
-      <a class="blogroll button card" target="_blank" :href="x.href" v-for="x in blogrolls.filter(x => !x.hidden)" :class="{ light: x.light }"
+    <p>下面收录了本站自 2019 年创建以来交换过的有效博客网站链接，单击卡片即可跳转到他们的网站。</p>
+    <div class="flex items-stretch flex-wrap not-prose gap-3 mb-5">
+      <a class="p-4 rounded-lg shadow-sm hover:opacity-80 active:opacity-70 flex items-center bg-center bg-cover bg-no-repeat gap-3"
+        target="_blank" :href="x.href" v-for="x in blogrolls.filter(x => !x.hidden)" :class="{ 'text-white': x.light }"
         :style="x.background.startsWith('http') ? `background-image: url(${x.background})` : `background: ${x.background}`">
-        <nuxt-img format="webp" :src="x.avatar" :alt="x.name" />
-        <div class="info">
-          <div class="name">{{ x.name }}</div>
-          <p>{{ x.description }}</p>
+        <nuxt-img placeholder="/blind.png" class="rounded-full h-[50px]" format="webp" :src="x.avatar" :alt="x.name" />
+        <div class="flex flex-col">
+          <div class="font-bold leading-snug">{{ x.name }}</div>
+          <p class="text-sm">{{ x.description }}</p>
         </div>
       </a>
     </div>
-    <div class="details">
-      <content-block>
-        <template #title>如何在这里添加友链</template>
-        <p>友链是相互的，因此请考虑在你的网站上添加本站的友链，相关的信息可参考下面的「本站的友链信息」部分。</p>
-        <p>如果你有在此添加友链的意向，欢迎联系我或者直接在 GitHub 上通过 pull request
-          添加。联系时，请务必带上以下信息：</p>
-        <ul>
-          <li>你的头像文件所在地址</li>
-          <li>网站名称与简介</li>
-          <li>网站地址</li>
-        </ul>
-        <p>在联系之前，请注意本站对友链的目标网站有以下需求：</p>
-        <ul>
-          <li>全站开启 HTTPS</li>
-          <li>域名为个人持有或使用权威二级域名（*.github.io, *.js.org, *.edu, etc）</li>
-          <li>最新的一篇博文需在近一年内发布，且博文总数超过三篇</li>
-        </ul>
-        <p>如果你对友链的展示样式有个性化的需求，欢迎随附说明。在没有任何附加说明的情况下，你的友链按钮背景会被呈现为白色。</p>
-      </content-block>
-      <content-block>
-        <template #title>通过 Pull Request 添加友链的具体流程</template>
-        <ol>
-          <li>打开 <a target="_blank" class="external-link"
-              href="https://github.com/Subilan/Blog">https://github.com/Subilan/Blog</a>
-          </li>
-          <li>Fork 至你的个人账号，并对项目文件中的 <code>data/blogrolls.json</code> 进行修改，具体格式可参考文件内部已有内容
-          </li>
-          <li>发起 pull request。合并以后你的友链就会出现在这里。</li>
-        </ol>
-      </content-block>
-      <content-block>
-        <template #title>本站的友链信息</template>
-        <p>如有意添加本站友链，请参考下面的信息。</p>
-        <ul>
-          <li v-for="x in Object.keys(thisInfo)">
-            {{ x }}：{{ thisInfo[x] }}<copy-btn class="copy" :content="thisInfo[x]" />
-          </li>
-        </ul>
-      </content-block>
-    </div>
+    <p>如希望交换友链，欢迎联系我，方式在首页顶部；或者直接在 GitHub 上<a class="ext" target="_blank"
+        href="https://github.com/Subilan/Blog">本博客仓库</a>发
+      PR，修改项目文件中的 data/blogroll.json。</p>
+    <p>在考虑交换之前，请确保你的网站开启了 HTTPS，有独立的域名或者 *.js.org、*.github.io 等高可信度组织提供的免费域名，同时有几篇原创的任意内容。<a
+        @click="showReason = !showReason">{{ showReason ? '收起要求' : '为什么有这些要求？' }}</a></p>
+    <ul v-if="showReason">
+      <li>网站开启 HTTPS 是现代互联网安全的基本需求，且个人 HTTPS 因为 Let's Encrypt 等的存在，几乎没有成本。</li>
+      <li>要求有独立域名/高可信度组织免费域名，是因为希望你的网站属于你自己。社交平台账号等的链接不具有独立性，无法实现友链的目的（将网站连接在一起）。</li>
+      <li>要求有几篇原创的任意内容，是希望交换的网站的内容能代表作者本人。爬虫、广告、搬运等类型的网站设立的目的不是个人记录，不考虑交换此类网站的友链。</li>
+    </ul>
+    <p>如有意添加本站友链，请参考下面的信息。</p>
+    <ul>
+      <li v-for="x in Object.keys(thisInfo)">
+        {{ x }}：{{ thisInfo[x] }}
+      </li>
+    </ul>
   </article>
 </template>
 
 <script setup>
-  import blogrolls from '@/data/blogrolls.json'
+import blogrolls from '@/data/blogrolls.json'
 
-  const thisInfo = {
-    '网站名称': 'SolitudeScroll',
-    '网站介绍': 'Satellite yourself.',
-    '网站代表色': '#009688',
-    '网站地址': 'https://subilan.win',
-    '头像': 'https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png'
-  }
+const showReason = ref(false);
 
-  definePageMeta({
-    title: '友链'
-  })
+const thisInfo = {
+  '网站名称': 'SolitudeScroll',
+  '网站介绍': 'Satellite yourself.',
+  '网站代表色': '#009688',
+  '网站地址': 'https://subilan.win',
+  '头像': 'https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png'
+}
+
+definePageMeta({
+  title: '友链'
+})
 </script>
-
-<style lang="scss" scoped>
-@use '@/assets/var';
-@use '@/assets/ui';
-
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.copy {
-  opacity: 0;
-  pointer-events: none;
-}
-
-@media (min-width: 768px) {
-  li:hover .copy {
-    opacity: 1;
-    pointer-events: all;
-  }
-}
-
-.blogrolls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-
-  @media (max-width: 768px) {
-    flex-wrap: nowrap;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .blogroll {
-    color: black;
-    flex: 1 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px;
-    background-position: center;
-    background-size: cover;
-    min-height: 55px;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-
-    @media (min-width: 768px) {
-      &:hover {
-        filter: brightness(90%);
-      }
-    }
-
-    .info {
-      line-height: 1.2;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-
-      .name {
-        font-size: 19px;
-        font-weight: 600;
-      }
-
-      p {
-        margin: 0;
-        font-size: 14px;
-        font-weight: normal;
-      }
-    }
-
-    img {
-      width: 55px;
-      border-radius: 100%;
-    }
-
-    &.light {
-      color: white;
-    }
-  }
-}
-</style>

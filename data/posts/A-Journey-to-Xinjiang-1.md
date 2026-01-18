@@ -229,9 +229,9 @@ desc: 这是 2024 年 2 月新年期间前往新疆北部进行旅行的文字�
 
 ![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/2024.02.04_18.39.22a.jpg)*50% 陡坡慢行！*
 
-在下山的路上也是惊喜不断。车行驶途中，突然听到车上乘客的惊呼声，并且大家都向前看去。坐在后排的我透过层层乘客看到了模糊的动物影子，原来是狍子🦌。但
+在下山的路上也是惊喜不断。车行驶途中，突然听到车上乘客的惊呼声，并且大家都向前看去。坐在后排的我透过层层乘客看到了模糊的动物影子，原来是狍子🦌。
 
-那时并没有拍到。然而，在下山途中狍子并不仅有此一群，而是有很多群。所以，随后我便拍到了另一群狍子。
+但那时并没有拍到。然而，在下山途中狍子并不仅有此一群，而是有很多群。所以，随后我便拍到了另一群狍子。
 
 这便是来新疆第一次感受到这里的野生自然氛围，很新奇～
 
@@ -244,8 +244,8 @@ desc: 这是 2024 年 2 月新年期间前往新疆北部进行旅行的文字�
 到新疆之前，总是以为第一次到的地方会平平无奇，但其实不是，完全可以算作是一个很好的开端了——只是马牙山确实没有什么必要上去，对于南方人来说能够踏在天池不知多厚的冰面上的厚雪已经是十分新奇、令人舒爽的体验了～
 <h3 style="display: flex; align-items: center; gap: 8px;">
 2 月 5 日 —— 乌鲁木齐至伊宁，独库公路
-<img style="width: auto;" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg" height="36px"/>
-<img style="width: auto;" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg" height="36px"/>
+<img style="width: auto; height: 36px; margin: 0" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg"/>
+<img style="width: auto; height: 36px; margin: 0" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg"/>
 </h3>
 
 玩完天池后的第二天，就从乌鲁木齐出发前往伊宁了，G30 连霍高速（连云港至霍尔果斯）可直达。以往听说较多的都是「伊犁」而不是「伊宁」，这次才搞清楚它们的关系——「伊宁市」位于「伊犁哈萨克自治州」。到达伊宁后休息一晚，前往其周围的天鹅泉，以及不远处的赛里木湖。
@@ -270,7 +270,7 @@ iPhone 拍出的视频是 HDR 的，所以我想到的用摄屏的方法来尽�
 
 所以我提议一定要去看看。后来发现这使得这趟单调的公路路程丰富了不止一点。
 
-**独库公路**<img style="display: inline-block; width: auto; vertical-align: middle; margin: 0 8px;" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg" height="24px"/>实际上指的是联通**独**山子和**库**车的公路，之所以会出现一些新奇的地名，大概是因为是音译而并不具有其本身的意思。G30 上指向独库公路的出口，到达的是独山子这一地区，独山子是克拉玛依市的一个区，但是距离克拉玛依有 100 多公里。
+**独库公路**<img style="display: inline-block; width: auto; vertical-align: middle; margin: 0 8px; height: 24px" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G217.svg"/>实际上指的是联通**独**山子和**库**车的公路，之所以会出现一些新奇的地名，大概是因为是音译而并不具有其本身的意思。G30 上指向独库公路的出口，到达的是独山子这一地区，独山子是克拉玛依市的一个区，但是距离克拉玛依有 100 多公里。
 
 刚刚走上独库公路的时候，感觉相比于其他地方并没有什么特别的，只是路变得窄了一点。但越是往前走越是发现，道路的一侧变成了雪原。雾气也越来越大，直到完全遮蔽了前面的道路，能见度应该在 10m 以内。
 
@@ -353,7 +353,7 @@ iPhone 拍出的视频是 HDR 的，所以我想到的用摄屏的方法来尽�
 羊肉汤和羊肉的味道都非常好，并没有很大的膻味，而咸味对我来说刚刚好。整体感觉这边的口味的确偏咸，而我又是重口味的，所以很适合我捏😋。
 
 <h3 style="display: flex; align-items: center; gap: 8px;">
-2 月 6 日 —— 天鹅泉湿地公园，赛里木湖 <img style="width: auto" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg" height="36px"/>
+2 月 6 日 —— 天鹅泉湿地公园，赛里木湖 <img style="width: auto; margin: 0; height: 36px" src="https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/A-Trip-to-Xinjiang/G30.svg"/>
 </h3>
 
 > 起初，一切都很顺利······
