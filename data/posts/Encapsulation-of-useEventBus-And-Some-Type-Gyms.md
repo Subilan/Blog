@@ -4,7 +4,9 @@ desc: Type Gymnastics!
 cate: 代码
 ---
 
-# 对 Vue Use 中 useEventBus 的二次封装与一些类型体操
+# 一种基于类型体操的 useEventBus 的封装
+
+> useEventBus 是 Vue Use 库提供的一个（类似于 React Hook 但又不完全等价的）工具函数
 
 **Why 类型体操？从自动补全说起。**
 
@@ -16,9 +18,9 @@ cate: 代码
 
 ## `useEventBus` 与它的一种使用模式
 
-[useEventBus](https://vueuse.org/core/useEventBus/) 是 Vue Use 中的一项功能，它提供一个总线供跨组件通信。一个总线可以看做是一个独立的信道，不同的组件可以在总线上面发送信息，并选择性地接收信息。这是一种不太被推荐，但通用性非常强的组件信息交流方式，与一般的`emit`+`v-on`的方式有着较大区别。
+[useEventBus](https://vueuse.org/core/useEventBus/) 是 Vue Use 中的一项功能，它提供一个总线供跨组件通信。一个总线可以看做是一个独立的信道，不同的组件可以在总线上面发送信息，并选择性地接收信息。这是一种不太被推荐，但通用性非常强的组件信息交流方式。与一般的 `emit`+`v-on` 的方式类似，其底层本质上都是 pubsub。
 
-这里我们要讨论的是 useEventBus 的两个基础用法：emit 和 on，可以理解为发送和接收。
+这里我们要讨论的是 useEventBus 的两个基础用法：emit 和 on。
 
 ```ts
 const bus = useEventBus<string>('news');
@@ -28,7 +30,7 @@ bus.emit('Some news');
 bus.on(ev => console.log(ev))
 ```
 
-**如果用的是 JavaScript，故事到这里已经结束了！** 可惜我用的是 TypeScript，并且希望编辑器的自动补全能够智能一点！有多智能呢？这要从项目的一些事件类型管理说起。
+**如果用的是 JavaScript，故事到这里已经结束了！** 可我用的是 TypeScript，并且希望编辑器的自动补全能够智能一点！有多智能呢？这要从项目的一些事件类型管理说起。
 
 仔细看 `useEventBus` 的用法，可以看到它的类型定义里有两个泛型参数，
 ```ts
@@ -205,13 +207,11 @@ const entryRepr = {
 }
 ```
 
-:::warning
 注意原先的签名
 ```ts
 function e(channel: string, ...events: string[]): Record<string, Record<string, string>>
 ```
 在这里已经不再适用。取而代之我们返回的是 `Record<string, string>` 的 entry 形式。
-:::
 
 接下来到了最重要的环节，如何编写返回值类型。这里已知 `K` 和 `Keys`，为了能够精确表示出具体的类型，可以这样写：
 ```ts

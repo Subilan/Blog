@@ -1,9 +1,11 @@
 import fs from 'node:fs/promises';
+import fsSync from 'node:fs';
 import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeInferTitleMeta from 'rehype-infer-title-meta';
 import rehypeExternalLinks from 'rehype-external-links';
+import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 // @ts-ignore
 import rehypeWrapAll from 'rehype-wrap-all';
@@ -16,30 +18,36 @@ import remarkCjkFriendly from 'remark-cjk-friendly';
 import remarkCjkFriendlyGfmStrikethrough from 'remark-cjk-friendly-gfm-strikethrough';
 import remarkRehype from 'remark-rehype';
 import remarkToc from 'remark-toc';
+import remarkMath from 'remark-math';
 import { unified } from 'unified';
 import yaml from 'yaml';
 import { visit } from 'unist-util-visit';
 import type { Root } from 'mdast';
 import { h } from 'hastscript';
+import stringWidth from 'string-width';
 
-const postFilenames = await fs.readdir(`data/posts`);
+const postDirItems = await fs.readdir(`data/posts`);
+const postFilenames = postDirItems.filter(name => name.endsWith('.md'));
+const subfolders = postDirItems.filter(name => fsSync.statSync(`data/posts/${name}`).isDirectory());
 // const document = await fs.readFile('example.md', 'utf8');
 
 async function applyPipeline(content: string) {
 	return unified()
 		.use(remarkParse)
+		.use(remarkMath, { singleDollarTextMath: false })
 		.use(remarkFrontmatter)
 		.use(remarkExtractFrontmatter, { yaml: yaml.parse, name: 'fm' })
 		.use(remarkDirective)
 		.use(vuepressLikeCallout)
-		.use(remarkGfm)
+		.use(remarkGfm, { stringLength: stringWidth })
 		.use(remarkToc, { heading: '目录' })
 		.use(remarkCjkFriendly)
 		.use(remarkCjkFriendlyGfmStrikethrough)
-		.use(remarkRehype, { allowDangerousHtml: true })
+		.use(remarkRehype, { allowDangerousHtml: true, footnoteLabel: '注释' })
 		.use(rehypeRaw)
 		.use(rehypeInferTitleMeta)
 		.use(rehypeHighlight)
+		.use(rehypeKatex)
 		.use(rehypeExternalLinks, {
 			rel: ['nofollow'],
 			target: '_blank',
@@ -61,8 +69,7 @@ function vuepressLikeCallout() {
 			}
 
 			if (node.type === 'containerDirective') {
-				if (node.name !== 'tip' && node.name !== 'warning' && node.name !== 'danger')
-					return;
+				if (!['tip', 'warning', 'danger', 'note'].includes(node.name)) return;
 
 				const data = node.data || (node.data = {});
 
@@ -90,6 +97,7 @@ export type ResultDigest = {
 	id: string;
 	title: string;
 	date: string;
+	analytics: Analytics;
 };
 
 export type Analytics = {
@@ -120,7 +128,7 @@ for (let postFilename of postFilenames) {
 		frontmatter: result.data.fm as FrontMatter,
 		title: result.data.meta?.title || '',
 		analytics: {
-			cjkCharCount: countWordsCJK(content),
+			cjkCharCount: countWordsCJK(document),
 			size: Buffer.byteLength(content, 'utf8')
 		}
 	};
@@ -132,8 +140,13 @@ for (let postFilename of postFilenames) {
 	postDigests.push({
 		id: data.id,
 		title: data.title,
-		date: data.frontmatter.date
+		date: data.frontmatter.date,
+		analytics: data.analytics
 	});
+}
+
+for (let subfolder of subfolders) {
+	await fs.cp(`data/posts/${subfolder}`, `public/posts/${subfolder}`, { recursive: true });
 }
 
 postDigests.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
