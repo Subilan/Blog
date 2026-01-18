@@ -134,7 +134,7 @@ module.export = {
 - [Google 搜索 VuePress 的主题](https://www.google.com/search?q=vuepress-theme+site%3Agithub.com)
 - [meteorlxy/awesome-vuepress](https://github.com/meteorlxy/awesome-vuepress) - 丰富的 VuePress 周边生态推荐
 - [vuejs/vuepress/packages/@vuepress](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress) - VuePress 官方开发的插件
-- [vuepress-plugin-mathjax](https://github.com/vuepress/vuepress-plugin-mathjax) - 在你的博客里写 $\LaTeX$ 公式。
+- [vuepress-plugin-mathjax](https://github.com/vuepress/vuepress-plugin-mathjax) - 在你的博客里写 $$ \LaTeX $$ 公式。
 - [vuepress-plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated) - 根据 Git Log 显示文章最后修改时间
 - [vuepress-plugin-pwa](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-pwa) - 将你的博客变成具有 PWA 性质的 Web App
 - [Subilan/Blog](https://github.com/Subilan/Blog) - 本博客的 GitHub 仓库

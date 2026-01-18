@@ -24,7 +24,8 @@ prose-ol:list-outside prose-ol:list-decimal [&_p:has(img):has(em)_>_img]:mb-2
 [&_p:has(img):has(em)]:leading-tight [&_p:has(img):has(em)]:text-left
 [&_p:has(img):has(em)_>_em]:not-italic [&_p:has(img):has(em)_>_em]:text-sm [&_p:has(img):has(em)_>_em]:text-neutral-500
 prose-img:mx-auto prose-pre:border prose-pre:border-neutral-200 prose-pre:overflow-x-auto
-prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:border-l-4 prose-blockquote:border-l-neutral-200 [&_del]:text-neutral-400;
+prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:border-l-4 prose-blockquote:border-l-neutral-200 [&_del]:text-neutral-400
+prose-hr:text-neutral-200;
 }
 
 .prose-lg h1 {
@@ -45,19 +46,23 @@ prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:bord
 }
 
 .prose-lg details {
-	@apply border border-neutral-200 p-3 rounded-lg;
+	@apply border border-neutral-200 p-3 rounded-lg my-[24px];
 }
 
 .prose-lg details *:last-child {
 	@apply mb-0;
 }
 
-.prose-lg .vuepress-callout p {
-	margin: 0;
+.prose-lg .vuepress-callout *:first-child {
+	@apply mt-0;
+}
+
+.prose-lg .vuepress-callout *:last-child {
+	@apply mb-0;
 }
 
 .prose-lg .vuepress-callout {
-	@apply border border-neutral-200 p-5;
+	@apply border border-neutral-200 p-5 my-[24px];
 }
 
 .prose-lg .vuepress-callout.tip {

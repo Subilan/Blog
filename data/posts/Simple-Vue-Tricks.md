@@ -1,10 +1,9 @@
 ---
 date: 2022/06/08
-desc: 我保证不再做类型体操了。
-cate: 代码
 ---
+# 一些 Vue 的常用处理
 
-# 一些 Vue 的常用技巧
+## 目录
 
 在长期使用 Vue 的过程中，我并不清楚是否是因为自己对这些东西的实现逻辑太过于奇妙，才催生了这些技巧的产生。也许这些问题在 React 中压根也不会出现吧？在这里浅记录一下以便以后查看。
 
@@ -62,7 +61,7 @@ const mutationTypes = ['m1', 'm2', ..., 'mN'] as const;
 接下来将这个数组转换成一个联合类型，也就是 `'m1' | 'm2' | ... | 'mN'`。
 
 ```typescript
-type MutationTypes = typeof mutationTypes[number];
+type MutationTypes = (typeof mutationTypes)[number];
 // 如果上一步没有 as const，这里得到的结果就是 string。
 ```
 
@@ -70,7 +69,7 @@ type MutationTypes = typeof mutationTypes[number];
 
 ```typescript
 type Result = {
-	[K in MutationTypes]: string
+	[K in MutationTypes]: string;
 	// 这里也可以把值类型定为 MutationTypes，但是没有必要。
 };
 ```
@@ -166,9 +165,7 @@ myComponent(): InstanceType<typeof Component> | undefined {
 }
 ```
 
-:::tip
-`InstanceType<typeof Component>` 是很好用的一个类型推断，它可以用来直接识别出实例化以后的类型。将该类型作为返回值类型，可以让 IDE 中直接提示子组件所具有的方法和值等，十分方便。如果直接使用 `typeof Component`，得到的是未实例化的原始 class 类型。
-:::
+> `InstanceType<typeof Component>` 是很好用的一个类型推断，它可以用来直接识别出实例化以后的类型。将该类型作为返回值类型，可以让 IDE 中直接提示子组件所具有的方法和值等，十分方便。如果直接使用 `typeof Component`，得到的是未实例化的原始 class 类型。
 
 然后在 mounted 钩子里加上 `this.isMounted = true` 即可。参考 [StackOverflow - Using Refs in a Computed Property](https://stackoverflow.com/questions/43531755/using-refs-in-a-computed-property)。
 
@@ -208,10 +205,10 @@ let h = new Hello();
 let v = new Vue();
 
 declare module 'vue/types/vue' {
-    interface Vue {
-        $hello: typeof h;
-        $bus: typeof v;
-    }
+	interface Vue {
+		$hello: typeof h;
+		$bus: typeof v;
+	}
 }
 ```
 
@@ -237,13 +234,122 @@ vue add style-resources-loader
 const path = require('path');
 
 module.exports = {
-    pluginOptions: {
+	pluginOptions: {
 		'style-resources-loader': {
 			preProcessor: 'less',
 			patterns: [path.resolve(__dirname, './src/styles/*.less')] // 这里填要融合的样式文件。
 		}
-	},
-}
+	}
+};
 ```
 
 对于 Webpack 请查看仓库：[yenshih/style-resources-loader](https://github.com/yenshih/style-resources-loader)。
+
+## 5. 自制状态管理
+
+### 介绍
+
+通常情况下想到全局的状态管理，最原始的方式是 eventbus，然而只能实现事件的通讯传递；数据在传递过程中必须有一层操作。若想用正规且有保障的方式，可以用 [pinia](https://pinia.vuejs.org/) 或者 [VueX](https://vuex.vuejs.org/)，然而都有杀鸡用牛刀之势。
+
+### 实现
+
+一个最简单的状态管理，其实可以直接用 object 键值对来实现。但是为了对其的修改可以引起视图的更新，需要让其变得 _reactive_。这可以通过 Vue 自带的函数 `reactive` 实现。
+
+```typescript
+import { reactive } from 'vue';
+
+const states = {
+	state1: '123',
+	state2: '123',
+	state3: '12'
+};
+
+declare module 'vue/types/vue' {
+	interface Vue {
+		$states: typeof states;
+	}
+}
+
+Vue.prototype.$states = reactive(states);
+```
+
+此时在组件里可以通过调用 `this.$states.state3 = '123'` 引起视图的更新。
+
+## 6. `v-model` 的使用
+
+在编写 checkbox、dialog 等组件的时候，经常需要在父组件内控制子组件的状态。例如
+
+```html
+<template>
+	<dialog v-model="dialogState" />
+</template>
+
+<script lang="ts">
+	import Vue from 'vue';
+
+	export default Vue.extend({
+		data() {
+			return {
+				dialogState: false
+			};
+		}
+	});
+</script>
+```
+
+这一点在子组件内如何实现呢？官方提供了 `v-model` 这一方案，实际上是语法糖。
+
+```html
+<template>
+	<div>
+		<input v-model="data" />
+		<input :value="data" @input="data = $event.target.value" />
+	</div>
+</template>
+```
+
+以上两行代码应当是等价的。具体的逻辑是
+
+- 父组件向子组件传入 `data`（对应 props 中的 `value`）
+- 子组件使用此 `data`
+- 有需要时，子组件使用 `$emit` 触发 `input` 事件提出更新，父组件更新相应的值，导致 `data` 传入子组件 props 的值发生变化
+- 子组件使用新的 `data` 值
+
+这一整个逻辑都可以使用 `v-model='data'` 做到。例如对话框
+
+```html
+父组件：
+
+<template>
+	<div>
+		<dlg v-model="dialog">
+			<div class="btn" @click="dialog = false">关闭</div>
+		</dlg>
+	</div>
+</template>
+
+子组件：
+
+<template>
+	<div class="dialog">
+		<slot />
+	</div>
+</template>
+
+<script lang="ts">
+	import Vue from 'vue';
+
+	export default Vue.extend({
+		props: {
+			dialog: Boolean
+		},
+		mounted() {
+			window.addEventListener('keydown', e => {
+				if (e.key === 'Escape') {
+					this.$emit('input', false);
+				}
+			});
+		}
+	});
+</script>
+```

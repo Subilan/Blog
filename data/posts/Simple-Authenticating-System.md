@@ -6,17 +6,20 @@ cate: 代码
 
 # 用 PHP 实现简单的登录系统
 
-先前一直在想 PHP 内登录系统到底该怎样简洁地实现。在这里，*简洁*是指能够满足最基本的用户识别需求，而没有其它更多方面的需求。因而概括来说，我们所要实现的只是登录以后储存状态，根据该状态判定访问权限。
+## 目录
+
+登录系统的实现原理一直是一个我好奇的点。最近一直在想 PHP 内登录系统到底该怎样简洁地实现。在这里，*简洁*是指能够满足最基本的用户识别需求，而没有其它更多方面的需求。概括来说，我们所要实现的只是登录以后储存状态，根据该状态判定访问权限。
 
 ## 基本思路
 
 这样一个简单的登录系统的思路，大致如下
-1. **前端收集登录信息。** 包含最基本的两项：用户名和密码。
-2. **后端验证信息并发放 *Token*。** 在这里，验证信息主要是对数据库中对应用户名的密码进行比对，可能的结果有*不存在*、*不匹配*和*匹配*三种。本文中比对所使用的方式是 `password_verify` 函数。
-3. **前端存储 *Token* 并用于执行各项操作。** 后端所需要权限的操作可以将 Token 作为参数，需要 Token 才能工作。前端存储 Token 的办法，可以用 `localStorage`。当然，使用 Cookie 也不是不可以。本文演示前者，实现方式类似。
-4. **针对不同状况拟定 *Token* renew & expire 策略。** Token 一定要有有效期，自然而然也有 renew 和 expire 等问题。
 
-上面四条，我们接下来注意解释和实践。
+1. **前端收集登录信息。** 包含最基本的两项：用户名和密码。
+2. **后端验证信息并发放 _Token_。** 在这里，验证信息主要是对数据库中对应用户名的密码进行比对，可能的结果有*不存在*、*不匹配*和*匹配*三种。本文中比对所使用的方式是 `password_verify` 函数。
+3. **前端存储 _Token_ 并用于执行各项操作。** 后端所需要权限的操作可以将 Token 作为参数，需要 Token 才能工作。前端存储 Token 的办法，可以用 `localStorage`。当然，使用 Cookie 也不是不可以。本文演示前者，实现方式类似。
+4. **针对不同状况拟定 _Token_ renew & expire 策略。** Token 一定要有有效期，自然而然也有 renew 和 expire 等问题。
+
+上面四条，我们接下来逐一解释和实践。
 
 ## 实践
 
@@ -38,10 +41,11 @@ function encrypt($message, $key) {
         OPENSSL_RAW_DATA,
         $nonce
     );
-    
+
     return $nonce . $ciphertext;
 }
 ```
+
 其中，**aes-256-ctr** 为加密方式，具体可以自行查询了解，这是比较推荐使用的一种方式。上面的函数具体内容就不多解释。利用上面的函数，只需要一个 key 即可对指定信息进行加密，这些信息便是我们的 Token。
 
 针对上面的 encrypt 函数，我们也有一个对应的 decrypt 函数。
@@ -77,7 +81,7 @@ $token = json_encode([
 
 对这个 Token，我们进行 encrypt，然后返回到前端，基本上就没有什么问题了。这个 Token 在前端将长久存在，因而其必须指定一个合理的 expires 以便后端判断其有效性。同时为了避免冒充，我们还可以在 Token 内加入一些特异性内容，例如字符串签名。
 
-### Token 存储
+### 2. Token 存储
 
 按照设计，Token 被返回到前端以后会被存储起来，目的是作为敏感操作（涉及权限的操作）的凭证。例如若要 POST 涉及权限的操作，则必须带上 Token，否则返回 400。
 
@@ -92,15 +96,21 @@ localStorage.setItem('xxx-login-token', r);
 
 对于 Chrome，localStorage 持续性的叙述为
 
-> On disk until deleted by user (delete cache) or by the app. 
+> On disk until deleted by user (delete cache) or by the app.
 
 所以 Token 将会在 localStorage 中长期存在。
 
 在这里出现了一个问题：localStorage 在定义上是属于用户的东西，用户可以完全管理其内容，可以添加、读取和修改其内容，这会对 Token 的安全性造成什么影响？
 
+:::note
+**来自 2025 的补充，这种做法与 JWT 的不同点**
+
+对于更常用的 JWT 来说，其验证令牌是否有效的一个关键因素是签名是否匹配，而不是像这里的对内容的加密。JWT 中的 Payload 是公开可见的，因此在里面不能也不应该存储敏感数据。相比于这种方法，JWT 中的私有内容只是 key，其 method 则是公开的。
+:::
+
 实际上基本没有。因为 Token 只能由后端生成，而用户把 Token 修改了相当于自己放弃了这个 Token，被修改后的 Token 也无法通过验证（decrypt）。唯一需要防备的，就是不要泄漏 Token 的加密方式。如果加密方式泄漏，那么用户就可以利用各种方法采取完全相同的加密方式加密出完全符合服务端解密函数需求的 Token。在这里，加密方式包含的不仅仅是 method 本身，还有 key。
 
-### Token 利用
+### 3. Token 利用
 
 Token 的利用主要体现在请求上，且有多种。在这里我们演示最为简单的一种：每一次 POST 敏感操作接口，附带上 Token 作为参数，后端在接到请求后，第一步是验证 Token，通过后继续操作。
 
@@ -108,26 +118,26 @@ Token 的利用主要体现在请求上，且有多种。在这里我们演示�
 
 ```javascript
 function checkAuth() {
-  let token = localStorage.getItem("xxx-login-token");
-  return new Promise((r, j) => {
-    if (!token) {
-      j();
-    } else {
-      post(
-        "/CheckAuth.php",
-        {
-          token,
-        },
-        (response) => {
-          if (response === true) {
-	        r();
-          } else {
-            j();
-          }
-        }
-      );
-    }
-  });
+	let token = localStorage.getItem('xxx-login-token');
+	return new Promise((r, j) => {
+		if (!token) {
+			j();
+		} else {
+			post(
+				'/CheckAuth.php',
+				{
+					token
+				},
+				response => {
+					if (response === true) {
+						r();
+					} else {
+						j();
+					}
+				}
+			);
+		}
+	});
 }
 ```
 
@@ -166,16 +176,16 @@ function checkToken(string $token)
 
 ```php
 function encrypt($message, $key)
-    {
-        list($encKey, $authKey) = splitKeys($key);
-        $ciphertext = unsafe_encrypt($message, $encKey);
+{
+    list($encKey, $authKey) = splitKeys($key);
+    $ciphertext = unsafe_encrypt($message, $encKey);
 
-        // 计算
-        $mac = hash_hmac('sha256', $ciphertext, $authKey, true);
-        
-        // 把 MAC 放在开头
-        return $mac . $ciphertext;
-    }
+    // 计算
+    $mac = hash_hmac('sha256', $ciphertext, $authKey, true);
+
+    // 把 MAC 放在开头
+    return $mac . $ciphertext;
+}
 ```
 
 更安全的解密也是基于 MAC 的。在这里我们先验证 MAC，然后再使用先前的解密函数即可。
