@@ -1,4 +1,5 @@
 ---
+hidden: true
 date: 2023/01/26
 cate: 代码
 desc: 前端的一些老生常谈。

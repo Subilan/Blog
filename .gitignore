@@ -30,3 +30,6 @@ postdigests.json
 postsearch.json
 
 run.local.sh
+
+public/data
+public/posts

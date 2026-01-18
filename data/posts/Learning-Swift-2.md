@@ -35,12 +35,12 @@ if a = b {
 
 ### 范围运算符
 
-范围运算符并不罕见，但也并不普遍。在有一些语言，例如 Python 中，范围运算符的作用被 `range` 函数代替了；在 JavaScript 中，则完全没有范围运算符的身影，需要用到类似于 `[...Array(n).keys()]` 这样的操作来生成 iterable。而在 Vue 的模板语法中，`v-for` 可以接受 `x in 5` 这样的范围写法，最终生成的是 $0,1,2,3,4$。
+范围运算符并不罕见，但也并不普遍。在有一些语言，例如 Python 中，范围运算符的作用被 `range` 函数代替了；在 JavaScript 中，则完全没有范围运算符的身影，需要用到类似于 `[...Array(n).keys()]` 这样的操作来生成 iterable。而在 Vue 的模板语法中，`v-for` 可以接受 `x in 5` 这样的范围写法，最终生成的是 $$ 0,1,2,3,4 $$。
 
-- 闭区间运算符 `...` 允许生成一个包含 $[a,b]$ 中所有数字的列表，例如 $2 ... 5$ 所生成的是 $[2,3,4,5]$ 这样四个数字，这要求 `b` 必须是大于或者等于 `a` 的。
-- 半开半闭区间运算符 `..<` 的左侧是闭右侧是开，`2 ..< 5` 生成的是 $[2,3,4]$。半开半闭区间适合在数组场景下使用，可用 `0 ..< arr.count` 来快速生成下标列表。
+- 闭区间运算符 `...` 允许生成一个包含 $$ [a,b] $$ 中所有数字的列表，例如 $$ 2 ... 5 $$ 所生成的是 $$ [2,3,4,5] $$ 这样四个数字，这要求 `b` 必须是大于或者等于 `a` 的。
+- 半开半闭区间运算符 `..<` 的左侧是闭右侧是开，`2 ..< 5` 生成的是 $$ [2,3,4] $$。半开半闭区间适合在数组场景下使用，可用 `0 ..< arr.count` 来快速生成下标列表。
 
-这两个运算符的操作元也可以只有一个，它所生成的是单边区间，也就是类似于 $(-\infty, n)$、$[a, +\infty)$ 这样的区间。
+这两个运算符的操作元也可以只有一个，它所生成的是单边区间，也就是类似于 $$ (-\infty, n) $$、$$ [a, +\infty) $$ 这样的区间。
 
 ```swift
 let range = ...5
@@ -237,7 +237,7 @@ Swift 中对这一点也有考虑。因此，U+0041 所代表的 LATIN CAPITAL L
 在这里我很好奇 locale-sensitive 所指的是一种什么样的判断性质。通过搜索发现已经有人在 StackOverflow 上提出了这样的问题，也有较为详细的解释，可参考 <https://stackoverflow.com/questions/25713975/what-does-it-mean-that-string-and-character-comparisons-in-swift-are-not-locale>。
 
 :::tip
-所谓 locale-sensitive ordering 是指在比较字符的时候，采取相应语言中既有的语言学顺序，这种“语言”可以用 Locale 对象来构建出来。例如 $\textrm{A,B,C,}\cdots$ 就是英文语言中的 locale ordering。而这里所说的非 locale-sensitive 比较方式，就是一般意义上的字典序（lexicographical ordering）。在 Swift 中，这里的字典具体所指的是采用 D 形 Unicode 标准化（[Unicode Normalization Form D](https://unicode.org/reports/tr15/#Norm_Forms)）来对字符进行量化后的一系列结果。
+所谓 locale-sensitive ordering 是指在比较字符的时候，采取相应语言中既有的语言学顺序，这种“语言”可以用 Locale 对象来构建出来。例如 $$ \textrm{A,B,C,}\cdots $$ 就是英文语言中的 locale ordering。而这里所说的非 locale-sensitive 比较方式，就是一般意义上的字典序（lexicographical ordering）。在 Swift 中，这里的字典具体所指的是采用 D 形 Unicode 标准化（[Unicode Normalization Form D](https://unicode.org/reports/tr15/#Norm_Forms)）来对字符进行量化后的一系列结果。
 
 值得注意的是，这种量化后的结果大概率会出现 A、B、C 等字符仍然是有序的情形（类似于 ASCII 里的那样），此时应当将其与 English-based ordering 区分开。
 :::
@@ -279,13 +279,13 @@ print(list) // [1, 2, 6, 7]
 
 容易发现 `[6,7]` 并不符合 `2...4` 区间长度，但是仍然合法，只要 `2...4` 是合法的即可。上面将 `3,4,5` 替换成了 `6,7`，数组元素数量减少了一。
 
-数组的 `insert` 方法与字符串的不同，它所能触及到的最远的下标是 $\min\{\mathrm{length}-1,0\}$，如果要向末尾追加内容，必须使用 `append`（空数组除外，可以向下标 0 位置 insert）。
+数组的 `insert` 方法与字符串的不同，它所能触及到的最远的下标是 $$ \min\{\mathrm{length}-1,0\} $$，如果要向末尾追加内容，必须使用 `append`（空数组除外，可以向下标 0 位置 insert）。
 
 对数组的遍历存在两种方式，第一种是直接 `for x in arr`，还有一种是使用 `array.enumerated()`，从而同时获得值与下标。在 Swift 中下标在前值在后，用法 `for (i, x) in arr.enumerated()`。
 
 ### 集合
 
-在集合中存储的元素，为了确保其独异性，必须是可计算哈希值的（hashable）。这里所说的哈希值是一个 Int，存在 $a == b \iff h(a) == h(b)$ 其中 h 是哈希计算函数。Swift 的基础类型都是可计算哈希值的。在自己实现一些类型的时候，可以通过同意 Hashable 协议并实现 `hash(into:)` 方法来达到这样的效果。
+在集合中存储的元素，为了确保其独异性，必须是可计算哈希值的（hashable）。这里所说的哈希值是一个 Int，存在 $$ a == b \iff h(a) == h(b) $$ 其中 h 是哈希计算函数。Swift 的基础类型都是可计算哈希值的。在自己实现一些类型的时候，可以通过同意 Hashable 协议并实现 `hash(into:)` 方法来达到这样的效果。
 
 创建集合需要用到 `Set<T>` initializer 或者用 `Set<T>` 的类型指定，赋值可用中括号（与数组相同），例如
 
@@ -306,10 +306,10 @@ Swift 可以对集合进行数学上的各种运算。
 
 |数学运算|对应调用|操作名|
 |:-:|:-:|:-:|
-|$A \cup B$|`A.union(B)`|取交集|
-|$A \cap B$|`A.intersection(B)`|取并集|
-|$A - B$|`A.subtracting(B)`|取差集|
-|$A \oplus B$|`A.symmetricDifference(B)`|取对称差|
+|$$ A \cup B $$|`A.union(B)`|取交集|
+|$$ A \cap B $$|`A.intersection(B)`|取并集|
+|$$ A - B $$|`A.subtracting(B)`|取差集|
+|$$ A \oplus B $$|`A.symmetricDifference(B)`|取对称差|
 
 以及各种判断。
 
@@ -322,7 +322,7 @@ Swift 可以对集合进行数学上的各种运算。
 
 ### 字典
 
-字典定义是键值对的无序组合，它定义的是一种映射（mapping），为了满足映射的基本性质，字典的键必须是唯一的，如果 $a \mapsto b$，那么 $a \not \mapsto c, c \neq b$。字典的完整类型写作 `Dictionary<K, V>` ，也可以简写为 `[K: T]`。其定义方式如下
+字典定义是键值对的无序组合，它定义的是一种映射（mapping），为了满足映射的基本性质，字典的键必须是唯一的，如果 $$ a \mapsto b $$，那么 $$ a \not \mapsto c, c \neq b $$。字典的完整类型写作 `Dictionary<K, V>` ，也可以简写为 `[K: T]`。其定义方式如下
 
 ```swift
 var map: [Int: String] = [:] // 空键值对，用 [:] 表示
