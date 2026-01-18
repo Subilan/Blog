@@ -23,33 +23,3 @@ async function copy() {
   }, 500);
 }
 </script>
-
-<style lang="scss" scoped>
-@use '@/assets/var';
-@use '@/assets/ui';
-
-.copy-btn {
-  display: inline-flex;
-  align-items: center;
-  font-size: 70%;
-  padding: 6px 10px;
-  border-radius: 50px;
-  line-height: 1;
-  margin: 0 8px;
-  vertical-align: middle;
-  cursor: pointer;
-  gap: 4px;
-  background: var(--bg);
-
-  &.copyComplete {
-    background: var(--bg-dim);
-    color: white;
-    border-color: transparent !important;
-  }
-
-  svg {
-    height: 12px;
-    width: 12px;
-  }
-}
-</style>

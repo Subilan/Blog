@@ -1,0 +1,126 @@
+/*!
+  Theme: StackOverflow Dark
+  Description: Dark theme as used on stackoverflow.com
+  Author: stackoverflow.com
+  Maintainer: @Hirse
+  Website: https://github.com/StackExchange/Stacks
+  License: MIT
+  Updated: 2021-05-15
+
+  Updated for @stackoverflow/stacks v0.64.0
+  Code Blocks: /blob/v0.64.0/lib/css/components/_stacks-code-blocks.less
+  Colors: /blob/v0.64.0/lib/css/exports/_stacks-constants-colors.less
+*/
+
+.dark .hljs {
+  /* var(--highlight-color) */
+  color: #ffffff;
+  /* var(--highlight-bg) */
+  background: #1c1b1b;
+}
+
+.dark .hljs-subst {
+  /* var(--highlight-color) */
+  color: #ffffff;
+}
+
+.dark .hljs-comment {
+  /* var(--highlight-comment) */
+  color: #999999;
+}
+
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-meta .dark .hljs-keyword,
+.dark .hljs-doctag,
+.dark .hljs-section {
+  /* var(--highlight-keyword) */
+  color: #88aece;
+}
+
+.dark .hljs-attr {
+  /* var(--highlight-attribute); */
+  color: #88aece;
+}
+
+.dark .hljs-attribute {
+  /* var(--highlight-symbol) */
+  color: #c59bc1;
+}
+
+.dark .hljs-name,
+.dark .hljs-type,
+.dark .hljs-number,
+.dark .hljs-selector-id,
+.dark .hljs-quote,
+.dark .hljs-template-tag {
+  /* var(--highlight-namespace) */
+  color: #f08d49;
+}
+
+.dark .hljs-selector-class {
+  /* var(--highlight-keyword) */
+  color: #88aece;
+}
+
+.dark .hljs-string,
+.dark .hljs-regexp,
+.dark .hljs-symbol,
+.dark .hljs-variable,
+.dark .hljs-template-variable,
+.dark .hljs-link,
+.dark .hljs-selector-attr {
+  /* var(--highlight-variable) */
+  color: #b5bd68;
+}
+
+.dark .hljs-meta,
+.dark .hljs-selector-pseudo {
+  /* var(--highlight-keyword) */
+  color: #88aece;
+}
+
+.dark .hljs-built_in,
+.dark .hljs-title,
+.dark .hljs-literal {
+  /* var(--highlight-literal) */
+  color: #f08d49;
+}
+
+.dark .hljs-bullet,
+.dark .hljs-code {
+  /* var(--highlight-punctuation) */
+  color: #cccccc;
+}
+
+.dark .hljs-meta .dark .hljs-string {
+  /* var(--highlight-variable) */
+  color: #b5bd68;
+}
+
+.dark .hljs-deletion {
+  /* var(--highlight-deletion) */
+  color: #de7176;
+}
+
+.dark .hljs-addition {
+  /* var(--highlight-addition) */
+  color: #76c490;
+}
+
+.dark .hljs-emphasis {
+  font-style: italic;
+}
+
+.dark .hljs-strong {
+  font-weight: bold;
+}
+
+.dark .hljs-formula,
+.dark .hljs-operator,
+.dark .hljs-params,
+.dark .hljs-property,
+.dark .hljs-punctuation,
+.dark .hljs-tag {
+  /* purposely ignored */
+}

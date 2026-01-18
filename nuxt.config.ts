@@ -1,8 +1,11 @@
 import svgLoader from 'vite-svg-loader';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
 	compatibilityDate: '2024-04-03',
 	devtools: { enabled: true },
+
+	css: ['./assets/main.css'],
 
 	runtimeConfig: {
 		umamiEndpoint: 'https://analytics.subilan.win',
@@ -15,7 +18,7 @@ export default defineNuxtConfig({
 	},
 
 	vite: {
-		plugins: [svgLoader()]
+		plugins: [svgLoader(), tailwindcss()]
 	},
 
 	site: {
