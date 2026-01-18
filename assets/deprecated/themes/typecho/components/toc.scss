@@ -1,4 +1,4 @@
-@import '@/assets/components/link.scss';
+@use '@/assets/components/link.scss' as *;
 
 @mixin TocTypecho {
 	> ul li {

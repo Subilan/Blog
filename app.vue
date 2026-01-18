@@ -1,66 +1,57 @@
 <template>
-  <!-- <nuxt-loading-indicator color="#000" :throttle="0"/> -->
   <nuxt-layout>
     <nuxt-page />
   </nuxt-layout>
 </template>
 
-<script setup>
-  import { useFavicon, usePreferredDark } from "@vueuse/core";
-  import getPostContent from "~/utils/getPostContent.js";
-  import getSiteName from "~/utils/getSiteName.js";
+<script setup lang="ts">
+import { useFavicon, usePreferredDark } from "@vueuse/core";
+import getPostDigest from "~/utils/getPostDigests";
+import getSiteName from "~/utils/getSiteName.js";
 
-  const route = useRoute();
+const route = useRoute();
+const postname = computed(() => route.params.postname as string);
 
-  const sitename = getSiteName();
+const sitename = getSiteName();
 
-  const titleWithPrefix = computed(() => {
-    if (route.params.postname) {
-      return `${sitename} - ${getPostContent(route.params.postname).title}`
-    }
-    return `${sitename} - ${route.meta.title}`;
-  });
+const titleWithPrefix = computed(() => {
+  if (route.params.postname) {
+    return `${sitename} - ${getPostDigest(postname.value)?.title}`
+  }
+  return `${sitename} - ${route.meta.title}`;
+});
 
-  const titleWithSuffix = computed(() => {
-    if (route.params.postname) {
-      return `${getPostContent(route.params.postname).title} - ${sitename}`
-    }
-    return `${route.meta.title} - ${sitename}`;
-  });
+const titleWithSuffix = computed(() => {
+  if (route.params.postname) {
+    return `${getPostDigest(postname.value)?.title} - ${sitename}`
+  }
+  return `${route.meta.title} - ${sitename}`;
+});
 
-  onMounted(() => {
-    const isDark = usePreferredDark();
-    useFavicon('/avatar.jpg', {
-      rel: 'icon'
-    })
-  });
-
-  const { themeFont, themeColor, themeStyle } = useTheme();
-
-  const htmlClasses = computed(() => [
-    `font-${themeFont.value.replace(/\s/g, '-')}`,
-    `color-${themeColor.value}`,
-    `style-${themeStyle.value}`
-  ]);
-  const currentFontSheets = computed(() => useFontSheets(themeFont.value).value);
-
-  watch(htmlClasses, v => console.log(v))
-
-  useHead({
-    meta: [
-      {
-        property: 'og:title',
-        content: titleWithPrefix
-      }
-    ],
-    link: currentFontSheets,
-    title: titleWithSuffix,
-    htmlAttrs: {
-      class: htmlClasses
-    }
+onMounted(() => {
+  const isDark = usePreferredDark();
+  useFavicon('/avatar.jpg', {
+    rel: 'icon'
   })
-</script>
+});
 
-<style lang="scss">
-@use '@/assets/global';
-</style>
+useHead({
+  meta: [
+    {
+      property: 'og:title',
+      content: titleWithPrefix
+    }
+  ],
+  link: [
+    {
+      rel: 'preconnect',
+      href: 'https://rsms.me/'
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://rsms.me/inter/inter.css'
+    }
+  ],
+  title: titleWithSuffix,
+})
+</script>

@@ -1,0 +1,141 @@
+@reference 'tailwindcss';
+
+.pre-wrapper {
+	@apply relative;
+}
+
+.pre-wrapper:has(code[class*='language-']):hover::before {
+	@apply text-neutral-200;
+}
+
+.pre-wrapper:has(code[class*='language-'])::before {
+	@apply absolute right-3 top-3 leading-tight text-sm text-neutral-500 transition-[color];
+}
+
+.pre-wrapper:has(code[class*='language-yml'])::before {
+	content: 'yaml';
+}
+
+.pre-wrapper:has(code[class*='language-js'])::before {
+	content: 'js';
+}
+
+.pre-wrapper:has(code[class*='language-ts'])::before {
+	content: 'ts';
+}
+
+.pre-wrapper:has(code[class*='language-html'])::before {
+	content: 'html';
+}
+
+.pre-wrapper:has(code[class*='language-md'])::before {
+	content: 'md';
+}
+
+.pre-wrapper:has(code[class*='language-vue'])::before {
+	content: 'vue';
+}
+
+.pre-wrapper:has(code[class*='language-css'])::before {
+	content: 'css';
+}
+
+.pre-wrapper:has(code[class*='language-sass'])::before {
+	content: 'sass';
+}
+
+.pre-wrapper:has(code[class*='language-scss'])::before {
+	content: 'scss';
+}
+
+.pre-wrapper:has(code[class*='language-less'])::before {
+	content: 'less';
+}
+
+.pre-wrapper:has(code[class*='language-stylus'])::before {
+	content: 'stylus';
+}
+
+.pre-wrapper:has(code[class*='language-go'])::before {
+	content: 'go';
+}
+
+.pre-wrapper:has(code[class*='language-java'])::before {
+	content: 'java';
+}
+
+.pre-wrapper:has(code[class*='language-c'])::before {
+	content: 'c';
+}
+
+.pre-wrapper:has(code[class*='language-sh'])::before {
+	content: 'sh';
+}
+
+.pre-wrapper:has(code[class*='language-yaml'])::before {
+	content: 'yaml';
+}
+
+.pre-wrapper:has(code[class*='language-py'])::before {
+	content: 'py';
+}
+
+.pre-wrapper:has(code[class*='language-docker'])::before {
+	content: 'docker';
+}
+
+.pre-wrapper:has(code[class*='language-dockerfile'])::before {
+	content: 'dockerfile';
+}
+
+.pre-wrapper:has(code[class*='language-makefile'])::before {
+	content: 'makefile';
+}
+
+.pre-wrapper:has(code[class*='language-javascript'])::before {
+	content: 'js';
+}
+
+.pre-wrapper:has(code[class*='language-typescript'])::before {
+	content: 'ts';
+}
+
+.pre-wrapper:has(code[class*='language-markup'])::before {
+	content: 'html';
+}
+
+.pre-wrapper:has(code[class*='language-markdown'])::before {
+	content: 'md';
+}
+
+.pre-wrapper:has(code[class*='language-json'])::before {
+	content: 'json';
+}
+
+.pre-wrapper:has(code[class*='language-ruby'])::before {
+	content: 'rb';
+}
+
+.pre-wrapper:has(code[class*='language-python'])::before {
+	content: 'py';
+}
+
+.pre-wrapper:has(code[class*='language-bash'])::before {
+	content: 'sh';
+}
+
+.pre-wrapper:has(code[class*='language-php'])::before {
+	content: 'php';
+}
+
+.pre-wrapper:has(code[class*='language-sql'])::before {
+	content: 'sql';
+}
+
+.pre-wrapper:has(code[class*='language-shell'])::before {
+	content: 'sh';
+}
+
+.pre-wrapper:has(code[class*='language-swift'])::before {
+	content: 'swift';
+}

@@ -1,0 +1,69 @@
+@import 'tailwindcss';
+@import './hljs/stackoverflow-dark.css';
+@import './hljs/stackoverflow-light.css';
+@import './hljs/languagenames.css';
+@plugin "@tailwindcss/typography";
+
+:root {
+	font-feature-settings:
+		'liga' 1,
+		'calt' 1; /* fix for Chrome */
+}
+
+@theme {
+	--font-sans: InterVariable, 'Inter', 'PingFang SC', '微软雅黑', sans-serif;
+	--font-mono: 'Cascadia Code', 'Menlo', 'SF Mono', 'Consolas', monospace;
+}
+
+.prose-lg {
+	@apply max-w-none prose-neutral
+prose-kbd:border prose-th:p-3 prose-td:p-3 prose-th:border prose-td:border
+prose-th:border-neutral-200 prose-td:border-neutral-200 prose-table:w-full
+prose-table:border prose-table:border-neutral-200 prose-ul:list-outside prose-ul:list-disc 
+prose-ol:list-outside prose-ol:list-decimal [&_p:has(img):has(em)_>_img]:mb-2
+[&_p:has(img):has(em)]:leading-tight [&_p:has(img):has(em)]:text-left
+[&_p:has(img):has(em)_>_em]:not-italic [&_p:has(img):has(em)_>_em]:text-sm [&_p:has(img):has(em)_>_em]:text-neutral-500
+prose-img:mx-auto prose-pre:border prose-pre:border-neutral-200 prose-pre:overflow-x-auto
+prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:border-l-4 prose-blockquote:border-l-neutral-200 [&_del]:text-neutral-400;
+}
+
+.prose-lg h1 {
+	@apply text-4xl font-bold;
+}
+
+.prose-lg :not(.not-prose) a.ext::after {
+	content: '↗';
+	padding-left: 2px;
+}
+
+.prose-lg :not(.not-prose) a {
+	@apply text-sky-600 hover:underline cursor-pointer;
+}
+
+.prose-lg details summary {
+	@apply cursor-pointer;
+}
+
+.prose-lg details {
+	@apply border border-neutral-200 p-3 rounded-lg;
+}
+
+.prose-lg details *:last-child {
+	@apply mb-0;
+}
+
+.prose-lg .vuepress-callout p {
+	margin: 0;
+}
+
+.prose-lg .vuepress-callout {
+	@apply border border-neutral-200 p-5;
+}
+
+.prose-lg .vuepress-callout.tip {
+	@apply border-dashed;
+}
+
+.prose-lg .vuepress-callout.danger {
+	@apply border-3;
+}

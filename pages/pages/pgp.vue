@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="prose-lg">
     <h1>PGP</h1>
     <ul>
       <li>Fingerprint — BC66A8EAA950B9823A309871FC61A89A8F418BD5</li>
