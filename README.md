@@ -1,4 +1,4 @@
-# SolitudeScroll
+# SolitudeScroll / 孤诣卷轴
 
 此博客的域名是 <https://subilan.win>，注册于 2016 年。博客基于 Nuxt 3 框架编写，采用本地 Markdown 编写→构建脚本编译为 JSON→组件调用→`nuxt generate` 构建静态页面的模式实现，无数据库、无服务端、纯静态。
 
