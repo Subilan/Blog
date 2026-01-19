@@ -4488,7 +4488,7 @@ async fn timeout<F: Future>(
 我个人并不是很喜欢在语言学习的一开始就去做题目，尤其是这些题目建立在一些虚拟的需求上时，这让我觉得一定要陷入某种思维定式才能做下去。我更希望学到后期直接开始做真实项目练手。Rust Book 也考虑到了这一点（which 让我感觉很惊喜），虽然它在第 2 章就开始忍不住介绍如何做一个猜数的游戏，但作者也在 Introduction 中提到
 > If you’re a particularly meticulous learner who prefers to learn every detail before moving on to the next, you might want to skip Chapter 2 and go straight to Chapter 3, returning to Chapter 2 when you’d like to work on a project applying the details you’ve learned.
 
-*...我还不知道这种“喜欢看完完整内容再去实操”的习惯可以被描述为 “meticulous learner”。*
+*这种“喜欢看完完整内容再去实操”的习惯原来可以被描述为 “meticulous learner”。*
 
 唯一让我觉得有些灾难的章节，是第 7 章，介绍 Rust 的包管理工具和相关概念的一章。由于 Rust 中的 crate、包（package）、项目（project）等概念的命名方式与其它语言中的惯例大相径庭，又没有规范化的中文翻译（其实也难以规范化），这一章的内容本就有些难懂。
 

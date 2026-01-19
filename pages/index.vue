@@ -31,7 +31,7 @@
         {{ x.title }}
       </router-link>
       <div class="flex-1" />
-      <span class="hidden text-neutral-400">{{ x.analytics.cjkCharCount }} 字 · {{ (x.analytics.size / 1024).toFixed(0) }} KB</span>
+      <!-- <span class="hidden text-neutral-400">{{ x.analytics.cjkCharCount }} 字 · {{ (x.analytics.size / 1024).toFixed(0) }} KB</span> -->
     </div>
   </div>
 </template>
