@@ -23,14 +23,13 @@
   </div>
   <hr class="my-10 text-neutral-200" />
   <div class="flex flex-col gap-5">
-    <div class="flex items-center gap-3 hover:[&_>_span]:block" v-for="x in postdigests">
-      <div class="w-25 text-sm font-mono">
+    <div class="grid grid-cols-[100px_auto] items-center gap-3 hover:[&_>_span]:block" v-for="x in postdigests">
+      <div class="text-sm font-mono">
         {{ x.date }}
       </div>
       <router-link class="text-lg underline" :to="`/posts/${x.id}`">
         {{ x.title }}
       </router-link>
-      <div class="flex-1" />
       <!-- <span class="hidden text-neutral-400">{{ x.analytics.cjkCharCount }} 字 · {{ (x.analytics.size / 1024).toFixed(0) }} KB</span> -->
     </div>
   </div>

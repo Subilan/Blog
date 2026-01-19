@@ -1,9 +1,9 @@
 <template>
   <transition name="flowup">
     <div @click="scrollToTop"
-      class="border border-neutral-100 shadow-sm hover:bg-neutral-50 active:bg-neutral-100 fixed right-20 bottom-20 bg-white flex items-center gap-2 py-3 px-4.5 rounded-lg cursor-pointer transition-all"
+      class="border border-neutral-100 shadow-sm hover:bg-neutral-50 active:bg-neutral-100 fixed right-[50%] translate-x-[50%] lg:right-20 lg:translate-x-0 lg:bottom-20 bottom-15 bg-white flex items-center gap-2 rounded-full p-3 lg:py-3 lg:px-4.5 lg:rounded-lg cursor-pointer transition-all"
       v-if="showBackToTop">
-      <span>返回顶部</span>
+      <span class="hidden lg:inline">返回顶部</span>
       <icon class="h-[20px] w-[20px]" :path="mdiArrowUp" />
     </div>
   </transition>
