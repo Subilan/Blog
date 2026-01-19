@@ -33,8 +33,18 @@ prose-lg [&_h1]:hidden
 import mediumZoom from "medium-zoom";
 import type { Post } from "~/build";
 
-// 此处不使用$fetch，因为会与服务端渲染冲突，而og image依赖服务端渲染
-const post: Post = await import(`~/public/data/${useRoute().params.postname}.json`);
+let post: Post;
+
+try {
+  // 此处不使用$fetch，因为会与服务端渲染冲突，而og image依赖服务端渲染
+  post = await import(`~/public/data/${useRoute().params.postname}.json`);
+} catch {
+  throw createError({
+    status: 404,
+    message: '找不到此文章'
+  })
+}
+
 
 const dayDelta = computed(() => (new Date().getTime() - new Date(post.frontmatter.date).getTime()) / (1000 * 3600 * 24));
 const dayAgo = computed(() => getAgo(post.frontmatter.date, true));

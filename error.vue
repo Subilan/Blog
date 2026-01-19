@@ -1,16 +1,14 @@
 <template>
-    <div class="error-container">
-        <div class="inner card">
-            <p class="title"><strong>维护界面: {{ error.statusCode }}</strong> — {{ error.message.split('Require stack')[0]
-                }}</p>
-            <p v-if="error.statusCode === 404">
-                此页面不存在，请检查 URL 拼写是否正确。
-            </p>
-            <p v-if="error.statusCode === 500">
-                服务端此时无法正确处理请求，这可能是因为程序的内部错误。
-            </p>
+    <div class="flex w-full h-dvh items-center justify-center">
+        <div class="p-5 rounded-lg flex flex-col gap-10 items-center">
+            <div class="flex flex-col gap-2 items-center">
+                <h1 class="text-5xl">{{ error.statusCode }}</h1>
+                <p class="text-lg text-neutral-500">{{ error.message }}</p>
+            </div>
             <div class="actions right mobile-center">
-                <button class="button" @click="handleError">
+                <button
+                    class="flex p-2 cursor-pointer hover:bg-neutral-100 active:bg-neutral-200 items-center gap-2 border rounded-lg border-neutral-200"
+                    @click="handleError">
                     <icon :path="mdiArrowLeft" />回到主页
                 </button>
             </div>
@@ -19,9 +17,9 @@
 </template>
 
 <script setup>
-    import { mdiArrowLeft } from '@mdi/js';
+import { mdiArrowLeft } from '@mdi/js';
 
-    const props = defineProps(['error'])
+const props = defineProps(['error'])
 
-    const handleError = () => clearError({ redirect: '/' })
+const handleError = () => clearError({ redirect: '/' })
 </script>

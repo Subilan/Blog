@@ -1,9 +1,9 @@
-import posts from '@/data/posts.json';
+import postdigests from '~/data/postdigests.json';
 
 export default defineSitemapEventHandler(() => {
-  return posts.filter(post => !post.hidden).map(post => {
+  return postdigests.map(post => {
     return {
-      loc: `/posts/${post.slug}`
+      loc: `/posts/${post.id}`
     }
   });
 })
