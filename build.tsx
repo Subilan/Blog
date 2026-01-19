@@ -29,6 +29,7 @@ import satori from 'satori';
 import sharp from 'sharp';
 import getOgNode from './ogNode';
 import type { ReactNode } from 'react';
+import { remarkRelativeAssetsToPosts } from './relative-md';
 
 async function mkdirIfNotExist(path: string) {
 	let shouldCreate =
@@ -54,6 +55,7 @@ const subfolders = postDirItems.filter(name => fsSync.statSync(`data/posts/${nam
 async function applyPipeline(content: string) {
 	return unified()
 		.use(remarkParse)
+		.use(remarkRelativeAssetsToPosts, { prefix: '/posts' })
 		.use(remarkMath, { singleDollarTextMath: false })
 		.use(remarkFrontmatter)
 		.use(remarkExtractFrontmatter, { yaml: yaml.parse, name: 'fm' })
