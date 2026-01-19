@@ -1,6 +1,5 @@
 import svgLoader from 'vite-svg-loader';
 import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
 
 export default defineNuxtConfig({
 	compatibilityDate: '2024-04-03',
