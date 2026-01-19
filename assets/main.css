@@ -25,7 +25,7 @@ prose-ol:list-outside prose-ol:list-decimal [&_p:has(img):has(em)_>_img]:mb-2
 [&_p:has(img):has(em)_>_em]:not-italic [&_p:has(img):has(em)_>_em]:text-sm [&_p:has(img):has(em)_>_em]:text-neutral-500
 prose-img:mx-auto prose-pre:border prose-pre:border-neutral-200 prose-pre:overflow-x-auto
 prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:border-l-4 prose-blockquote:border-l-neutral-200 [&_del]:text-neutral-400
-prose-hr:text-neutral-200;
+prose-hr:text-neutral-200 wrap-break-word;
 }
 
 .prose-lg h1 {
