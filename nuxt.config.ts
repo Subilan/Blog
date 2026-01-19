@@ -1,5 +1,6 @@
 import svgLoader from 'vite-svg-loader';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
 
 export default defineNuxtConfig({
 	compatibilityDate: '2024-04-03',
@@ -26,7 +27,7 @@ export default defineNuxtConfig({
 		name: 'SolitudeScroll'
 	},
 
-	modules: ['@nuxtjs/sitemap', '@nuxt/image', 'nuxt-og-image'],
+	modules: ['@nuxtjs/sitemap', '@nuxt/image', '@nuxt/fonts', 'nuxt-og-image'],
 
 	sitemap: {
 		sources: ['/api/get-post-urls']
@@ -36,7 +37,8 @@ export default defineNuxtConfig({
 		prerender: {
 			crawlLinks: true,
 			routes: ['/sitemap.xml']
-		}
+		},
+		preset: 'static'
 	},
 
 	app: {
@@ -48,26 +50,47 @@ export default defineNuxtConfig({
 	},
 
 	ogImage: {
+		zeroRuntime: true,
+		defaults: {
+			// satori is not working at all at my needs.
+			// chromium is the only choice here.
+			renderer: 'chromium'
+		},
 		fonts: [
+			{ path: '/fonts/InterDisplay-Regular.ttf', name: 'Inter', weight: 400 },
+			{ path: '/fonts/InterDisplay-Bold.ttf', name: 'Inter', weight: 700 },
+			{ path: '/fonts/NotoSansSC-Regular.otf', name: 'NotoSansSC', weight: 400 },
+			{ path: '/fonts/NotoSansSC-Bold.otf', name: 'NotoSans', weight: 700 }
+		]
+	},
+
+	fonts: {
+		provider: 'local',
+		processCSSVariables: false,
+		families: [
 			{
-				name: 'Noto Serif SC',
-				weight: 700,
-				path: '/fonts/noto-serif-sc/noto-serif-sc-v31-chinese-simplified_latin-700.ttf'
-			},
-			{
-				name: 'Noto Serif SC',
+				name: 'Inter',
 				weight: 400,
-				path: '/fonts/noto-serif-sc/noto-serif-sc-v31-chinese-simplified_latin-regular.ttf'
+				src: '/fonts/InterDisplay-Regular.ttf',
+				global: true
 			},
 			{
-				name: 'Literata',
-				weight: 400,
-				path: '/fonts/literata/literata-v35-latin-regular.ttf'
-			},
-			{
-				name: 'Literata',
+				name: 'Inter',
 				weight: 700,
-				path: '/fonts/literata/literata-v35-latin-700.ttf'
+				src: '/fonts/InterDisplay-Bold.ttf',
+				global: true
+			},
+			{
+				name: 'NotoSansSC',
+				weight: 400,
+				src: '/fonts/NotoSansSC-Regular.otf',
+				global: true
+			},
+			{
+				name: 'NotoSansSC',
+				weight: 700,
+				src: '/fonts/NotoSansSC-Bold.otf',
+				global: true
 			}
 		]
 	}

@@ -25,6 +25,26 @@ import { visit } from 'unist-util-visit';
 import type { Root } from 'mdast';
 import { h } from 'hastscript';
 import stringWidth from 'string-width';
+import satori from 'satori';
+import sharp from 'sharp';
+import getOgNode from './ogNode';
+import type { ReactNode } from 'react';
+
+async function mkdirIfNotExist(path: string) {
+	let shouldCreate =
+		(await (async () => {
+			try {
+				await fs.access(path, fs.constants.F_OK);
+				return false;
+			} catch {
+				return true;
+			}
+		})()) || !(await fs.stat(path)).isDirectory();
+
+	shouldCreate && (await fs.mkdir(path, { recursive: true }));
+}
+
+['public/data', 'public/og_images', 'public/posts'].forEach(mkdirIfNotExist);
 
 const postDirItems = await fs.readdir(`data/posts`);
 const postFilenames = postDirItems.filter(name => name.endsWith('.md'));
@@ -82,10 +102,10 @@ function vuepressLikeCallout() {
 	};
 }
 
-const posts: Result[] = [];
+const posts: Post[] = [];
 const postDigests: ResultDigest[] = [];
 
-export type Result = {
+export type Post = {
 	id: string;
 	content: string;
 	frontmatter: FrontMatter;
@@ -118,11 +138,56 @@ function countWordsCJK(text: string) {
 	return (text.match(/[\u00ff-\uffff]|\S+/g) || []).length;
 }
 
+async function generateOgImageSvgFromPost(post: Post) {
+	return satori(getOgNode(post) as ReactNode, {
+		width: 1200,
+		height: 600,
+		fonts: [
+			{
+				name: 'InterDisplay',
+				data: await fs.readFile('./public/fonts/InterDisplay-Regular.ttf'),
+				weight: 400,
+				style: 'normal'
+			},
+			{
+				name: 'InterDisplay',
+				data: await fs.readFile('./public/fonts/InterDisplay-Bold.ttf'),
+				weight: 700,
+				style: 'normal'
+			},
+			{
+				name: 'Inter',
+				data: await fs.readFile('./public/fonts/Inter-Regular.ttf'),
+				weight: 400,
+				style: 'normal'
+			},
+			{
+				name: 'Inter',
+				data: await fs.readFile('./public/fonts/Inter-Bold.ttf'),
+				weight: 700,
+				style: 'normal'
+			},
+			{
+				name: 'NotoSansSC',
+				data: await fs.readFile('./public/fonts/NotoSansSC-Regular.otf'),
+				weight: 400,
+				style: 'normal'
+			},
+			{
+				name: 'NotoSansSC',
+				data: await fs.readFile('./public/fonts/NotoSansSC-Bold.otf'),
+				weight: 700,
+				style: 'normal'
+			}
+		]
+	});
+}
+
 for (let postFilename of postFilenames) {
 	const document = await fs.readFile(`data/posts/${postFilename}`, 'utf8');
 	const result = await applyPipeline(document);
 	const content = result.toString();
-	const data: Result = {
+	const data: Post = {
 		id: postFilename.replace('.md', '').toLowerCase(),
 		content,
 		frontmatter: result.data.fm as FrontMatter,
@@ -136,6 +201,9 @@ for (let postFilename of postFilenames) {
 	if (data.frontmatter.hidden) continue;
 
 	await fs.writeFile(`public/data/${data.id}.json`, JSON.stringify(data));
+	const ogImageSvg = await generateOgImageSvgFromPost(data);
+	const ogImagePng = await sharp(Buffer.from(ogImageSvg)).png().toBuffer();
+	await fs.writeFile(`public/og_images/${data.id}.png`, ogImagePng);
 
 	postDigests.push({
 		id: data.id,
