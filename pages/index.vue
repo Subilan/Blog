@@ -6,7 +6,7 @@
         <router-link to="/pages/blogroll">友链</router-link>
         <router-link to="/pages/pgp">PGP</router-link>
         <router-link to="/pages/about">关于</router-link>
-        <a target="_blank" href="https://photos.subilan.win">相册</a>
+        <!-- <a target="_blank" href="https://photos.subilan.win">相册</a> -->
       </div>
     </div>
     <div class="flex items-center gap-3 [&_svg]:h-6 [&_svg]:w-6">
