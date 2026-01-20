@@ -1,5 +1,6 @@
 <template>
   <div class="lg:max-w-187.5 lg:mx-auto">
+    <button class="lg:hidden text-sky-600 mb-3" @click="$router.push('/')"><- 返回首页</button>
     <div class="flex flex-col gap-3 mb-10">
       <h1 class="text-4xl font-bold leading-snug">{{ post.title }}</h1>
       <div class="text-xl text-neutral-500">{{ formatDate(post.frontmatter.date, 'YYYY 年 M 月 D 日') }}</div>
