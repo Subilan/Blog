@@ -6,6 +6,8 @@ cate: 代码
 
 # 一种基于类型体操的 useEventBus 的封装
 
+## 目录
+
 > useEventBus 是 Vue Use 库提供的一个（类似于 React Hook 但又不完全等价的）工具函数
 
 **Why 类型体操？从自动补全说起。**
