@@ -28,7 +28,7 @@ cate: 路径
 
 视频整体并没有透露是哪一个输入法，并且提及的都是「系统内置输入法」，但是通过一闪而过的「橙色主题色」画面以及弹幕里的提示，和随即[作者给出的漏洞页面](https://avd.aliyun.com/detail?id=AVD-2023-42579)来看，这的确是搜狗输入法搞的鬼。
 
-![](https://s11.ax1x.com/2024/01/23/pFeQcY8.png)
+![](./get-rid-of-sogou-img/pFeQcY8.png)
 *作者给出的阿里云漏洞库页面*
 
 作为很早以前就已经出现的输入法，搜狗伴随了我很多年。如今看见上面的字数统计，已经输入了一百多万字，而事实远不止这这一些。但是回想起先前数次自己的喜好都被应用们*十分精准*地猜到，再加上如今这一视频的披露，我想是时候应该说再见了。
@@ -78,7 +78,7 @@ cate: 路径
 
 那么如何绑定到<kbd>F13</kbd>呢？幸好俺有一个外置的蓝牙键盘。键盘上标有 Windows 系统的 <kbd>PrtSc</kbd>、<kbd>ScrLk</kbd> 和 <kbd>Pause</kbd>，这些键其实在 macOS 上分别对应了 <kbd>F13</kbd> 到 <kbd>F15</kbd>。临时连接上蓝牙键盘，在绑定页面按下 <kbd>PrtSc</kbd>，就能将操作与 <kbd>F13</kbd> 绑定。
 
-![](https://s11.ax1x.com/2024/01/23/pFeQ3e1.png)
+![](3/pFeQ3e1.png)
 *将切换到上一个输入法的快捷键设置为 F13*
 
 接下来用到 Karabiner-Elements 的映射功能，将<kbd>Shift</kbd> 映射到 <kbd>F13</kbd>即可。这一切通过在 Karabiner-Elements 的 Complex Modifications（复杂修改项）中编写一个简单的 JSON 描述文件来实现。
@@ -118,10 +118,10 @@ cate: 路径
 
 系统本身的设置里，对 Caps Lock 有两个可以配置的地方。一个是在 Modifier Keys（修饰键）里的重定向功能，这个显然用不到，Caps Lock 依然需要保留其本身的功能。另一个是在输入法全局配置里的「切换输入法」功能开关。
 
-![](https://s11.ax1x.com/2024/01/23/pFeQ8dx.png)
+![](./get-rid-of-sogou-img/pFeQ8dx.png)
 *重定向功能*
 
-![](https://s11.ax1x.com/2024/01/23/pFeQlLR.png)
+![](./get-rid-of-sogou-img/pFeQlLR.png)
 *切换输入法功能开关*
 
 直觉告诉我，这个「切换输入法」功能开关是需要关掉的。关掉以后，Caps Lock 键的用途就只有切换大小写了。美中不足的是在中文输入法下按下 Caps Lock 所做的并不是切换到英文大写，而是临时切换到英文模式。这一点暂时没有想到怎么解决。
