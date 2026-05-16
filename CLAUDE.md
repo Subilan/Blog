@@ -16,6 +16,9 @@ yarn preview
 
 # Compile Markdown posts to JSON (run separately before generate if needed)
 yarn vite-node build.ts
+
+# Check type correctness
+yarn typecheck
 ```
 
 ## Architecture

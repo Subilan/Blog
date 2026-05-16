@@ -23,8 +23,7 @@
     </div>
     <client-only>
       <div class="pc-dark-toggle-btn button" @click="toggleDarkmode">
-        <icon :path="mdiWeatherSunny" v-if="(!darkMode && forceMode !== 'dark') || forceMode === 'light'"/>
-        <icon :path="mdiWeatherNight" v-if="(darkMode && forceMode !== 'light') || forceMode === 'dark'"/>
+        <icon :path="modeIcon"/>
       </div>
     </client-only>
   </nav>
@@ -33,10 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import {mdiMagnify, mdiMenu, mdiWeatherNight, mdiWeatherSunny} from "@mdi/js";
+import {mdiMagnify, mdiMenu, mdiWeatherNight, mdiWeatherSunny, mdiThemeLightDark} from "@mdi/js";
 import {pages} from "~/data/config";
 import isMacOS from "~/utils/isMacOS";
-import {usePreferredDark} from "@vueuse/core";
 import toggleDarkmode from "~/utils/toggleDarkmode";
 import getSiteName from "../utils/getSiteName";
 
@@ -44,5 +42,11 @@ const searchModal = ref(false);
 const pageSwitcherModel = ref(false);
 
 const forceMode = useState('force-mode');
-const darkMode = usePreferredDark();
+
+const modeIcon = computed(() => {
+  const mode = forceMode.value || 'auto';
+  if (mode === 'auto') return mdiThemeLightDark;
+  if (mode === 'dark') return mdiWeatherNight;
+  return mdiWeatherSunny;
+});
 </script>

@@ -1,24 +1,18 @@
-import {usePreferredDark} from "@vueuse/core";
-
-export default function (state) {
-    const preference = usePreferredDark();
+export default function () {
     const cookie = useCookie('subilan-blog-dark-mode-indicator');
-    const forceMode = useState('force-mode');
+    const forceMode = useState('force-mode', () => cookie.value || 'auto');
 
     switch (forceMode.value) {
-        case 'dark': {
+        case 'auto':
+        case undefined:
             forceMode.value = 'light';
             break;
-        }
-
-        case 'light': {
+        case 'light':
             forceMode.value = 'dark';
             break;
-        }
-
-        default: {
-            forceMode.value = preference.value ? 'light' : 'dark';
-        }
+        case 'dark':
+            forceMode.value = 'auto';
+            break;
     }
 
     cookie.value = forceMode.value;

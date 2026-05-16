@@ -3,6 +3,7 @@
 @import './hljs/stackoverflow-light.css';
 @import './hljs/languagenames.css';
 @plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
 	font-feature-settings:
@@ -15,17 +16,57 @@
 	--font-mono: 'Cascadia Code', 'Menlo', 'SF Mono', 'Consolas', monospace;
 }
 
+body {
+	@apply bg-white text-neutral-900 transition-colors;
+}
+
+.dark body {
+	@apply bg-neutral-950 text-neutral-200;
+}
+
+.dark strong,
+.dark b {
+	@apply text-neutral-100;
+}
+
 .prose-lg {
 	@apply max-w-none prose-neutral
-prose-kbd:border prose-th:p-3 prose-td:p-3 prose-th:border prose-td:border
-prose-th:border-neutral-200 prose-td:border-neutral-200 prose-table:w-full
-prose-table:border prose-table:border-neutral-200 prose-ul:list-outside prose-ul:list-disc 
-prose-ol:list-outside prose-ol:list-decimal [&_p:has(img):has(em)_>_img]:mb-2
-[&_p:has(img):has(em)]:leading-tight [&_p:has(img):has(em)]:text-left
-[&_p:has(img):has(em)_>_em]:not-italic [&_p:has(img):has(em)_>_em]:text-sm [&_p:has(img):has(em)_>_em]:text-neutral-500
-prose-img:mx-auto prose-pre:border prose-pre:border-neutral-200 prose-pre:overflow-x-auto
-prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:border-l-4 prose-blockquote:border-l-neutral-200 [&_del]:text-neutral-400
-prose-hr:text-neutral-200 wrap-break-word;
+	prose-kbd:border prose-th:p-3 prose-td:p-3 prose-th:border prose-td:border
+	prose-th:border-neutral-200 prose-td:border-neutral-200 prose-table:w-full
+	prose-table:border prose-table:border-neutral-200 prose-ul:list-outside prose-ul:list-disc
+	prose-ol:list-outside prose-ol:list-decimal [&_p:has(img):has(em)_>_img]:mb-2
+	[&_p:has(img):has(em)]:leading-tight [&_p:has(img):has(em)]:text-left
+	[&_p:has(img):has(em)_>_em]:not-italic [&_p:has(img):has(em)_>_em]:text-sm [&_p:has(img):has(em)_>_em]:text-neutral-500
+	prose-img:mx-auto prose-pre:border prose-pre:border-neutral-200 prose-pre:overflow-x-auto
+	prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:border-l-4 prose-blockquote:border-l-neutral-200 [&_del]:text-neutral-400
+	prose-hr:text-neutral-200 wrap-break-word;
+}
+
+.dark .prose-lg {
+	@apply prose-invert
+	prose-th:border-neutral-700 prose-td:border-neutral-700
+	prose-table:border-neutral-700 prose-pre:border-neutral-700
+	prose-blockquote:border-l-neutral-700 prose-hr:text-neutral-700;
+}
+
+.dark .prose-lg :not(.not-prose) a {
+	@apply text-sky-400;
+}
+
+.dark .prose-lg blockquote {
+	@apply text-neutral-400;
+}
+
+.dark .prose-lg [&_del] {
+	@apply text-neutral-500;
+}
+
+.dark .prose-lg details {
+	@apply border-neutral-700;
+}
+
+.dark .prose-lg .vuepress-callout {
+	@apply border-neutral-700;
 }
 
 .prose-lg h1 {
