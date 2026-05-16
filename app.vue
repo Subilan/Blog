@@ -28,14 +28,43 @@ const titleWithSuffix = computed(() => {
   return `${route.meta.title} - ${sitename}`;
 });
 
+const cookie = useCookie('subilan-blog-dark-mode-indicator');
+const forceMode = useState('force-mode', () => cookie.value || 'auto');
+const preferredDark = usePreferredDark();
+
+const isDark = computed(() => {
+  if (forceMode.value === 'dark') return true;
+  if (forceMode.value === 'light') return false;
+  return preferredDark.value;
+});
+
 onMounted(() => {
-  const isDark = usePreferredDark();
+  document.documentElement.classList.toggle('dark', isDark.value);
+});
+
+watch(isDark, (val) => {
+  if (import.meta.client) {
+    document.documentElement.classList.toggle('dark', val);
+  }
+});
+
+watch(forceMode, (val) => {
+  cookie.value = val;
+});
+
+onMounted(() => {
   useFavicon('/avatar.jpg', {
     rel: 'icon'
-  })
+  });
 });
 
 useHead({
+  script: [
+    {
+      innerHTML: `(function(){var c=document.cookie.match(/(?:^|;\\s*)subilan-blog-dark-mode-indicator=([^;]+)/);var m=c?c[1]:'auto';if(m==='dark'||(m==='auto'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})()`,
+      type: 'text/javascript'
+    }
+  ],
   meta: [
     {
       property: 'og:title',

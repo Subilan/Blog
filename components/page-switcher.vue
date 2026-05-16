@@ -11,8 +11,7 @@
      <transition name="opacity" appear>
        <div class="mobile-dark-toggle-btn-container">
          <div class="mobile-dark-toggle-btn button" @click="toggleDarkmode">
-           <icon :path="mdiWeatherSunny" v-if="(!darkMode && forceMode !== 'dark') || forceMode === 'light'"/>
-           <icon :path="mdiWeatherNight" v-if="(darkMode && forceMode !== 'light') || forceMode === 'dark'"/>
+           <icon :path="modeIcon"/>
          </div>
        </div>
      </transition>
@@ -22,11 +21,16 @@
 
 <script setup>
 import {pages} from '~/data/config.js'
-import {mdiWeatherNight, mdiWeatherSunny} from "@mdi/js";
-import {usePreferredDark} from "@vueuse/core";
+import {mdiWeatherNight, mdiWeatherSunny, mdiThemeLightDark} from "@mdi/js";
 
 const model = defineModel();
 
-const darkMode = usePreferredDark();
 const forceMode = useState('force-mode');
+
+const modeIcon = computed(() => {
+  const mode = forceMode.value || 'auto';
+  if (mode === 'auto') return mdiThemeLightDark;
+  if (mode === 'dark') return mdiWeatherNight;
+  return mdiWeatherSunny;
+});
 </script>
