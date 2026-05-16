@@ -1,10 +1,10 @@
 <template>
   <div class="lg:max-w-187.5 lg:mx-auto">
-    <button class="lg:hidden text-sky-600 mb-3" @click="$router.push('/')"><- 返回首页</button>
+    <button class="lg:hidden text-sky-600 dark:text-sky-400 mb-3" @click="$router.push('/')"><- 返回首页</button>
     <div class="flex flex-col gap-3 mb-10">
       <h1 class="text-4xl font-bold leading-snug">{{ post.title }}</h1>
-      <div class="text-xl text-neutral-500">{{ formatDate(post.frontmatter.date, 'YYYY 年 M 月 D 日') }}</div>
-      <p class="text-neutral-500" v-if="dayDelta >= 730">提示：你正阅读的文章的发布日期距今已经有 <strong>{{ dayAgo
+      <div class="text-xl text-neutral-500 dark:text-neutral-400">{{ formatDate(post.frontmatter.date, 'YYYY 年 M 月 D 日') }}</div>
+      <p class="text-neutral-500 dark:text-neutral-400" v-if="dayDelta >= 730">提示：你正阅读的文章的发布日期距今已经有 <strong>{{ dayAgo
           }}</strong>了，其中的部分信息、个人观点或者措辞习惯等可能已经发生改变，因此仅供参考，请酌情阅读。</p>
     </div>
     <!-- <div class="toc-container" v-if="post.headings.length > 0">
