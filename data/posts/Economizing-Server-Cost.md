@@ -2,40 +2,21 @@
 date: 2024/08/26
 cate: 代码
 desc-short: 起初，这一切只是为了省钱...
-desc: 这是一种透过阿里云提供的 API 并搭配 Minecraft 插件，通过调用 ECS、OSS 等资源来实现自动备份、自助创建、自动销毁空闲资源等功能，从而构建成的一个可供玩家自主操作的服务器平台。文中所提的 TiLab 现在已经没有在运行了，但是类似的思路仍然可以参考（如果你有兴趣的话）。
+desc: 这是一种透过阿里云提供的 API 并搭配 Minecraft 插件，通过调用 ECS、OSS 等资源来实现自动备份、自助创建、自动销毁空闲资源等功能，从而构建成的一个可供玩家自主操作的服务端管理平台。
 ---
 
 # 自动化的 Minecraft 服务器管理平台
 
-:::warning
-
-202502 更新：
-
-这篇文章所述的主体 TiLab 运行了一个月就结束了（2022 年 Seati 采用类似的模式运行了至少一年之久），其原因包括
-- 只有少数玩家有足够热情去游戏
-- 服务器采用了 ATM9 这样的大型整合包，导致经济效益并不如预期
-- 2024 年 9 月开学以后，现存玩家几乎不再上线
-- 以上情况在 2018~2024 年间反复发生
-
-于是 Seati 也于 2024 年 9 月彻底解散掉了，因为我也没有精力去做任何有实际效益的宣传工作，加之个人反思即使费尽心思宣传，意义好像也不大。
-
-但值得注意的是，本文中所述的方法至少到 2025 年 2 月都是有效的，其思路也是可复现的。
-:::
-
-
-这里所说的一样“自动化 Minecraft 服务器管理平台”即~~现在已经投入使用的~~当前不再投入使用的 [TiLab](https://lab.seati.cc)。本文将讲述其具体用途和来历，以及大致的搭建过程。
-
 ## 综述
 
-这一项目最初想法的产生，源于 [SomeBottle](https://bottle.moe/) 在前些年提到的一种使用阿里云提供的*抢占式实例*来实现以较低成本运营 Minecraft 服务器的方案。Seati（2023 年以前叫做 Seatide）在 2022 年曾经实现过一段时间这样的模式，并基本验证了这种方案的可行性，同时也成功节省了许多成本。在 Seatide 改为 Seati 后，我希望能够搭建一个可以与游戏紧密联系的“社区”类平台。
+这一项目最初想法的产生，源于 [SomeBottle](https://bottle.moe/) 在前些年提到的一种使用阿里云提供的*抢占式实例*来实现以较低成本运营 Minecraft 服务器的方案。这种方案在 2022 年曾经实现过一段时间，并基本验证了其可行性，同时也成功节省了许多成本。
 
-在搭建这一论坛之前，首先需要保证服务器的正常运行，遂决定采用一些较新的技术栈重写服务器的管理平台，并将其命名为“TiLab”，其中 Ti 取的是 Seati 这一名称的简写，Lab 则指这一平台更类似于一个包含各种功能的实验室。
+在搭建这一论坛之前，首先需要保证服务器的正常运行，遂决定采用一些较新的技术栈重写服务器的管理平台。
 
-整个平台按照简单的前后端分离模式编写，首先开发的是后端的内容，之后开发的是前端。相比于上一次，技术栈发生了比较大的改变。
+整个平台按照简单的前后端分离模式编写，首先开发的是后端的内容，之后开发的是前端。
 
-| |2024 年重写|2022 年实现|
+| |重写版本|旧版本|
 |:-:|:-:|:-:|
-|Repo|[seatitanium/lab-backend](https://github.com/seatitanium/lab-backend)|[seatidemc/backend](https://github.com/seatidemc/backend)|
 |前端|Nuxt 3 (Vue 3)|Vue 2|
 |后端|gin (Go)|Flask 2<br/>Python 3|
 
@@ -70,10 +51,10 @@ desc: 这是一种透过阿里云提供的 API 并搭配 Minecraft 插件，通�
 :::tip
 其实无论是从外部网站，还是从自身开发的角度上来讲，固定的 IP 地址的确是更好的选择。“别人的平台”与“自己的平台”的区别在于，对“自己的平台”而言，可以选择主动调用动态的 IP 信息，而外部网站会考虑到开发、维护成本而只支持静态的 IP 地址。
 
-考虑到上面这一点，Seati 更加倾向于自身平台的开发，以求更多方面的可用性。
+考虑到上面这一点，自行开发平台会更加灵活，以求更多方面的可用性。
 :::
 
-[^1]: 这里的“测试”是指 2022 年 Seatide 采用这种模式开服务器的几个月里，通过阿里云账单提供的费用数据总结而得出的结论。
+[^1]: 这里的”测试”是指 2022 年采用这种模式开服务器的几个月里，通过阿里云账单提供的费用数据总结而得出的结论。
 
 ### 数据持久性的保证
 
@@ -105,9 +86,9 @@ OSS（或者腾讯云的 COS 等类似概念）是一种外部的独立空间，
 
 ### 实例规格的挑选
 
-阿里云的大部分实例，其 CPU 主频并不高（3 GHz 或以下），这本身在服务器 CPU 中是很常见的现象。早先 Seatide 所使用的实例规格为 ecs.g6 系列，其采用 Intel® Xeon® Platinum 8269CY (Cascade Lake)，主频为 2.5 GHz，睿频为 3.2 GHz。但由于 Minecraft 服务器的特殊性，这样的频率远远无法满足多人游玩的场景。
+阿里云的大部分实例，其 CPU 主频并不高（3 GHz 或以下），这本身在服务器 CPU 中是很常见的现象。早先尝试使用的实例规格为 ecs.g6 系列，其采用 Intel® Xeon® Platinum 8269CY (Cascade Lake)，主频为 2.5 GHz，睿频为 3.2 GHz。但由于 Minecraft 服务器的特殊性，这样的频率远远无法满足多人游玩的场景。
 
-因此在挑选实例规格时，必须考虑到 CPU 的主频，好在阿里云提供了专门的高主频型实例。目前 Seati 采用的是 ecs.hfg8i（基频 3.3，睿频 3.9）、ecs.hfg7（基频 >=3.3，睿频 3.8）两种规格的实例。其中 ecs.hfg8i 库存较少，除了香港外只有 4 个内地地域可以购买，因此具有较高的释放风险。
+因此在挑选实例规格时，必须考虑到 CPU 的主频，好在阿里云提供了专门的高主频型实例。目前可以采用的是 ecs.hfg8i（基频 3.3，睿频 3.9）、ecs.hfg7（基频 >=3.3，睿频 3.8）两种规格的实例。其中 ecs.hfg8i 库存较少，除了香港外只有 4 个内地地域可以购买，因此具有较高的释放风险。
 
 ![ecshfg8i-storage](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Economizing-Server-Cost/image0.png)
 *ecs.hfg8i 可购买的地域*
@@ -149,10 +130,10 @@ OSS（或者腾讯云的 COS 等类似概念）是一种外部的独立空间，
 
 ## 3. 后端实现
 
-后端作为一个 Web 服务，具有在多个应用程序内均可以被轻松请求到的特点。借助阿里云发布的 SDK 以及其开放平台上的代码生成功能，很容易就可以编写出可供调用的 endpoint。TiLab 的后端使用 Go 语言，框架是 gin，本文以此为例进行代码的编写。其它语言可自行类推。
+后端作为一个 Web 服务，具有在多个应用程序内均可以被轻松请求到的特点。借助阿里云发布的 SDK 以及其开放平台上的代码生成功能，很容易就可以编写出可供调用的 endpoint。后端使用 Go 语言，框架是 gin，本文以此为例进行代码的编写。其它语言可自行类推。
 
 :::tip
-RESTful 路由相关的设置，可以直接参考 GitHub 上 TiLab 的相关代码，在此不再赘述：[router.go](https://github.com/seatitanium/lab-backend/blob/main/common/router.go)。
+RESTful 路由相关的设置在此不再赘述。
 :::
 
 ### API Client 的创建
@@ -401,7 +382,7 @@ func RunMonitor() {
 
 以上操作应当为一次性操作，所以在数据表中应当保存有相应的一次性操作标识，或者应当识别是否已经 InvokeCommand 来确保不重复执行。
 
-至于这些指令的具体内容，则可以划分为两个部分，一个部分为固定不变的内容（因为云助手指令一经创建不能修改，如果需要修改只能克隆先前的命令，这样会导致命令 ID 发生变化不利于代码编写），另一部分为可能会变化的内容，可作为另外一个独立的脚本来实现。下面列出 Seati 当前使用的命令内容作为参考。
+至于这些指令的具体内容，则可以划分为两个部分，一个部分为固定不变的内容（因为云助手指令一经创建不能修改，如果需要修改只能克隆先前的命令，这样会导致命令 ID 发生变化不利于代码编写），另一部分为可能会变化的内容，可作为另外一个独立的脚本来实现。下面列出一个命令内容的示例作为参考。
 
 ```shell
 #!/bin/bash
@@ -447,7 +428,7 @@ echo Running server deployment script
 
 其具体内容可以在 <https://github.com/seatitanium/server-scripts/blob/main/deploy-server.sh> 查看。
 
-`oss-archive.sh`、`oss-backup.sh` 即对应前文的 `archive.sh` 和 `backup.sh`，用来分别实现归档和备份操作。为了脚本编写的简便，数据盘挂载的位置应当是固定的。这两个脚本用到了阿里云的 ossutil 和 <https://github.com/seatitanium/oss> 项目（相当于是对 ossutil 的一个包装）。
+`oss-archive.sh`、`oss-backup.sh` 即对应前文的 `archive.sh` 和 `backup.sh`，用来分别实现归档和备份操作。为了脚本编写的简便，数据盘挂载的位置应当是固定的。这两个脚本用到了阿里云的 ossutil 和 <https://github.com/seatitanium/oss>（相当于是对 ossutil 的一个包装）。
 
 :::tip
 在编写脚本的过程中，需要注意的是 non-interactive 环境下各种指令的使用。例如
@@ -467,7 +448,7 @@ git config --global http.version HTTP/1.1
 
 ## 5. 插件的编写
 
-根据服务器使用的服务端，需要分别编写相应的插件。Seati 是模组服务器，且大多数时候使用的是 Forge，所以就可以使用 Forge MDK 来编写一个新的插件。这些逻辑其实和 Minecraft 本身的关联不大，因此插件中应该很少会用到平台专有的方法（FML 方法、Spigot 方法等），其涉及到的 event 在不同的服务端平台之间也具有共通性，所以代码的迁移难度比较低，当更换到其它平台时也可以在较短时间内通过复制粘贴、微调的方式做适配。
+根据服务器使用的服务端，需要分别编写相应的插件。如果使用的是 Forge 服务端，就可以使用 Forge MDK 来编写一个新的插件。这些逻辑其实和 Minecraft 本身的关联不大，因此插件中应该很少会用到平台专有的方法（FML 方法、Spigot 方法等），其涉及到的 event 在不同的服务端平台之间也具有共通性，所以代码的迁移难度比较低，当更换到其它平台时也可以在较短时间内通过复制粘贴、微调的方式做适配。
 
 如 2 中所提到的，插件所负责的是这些功能点：
 
@@ -549,14 +530,14 @@ runScriptAsync("/path/to/oss-archive.sh").get(180);
 
 定时备份是上面逻辑的简化版本，只需使用 `ScheduledExecutorService#scheduleAtFixedRate` 新建一个定期执行的任务，以 180s 的 timeout 用同种方法去调用 `oss-backup.sh` 即可。
 
-## 简单谈谈 TiLab 前端方面的设计
+## 简单谈谈前端方面的设计
 
-TiLab 前端方面，部分借鉴了 Material Design 中的阴影、圆角和配色，尤其是配色，采用 Material Design Palette 这一 Chrome 插件来完成，主色为 Teal（#009688）。
+前端方面，部分借鉴了 Material Design 中的阴影、圆角和配色，尤其是配色，采用 Material Design Palette 这一 Chrome 插件来完成，主色为 Teal（#009688）。
 
 ![teal-colors](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Economizing-Server-Cost/image-3.png)
 *Material Design Palette 中的 Teal 相关配色*
 
-字体方面，采用 ArrowType 出品的 Recursive（[Google Fonts](https://fonts.google.com/specimen/Recursive)，[官网](https://recursive.design)）。TiLab 的 Logo 和 favicon 中也采用的是这种字体，具体使用的是它的 casual 变体。
+字体方面，采用 ArrowType 出品的 Recursive（[Google Fonts](https://fonts.google.com/specimen/Recursive)，[官网](https://recursive.design)）。Logo 和 favicon 中也采用的是这种字体，具体使用的是它的 casual 变体。
 
 ![recursive-website](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Economizing-Server-Cost/image-4.png)
 *recursive.design 网站*
@@ -565,6 +546,6 @@ TiLab 前端方面，部分借鉴了 Material Design 中的阴影、圆角和配
 
 ## 总结
 
-上文较为简略地展示了这样一个平台是如何被构思和构建的，如果你感兴趣，也可以按照这样的模式自行开发，或者直接使用 Seati 目前开源的这套系统，或者为这套系统添加属于你自己的理解。如有任何疑问，欢迎在[本博客的 Issue](https://github.com/Subilan/Blog/issues) 中提出。
+上文较为简略地展示了这样一个平台是如何被构思和构建的，如果你感兴趣，也可以按照这样的模式自行开发，或者为这套系统添加属于你自己的理解。如有任何疑问，欢迎在[本博客的 Issue](https://github.com/Subilan/Blog/issues) 中提出。
 
-Seatide 在 2022 年就已经实现过了这一模式，如今经过重写，除去一些 Bug，TiLab 的工作依旧比预期的要好，可以节省大部分成本。TiLab 在开发的过程中还增添了许多其它功能，例如游戏时间统计、网页端聊天（WebSocket，参见 [Java-WebSocket](https://github.com/TooTallNate/Java-WebSocket)）等，同时通过 BSS（费用）API，将消费数据实时公开给玩家以供参考。在将来亦可以根据需求推出更多的功能。
+这一模式在 2022 年就已经实现过了，如今经过重写，除去一些 Bug，工作依旧比预期的要好，可以节省大部分成本。在开发的过程中还增添了许多其它功能，例如游戏时间统计、网页端聊天（WebSocket，参见 [Java-WebSocket](https://github.com/TooTallNate/Java-WebSocket)）等，同时通过 BSS（费用）API，将消费数据实时公开给玩家以供参考。在将来亦可以根据需求推出更多的功能。
