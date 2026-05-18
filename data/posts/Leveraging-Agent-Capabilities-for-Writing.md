@@ -237,7 +237,7 @@ I prefer responses in natural paragraph form rather than bullet points because I
 
 模型原生的输出形式是纯文本、Markdown 或者（La）TeX。
 
-如果我们需要用Word进行排版，一个思路是让模型先按照我们给定的格式要求输出到 Markdown 后，再将其粘贴到 Word 中。这个粘贴的过程也是我们审阅和修改模型输出内容的过程。
+如果我们需要用 Word 进行排版，一个思路是让模型先按照我们给定的格式要求输出到 Markdown 后，再将其粘贴到 Word 中。这个粘贴的过程也是我们审阅和修改模型输出内容的过程。
 
 Markdown 支持我们在 Word 中需要用到的一些主要格式，例如标题、自然段、列表、表格等。
 - 表格的内容和格式可能需要我们自行调整
