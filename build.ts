@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import fsSync from 'node:fs';
+import crypto from 'node:crypto';
 import rehypeStringify from 'rehype-stringify';
 import rehypeSlug from 'rehype-slug';
 import rehypeHighlight from 'rehype-highlight';
@@ -104,6 +105,37 @@ function vuepressLikeCallout() {
 	};
 }
 
+const MANIFEST_PATH = '.build-manifest.json';
+type BuildManifest = Record<string, { hash: string }>;
+
+function loadManifest(): BuildManifest {
+	try {
+		return JSON.parse(fsSync.readFileSync(MANIFEST_PATH, 'utf8'));
+	} catch {
+		return {};
+	}
+}
+
+function contentHash(content: string): string {
+	return crypto.createHash('sha256').update(content).digest('hex');
+}
+
+function extractFrontmatter(content: string): FrontMatter | null {
+	const match = content.match(/^---\n([\s\S]*?)\n---/);
+	if (!match) return null;
+	return yaml.parse(match[1]) as FrontMatter;
+}
+
+const isCI = !!process.env.CI || !!process.env.VERCEL;
+const oldManifest = isCI ? {} : loadManifest();
+const newManifest: BuildManifest = {};
+
+let existingDigests: ResultDigest[] = [];
+try {
+	existingDigests = JSON.parse(await fs.readFile('data/postdigests.json', 'utf8'));
+} catch {}
+const existingDigestMap = new Map(existingDigests.map(d => [d.id, d]));
+
 const posts: Post[] = [];
 const postDigests: ResultDigest[] = [];
 
@@ -187,10 +219,25 @@ async function generateOgImageSvgFromPost(post: Post) {
 
 for (let postFilename of postFilenames) {
 	const document = await fs.readFile(`data/posts/${postFilename}`, 'utf8');
+	const id = postFilename.replace('.md', '').toLowerCase();
+	const hash = contentHash(document);
+
+	const fm = extractFrontmatter(document);
+	if (fm?.hidden) continue;
+
+	const outputExists = fsSync.existsSync(`public/data/${id}.json`) && fsSync.existsSync(`public/og_images/${id}.png`);
+	if (oldManifest[id]?.hash === hash && outputExists && existingDigestMap.has(id)) {
+		newManifest[id] = { hash };
+		postDigests.push(existingDigestMap.get(id)!);
+		console.log(`[skip] ${id}`);
+		continue;
+	}
+
+	console.log(`[build] ${id}`);
 	const result = await applyPipeline(document);
 	const content = result.toString();
 	const data: Post = {
-		id: postFilename.replace('.md', '').toLowerCase(),
+		id,
 		content,
 		frontmatter: result.data.fm as FrontMatter,
 		title: result.data.meta?.title || '',
@@ -200,13 +247,12 @@ for (let postFilename of postFilenames) {
 		}
 	};
 
-	if (data.frontmatter.hidden) continue;
-
 	await fs.writeFile(`public/data/${data.id}.json`, JSON.stringify(data));
 	const ogImageSvg = await generateOgImageSvgFromPost(data);
 	const ogImagePng = await sharp(Buffer.from(ogImageSvg)).png().toBuffer();
 	await fs.writeFile(`public/og_images/${data.id}.png`, ogImagePng);
 
+	newManifest[id] = { hash };
 	postDigests.push({
 		id: data.id,
 		title: data.title,
@@ -219,6 +265,17 @@ for (let subfolder of subfolders) {
 	await fs.cp(`data/posts/${subfolder}`, `public/posts/${subfolder}`, { recursive: true });
 }
 
+for (const id of Object.keys(oldManifest)) {
+	if (!newManifest[id]) {
+		console.log(`[clean] ${id}`);
+		await fs.rm(`public/data/${id}.json`, { force: true });
+		await fs.rm(`public/og_images/${id}.png`, { force: true });
+	}
+}
+
 postDigests.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 await fs.writeFile(`data/postdigests.json`, JSON.stringify(postDigests));
+if (!isCI) {
+	await fs.writeFile(MANIFEST_PATH, JSON.stringify(newManifest, null, 2));
+}
