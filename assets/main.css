@@ -49,6 +49,10 @@ body {
 	prose-blockquote:border-l-neutral-700 prose-hr:text-neutral-700;
 }
 
+.dark .prose-lg pre {
+	background-color: #1c1b1b;
+}
+
 .dark .prose-lg :not(.not-prose) a {
 	@apply text-sky-400;
 }
@@ -57,7 +61,7 @@ body {
 	@apply text-neutral-400;
 }
 
-.dark .prose-lg [&_del] {
+.dark .prose-lg del {
 	@apply text-neutral-500;
 }
 
