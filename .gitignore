@@ -34,3 +34,5 @@ run.local.sh
 public/data
 public/posts
 public/og_images
+
+.build-manifest.json
