@@ -5,7 +5,7 @@
         4.0</p>
       <div class="flex-1 h-px bg-neutral-200 dark:bg-neutral-700 hidden lg:block" />
       <a href="https://www.apple.com/mac/" target="_blank">
-        <img src="https://lmnt.me/files/images/badges/made-on-macintosh.gif" />
+        <img style="image-rendering: pixelated;" src="https://lmnt.me/files/images/badges/made-on-macintosh.gif" />
       </a>
     </div>
   </footer>
