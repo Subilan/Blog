@@ -1,0 +1,32 @@
+/* source-serif-4-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./source-serif-4-v14-latin-regular.woff2') format('woff2');
+}
+/* source-serif-4-italic - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 400;
+  src: url('./source-serif-4-v14-latin-italic.woff2') format('woff2');
+}
+/* source-serif-4-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Source Serif 4';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./source-serif-4-v14-latin-600.woff2') format('woff2');
+}
+/* source-serif-4-600italic - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Source Serif 4';
+  font-style: italic;
+  font-weight: 600;
+  src: url('./source-serif-4-v14-latin-600italic.woff2') format('woff2');
+}
