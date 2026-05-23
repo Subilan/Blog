@@ -52,6 +52,50 @@ watch(forceMode, (val) => {
   cookie.value = val;
 });
 
+const fontCookie = useCookie('subilan-blog-font-style');
+const fontStyle = useState('font-style', () => fontCookie.value || 'sans');
+
+const isSerif = computed(() => fontStyle.value === 'serif');
+
+const fontCssLinks = [
+  { rel: 'stylesheet', href: '/fonts/source-serif/source-serif.css' },
+  { rel: 'stylesheet', href: '/fonts/noto-serif-sc/noto-serif-sc.css' }
+];
+
+onMounted(() => {
+  document.documentElement.classList.toggle('serif', isSerif.value);
+  if (isSerif.value) {
+    fontCssLinks.forEach(l => {
+      const link = document.createElement('link');
+      link.rel = l.rel;
+      link.href = l.href;
+      link.setAttribute('data-font-style', 'true');
+      document.head.appendChild(link);
+    });
+  }
+});
+
+watch(isSerif, (val) => {
+  if (import.meta.client) {
+    document.documentElement.classList.toggle('serif', val);
+    if (val) {
+      fontCssLinks.forEach(l => {
+        const link = document.createElement('link');
+        link.rel = l.rel;
+        link.href = l.href;
+        link.setAttribute('data-font-style', 'true');
+        document.head.appendChild(link);
+      });
+    } else {
+      document.head.querySelectorAll('link[data-font-style]').forEach(l => l.remove());
+    }
+  }
+});
+
+watch(fontStyle, (val) => {
+  fontCookie.value = val;
+});
+
 onMounted(() => {
   useFavicon('/avatar.jpg', {
     rel: 'icon'
@@ -62,6 +106,10 @@ useHead({
   script: [
     {
       innerHTML: `(function(){var c=document.cookie.match(/(?:^|;\\s*)subilan-blog-dark-mode-indicator=([^;]+)/);var m=c?c[1]:'auto';if(m==='dark'||(m==='auto'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})()`,
+      type: 'text/javascript'
+    },
+    {
+      innerHTML: `(function(){var c=document.cookie.match(/(?:^|;\\s*)subilan-blog-font-style=([^;]+)/);if(c&&c[1]==='serif'){var l1=document.createElement('link');l1.rel='stylesheet';l1.href='/fonts/source-serif/source-serif.css';var l2=document.createElement('link');l2.rel='stylesheet';l2.href='/fonts/noto-serif-sc/noto-serif-sc.css';document.head.appendChild(l1);document.head.appendChild(l2);document.documentElement.classList.add('serif')}})()`,
       type: 'text/javascript'
     }
   ],
