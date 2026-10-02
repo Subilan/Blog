@@ -9,6 +9,11 @@
 	font-feature-settings:
 		'liga' 1,
 		'calt' 1; /* fix for Chrome */
+	--progress-bar-color: oklch(68.5% 0.169 237.323); /* text-sky-500 */
+}
+
+:root.dark {
+	--progress-bar-color: oklch(74.6% 0.16 232.661); /* text-sky-400 */
 }
 
 @theme {
@@ -19,6 +24,19 @@
 
 .serif {
 	--font-sans: var(--font-serif);
+}
+
+#nprogress .bar {
+	background: var(--progress-bar-color) !important;
+	box-shadow:
+		0 0 5px color-mix(in oklab, var(--progress-bar-color) 80%, transparent),
+		0 0 12px color-mix(in oklab, var(--progress-bar-color) 50%, transparent) !important;
+}
+
+#nprogress .peg {
+	box-shadow:
+		0 0 10px var(--progress-bar-color),
+		0 0 5px var(--progress-bar-color) !important;
 }
 
 body {
