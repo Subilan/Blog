@@ -15,7 +15,7 @@ yarn generate
 yarn preview
 
 # Compile Markdown posts to JSON (run separately before generate if needed)
-yarn vite-node build.ts
+yarn data
 
 # Check type correctness
 yarn typecheck
@@ -26,9 +26,11 @@ yarn typecheck
 This is a Nuxt 3 static blog deployed to Vercel. There is no database — all content lives as local Markdown files compiled to JSON at build time.
 
 ### Build pipeline
-1. Markdown posts in `data/posts/` are compiled to `public/data/<slug>.json` via `build.ts`
-2. `build.ts` uses **unified** (remark → rehype) to process Markdown into HTML. It also generates PNG OG images for each post using Satori + Sharp.
-3. `build.js` is a **legacy** version that uses `markdown-it` + `shiki` instead. It produces `data/posts.json` (one big JSON bundle) rather than per-post JSON files. It is currently unused but kept for reference.
+1. Markdown posts in `data/posts/` are compiled to `public/data/<slug>.json` via `build.ts` (`yarn data`)
+2. `build.ts` uses **unified** (remark → rehype) to process Markdown into HTML. It also generates PNG OG images for each post using Satori + Sharp, and writes the derived index `data/postdigests.json` (listing page, sitemap).
+3. Builds are incremental: `.build-manifest.json` caches a content hash per post plus a hash of the renderer inputs (`build.ts`, `ogNode.jsx`, `relative-md.ts`, and the dependency versions in `package.json`). Any renderer change invalidates all posts, so OG images never go stale. `CI`/`VERCEL` environments skip reading the cache entirely and rebuild everything.
+4. Post concurrency defaults to 4, override with `BUILD_CONCURRENCY`.
+5. Files whose content did not change (`postdigests.json`, the manifest) are not rewritten, so `yarn dev` does not restart on every build.
 
 ### Routing
 - `pages/index.vue` — post listing, reads `data/postdigests.json` directly
@@ -42,6 +44,7 @@ This is a Nuxt 3 static blog deployed to Vercel. There is no database — all co
 - Markdown callouts use VuePress-like syntax (`:::tip`, `:::warning`, `:::danger`, `:::note`) converted via a remark directive plugin in `build.ts`.
 - Relative Markdown links to other `.md` files (`./other-post.md`) are rewritten to blog post URLs (`/posts/other-post`) by `remarkRelativeAssetsToPosts` in `relative-md.ts`.
 - Image zoom uses `medium-zoom` on mounted.
+- There is **no search feature**: the old search modal/index (`components/search.vue`, `components/navbar.vue`, `utils/getSearchContent.js`, `data/postsearch.json`) was removed as dead code; restoring search means reimplementing it (the build pipeline no longer emits a full-text index).
 
 ### Config
 - `nuxt.config.ts` — Tailwind CSS 4 via Vite plugin, local fonts, static nitro preset with crawlLinks, sitemap sourced from `/api/get-post-urls`, OG image with chromium renderer.

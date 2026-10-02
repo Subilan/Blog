@@ -32,26 +32,72 @@ import getOgNode from './ogNode';
 import type { ReactNode } from 'react';
 import { remarkRelativeAssetsToPosts } from './relative-md';
 
-async function mkdirIfNotExist(path: string) {
-	let shouldCreate =
-		(await (async () => {
-			try {
-				await fs.access(path, fs.constants.F_OK);
-				return false;
-			} catch {
-				return true;
-			}
-		})()) || !(await fs.stat(path)).isDirectory();
+export type Post = {
+	id: string;
+	content: string;
+	frontmatter: FrontMatter;
+	title: string;
+	analytics: Analytics;
+};
 
-	shouldCreate && (await fs.mkdir(path, { recursive: true }));
-}
+export type ResultDigest = {
+	id: string;
+	title: string;
+	date: string;
+	analytics: Analytics;
+};
 
-['public/data', 'public/og_images', 'public/posts'].forEach(mkdirIfNotExist);
+export type Analytics = {
+	cjkCharCount: number;
+	size: number;
+};
 
-const postDirItems = await fs.readdir(`data/posts`);
-const postFilenames = postDirItems.filter(name => name.endsWith('.md'));
-const subfolders = postDirItems.filter(name => fsSync.statSync(`data/posts/${name}`).isDirectory());
-// const document = await fs.readFile('example.md', 'utf8');
+export type FrontMatter = {
+	date: string;
+	cate?: string;
+	desc?: string;
+	'desc-short'?: string;
+	hidden?: boolean;
+	ignoreOutdate?: boolean;
+};
+
+const POSTS_SOURCE_DIR = 'data/posts';
+const DIGEST_PATH = 'data/postdigests.json';
+const MANIFEST_PATH = '.build-manifest.json';
+const PUBLIC_DATA_DIR = 'public/data';
+const PUBLIC_OG_DIR = 'public/og_images';
+const PUBLIC_POSTS_DIR = 'public/posts';
+const CONCURRENCY = Math.max(1, Number(process.env.BUILD_CONCURRENCY) || 4);
+
+const PIPELINE_INPUTS = ['build.ts', 'relative-md.ts', 'ogNode.jsx'];
+
+await Promise.all(
+	[PUBLIC_DATA_DIR, PUBLIC_OG_DIR, PUBLIC_POSTS_DIR].map(dir => fs.mkdir(dir, { recursive: true }))
+);
+
+const pipelineVersion = contentHash(
+	(
+		await Promise.all(PIPELINE_INPUTS.map(file => fs.readFile(file, 'utf8')))
+	).concat([dependencyFingerprint(await fs.readFile('package.json', 'utf8'))]).join('\0')
+);
+
+const ogFonts = await Promise.all(
+	(
+		[
+			{ name: 'InterDisplay', weight: 400, file: 'InterDisplay-Regular.ttf' },
+			{ name: 'InterDisplay', weight: 700, file: 'InterDisplay-Bold.ttf' },
+			{ name: 'Inter', weight: 400, file: 'Inter-Regular.ttf' },
+			{ name: 'Inter', weight: 700, file: 'Inter-Bold.ttf' },
+			{ name: 'NotoSansSC', weight: 400, file: 'NotoSansSC-Regular.otf' },
+			{ name: 'NotoSansSC', weight: 700, file: 'NotoSansSC-Bold.otf' }
+		] as const
+	).map(async font => ({
+		name: font.name,
+		weight: font.weight,
+		style: 'normal' as const,
+		data: await fs.readFile(`./public/fonts/${font.file}`)
+	}))
+);
 
 async function applyPipeline(content: string) {
 	return unified()
@@ -105,132 +151,131 @@ function vuepressLikeCallout() {
 	};
 }
 
-const MANIFEST_PATH = '.build-manifest.json';
-type BuildManifest = Record<string, { hash: string }>;
+type BuildManifest = {
+	pipeline: string;
+	posts: Record<string, { hash: string }>;
+};
 
-function loadManifest(): BuildManifest {
-	try {
-		return JSON.parse(fsSync.readFileSync(MANIFEST_PATH, 'utf8'));
-	} catch {
-		return {};
-	}
+function emptyManifest(): BuildManifest {
+	return { pipeline: '', posts: {} };
 }
 
-function contentHash(content: string): string {
+function loadManifest(): BuildManifest {
+	let parsed: unknown;
+	try {
+		parsed = JSON.parse(fsSync.readFileSync(MANIFEST_PATH, 'utf8'));
+	} catch {
+		return emptyManifest();
+	}
+
+	if (!parsed || typeof parsed !== 'object') return emptyManifest();
+
+	// 旧格式为扁平的 { id: { hash } }，读入后 pipeline 为空会触发一次全量重建
+	if ('posts' in parsed) return parsed as BuildManifest;
+
+	return { pipeline: '', posts: parsed as BuildManifest['posts'] };
+}
+
+function contentHash(content: string | Buffer): string {
 	return crypto.createHash('sha256').update(content).digest('hex');
 }
 
-function extractFrontmatter(content: string): FrontMatter | null {
-	const match = content.match(/^---\n([\s\S]*?)\n---/);
-	if (!match) return null;
-	return yaml.parse(match[1]) as FrontMatter;
+// 只关心依赖版本，脚本/字段改动不应该让所有文章重渲染
+function dependencyFingerprint(packageJson: string): string {
+	try {
+		const { dependencies, devDependencies } = JSON.parse(packageJson);
+		return JSON.stringify({ dependencies, devDependencies });
+	} catch {
+		return packageJson;
+	}
 }
 
-const isCI = !!process.env.CI || !!process.env.VERCEL;
-const oldManifest = isCI ? {} : loadManifest();
-const newManifest: BuildManifest = {};
-
-let existingDigests: ResultDigest[] = [];
-try {
-	existingDigests = JSON.parse(await fs.readFile('data/postdigests.json', 'utf8'));
-} catch {}
-const existingDigestMap = new Map(existingDigests.map(d => [d.id, d]));
-
-const posts: Post[] = [];
-const postDigests: ResultDigest[] = [];
-
-export type Post = {
-	id: string;
-	content: string;
-	frontmatter: FrontMatter;
-	title: string;
-	analytics: Analytics;
-};
-
-export type ResultDigest = {
-	id: string;
-	title: string;
-	date: string;
-	analytics: Analytics;
-};
-
-export type Analytics = {
-	cjkCharCount: number;
-	size: number;
-};
-
-export type FrontMatter = {
-	date: string;
-	cate?: string;
-	desc?: string;
-	'desc-short'?: string;
-	hidden?: boolean;
-	ignoreOutdate?: boolean;
-};
+function extractFrontmatter(content: string): FrontMatter | null {
+	const [, frontmatter] = content.replace(/^\uFEFF/, '').match(/^---\r?\n([\s\S]*?)\r?\n---/) || [];
+	if (frontmatter === undefined) return null;
+	return yaml.parse(frontmatter) as FrontMatter;
+}
 
 function countWordsCJK(text: string) {
 	return (text.match(/[\u00ff-\uffff]|\S+/g) || []).length;
+}
+
+async function readJson<T>(path: string, fallback: T): Promise<T> {
+	try {
+		return JSON.parse(await fs.readFile(path, 'utf8')) as T;
+	} catch {
+		return fallback;
+	}
+}
+
+async function writeIfChanged(path: string, content: string) {
+	try {
+		if ((await fs.readFile(path, 'utf8')) === content) return false;
+	} catch {}
+	await fs.writeFile(path, content);
+	return true;
+}
+
+async function runPool<T>(items: T[], limit: number, worker: (item: T) => Promise<void>) {
+	let cursor = 0;
+	await Promise.all(
+		Array.from({ length: Math.min(limit, items.length) }, async () => {
+			while (cursor < items.length) {
+				const item = items[cursor++];
+				await worker(item!);
+			}
+		})
+	);
 }
 
 async function generateOgImageSvgFromPost(post: Post) {
 	return satori(getOgNode(post) as ReactNode, {
 		width: 1200,
 		height: 600,
-		fonts: [
-			{
-				name: 'InterDisplay',
-				data: await fs.readFile('./public/fonts/InterDisplay-Regular.ttf'),
-				weight: 400,
-				style: 'normal'
-			},
-			{
-				name: 'InterDisplay',
-				data: await fs.readFile('./public/fonts/InterDisplay-Bold.ttf'),
-				weight: 700,
-				style: 'normal'
-			},
-			{
-				name: 'Inter',
-				data: await fs.readFile('./public/fonts/Inter-Regular.ttf'),
-				weight: 400,
-				style: 'normal'
-			},
-			{
-				name: 'Inter',
-				data: await fs.readFile('./public/fonts/Inter-Bold.ttf'),
-				weight: 700,
-				style: 'normal'
-			},
-			{
-				name: 'NotoSansSC',
-				data: await fs.readFile('./public/fonts/NotoSansSC-Regular.otf'),
-				weight: 400,
-				style: 'normal'
-			},
-			{
-				name: 'NotoSansSC',
-				data: await fs.readFile('./public/fonts/NotoSansSC-Bold.otf'),
-				weight: 700,
-				style: 'normal'
-			}
-		]
+		fonts: ogFonts
 	});
 }
 
-for (let postFilename of postFilenames) {
-	const document = await fs.readFile(`data/posts/${postFilename}`, 'utf8');
-	const id = postFilename.replace('.md', '').toLowerCase();
+const isCI = !!process.env.CI || !!process.env.VERCEL;
+const oldManifest = isCI ? emptyManifest() : loadManifest();
+const newManifest: BuildManifest = { pipeline: pipelineVersion, posts: {} };
+
+if (oldManifest.pipeline !== pipelineVersion) {
+	console.log(`[pipeline] ${isCI ? 'CI build' : 'renderer inputs changed'}: rebuilding every post`);
+}
+
+const existingDigests = await readJson<ResultDigest[]>(DIGEST_PATH, []);
+const existingDigestMap = new Map(existingDigests.map(digest => [digest.id, digest]));
+
+const postDirItems = await fs.readdir(POSTS_SOURCE_DIR);
+const postFilenames = postDirItems.filter(name => name.endsWith('.md')).sort();
+const subfolders = postDirItems.filter(name => fsSync.statSync(`${POSTS_SOURCE_DIR}/${name}`).isDirectory());
+
+const postDigests: ResultDigest[] = [];
+
+async function buildPost(filename: string) {
+	const document = await fs.readFile(`${POSTS_SOURCE_DIR}/${filename}`, 'utf8');
+	const id = filename.replace(/\.md$/, '').toLowerCase();
 	const hash = contentHash(document);
 
-	const fm = extractFrontmatter(document);
-	if (fm?.hidden) continue;
+	const frontmatter = extractFrontmatter(document);
+	if (frontmatter?.hidden) return;
 
-	const outputExists = fsSync.existsSync(`public/data/${id}.json`) && fsSync.existsSync(`public/og_images/${id}.png`);
-	if (oldManifest[id]?.hash === hash && outputExists && existingDigestMap.has(id)) {
-		newManifest[id] = { hash };
-		postDigests.push(existingDigestMap.get(id)!);
+	const dataPath = `${PUBLIC_DATA_DIR}/${id}.json`;
+	const ogPath = `${PUBLIC_OG_DIR}/${id}.png`;
+
+	const reusable =
+		oldManifest.pipeline === pipelineVersion &&
+		oldManifest.posts[id]?.hash === hash &&
+		existingDigestMap.has(id) &&
+		fsSync.existsSync(dataPath) &&
+		fsSync.existsSync(ogPath);
+
+	if (reusable) {
 		console.log(`[skip] ${id}`);
-		continue;
+		newManifest.posts[id] = { hash };
+		postDigests.push(existingDigestMap.get(id)!);
+		return;
 	}
 
 	console.log(`[build] ${id}`);
@@ -247,12 +292,12 @@ for (let postFilename of postFilenames) {
 		}
 	};
 
-	await fs.writeFile(`public/data/${data.id}.json`, JSON.stringify(data));
+	await fs.writeFile(dataPath, JSON.stringify(data));
 	const ogImageSvg = await generateOgImageSvgFromPost(data);
 	const ogImagePng = await sharp(Buffer.from(ogImageSvg)).png().toBuffer();
-	await fs.writeFile(`public/og_images/${data.id}.png`, ogImagePng);
+	await fs.writeFile(ogPath, ogImagePng);
 
-	newManifest[id] = { hash };
+	newManifest.posts[id] = { hash };
 	postDigests.push({
 		id: data.id,
 		title: data.title,
@@ -261,21 +306,45 @@ for (let postFilename of postFilenames) {
 	});
 }
 
-for (let subfolder of subfolders) {
-	await fs.cp(`data/posts/${subfolder}`, `public/posts/${subfolder}`, { recursive: true });
-}
-
-for (const id of Object.keys(oldManifest)) {
-	if (!newManifest[id]) {
-		console.log(`[clean] ${id}`);
-		await fs.rm(`public/data/${id}.json`, { force: true });
-		await fs.rm(`public/og_images/${id}.png`, { force: true });
+await runPool(postFilenames, CONCURRENCY, async filename => {
+	try {
+		await buildPost(filename);
+	} catch (error) {
+		throw new Error(
+			`failed to build ${filename}: ${error instanceof Error ? error.message : String(error)}`,
+			{ cause: error }
+		);
 	}
+});
+
+for (let subfolder of subfolders) {
+	await fs.cp(`${POSTS_SOURCE_DIR}/${subfolder}`, `${PUBLIC_POSTS_DIR}/${subfolder}`, { recursive: true });
 }
 
-postDigests.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const staleIds = new Set(Object.keys(oldManifest.posts));
+for (const file of await fs.readdir(PUBLIC_DATA_DIR)) {
+	if (file.endsWith('.json')) staleIds.add(file.replace(/\.json$/, ''));
+}
+for (const file of await fs.readdir(PUBLIC_OG_DIR)) {
+	if (file.endsWith('.png')) staleIds.add(file.replace(/\.png$/, ''));
+}
 
-await fs.writeFile(`data/postdigests.json`, JSON.stringify(postDigests));
+for (const id of staleIds) {
+	if (newManifest.posts[id]) continue;
+	console.log(`[clean] ${id}`);
+	await fs.rm(`${PUBLIC_DATA_DIR}/${id}.json`, { force: true });
+	await fs.rm(`${PUBLIC_OG_DIR}/${id}.png`, { force: true });
+}
+
+postDigests.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime() || a.id.localeCompare(b.id));
+
+await writeIfChanged(DIGEST_PATH, JSON.stringify(postDigests));
 if (!isCI) {
-	await fs.writeFile(MANIFEST_PATH, JSON.stringify(newManifest, null, 2));
+	const sortedManifest: BuildManifest = {
+		pipeline: newManifest.pipeline,
+		posts: Object.fromEntries(Object.entries(newManifest.posts).sort(([a], [b]) => a.localeCompare(b)))
+	};
+	await writeIfChanged(MANIFEST_PATH, JSON.stringify(sortedManifest, null, 2));
 }
+
+console.log(`built ${postDigests.length} posts`);
