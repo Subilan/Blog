@@ -24,10 +24,7 @@ logs
 .env.*
 !.env.example
 
-posts.json
-pages.json
 postdigests.json
-postsearch.json
 
 run.local.sh
 
