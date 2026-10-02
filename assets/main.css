@@ -92,6 +92,14 @@ body {
 	@apply text-sky-600 hover:underline cursor-pointer;
 }
 
+.prose-lg a[data-footnote-ref]::before {
+	content: '[';
+}
+
+.prose-lg a[data-footnote-ref]::after {
+	content: ']';
+}
+
 .prose-lg details summary {
 	@apply cursor-pointer;
 }
