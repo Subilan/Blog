@@ -57,38 +57,13 @@ const fontStyle = useState('font-style', () => fontCookie.value || 'sans');
 
 const isSerif = computed(() => fontStyle.value === 'serif');
 
-const fontCssLinks = [
-  { rel: 'stylesheet', href: '/fonts/source-serif/source-serif.css' },
-  { rel: 'stylesheet', href: '/fonts/noto-serif-sc/noto-serif-sc.css' }
-];
-
 onMounted(() => {
   document.documentElement.classList.toggle('serif', isSerif.value);
-  if (isSerif.value) {
-    fontCssLinks.forEach(l => {
-      const link = document.createElement('link');
-      link.rel = l.rel;
-      link.href = l.href;
-      link.setAttribute('data-font-style', 'true');
-      document.head.appendChild(link);
-    });
-  }
 });
 
 watch(isSerif, (val) => {
   if (import.meta.client) {
     document.documentElement.classList.toggle('serif', val);
-    if (val) {
-      fontCssLinks.forEach(l => {
-        const link = document.createElement('link');
-        link.rel = l.rel;
-        link.href = l.href;
-        link.setAttribute('data-font-style', 'true');
-        document.head.appendChild(link);
-      });
-    } else {
-      document.head.querySelectorAll('link[data-font-style]').forEach(l => l.remove());
-    }
   }
 });
 
@@ -109,7 +84,7 @@ useHead({
       type: 'text/javascript'
     },
     {
-      innerHTML: `(function(){var c=document.cookie.match(/(?:^|;\\s*)subilan-blog-font-style=([^;]+)/);if(c&&c[1]==='serif'){var l1=document.createElement('link');l1.rel='stylesheet';l1.href='/fonts/source-serif/source-serif.css';var l2=document.createElement('link');l2.rel='stylesheet';l2.href='/fonts/noto-serif-sc/noto-serif-sc.css';document.head.appendChild(l1);document.head.appendChild(l2);document.documentElement.classList.add('serif')}})()`,
+      innerHTML: `(function(){var c=document.cookie.match(/(?:^|;\\s*)subilan-blog-font-style=([^;]+)/);if(c&&c[1]==='serif'){document.documentElement.classList.add('serif')}})()`,
       type: 'text/javascript'
     }
   ],
@@ -120,14 +95,6 @@ useHead({
     }
   ],
   link: [
-    {
-      rel: 'preconnect',
-      href: 'https://rsms.me/'
-    },
-    {
-      rel: 'stylesheet',
-      href: 'https://rsms.me/inter/inter.css'
-    },
     {
       rel: 'stylesheet',
       href: 'https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css',

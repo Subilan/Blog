@@ -40,6 +40,7 @@ This is a Nuxt 3 static blog deployed to Vercel. There is no database — all co
 ### Key patterns
 - Post JSON files are imported statically: `await import('~/public/data/<slug>.json')`. This ensures they're bundled at build time for static generation.
 - The site is fully static (`nitro.preset: 'static'`), so `$fetch` is **not used** for post data — it would conflict with SSR and OG image generation.
+- OG images are pre-generated PNGs in `public/og_images/`; each post page sets `ogImage` in `useSeoMeta` to an absolute URL built from `useSiteConfig().url`. Nothing renders OG images at runtime (the `nuxt-og-image` module was removed).
 - Umami analytics is injected server-side via a Nitro plugin in `server/plugins/analytics.ts`.
 - Markdown callouts use VuePress-like syntax (`:::tip`, `:::warning`, `:::danger`, `:::note`) converted via a remark directive plugin in `build.ts`.
 - Relative Markdown links to other `.md` files (`./other-post.md`) are rewritten to blog post URLs (`/posts/other-post`) by `remarkRelativeAssetsToPosts` in `relative-md.ts`.
@@ -47,9 +48,14 @@ This is a Nuxt 3 static blog deployed to Vercel. There is no database — all co
 - There is **no search feature**: the old search modal/index (`components/search.vue`, `components/navbar.vue`, `utils/getSearchContent.js`, `data/postsearch.json`) was removed as dead code; restoring search means reimplementing it (the build pipeline no longer emits a full-text index).
 
 ### Config
-- `nuxt.config.ts` — Tailwind CSS 4 via Vite plugin, local fonts, static nitro preset with crawlLinks, sitemap sourced from `/api/get-post-urls`, OG image with chromium renderer.
+- `nuxt.config.ts` — Tailwind CSS 4 via Vite plugin, Fontsource CSS in the `css` array, static nitro preset with crawlLinks, sitemap sourced from `/api/get-post-urls`.
 - `data/config.js` — defines navigation pages (home, about, blogroll, PGP) with MDI icons.
 - `data/blogrolls.json` — friend link data.
+
+### Fonts
+- Web fonts are self-hosted from Fontsource, imported through the `css` array in `nuxt.config.ts`: `@fontsource-variable/inter/standard(+standard-italic)` (wght + opsz axes, so headings keep Inter's optical sizing), `@fontsource/source-serif-4/{latin,latin-ext}-{400,600}(-italic)`, `@fontsource/noto-serif-sc/chinese-simplified-{400,700}`.
+- `--font-sans` starts with `'Inter Variable'`; `--font-serif` is only consumed by `.serif`, so the CJK serif files are never fetched unless the reader switches to serif mode. The toggle in `app.vue` is just a class plus a cookie, no runtime stylesheet injection.
+- The OG images are rendered by Satori in `build.ts`, which reads ttf/otf/woff but **not** woff2. Latin text therefore comes from `@fontsource/inter`'s `.woff` files, while the full `fonts/NotoSansSC-{Regular,Bold}.otf` stay in the repo because Fontsource's CJK subsets are too narrow for arbitrary post titles.
 
 ### Tailwind 4 migration note
 This project has already moved to Tailwind CSS 4 (`@tailwindcss/vite` plugin, `@import 'tailwindcss'` in CSS). No `tailwind.config.js` exists. The `@tailwindcss/typography` is loaded as a plugin in CSS (`@plugin "@tailwindcss/typography"`). Use new Tailwind 4 syntax (`@theme`, `@apply`, CSS-based config) — no `theme.extend` etc.

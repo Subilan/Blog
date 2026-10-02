@@ -12,7 +12,7 @@
 }
 
 @theme {
-	--font-sans: InterVariable, 'Inter', 'PingFang SC', '微软雅黑', sans-serif;
+	--font-sans: 'Inter Variable', 'PingFang SC', '微软雅黑', sans-serif;
 	--font-serif: 'Source Serif 4', 'Noto Serif SC', serif;
 	--font-mono: 'Cascadia Code', 'Menlo', 'SF Mono', 'Consolas', monospace;
 }
