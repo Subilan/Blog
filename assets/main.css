@@ -45,6 +45,7 @@ body {
 	prose-img:mx-auto prose-pre:border prose-pre:border-neutral-200 prose-pre:overflow-x-auto
 	prose-headings:font-bold prose-blockquote:text-neutral-500 prose-blockquote:border-l-4 prose-blockquote:border-l-neutral-200 [&_del]:text-neutral-400
 	prose-hr:text-neutral-200 wrap-break-word;
+	text-autospace: normal;
 }
 
 .dark .prose-lg {
