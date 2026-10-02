@@ -56,6 +56,6 @@ onMounted(() => {
 
 useSeoMeta({
   articleModifiedTime: post.frontmatter.date.replace(/\//g, '-'),
-  ogImage: `/og_images/${post.id}.png`
+  ogImage: `${useSiteConfig().url}/og_images/${post.id}.png`
 })
 </script>

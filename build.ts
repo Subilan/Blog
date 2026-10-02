@@ -81,21 +81,21 @@ const pipelineVersion = contentHash(
 	).concat([dependencyFingerprint(await fs.readFile('package.json', 'utf8'))]).join('\0')
 );
 
+const OG_FONTS = [
+	{ name: 'Inter', weight: 400, path: 'node_modules/@fontsource/inter/files/inter-latin-400-normal.woff' },
+	{ name: 'Inter', weight: 400, path: 'node_modules/@fontsource/inter/files/inter-latin-ext-400-normal.woff' },
+	{ name: 'Inter', weight: 700, path: 'node_modules/@fontsource/inter/files/inter-latin-700-normal.woff' },
+	{ name: 'Inter', weight: 700, path: 'node_modules/@fontsource/inter/files/inter-latin-ext-700-normal.woff' },
+	{ name: 'NotoSansSC', weight: 400, path: 'fonts/NotoSansSC-Regular.otf' },
+	{ name: 'NotoSansSC', weight: 700, path: 'fonts/NotoSansSC-Bold.otf' }
+] as const;
+
 const ogFonts = await Promise.all(
-	(
-		[
-			{ name: 'InterDisplay', weight: 400, file: 'InterDisplay-Regular.ttf' },
-			{ name: 'InterDisplay', weight: 700, file: 'InterDisplay-Bold.ttf' },
-			{ name: 'Inter', weight: 400, file: 'Inter-Regular.ttf' },
-			{ name: 'Inter', weight: 700, file: 'Inter-Bold.ttf' },
-			{ name: 'NotoSansSC', weight: 400, file: 'NotoSansSC-Regular.otf' },
-			{ name: 'NotoSansSC', weight: 700, file: 'NotoSansSC-Bold.otf' }
-		] as const
-	).map(async font => ({
+	OG_FONTS.map(async font => ({
 		name: font.name,
 		weight: font.weight,
 		style: 'normal' as const,
-		data: await fs.readFile(`./public/fonts/${font.file}`)
+		data: await fs.readFile(font.path)
 	}))
 );
 
