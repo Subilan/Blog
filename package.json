@@ -28,6 +28,7 @@
     "hastscript": "^9.0.1",
     "mdast": "^3.0.0",
     "medium-zoom": "^1.1.0",
+    "nprogress": "^0.2.0",
     "nuxt": "^3.16.2",
     "react": "^19.2.3",
     "rehype-external-links": "^3.0.0",
@@ -60,6 +61,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
+    "@types/nprogress": "^0.2.3",
     "sass": "^1.77.8",
     "vite-node": "^5.3.0"
   },
