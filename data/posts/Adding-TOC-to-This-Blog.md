@@ -69,7 +69,7 @@ Fun Facts:
 
 然而 `.` 并不包括换行符，所以经过测试替换成了 `[\s\S]`，识别效果如下图。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/h2-regex-test.png)
+![](oss://adding-toc-to-this-blog/h2-regex-test.png)
 _在 regex101.com 上面测试正则表达式_
 
 由于我们要处理的是 `h2` 和 `h3`，因此将正则表达式修改为
@@ -206,7 +206,7 @@ slugify('я люблю единорогов');
 
 遗憾的是这个库并不支持中文，相关的讨论在 [sindresorhus/transliterate 的第一个 Issue](https://github.com/sindresorhus/transliterate/issues/1) 里。在这里他们提出了用拼音、拼音加上数字注音、加上笔画数等来防止混淆，甚至还有人用 GPT 来为中文标题生成一个英文的 slug（这样就不需要考虑中文的处理了），等等，但至今仍然没有得出结论，也没有实现（这是 2018 年的 Issue）。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/chinese-is-currently-not-supported.png)
+![](oss://adding-toc-to-this-blog/chinese-is-currently-not-supported.png)
 _难绷_
 
 那么能否回归本真，用 URI encoding 的形式来呈现中文呢？理论上是可行的，但是实际上很难获得良好的 SEO 和用户认知体验。本博客现在使用的 `slugify` 函数就来自于 `markdown-it-anchor` 中，用 substring 限制了长度。
@@ -224,16 +224,16 @@ const slugify = s => encodeURIComponent(String(s).trim().toLowerCase().replace(/
 
 |   软件   | 是否支持 URL 中文 |                                                    截图                                                    |
 | :------: | :---------------: | :--------------------------------------------------------------------------------------------------------: |
-|   微信   |        否         | ![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/weixin-not-supported.png) |
-|    QQ    |        否         |   ![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/qq-not-supported.png)   |
-|  VSCode  |        是         |   ![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/vscode-supported.png)   |
-| Telegram |        是         |     ![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/tg-supported.png)     |
+|   微信   |        否         | ![](oss://adding-toc-to-this-blog/weixin-not-supported.png) |
+|    QQ    |        否         |   ![](oss://adding-toc-to-this-blog/qq-not-supported.png)   |
+|  VSCode  |        是         |   ![](oss://adding-toc-to-this-blog/vscode-supported.png)   |
+| Telegram |        是         |     ![](oss://adding-toc-to-this-blog/tg-supported.png)     |
 
 :::
 
 当然，如果只靠 URI encoding 也并不足够，例如本博客的需求。还需要进行一些额外处理来消去其中对用户没有意义的字符，否则就会呈现像这样的 URL：
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Adding-TOC-to-This-Blog/ugly-url.png)
+![](oss://adding-toc-to-this-blog/ugly-url.png)
 _开心就好_
 
 除此之外，还有一种更妥协的方式，即不考虑 slugify 以及由此诞生的 SEO 议题，而是直接随机生成/按照一定内容来生成标识符，例如哔哩哔哩的 BV 号，以及 YouTube 的视频链接地址。

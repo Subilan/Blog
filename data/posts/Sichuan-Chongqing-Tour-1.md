@@ -52,7 +52,7 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 我在恩施市区一会儿看到农村的影子，一会儿看到城市的影子。到城里时是上午 10 点，开车走了好几个宽敞的街道，几乎没遇到几个路上走的人，我感到十分诡异。难道是温度太高了吗？（当天温度应该在 32°C 左右）也有可能是我们去的地方属于郊区。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1549.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1549.jpeg)
 
 上图展示的是恩施城区内景点之一**土司城**，大概给人一种这是过去土司[^1]（可以理解为元朝及以后由官方认定的少数民族首领）居住过的类似于皇居的地方。但是事后查询资料发现这是[苏州园林设计院](http://www.szlad.com/about/)所设计的*仿古建筑群*，属于走过路过型的景点。大学生凭借学生证或者准大学生凭借准考证进去是免费的（仅供参考）。
 
@@ -80,30 +80,30 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 腾龙洞洞口会有一些小商铺，有些是卖吃的有些是卖衣服的。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1570.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1570.jpeg)
 *烤玉米、烤粽子，还有...鸡蛋？*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1574.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1574.jpeg)
 *景区入口*
 
 下图展示了腾龙洞入口前的一小段路，可以看出也是人满为患的程度。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1582.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1582.jpeg)
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1577.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1577.jpeg)
 *虽然不知道为什么要展示巴西的紫水晶*
 
 当时去腾龙洞，洞口有热气球可以坐。不清楚能不能坐到蓝天上，我也只见热气球到升到洞顶就下来了。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1608.JPG)
+![](oss://sichuan-chongqing-tour-1/IMG_1608.JPG)
 
 往回走的路上，路旁会有些小景点。接近前后洞交汇处的地方还存放有许多缸酒。下图是路途中的景象，可以看到右侧是来（或者回）的车道，左侧是栈道。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1670.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1670.jpeg)
 
 洞内免费观看的“土”味演出，感觉观看的有几千人，时长出乎意料地多于一个小时。这舞台也是十分精致，房子是可以移动的。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1689.JPG)
+![](oss://sichuan-chongqing-tour-1/IMG_1689.JPG)
 *这个图片压缩的有点狠了*
 
 离开了利川就往重庆方向全速进发。
@@ -114,7 +114,7 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 ### 洪崖洞民俗风貌区
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1771.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1771.jpeg)
 *沧白路*
 
 我有个习惯，每到一个城市我都想了解一下那个城市的市中心在哪里。北京上海就不用说了，城市的最中心都是既定的——但是重庆似乎没有那么广为人知的“市中心”。后来经过了一些了解，虽然不能 100% 确定是否是重庆人心中的市中心（后来发现真的不太算是），发现一个可以称作是“旅游中心”的地方，那就是洪崖洞。
@@ -137,16 +137,16 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 上路线图，起点是沧白路的非临江侧。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/the-way-to-qiansimen-big-bridge.png)
+![](oss://sichuan-chongqing-tour-1/the-way-to-qiansimen-big-bridge.png)
 
 上图是前往千厮门大桥的路线。最关键的位置就是上图中的那个分叉点，如果有条件可以直接在那里下车然后直接进入隧道。我是因为住在沧白路对面的巷子里所以需要从那里过马路走一圈。千厮门大桥上的人，在晚上不出意料也特别多，所以甚至有人直接选择从马路路肩上走，导致了一幅不亚于武汉的交通乱象，这样走的大部分都应该是外地人...
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1773.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1773.jpeg)
 *人流方向就是上千厮门大桥的*
 
 在千厮门大桥上拍摄的洪崖洞景象大概是这样的：
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1786.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1786.jpeg)
 
 下面那条走车的路就是嘉陵江滨江路。
 
@@ -158,16 +158,16 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 具体走楼梯的路线已经不记得了（我只记得下了一个，然后在建筑里走，然后再下一个就到建筑外围了），也没有照片。不过景区内是有指路牌的，见下图“下行步梯由此去”。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1919.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1919.jpeg)
 *摄于中层*
 
 在这层也可以拍到千厮门大桥。通过位置和焦距的调整可以把边框景物都去掉。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1915.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1915.jpeg)
 
 真正快要下到底层的时候，楼梯是在建筑外围。也是肉眼可见的人多啊！拍到了一点点晚霞。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1923.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1923.jpeg)
 
 一直跟随人流走，就真正来到洪崖洞建筑的底部了。但是这也不是最底部，下面还有一个码头。观察图片可以知道，路的这边有人，路的那边也有人。但是很可惜，过马路很难。如果想要到路的对面去，还得要走些特别的路。（连我自己都忘记我是怎么发现路线的了...就一直目标往下走就到了）
 
@@ -175,42 +175,42 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 路中间存在一个过街天桥，通过那个天桥甚至可以直接上到上面的马路上，所以其实这个天桥才是真正的优选路线...
 :::
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1947.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1947.jpeg)
 *仰视洪崖洞*
 
 标有“洪崖洞”三个字的地方，是游客服务中心。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1949.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1949.jpeg)
 *被拍到的路人如有侵犯欢迎联系我删除*
 
 比较戏剧性的是左下角的那个“手打柠檬茶”...虽然上面标着“重庆”二字，实际上并非只有重庆有。在成都标的是“成都”，在都江堰标的是“灌县”。
 
 要想要到马路对面，沿着夜市街区直走，左侧会出现一个比较大的码头入口（向下的楼梯），下去然后左转一直往前走即可。下面是在路上拍摄的图片：
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1960.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1960.jpeg)
 
 沿着路一直走（不是掏钱买票上船）就可以上楼梯到达栈道上了。上的那个楼梯有很多人卡在上面拍照（比如我），所以也会有警察维持秩序。注意千万别被挤摔跤了...有些人的素质啊😔
 
 上了楼梯就到了我们的目的地。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1970.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1970.jpeg)
 *摄于楼梯上*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1976.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1976.jpeg)
 *摄于栈道上*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2001.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2001.jpeg)
 *摄于栈道上*
 
 不得不说对面的银行是真的多💰💰💰。
 
 要想回到上面，不必走回头路，沿着栈道往前走到达过街天桥，然后就可以看到上去的楼梯了。下面是在天桥上拍摄的嘉陵江滨江路。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2016.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2016.jpeg)
 
 上到最顶部以后出去会进入一个在外边看来十分隐蔽的小巷道（如果能直接找到这里就可以直接下来了...），然后就会回到沧白路。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2029.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2029.jpeg)
 *小巷子出口处的路牌。划重点“洪崖洞观景台（客运码头）”就是目的地*
 
 在路上经过了许多店铺，我们吃了杨梅冰汤圆。这样一直沿坡下行即可到达最开始那张地图里“交叉点”的位置（一只酸奶牛店）。
@@ -223,21 +223,21 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 那也的确被我给体验到了，看到了一些沙坪坝的老房子（算是吧），吃到了八毛钱（其实最开始我听成了八块钱还被吓到了）的老冰棒。最终导航带我来到了渣滓洞隧道的门口。在门口有老年人坐着休息。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1802.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1802.jpeg)
 
 进入隧道以后就比较凉快了。出了隧道后，结合隧道里地上的钢轨痕迹和面前的废旧铁路，发现这里过去的确是一条铁路，继续往前走就是一个过去的火车站“梅园”。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1806.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1806.jpeg)
 
 照片中正对的方向，向前走一段距离后右转，再掉头，就是向着渣滓洞的方向去了。这一段路有坡度，在大热天来走其实还是有点难受的...
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1814.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1814.jpeg)
 *渣滓洞内景*
 
 :::tip
 上面的字并非原本就这样，下面是偶然在文章中看到的另外一版图片。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/old-zhazidong.png)
+![](oss://sichuan-chongqing-tour-1/old-zhazidong.png)
 :::
 
 渣滓洞的游览主要是参观每个房间。每个房间里有受难人的照片和简要的介绍，以及牢房内部的床位排布、办公桌等。我一个没有多少浓厚情绪的人看到了这些东西、墙上挂的人像以及他们最终的遭遇（一一·二七事件），心里也是说不出的难受。我希望世界能够一直和平下去。
@@ -250,7 +250,7 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 渣滓洞和白公馆相连，但是距离并不近。到了渣滓洞我才发现这里是有一个景区公交的，60 元可以坐 4 次（如有勘误欢迎纠正）。公交路线是 `渣滓洞->白公馆->公园->烈士墓地铁站->磁器口`。最开始是没有打算坐的，但最终我们还是选择了买票上车。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1825.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1825.jpeg)
 *白公馆标志性的“香山别墅”大门*
 
 > 白公馆，又名“香山别墅”，原是四川军阀**白驹**在重庆沙坪坝郊区的别墅，20世纪30年代，为养小妾而修建，因白驹自认为是白居易后裔，以白居易之号命其名为“香山别墅”；后成为国民政府军事委员会调查统计局的看守所，名为“国民政府军事委员会调查统计局重庆看守所”。
@@ -259,7 +259,7 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 坐公交可以到达磁器口。但是实话实说，依然是商业街，因为不是很饿所以啥也没买，就是转转看看没了，没咋拍照。里面还有采耳一类的东西，从恩施一路过来也是随处可见。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1830.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1830.jpeg)
 
 旁边有家茶颜悦色，人很多，是霸王茶姬比不上的人流量——也可能是因为店面太小。还听到了楼上有人在唱痛仰乐队的《西湖》，这是几个月前我经常听的一首歌。
 
@@ -271,9 +271,9 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 重庆人似乎习惯于把轨道交通称为轻轨。我觉得轻轨和地铁的界限，在重庆确确实实是被模糊了。当然这里探讨的不是严格的概念，只是一个“天上”和“地下”的区分。也得益于网络的宣传，又因为顺路，我来到了二号线的李子坝站，浅浅体验了一下“轻轨穿楼”的感觉。这个李子坝轻轨穿楼的体验在后来变得越来越火，有许多游客会选择在楼下面看，而这次我是坐在车里。这是再普通不过的交通路线，但也碍不住我对轨道交通的着迷。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1838.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1838.jpeg)
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_1847.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_1847.jpeg)
 
 等车的不乏只坐一站体验一下的，因为坐一站以后下车的人特别多。坐上去以后两边的风景——轨道交通与房子交汇——确实似乎只有重庆能看到了。
 
@@ -281,36 +281,36 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 听从网友的推荐，重庆大剧院打卡意义大于在里面看剧（将来有机会其实是想要看一下的）。外景还不错，当天是雨天。去的有些早还没有开放，但是门卫大哥允许我们在一楼简单看下。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2038.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2038.jpeg)
 *大剧院外景*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2049.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2049.jpeg)
 *一本书了解重庆人——馆内书架*
 
 十八梯听说是比较有重庆味的地方（山城步道没有时间去了），也来看看。还是商业街的样子，但是体验上比磁器口要更有感觉。人并不多，也有可能是下雨的原因。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2087.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2087.jpeg)
 
 在回来的路上偶然发现了一个免费的防空洞展厅，里面展示的大概是过去抗日时期的防空洞建设、效用等内容。这里的人文气息还是比较浓烈的。十八梯上面也有茶颜悦色，人依旧很多，所以干脆就不在重庆喝了。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2110.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2110.jpeg)
 
 俯瞰十八梯（非全景）：
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2107.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2107.jpeg)
 
 最后就是回到出发的地方了，也就是洪崖洞那一块。先去不远处的解放碑步行街。解放碑步行街就是普通步行街的样子。在解放碑下面有两名黑衣服警官打着伞绕圈。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2067.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2067.jpeg)
 
 从解放碑步行街可以步行回到洪崖洞，路途不远（大概 500 米？）。在路途中吃了午饭，说实话这是我在重庆吃到最满意的一餐了，因为份量终于和价格匹配了，味道还不错。更重要的是，牛肉大块~
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2115.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2115.jpeg)
 *三两*
 
 店名是山海一面。绝对不是打广告，诚心推荐。位置在解放碑到沧白路临江段之间。店的对面就是一家霸王茶姬。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2118.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2118.jpeg)
 
 ### 对重庆旅途的整体评价
 
@@ -331,42 +331,42 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 其实一路走来看到这样的古风商业街都有些视觉疲劳了，但是还是得去逛逛。刚到成都就看到“成都欢迎您”几个大字。下面的通道右侧有一个大运会的办公室，里面有一张牌子，上面贴着如同高考倒计时一样的内容，“离大运会还有 9 天”。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2138.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2138.jpeg)
 
 宽窄巷子里面，给人一种特别的古代与现代融合的感觉。这就体现在两家饮料厂的店铺设计上了...
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2170.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2170.jpeg)
 *喜茶庭院前的门洞*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2185.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2185.jpeg)
 *侧视星巴克院子*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2186.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2186.jpeg)
 *正视星巴克院子*
 
 嗯，设计得还蛮古色古香的。路上还经过了一个朱炳仁铜展览馆。里面的制品的确很漂亮，也很贵。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2166.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2166.jpeg)
 *应该是仿照梵高画作制作的向日葵 - ￥80,000*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2164.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2164.jpeg)
 *就一整块铜，但是很美 - 应该是高于￥100,000*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2165.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2165.jpeg)
 *一幅用铜修饰的画作 - 未标价*
 
 还有许多作品没有在这里展出。感觉设立这个展览馆也就是给大家看看大师的作品，真正购买的，应该很少吧？
 
 宽巷子入口走到头的样子，人头攒动。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2146.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2146.jpeg)
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2191.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2191.jpeg)
 *宽窄巷子*
 
 路上还碰到了卖烟的铺子。这才发现专门有一个烟的牌子叫做“宽窄”，然后还有跟熊猫有关的牌子，确实是做出四川特色来了。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_2194.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_2194.jpeg)
 *可以抽的茶，可以泡的烟*
 
 ### 熊猫基地
@@ -379,15 +379,15 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 幸运的是这次去两种动物都清晰可见。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3260.JPG)
+![](oss://sichuan-chongqing-tour-1/IMG_3260.JPG)
 *它真的好热，我真的好热*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3225.JPG)
+![](oss://sichuan-chongqing-tour-1/IMG_3225.JPG)
 *简单吃吃*
 
 除了这两种动物，还可以看到第三种动物，那就是智人（二名法：*Homo sapiens* Linnaeus, 1758）。下图展示了疯狂的智人为了一个坐着不动的熊猫正举行某种抬手仪式来唤醒它。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3233.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3233.jpeg)
 
 除此之外，还有幸拍到了小熊猫从树上爬下后准备接受喂食、两只小熊猫打架尖叫奔跑的场景。~~但说实话，这门票，这人数，这内容...换作是我自驾游的话，我是不会选择来的。~~
 
@@ -397,42 +397,42 @@ desc: 正值重庆魔幻城市称号热度最高之时，我开启了一段前�
 
 下山的过程中，可以看到许多四川常见的寺庙。不得不说这里的寺庙是真的多！由于内容会重复，所以都江堰这里的寺庙我就省略了，简单拍了点东西。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3284.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3284.jpeg)
 *金堤重镇*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3281.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3281.jpeg)
 *深淘滩，低作堰——这是一个管理理念*
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3282.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3282.jpeg)
 *“遇湾截角，逢正抽心”的后半句*
 
 走到山的最底下，会发现这里是都江堰鱼嘴的对岸，还需要走索桥过去。索桥入口处是一面标有“天下爱情第一桥”的墙，很厉害哦。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3292.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3292.jpeg)
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3289.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3289.jpeg)
 *索桥景象。下面的水其实很急。*
 
 到了对岸步行 100m 左右就可以到达“鱼嘴”，也就是都江堰最具有标志性的地方了。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3293.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3293.jpeg)
 
 你发现图中的白色水鸟了吗？？？
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3296.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3296.jpeg)
 *放大看看*
 
 从鱼嘴处可以坐观光车（需要买票）到景区门口（1 号门）。但是路程根本不远，不到 1km，聊着天的话走起来不会很累。坐车需要排队，给我的感觉是没有 40 分钟根本坐不上，再加上天气炎热，果断选择直接走路。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3303.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3303.jpeg)
 
 可能图片体现不出来。在现场看，这水花不是一般的大，可以用**巨**来形容了。
 
 出了景区入口（？）以后，可以看到一个“南桥”，过去以后就是商业街了。价格的话，单从我去买薯片的便利店参考，并不贵。
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3324.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3324.jpeg)
 
-![](http://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/old/1/IMG_3323.jpeg)
+![](oss://sichuan-chongqing-tour-1/IMG_3323.jpeg)
 *这薯片怎么没有裤衩...*
 
 ### 成都周围景区评价

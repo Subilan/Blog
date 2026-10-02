@@ -8,9 +8,9 @@ desc: 面向结果编程
 
 第一次遇见 vibe coding 这个词是在 X 上我关注的一个 meme 账号 [Programmer Humor](https://x.com/PR0GRAMMERHUM0R)，在上面发布的一些帖子里面涉及到了跟 vibe coding 相关的内容，比如下面两张图：
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Thoughts-on-Vibe-Coding/GocnbUrW4AEfUk9.jpg) *一种作秀？[原贴](https://x.com/PR0GRAMMERHUM0R/status/1911539919471726672)*
+![](oss://thoughts-on-vibe-coding/GocnbUrW4AEfUk9.jpg) *一种作秀？[原贴](https://x.com/PR0GRAMMERHUM0R/status/1911539919471726672)*
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Thoughts-on-Vibe-Coding/GoZnK7-XUAEflYa.jpg) *VaaS [原贴](https://x.com/PR0GRAMMERHUM0R/status/1911328531834974492)*
+![](oss://thoughts-on-vibe-coding/GoZnK7-XUAEflYa.jpg) *VaaS [原贴](https://x.com/PR0GRAMMERHUM0R/status/1911328531834974492)*
 
 现在回头来看，这些梗图还是很生动的，特别是 Vulnerability as a Service 的说法：*Vulnerability* 暴露了 vibe coding 最核心的缺点，而 *as a Service* 则表示一些人正在真实的 production 环境中应用 vibe coding 模式。在正式开始谈论 vibe coding 前，需要先搞清楚这个词到底是在讲啥。
 

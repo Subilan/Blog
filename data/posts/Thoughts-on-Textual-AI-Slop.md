@@ -36,7 +36,7 @@ date: 2026/10/01
 
 在实际运行中可以观察到DeepSeek v4.1 Flash能够流畅地操作相关命令行工具，并能够形成对文章成品PDF每一页截图效果的ReAct循环，相较于单模态有效地提高了PDF的观感质量。
 
-![](./thoughts-on-textual-ai-slop-img/image-react.png) *自行从PDF导出页面截图并查看效果*
+![](oss://thoughts-on-textual-ai-slop/image-react.png) *自行从PDF导出页面截图并查看效果*
 
 除了观感，输出内容的质量或可读性也很重要。
 
@@ -52,7 +52,7 @@ date: 2026/10/01
 
 以一次生成某量化主题论证文章的测试任务为例，通过明确指定使用LaTeX进行排版（包括明确规定排版引擎、字体搭配等），模型能够较好地利用格式以及绘制图表。
 
-![](./thoughts-on-textual-ai-slop-img/quant-chart-example.png)
+![](oss://thoughts-on-textual-ai-slop/quant-chart-example.png)
 
 但抛开格式看内容，即使是上面这张图表也有问题，可以指出的就有：
 - “地板”为机翻词汇，对应的英文是floor，更像中文的翻译应为下界、最小值等
@@ -63,7 +63,7 @@ date: 2026/10/01
 
 图片本身的内容不是本文的重点。下面这张截图展示了该测试任务从tex编译得到的PDF中的一部分内容在未经过任何人工调整的样子。红色部分表示不自然的措辞，土黄色部分表示不自然的用词，蓝色部分为固定句式。
 
-![](./thoughts-on-textual-ai-slop-img/quant-article-slop-example.png)
+![](oss://thoughts-on-textual-ai-slop/quant-article-slop-example.png)
 
 - 土黄色：敞口、对抗性流、重叠出版物、病理路径、构造性上界等，均为模型自行生造的词语。相关含义仍存在，但是没有被以好理解的方式表达出来。
   
@@ -100,15 +100,15 @@ date: 2026/10/01
   - 左对齐的 $4.99/$5.00，其中$5.00可以缩小处理，表示剩余/上限
   - 左对齐的 $0.01/$5.00，同上，表示已用/上限
 
-![](./thoughts-on-textual-ai-slop-img/ui-extra-1.png)
+![](oss://thoughts-on-textual-ai-slop/ui-extra-1.png)
 
 下图是模型给出的成本拆分模块设计。忽略布局设计问题，仍存在冗余的括号解释（计入配额、自付+逗号+不计配额）。
 
-![](./thoughts-on-textual-ai-slop-img/ui-extra-2.png)
+![](oss://thoughts-on-textual-ai-slop/ui-extra-2.png)
 
 下图是模型给出的用量图表设计，其中右上角的Tab组件为点名使用。“按天用量”下面出现了平均每轮耗时数据的冗余文本。
 
-![](./thoughts-on-textual-ai-slop-img/ui-extra-3.png)
+![](oss://thoughts-on-textual-ai-slop/ui-extra-3.png)
 
 综合这个例子来看，模型添加的这些冗余的文本，在数据上都没有问题，但位置、安排和内容编写都不甚正确。如果没有人工的介入、调整或约束，难以交付简洁流畅的专业界面。
 
@@ -124,7 +124,7 @@ date: 2026/10/01
 
 [^7]: 这个border-left可能来自于VuePress/[VitePress](https://vitepress.dev/guide/markdown#custom-containers)/[GitHub](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)等排版引擎中常见的**高亮块**（alert/callout/admonitions）排版元素，其左侧是一个border-left形成的色带。但在这里放在一个按钮上不合适。
 
-![](./thoughts-on-textual-ai-slop-img/xiaohongshu-ai-ui.JPG)
+![](oss://thoughts-on-textual-ai-slop/xiaohongshu-ai-ui.JPG)
 
 ## 软件工程
 
@@ -149,15 +149,15 @@ date: 2026/10/01
 
 如果在长期vibe coding之后的某一天打开代码，你可能会发现代码中的注释几乎堆积成山，尤其是对于那些你过往与模型反复讨论、打磨的细节或bug。模型会在一些注释点不断积累上下文，包括前因后果、踩坑记录或用户的明确指示、设计决策等，形成一定程度上的“记忆”。该记忆对于人类读者意义不大，还会在一定程度上干扰阅读。有一次我通过下面的提示词让模型去删掉这类注释。
 
-![](./thoughts-on-textual-ai-slop-img/comment-as-doc-fix-prompt.png) *Claude Code中的调整提示词*
+![](oss://thoughts-on-textual-ai-slop/comment-as-doc-fix-prompt.png) *Claude Code中的调整提示词*
 
-![](./thoughts-on-textual-ai-slop-img/comment-as-doc-1.png) *常量和正则表达式在燃什么*
+![](oss://thoughts-on-textual-ai-slop/comment-as-doc-1.png) *常量和正则表达式在燃什么*
 
 上图中，按照过往“古法编程”的习惯，一个常量标志或是正则表达式，通常不需要过多的注释，其变量名结合所在的位置就可以说明其用途。只有在这个正则表达式实在是太过于怪异、不好理解的情况下，才考虑会在代码中多解释几句*以示后人*。但现在正则表达式几乎不需要人来写（其实以前也都是从网上复制粘贴，自己写只有在VSCode的搜索里），也就不会有这个问题。
 
-![](./thoughts-on-textual-ai-slop-img/comment-as-doc-2.png) *完全是注释里写论文*
+![](oss://thoughts-on-textual-ai-slop/comment-as-doc-2.png) *完全是注释里写论文*
 
-![](./thoughts-on-textual-ai-slop-img/comment-as-doc-3.png) *“不认得”是一个很亲切的词汇！*
+![](oss://thoughts-on-textual-ai-slop/comment-as-doc-3.png) *“不认得”是一个很亲切的词汇！*
 
 这里其实会有一个疑问：**删掉这些“冗余”的注释内容，是否会对模型本身编写代码的效果造成影响？**这个疑问的答案是极度主观的。我想是不会的：模型在实现一个功能之前，本就要通读这些代码位置，分析其实现和依赖。注释在很大程度上只能起到辅助作用，而无法代替代码的阅读。
 
@@ -165,7 +165,7 @@ date: 2026/10/01
 
 #### 2. 注释中的交叉引用
 
-![](./thoughts-on-textual-ai-slop-img/cross-ref-in-comment.png)
+![](oss://thoughts-on-textual-ai-slop/cross-ref-in-comment.png)
 
 这是将注释当文档使用的另一个现象——在注释中插入交叉引用。如果这个引用真的能和Word中那样自动维护自动更新就好了，可惜并没有这样的机制。几乎一切项目中的资源，无论是符号还是文件路径（无论什么文件），都有可能出现在注释里。
 
@@ -175,9 +175,9 @@ date: 2026/10/01
 
 在没有明确约束的情况下，模型默认不会采用JSDoc或Go Doc Comments等现有规范去编写注释，而是维护其“文档式的注释”。这在依赖这些结构化文档的场景下会出现问题，如发布到pkg.go.dev下。
 
-![](./thoughts-on-textual-ai-slop-img/go-comment-practice.png)
+![](oss://thoughts-on-textual-ai-slop/go-comment-practice.png)
 *注释应当以注释对象开头*
-![](./thoughts-on-textual-ai-slop-img/js-comment-practice-2.png)
+![](oss://thoughts-on-textual-ai-slop/js-comment-practice-2.png)
 *在有参数的函数上最好带上参数和返回值信息*
 
 ### 重复造轮子问题
@@ -191,17 +191,17 @@ date: 2026/10/01
 
 以前端为例，除了Vue、React等“大轮子”是模型会默认选用的以外，其余的库模型可能不会第一时间去考虑使用。这就导致模型很自然地在仓库中写出重复的代码（甚至可能直接来自于模型的训练数据？跨越大洋的复制粘贴？）。下图展示了模型为了进行测试而编写的某个 `.check.ts` 文件。
 
-![](./thoughts-on-textual-ai-slop-img/check-ts-impl.png) *某个check.ts的实现*
+![](oss://thoughts-on-textual-ai-slop/check-ts-impl.png) *某个check.ts的实现*
 
 这里的问题在于，仓库中出现了许多类似的check.ts，且每一个check.ts的开头都有着这类辅助测试的断言函数，类似于复制粘贴，这就有了冗余代码和漂移风险，且测试框架也需要模型自己来维护（统一的框架代码放在哪里也是一个问题）。如果让模型此时引入vitest，它其实也可以很轻易地对现有的check.ts进行重构。
 
 下图展示了模型手写的一个formatTime函数，这几乎是重复造轮子的一个典型案例。这个函数虽然代码多，但不算复杂，因为它现在负责的功能也只有一个简单的格式化输出。若将来涉及到多语言场景，该函数还需要继续扩展。如果让模型此时引入moment或day.js，这个函数就可以简化掉。
 
-![](./thoughts-on-textual-ai-slop-img/format-time-impl.png) *formatTime的实现*
+![](oss://thoughts-on-textual-ai-slop/format-time-impl.png) *formatTime的实现*
 
 下图展示了模型手写的loadDotEnv函数，附带的有各种数据类型的parse逻辑和validate逻辑。这部分可以用[go-validator](https://github.com/go-playground/validator)和[godotenv](https://github.com/joho/godotenv)来代替，前者还可以用于系统的其余部分，作用类似于JS上的zod或TypeBox。
 
-![](./thoughts-on-textual-ai-slop-img/load-dotenv-impl.png) *loadDotEnv的实现*
+![](oss://thoughts-on-textual-ai-slop/load-dotenv-impl.png) *loadDotEnv的实现*
 
 ### 冗余兼容逻辑问题
 
@@ -211,7 +211,7 @@ date: 2026/10/01
 
 下图展示了模型自行在代码中加上的字段迁移逻辑，并且其**特意**保证了幂等性，这使得如果不看代码，可能在运行中察觉不到这一点，而该兼容逻辑会一直存在于程序编译后的字节码中。
 
-![](./thoughts-on-textual-ai-slop-img/auto-migrate.png) *MigrateThreads是一个有着一堆UPDATE、INSERT语句的函数*
+![](oss://thoughts-on-textual-ai-slop/auto-migrate.png) *MigrateThreads是一个有着一堆UPDATE、INSERT语句的函数*
 
 这里的问题在于：
 - 如果是本地开发层面的迁移，那么根本就不需要持久化到业务逻辑中，更不需要额外去确保幂等性。直接对本地数据库进行迁移，或者直接重建就可以。
@@ -219,7 +219,7 @@ date: 2026/10/01
 
 类似地，对于前端也可能存在这类兼容逻辑。下图展示了模型自行在代码中添加的一个重定向，但其兼容的路由实际上从未上线。
 
-![](./thoughts-on-textual-ai-slop-img/legacy-redirect.png)
+![](oss://thoughts-on-textual-ai-slop/legacy-redirect.png)
 
 即使兼容逻辑内部没有任何问题、确保了幂等性，是无害的，也会造成可维护性、可读性问题。如果人类不在意可读性或可维护性，这类成本也会转嫁到Token消耗上去。
 
@@ -229,7 +229,7 @@ date: 2026/10/01
 
 ## 默认行为、期望行为与提示词
 
-![](./thoughts-on-textual-ai-slop-img/default-expected.png) *default与expected的距离的可能情况*
+![](oss://thoughts-on-textual-ai-slop/default-expected.png) *default与expected的距离的可能情况*
 
 我们可以发现在以上两类场景下，模型的默认行为都有些不尽人意。
 - 工程方面，即使模型被训练为每一个任务执行后都会来一句By the Way、即使Harness允许模型向人类提问或澄清，模型也并不能事无巨细、百分百向你透露这类不确定性以及不确定性可能带来的问题
@@ -249,7 +249,7 @@ AI垃圾（AI Slop）是一个由外网提出的概念，2024年[Simon Willison�
 
 为了形象地展示Slop的无意义体现在哪里，下图是一个一只有着三只脚、穿着耐克鞋的鲨鱼，来自2025年爆火系列AI短视频（外网称为Italian Brainrot，国内称为“AI山海经”）[^3][^4]。
 
-![](./thoughts-on-textual-ai-slop-img/nike-shark.png) *关于耐克鲨鱼、木棍人是否真的“没有意义”这件事存在一定的争议。一些人认为带来了娱乐意义，所以直接说无意义是不准确的*
+![](oss://thoughts-on-textual-ai-slop/nike-shark.png) *关于耐克鲨鱼、木棍人是否真的“没有意义”这件事存在一定的争议。一些人认为带来了娱乐意义，所以直接说无意义是不准确的*
 
 [^3]: [新华网：小学生沉迷“外国山海经”每天念咒语——AI魔改乱象调查](https://www.news.cn/politics/20251118/14d36972c3ae405b89f981cd8eaff638/c.html)
 [^4]: [萌娘百科：AI山海经](https://zh.moegirl.org.cn/AI%E5%B1%B1%E6%B5%B7%E7%BB%8F)
@@ -263,7 +263,7 @@ AI垃圾（AI Slop）是一个由外网提出的概念，2024年[Simon Willison�
 
 一个文本上的Slop，大抵就是让他人看着觉得毫无意义（包括娱乐意义），甚至具有误导性的文本材料。这类材料在某种程度上会影响他人的生活体验。举个例子就是活跃在哔哩哔哩或是小红书社交平台上，漫无目的随机回复的AI机器人。不同的人对Slop的感知不一样。对于不care这一点的人，机器人简短的一句莫名的回复并没有什么，而对于care的人来说，就是彻头彻尾的Slop。
 
-![](./thoughts-on-textual-ai-slop-img/ai-on-bilibili.png) *哔哩哔哩上的数字生命*
+![](oss://thoughts-on-textual-ai-slop/ai-on-bilibili.png) *哔哩哔哩上的数字生命*
 
 本文开头所展示的那个PDF，如果它确实被分享出去给其它人阅读了，也属于文本Slop的范畴。一些大学水课的论文可能也是类似的情况，如果未加修改或调优，对于批改人来说就是Slop。
 
@@ -316,11 +316,11 @@ AI会尽量把一切都安排妥帖。但正如在[默认行为、期望行为�
 
 - https://github.com/ayghri/i-have-adhd
 
-![](./thoughts-on-textual-ai-slop-img/the-reader-has-adhd.png) *我有ADHD.jpg*
+![](oss://thoughts-on-textual-ai-slop/the-reader-has-adhd.png) *我有ADHD.jpg*
 
 模型输出的内容通常是比较多的，容易让人抓不住重点。虽然全面本身没有错，但一些人会晕字（比如我），更希望模型能够直接说重点。这个Skill是为了让模型输出的内容更加ADHD-friendly，虽然使用它的人不一定真的患有ADHD。具体的效果，需要体验之后才知道。
 
-![](./thoughts-on-textual-ai-slop-img/too-complete.png) *其实第一句话就够了。为什么一些领导不喜欢下属过于完整详尽的反馈呢？可能就是因为有这样的感觉吧*
+![](oss://thoughts-on-textual-ai-slop/too-complete.png) *其实第一句话就够了。为什么一些领导不喜欢下属过于完整详尽的反馈呢？可能就是因为有这样的感觉吧*
 
 i-have-adhd的本质是提示词和兼容层。该Skill中只有一个SKILL.md，剩余的文件是为了进行评测或与不同的Harness兼容。i-have-adhd提供了一个always-on模式，在不同的Harness下实现也不一样，例如在Pi Coding Agent或OMP上，它通过注册一个extension来让用户可以通过`/i-have-adhd`这个指令来控制always-on；在Claude Code下面通过hooks，在`startup|resume|clear|compact`这四个下一步工作的常见节点注入提示词来强化效果。
 
