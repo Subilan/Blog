@@ -36,25 +36,25 @@ cate: 记录
 
 我们住的是镇上的民宿，复式房型。第一层的大床，可以容纳两个人。第二层没有拍，有两张大床，可以容纳四个人
 
-![](./shennongjia/N8DbZLtavMqk1l2.jpg)
+![](oss://shennongjia/N8DbZLtavMqk1l2.jpg)
 
-![](./shennongjia/2XcfSvproTja8J4.jpg)
+![](oss://shennongjia/2XcfSvproTja8J4.jpg)
 *一个寒冷的阳台。上面的烟灰缸里的水已经结冰了。*
 
-![](./shennongjia/nmg5OW2M8NGX1hs.jpg)
+![](oss://shennongjia/nmg5OW2M8NGX1hs.jpg)
 
 4K 电视，机顶盒自带会员。晚上看《爱情神话》后出去吃饭。
 
 下面是第二天吃的东西，有些菜的味道还可以。
 
-![](./shennongjia/fwI8qtKsEVTHa5B.jpg)
+![](oss://shennongjia/fwI8qtKsEVTHa5B.jpg)
 
 之前好像从来没有吃过这种形式的火锅，比较新奇的是贴在锅上的这些软饼（不是土豆），好像来自北方？拍的时候已经晚了，上面的软饼已经被吃了几个了。不过好像正宗的火锅里，软饼要放下去一起炖？还是我们不会吃。刚开始我们都觉得这些软饼挺普通的，后来快要吃完了这些饼也没吃多少，被炖了一会以后变更软、入味了，果然。
 
-![](./shennongjia/5TP7EvWCaoMy1Bh.jpg)
+![](oss://shennongjia/5TP7EvWCaoMy1Bh.jpg)
 *虽然普通但是我超喜欢的烤土豆*
 
-![](./shennongjia/SW8yJLfZt9d3okG.jpg)
+![](oss://shennongjia/SW8yJLfZt9d3okG.jpg)
 
 这是一锅牛肉，看上去很豪华，其实牛肉并不多...大多数都是魔芋。这个魔芋和平时吃的魔芋也不太一样，它是一咬就碎掉，平时吃的还有点弹性。
 
@@ -64,22 +64,22 @@ cate: 记录
 
 天生桥是 2019 年夏天去的。在写这篇的时候，其实我已经差不多忘了这些图片是哪一个景区的了，但好在神农架的景区一搜就知道有哪些，凭借印象马上就回忆起来了。下面几张图片就是天生桥景区（的一部分）。
 
-![](./shennongjia/HQ3gSg.jpg)
+![](oss://shennongjia/HQ3gSg.jpg)
 
-![](./shennongjia/HQ8Sk6.jpg)
+![](oss://shennongjia/HQ8Sk6.jpg)
 *瀑布下的湖*
 
-![](./shennongjia/HQ8ptK.jpg)
+![](oss://shennongjia/HQ8ptK.jpg)
 
 下面是好几张路上的小坑洼（应该可以这么叫吧）和泉水流淌的美景。这些景色光是看着就感觉非常的清爽凉快，不敢想象当时夏天去得有多凉快，实打实的避暑圣地。
 
-![](./shennongjia/HQ3v01.jpg)
+![](oss://shennongjia/HQ3v01.jpg)
 
 <!-- ![](./shennongjia/HQ3xTx.jpg) -->
 
-![](./shennongjia/HQ8EnA.jpg)
+![](oss://shennongjia/HQ8EnA.jpg)
 
-![](./shennongjia/HQ3WOs.jpg)
+![](oss://shennongjia/HQ3WOs.jpg)
 
 <!-- ![](./shennongjia/HQ8V0I.jpg)
 
@@ -87,28 +87,28 @@ cate: 记录
 
 会不会有点像网图？不过这确实是我当时用 iPad Air 2 拍的，请相信这一点。
 
-![](./shennongjia/HQ3Bwt.jpg)
+![](oss://shennongjia/HQ3Bwt.jpg)
 
-![](./shennongjia/HQ8F6H.jpg)
+![](oss://shennongjia/HQ8F6H.jpg)
 *长满小花和地衣的树*
 
 ### 大九湖
 
 2019 年的时候去过一次大九湖，下面是当时拍的景。虽然设备一般，但是耐不住景美。
 
-![](./shennongjia/HQ35T0.jpg)
+![](oss://shennongjia/HQ35T0.jpg)
 *大九湖。不那么晴朗、略带阴雨的天气反而给人一种静谧的山水感。*
 
-![](./shennongjia/HQ3sFf.jpg)
+![](oss://shennongjia/HQ3sFf.jpg)
 *雨刚停或者还在下小雨的时候。*
 
-![](./shennongjia/HQ3jmR.jpg)
+![](oss://shennongjia/HQ3jmR.jpg)
 
-![](./shennongjia/HQ3hmn.jpg)
+![](oss://shennongjia/HQ3hmn.jpg)
 
 虽然看上去阴沉沉的，但实际要比照片里亮很多。听说这里是有鹿、猴之类的野生动物，但没有看到，有点遗憾。大九湖附近好像也有一个类似于动物园的地方，里面可以观赏梅花鹿并且近距离接触（没有任何阻隔）。还记得当时给我妈拍了一系列喂梅花鹿的视频，也上手体验了一下被梅花鹿舔手感，很痒～
 
-![](./shennongjia/HQ3Ryj.jpg)
+![](oss://shennongjia/HQ3Ryj.jpg)
 *梅花鹿园外面是这样的一大片草场，当时有人坐滑翔伞，我拍摄了全程。山雾真的是太迷人了。*
 
 这一次自驾去，其实还想再看看梅花鹿，然而却已经忘了路线怎么走，加之时间有限，只上了个神农顶。
@@ -117,20 +117,20 @@ cate: 记录
 
 2019 年去的时候由于是夏天，神农顶上看到的是一片草原的景象，看上去并没那么有感觉。这次去，别的地方都没去成，却上了神农顶看雪景。所以这两次旅途可以算作是完美的互补了。
 
-![](./shennongjia/HQ8Z7t.jpg)
+![](oss://shennongjia/HQ8Z7t.jpg)
 *道路上的积雪，体现了防滑链的必要性。*
 
 在拍摄这张图片时，我脚下所站的地方的积雪至少有三十厘米，整个小腿几乎都陷进去了，差点没爬上来。总算有机会领略一下真正的冬天了。
 
-![](./shennongjia/HQxxq1.jpg)
+![](oss://shennongjia/HQxxq1.jpg)
 
 2019 年来的时候，由于神农顶上面还没有积雪，所以我就没有去登顶（车开到某一地方需要自己登顶，大概还要登个五十米）。这次整座山都积雪了，于是我就去登顶了。查了一下资料发现神农顶的海拔有 3100m，在湖北这个地理位置算是非常高的山了——以至于给我的感觉就是真的高原反应上来了。爬上去的过程特别的累，但上去一段时间就适应了。
 
 下面就是神农顶上的景象了。
 
-![](./shennongjia/HQ8kXd.jpg)
-![](./shennongjia/HQ81Xj.jpg)
-![](./shennongjia/HQ8mAP.jpg)
+![](oss://shennongjia/HQ8kXd.jpg)
+![](oss://shennongjia/HQ81Xj.jpg)
+![](oss://shennongjia/HQ8mAP.jpg)
 
 登顶路上还有可以滑雪的地方，不是单人滑雪，是坐在橡皮舟子上划，看上去还挺好玩的。这里的雪基本上都是粉状雪，也就是随便一搓就会变成单片雪花的那种。有不少人在雪上写字，画爱心。
 

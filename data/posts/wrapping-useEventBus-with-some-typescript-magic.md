@@ -271,7 +271,7 @@ export default gather(
 
 相比于最开始直接定义 Object 的写法，简洁了不止一点！而且还自带类型定义。
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Encapsulation-of-useEventBus-And-Some-Type-Gyms/%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8.png)
+![](oss://wrapping-useeventbus-with-some-typescript-magic/%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8.png)
 *自动补全*
 
 
@@ -352,7 +352,7 @@ export default function <K extends string = string>(channel: K) {
 
 具体使用时，无论是 `send` 还是 `on`，都会受到类型系统的约束；载荷类型将根据传入的 `event` 字面量类型自动推断出来——仿佛 TypeScript 工作在运行时一样。
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Encapsulation-of-useEventBus-And-Some-Type-Gyms/%E6%8C%89%E7%85%A7%E5%AD%97%E9%9D%A2%E9%87%8F%E6%8E%A8%E6%96%AD%E5%87%BA%E7%9A%84%E6%AD%A3%E7%A1%AE%E8%BD%BD%E8%8D%B7%E7%B1%BB%E5%9E%8B.png)
+![](oss://wrapping-useeventbus-with-some-typescript-magic/%E6%8C%89%E7%85%A7%E5%AD%97%E9%9D%A2%E9%87%8F%E6%8E%A8%E6%96%AD%E5%87%BA%E7%9A%84%E6%AD%A3%E7%A1%AE%E8%BD%BD%E8%8D%B7%E7%B1%BB%E5%9E%8B.png)
 *按照传入字面量类型推断出的正确载荷类型*
 
 值得一提的是，这里的 `event` 能被看成是字面量类型而不是 string，原因在于前面的 `e` 函数中，我们返回值里面明确指定了 `{[prop in Keys]: prop}` 而不是 `Record<Keys[number], Keys[number]>` 或者 `Record<Keys[number], string>`，前者的键值没有对应关系，后者的值是泛化的。

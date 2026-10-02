@@ -11,6 +11,7 @@ const isRelative = (url: string) => {
 	return (
 		!url.startsWith('http://') &&
 		!url.startsWith('https://') &&
+		!url.startsWith('oss://') &&
 		!url.startsWith('/') &&
 		!url.startsWith('#')
 	);

@@ -16,7 +16,7 @@ date: 2026/05/03
 
 物理上的互换非常简单，并不是这篇文章记录的重点。我的移动硬盘是一个 ITGZ 的 M.2 硬盘盒，日常搭配一根支持 10Gbps 传输的 USB-C 线使用，这根线还可以用来接显示器。硬盘盒里面装的是就是普通规格的固态硬盘，可以直接与台式机上的固态硬盘互换。操作过程只需要螺丝刀和硅脂片即可完成。
 
-![](./ntfs-to-apfs-img/itgz.jpg) _ITGZ 硬盘盒_
+![](oss://ntfs-to-apfs/itgz.jpg) _ITGZ 硬盘盒_
 
 ### 固态硬盘的价格对比
 
@@ -27,11 +27,11 @@ date: 2026/05/03
 |                 2023 年 6 月                  |                2026 年 5 月                 |
 | :-------------------------------------------: | :-----------------------------------------: |
 |                   ￥249/块                    |                  ￥1099/块                  |
-| ![](./ntfs-to-apfs-img/samsung980x2-2023.jpg) | ![](./ntfs-to-apfs-img/samsung980-2026.PNG) |
+| ![](oss://ntfs-to-apfs/samsung980x2-2023.jpg) | ![](oss://ntfs-to-apfs/samsung980-2026.PNG) |
 
 这块 1TB 的数据盘是 2024 年购入的一块 SN580。1TB 的容量，价格相当于两个 500G，非常合理。不过这块盘是在拼多多上买的而不是京东自营，虽然平台有点掉档次但用了两年没发现什么问题。
 
-![](./ntfs-to-apfs-img/wdsn580-1t-2024.jpg)
+![](oss://ntfs-to-apfs/wdsn580-1t-2024.jpg)
 
 ## 第一次迁移
 
@@ -133,7 +133,7 @@ GParted 不可以，开源/免费的方案几乎就没有了，那么 Paragon �
 
 那么该如何在 macOS 上使用 DiskGenius 呢？当然是装虚拟机了。结合 GParted 能在虚拟机内正确识别并差点可以操作的经验，这一次直接装 Windows。我担心过 Windows 11 ARM 会导致 DiskGenius 无法运行，事实证明多虑了，运行得非常好。让 VMWare Fusion 直通连接的硬盘盒后，DiskGenius 可以在虚拟机里面正确地识别分区并且正确地做操作。
 
-![](./ntfs-to-apfs-img/fusion-connect.png) _借助 VMWare Fusion 的功能可以直接将 USB 物理设备连接到虚拟机_
+![](oss://ntfs-to-apfs/fusion-connect.png) _借助 VMWare Fusion 的功能可以直接将 USB 物理设备连接到虚拟机_
 
 不过，这里悖论来了。既然在前面提到，涉及到 APFS 的操作只能在 macOS 上进行（实际上是，最好采用 macOS 自带的磁盘工具进行），否则该分区无法使用，那么该如何使用 DiskGenius 来建立可用的 APFS 分区呢？答案是不管它建立的是什么分区，只要是分区而非空闲空间就可以，这样该分区可被识别，就可被操作。
 
@@ -157,7 +157,7 @@ GParted 不可以，开源/免费的方案几乎就没有了，那么 Paragon �
     - 将后 APFS 分区的全部拷贝到前 APFS 分区中
     - 删除后 APFS 分区，将前 APFS 分区扩展到占满磁盘
 
-![](./ntfs-to-apfs-img/media.png) _分区后部的空间可删除（“-”按钮亮），而前部空间不可删除_
+![](oss://ntfs-to-apfs/media.png) _分区后部的空间可删除（“-”按钮亮），而前部空间不可删除_
 
 
 ## 总结

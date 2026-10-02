@@ -31,6 +31,7 @@ import sharp from 'sharp';
 import getOgNode from './ogNode';
 import type { ReactNode } from 'react';
 import { remarkRelativeAssetsToPosts } from './relative-md';
+import { rehypeOssAssets } from './oss-assets';
 
 export type Post = {
 	id: string;
@@ -69,7 +70,7 @@ const PUBLIC_OG_DIR = 'public/og_images';
 const PUBLIC_POSTS_DIR = 'public/posts';
 const CONCURRENCY = Math.max(1, Number(process.env.BUILD_CONCURRENCY) || 4);
 
-const PIPELINE_INPUTS = ['build.ts', 'relative-md.ts', 'ogNode.jsx'];
+const PIPELINE_INPUTS = ['build.ts', 'relative-md.ts', 'oss-assets.ts', 'ogNode.jsx'];
 
 await Promise.all(
 	[PUBLIC_DATA_DIR, PUBLIC_OG_DIR, PUBLIC_POSTS_DIR].map(dir => fs.mkdir(dir, { recursive: true }))
@@ -114,6 +115,7 @@ async function applyPipeline(content: string) {
 		.use(remarkCjkFriendlyGfmStrikethrough)
 		.use(remarkRehype, { allowDangerousHtml: true, footnoteLabel: '注释' })
 		.use(rehypeRaw)
+		.use(rehypeOssAssets)
 		.use(rehypeInferTitleMeta)
 		.use(rehypeHighlight)
 		.use(rehypeKatex)

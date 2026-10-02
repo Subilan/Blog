@@ -201,7 +201,7 @@ fonts: {
 
 难道是因为这里写的本地字体只支持 woff2（I mean, *WTF?*）格式导致的吗？这也许有些荒谬了。
 
-![](./yet-another-blog-upgrade-img/image.png)
+![](oss://yet-another-blog-upgrade/image.png)
 *How come?*
 
 总之，以上配置无法让 Satori 正常渲染，但更换为 Chromium 以后就一切正常，且不会提示找不到字体。最后让我彻底放弃使用 Nuxt OG Image，是因为虽然 Chromium 渲染一切正常，但是用了 `nuxt generate` 后，生成的所有图片均是空白。我搜索了相关问题，发现有一个和我非常类似的 [help: Nuxt Generate gives blank og-images on Nuxt Content pages #270](https://github.com/nuxt-modules/og-image/issues/270)，然而这个 Issue 在 2024 年 10 月提出之后就没有回复，上个星期变成 closed as not planned，也没有任何回复。我想或许这个库设计本身就不是为了让你静态地、离线地使用吧...

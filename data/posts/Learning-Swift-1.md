@@ -71,7 +71,7 @@ Traceback (most recent call last):
 TypeError: can only concatenate str (not "int") to str
 ```
 
-![](./learning-swift-1-img/piNba38.png)
+![](oss://learning-swift-1/piNba38.png)
 
 强制类型转换可以通过创建实例来实现
 
@@ -101,7 +101,7 @@ Not Indented
 
 > Indentation at the start of each quoted line is removed, as long as it matches the indentation of the closing quotation marks.
 
-![](./learning-swift-1-img/piNqUaR.png)
+![](oss://learning-swift-1/piNqUaR.png)
 
 上图中的 `quotation1` 和 `quotation2` 的值是等价的，可以注意到它们的缩进零点不同，由后一个三引号定义。
 

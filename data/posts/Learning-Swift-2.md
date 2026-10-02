@@ -67,7 +67,7 @@ Swift 中的多行字符串的设计我个人是很喜欢的，因为在其他�
 
 多行字符串以 `"""` 开始或结束，类似于 Python。多行字符串的结尾 `"""` 所标记的是这一字符串内容的缩进零点，这在上一篇笔记中已经有提到。当内容的缩进小于缩进零点的时候，会导致语法错误；缩进大于缩进零点时，所表示的内容的缩进便是相对于缩进零点的。
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Learning-Swift-2/image.png)
+![](oss://learning-swift-2/image.png)
 
 在多行字符串中还允许一种虚拟的换行，当一行以 `\` 结束时，这一行的换行会被忽略，从而达到仅开发层面的可读性提升的的效果。
 
@@ -148,17 +148,17 @@ let b: Character = "\u{1112}\u{1161}\u{11AB}"   // ᄒ, ᅡ, ᆫ
 ```swift
 let enclosedEAcute: Character = "\u{E9}\u{20DD}"
 ```
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Learning-Swift-2/image-1.png)
+![](oss://learning-swift-2/image-1.png)
 *这个带圈字符似乎在浏览器中无法正常显示*
 - 国旗，用到了 regional indicator symbol（区域指示符）
 ```swift
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 ```
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Learning-Swift-2/image-2.png)
+![](oss://learning-swift-2/image-2.png)
 
 以上这些都可以用 Character 来表达，因为它们都是字素的组合。而对于 `ab` 这样的组合则明显不行。
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Learning-Swift-2/image-3.png)
+![](oss://learning-swift-2/image-3.png)
 *ab 组合会被直接视为 String*
 
 以上这些用法造成 String 的大小必须通过遍历整个 String 里的 Character 才能确定，Character 的大小并不固定。因此在统计较大（注意这里的较大有多大）字符串的 count 的时候会产生一定的性能问题。
@@ -184,7 +184,7 @@ for i in str.indices {
 
 运行结果：
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Learning-Swift-2/image-4.png)
+![](oss://learning-swift-2/image-4.png)
 
 ### 插入、移除
 
@@ -216,7 +216,7 @@ print(hw) // "hello"
 
 也正是因为复用了母串的内存空间，Substring 并不适合用来长期存储，否则将导致负优化（例如，只需要字符串的一小部分，将其分解为子串取得，如果一直不将 Substring 转换成 String，那么子串和母串一起总会占用比我们唯一需要的子串大的内存空间，即母串的内存空间），将其转换为 String 也是很简单的，直接调用 `String(_:)` 方法即可。
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Learning-Swift-2/image-5.png)
+![](oss://learning-swift-2/image-5.png)
 
 String 和 Substring 共享 StringProtocol 下的方法，它包含一些前面所述的常用的字符串操作。
 
@@ -226,7 +226,7 @@ Swift 中字符串的等值判断很有意思，似乎更具有「高级」语�
 
 典型的例子就是前面所说过的 `\u{E9}` 和 `\u{65}\u{301}`，一般认为它们是表示相同含义的字素组，所以 `"\u{E9}" == "\u{65}\u{301}"` 为真，因为都显示的是「é」。但是需要注意的是上面所说的充要条件中，还有对语言的限制。语言之间存在形似的字素的现象很常见，在一部分字体中它们在外观上甚至完全相同，例如西里尔文中的 A、拉丁文中的 A 和希腊字母中的 A（这里有一个小知识是前两者都是由希腊字母 A 发展而来）。但显然它们的语言学含义并不一样。
 
-![](https://fnmdp.oss-cn-beijing.aliyuncs.com/public/blog/Learning-Swift-2/image-6.png) *Wikipedia 上西里尔文中的 A 的词条，有特别提示指出它们是不一样的*
+![](oss://learning-swift-2/image-6.png) *Wikipedia 上西里尔文中的 A 的词条，有特别提示指出它们是不一样的*
 
 Swift 中对这一点也有考虑。因此，U+0041 所代表的 LATIN CAPITAL LETTER A 与 U+0410 所代表的 CYRILLIC CAPITAL LETTER A 虽然长得一样，但是并不相等，`"\u{41}" == "\u{0410}"` 为假。
 
