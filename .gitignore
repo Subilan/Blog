@@ -33,3 +33,4 @@ public/posts
 public/og_images
 
 .build-manifest.json
+.studio

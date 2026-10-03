@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"lib": ["ES2023", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"strict": true,
+		"noEmit": true,
+		"skipLibCheck": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"types": ["node"],
+		"baseUrl": ".",
+		// @ 指向仓库根，和仓库根的 tsconfig（Nuxt 生成）以及 studio/vite.config.ts 一致。
+		// 后台的 import 写成 @/studio/client/...，这样一套别名在 Vite、根 tsc、这里都能解析。
+		"paths": {
+			"@/*": ["../*"]
+		}
+	},
+	"include": ["**/*.ts", "client/**/*.vue"]
+}
