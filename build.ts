@@ -1,37 +1,14 @@
 import fs from 'node:fs/promises';
 import fsSync from 'node:fs';
 import crypto from 'node:crypto';
-import rehypeStringify from 'rehype-stringify';
-import rehypeSlug from 'rehype-slug';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeInferTitleMeta from 'rehype-infer-title-meta';
-import rehypeExternalLinks from 'rehype-external-links';
-import rehypeKatex from 'rehype-katex';
-import rehypeRaw from 'rehype-raw';
-// @ts-ignore
-import rehypeWrapAll from 'rehype-wrap-all';
-import remarkGfm from 'remark-gfm';
-import remarkFrontmatter from 'remark-frontmatter';
-import remarkExtractFrontmatter from 'remark-extract-frontmatter';
-import remarkParse from 'remark-parse';
-import remarkDirective from 'remark-directive';
-import remarkCjkFriendly from 'remark-cjk-friendly';
-import remarkCjkFriendlyGfmStrikethrough from 'remark-cjk-friendly-gfm-strikethrough';
-import remarkRehype from 'remark-rehype';
-import remarkToc from 'remark-toc';
-import remarkMath from 'remark-math';
-import { unified } from 'unified';
 import yaml from 'yaml';
-import { visit } from 'unist-util-visit';
-import type { Root } from 'mdast';
-import { h } from 'hastscript';
-import stringWidth from 'string-width';
 import satori from 'satori';
 import sharp from 'sharp';
 import getOgNode from './ogNode';
 import type { ReactNode } from 'react';
-import { remarkRelativeAssetsToPosts } from './relative-md';
-import { rehypeOssAssets } from './oss-assets';
+import { applyPipeline, countWordsCJK, type FrontMatter } from './markdown-pipeline';
+
+export type { FrontMatter };
 
 export type Post = {
 	id: string;
@@ -53,15 +30,6 @@ export type Analytics = {
 	size: number;
 };
 
-export type FrontMatter = {
-	date: string;
-	cate?: string;
-	desc?: string;
-	'desc-short'?: string;
-	hidden?: boolean;
-	ignoreOutdate?: boolean;
-};
-
 const POSTS_SOURCE_DIR = 'data/posts';
 const DIGEST_PATH = 'data/postdigests.json';
 const MANIFEST_PATH = '.build-manifest.json';
@@ -70,7 +38,7 @@ const PUBLIC_OG_DIR = 'public/og_images';
 const PUBLIC_POSTS_DIR = 'public/posts';
 const CONCURRENCY = Math.max(1, Number(process.env.BUILD_CONCURRENCY) || 4);
 
-const PIPELINE_INPUTS = ['build.ts', 'relative-md.ts', 'oss-assets.ts', 'ogNode.jsx'];
+const PIPELINE_INPUTS = ['build.ts', 'markdown-pipeline.ts', 'relative-md.ts', 'oss-assets.ts', 'ogNode.jsx'];
 
 await Promise.all(
 	[PUBLIC_DATA_DIR, PUBLIC_OG_DIR, PUBLIC_POSTS_DIR].map(dir => fs.mkdir(dir, { recursive: true }))
@@ -99,59 +67,6 @@ const ogFonts = await Promise.all(
 		data: await fs.readFile(font.path)
 	}))
 );
-
-async function applyPipeline(content: string) {
-	return unified()
-		.use(remarkParse)
-		.use(remarkRelativeAssetsToPosts, { prefix: '/posts' })
-		.use(remarkMath, { singleDollarTextMath: false })
-		.use(remarkFrontmatter)
-		.use(remarkExtractFrontmatter, { yaml: yaml.parse, name: 'fm' })
-		.use(remarkDirective)
-		.use(vuepressLikeCallout)
-		.use(remarkGfm, { stringLength: stringWidth })
-		.use(remarkToc, { heading: '目录' })
-		.use(remarkCjkFriendly)
-		.use(remarkCjkFriendlyGfmStrikethrough)
-		.use(remarkRehype, { allowDangerousHtml: true, footnoteLabel: '注释' })
-		.use(rehypeRaw)
-		.use(rehypeOssAssets)
-		.use(rehypeInferTitleMeta)
-		.use(rehypeHighlight)
-		.use(rehypeKatex)
-		.use(rehypeExternalLinks, {
-			rel: ['nofollow'],
-			target: '_blank',
-			properties: { class: 'ext' }
-		})
-		.use(rehypeWrapAll, { selector: 'pre', wrapper: 'div.pre-wrapper' })
-		.use(rehypeSlug)
-		.use(rehypeStringify)
-		.process(content);
-}
-
-function vuepressLikeCallout() {
-	return (tree: Root) => {
-		visit(tree, (node, index, parent) => {
-			// https://github.com/remarkjs/remark-directive/issues/12
-			if (parent && index && node.type === 'textDirective') {
-				parent.children[index] = { type: 'text', value: `:${node.name}` };
-				return;
-			}
-
-			if (node.type === 'containerDirective') {
-				if (!['tip', 'warning', 'danger', 'note'].includes(node.name)) return;
-
-				const data = node.data || (node.data = {});
-
-				data.hName = 'div';
-				data.hProperties = h('div', {
-					class: 'vuepress-callout ' + node.name
-				}).properties;
-			}
-		});
-	};
-}
 
 type BuildManifest = {
 	pipeline: string;
@@ -196,10 +111,6 @@ function extractFrontmatter(content: string): FrontMatter | null {
 	const [, frontmatter] = content.replace(/^\uFEFF/, '').match(/^---\r?\n([\s\S]*?)\r?\n---/) || [];
 	if (frontmatter === undefined) return null;
 	return yaml.parse(frontmatter) as FrontMatter;
-}
-
-function countWordsCJK(text: string) {
-	return (text.match(/[\u00ff-\uffff]|\S+/g) || []).length;
 }
 
 async function readJson<T>(path: string, fallback: T): Promise<T> {
