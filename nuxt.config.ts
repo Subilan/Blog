@@ -32,7 +32,12 @@ export default defineNuxtConfig({
 	},
 
 	vite: {
-		plugins: [svgLoader(), tailwindcss()]
+		plugins: [svgLoader(), tailwindcss()],
+		server: {
+			watch: {
+				ignored: ['**/data/posts/**']
+			}
+		}
 	},
 
 	site: {
