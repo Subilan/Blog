@@ -40,6 +40,7 @@ This is a Nuxt 3 static blog deployed to Vercel. There is no database — all co
 3. Builds are incremental: `.build-manifest.json` caches a content hash per post plus a hash of the renderer inputs (`build.ts`, `markdown-pipeline.ts`, `ogNode.jsx`, `relative-md.ts`, `oss-assets.ts`, and the dependency versions in `package.json`). Any renderer change invalidates all posts, so OG images never go stale. `CI`/`VERCEL` environments skip reading the cache entirely and rebuild everything.
 4. Post concurrency defaults to 4, override with `BUILD_CONCURRENCY`.
 5. Files whose content did not change (`postdigests.json`, the manifest) are not rewritten, so `yarn dev` does not restart on every build.
+6. In dev only, `modules/post-rebuild.ts` (auto-loaded from `modules/`) watches `data/posts/**/*.md` and reruns `build.ts` on add/change/unlink, then sends a Vite full-reload. `nuxt.config.ts` adds `**/data/posts/**` to `vite.server.watch.ignored` so Vite's own watcher does not reload the page with stale content before that rebuild finishes; without it an edit reloads the browser immediately with the old JSON. Edit a post while `yarn dev` runs and the page picks it up about a second later, no manual `yarn data`.
 
 ### Routing
 - `pages/index.vue` — post listing, reads `data/postdigests.json` directly
