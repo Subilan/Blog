@@ -8,6 +8,10 @@ date: 2026/01/19
 
 这一次翻新主要做出了下面的改动。
 
+:::tip
+本文中的更新操作大多使用“古法”。而通过精确表述需求，AI Agent也能够较好地实现这些定制操作。
+:::
+
 ## 目录
 
 ## 1. 将博客字体从 serif 重新换回了 sans-serif
@@ -212,11 +216,11 @@ fonts: {
 
 在这里踩了一些坑：
 
-- Satori 有一个很严重的 bug，见 [next/server ImageResponse throws Error: Expected `<div>` to have explicit "display: flex"... when mixing variables and text](https://github.com/vercel/next.js/issues/48238)。简单来说，就是会报一个很难理解的错误，这个错误需要你把所有的 div 都加上 `display: flex` 或 `contents` 或 `none`。这可能是内部的要求，但是你很快会发现哪怕真的照做了以后，也没法正常生成图片。这个问题有很多解决方法，比如不用 div。~~没有 div 还怎么写网页~~
+- Satori 有一个很严重的 bug，见 [next/server ImageResponse throws Error: Expected `<div>` to have explicit "display: flex"... when mixing variables and text](https://github.com/vercel/next.js/issues/48238)。简单来说，就是会报一个很难理解的错误，这个错误需要你把所有的 div 都加上 `display: flex` 或 `contents` 或 `none`。但是照做了以后，也没法正常生成图片。这个问题有很多解决方法，比如不用 div。
 
-- Satori 的主函数 `satori` 的第一个参数是要渲染的元素。Satori 是 Vercel 出品的，可想而知这个库一定是 opinionated 且和 React 衔接紧密。这里输入的元素要么是 jsx，要么是一个类 JSX element object。为了方面和可维护性的考虑，我觉得 jsx 是唯一的选择——其实是因为我不知道怎样在 object 里面表示 fragment，也找不到文档，这直接把我困住了。
+- Satori 的主函数 `satori` 的第一个参数是要渲染的元素，要么是 jsx，要么是一个类 JSX element object。为了方面和可维护性的考虑，我觉得 jsx 是唯一的选择——其实是因为我不知道怎样在 object 里面正确表示 fragment，也找不到相关文档。
 
-- 虽然 JSX 与 React 不是强绑定，但是也离那里不远了，至少在 Satori 中是这样。在编写 jsx 的那个文件里面，如果没有明确 `import React from 'react'` 的话，就会报错 React is undefined。什么时候 JavaScript 也有副作用导入了？虽然这很难以置信，但...添加了这行 import 之后，确实不报错了。我不得不在这样一个 Nuxt 项目下面运行 `yarn add react` 和 `yarn add @types/react`。
+- 虽然 JSX 与 React 不是强绑定，但在 Satori 中是这样。在用于渲染的 JSX 文件里，如果没有明确 `import React from 'react'` 的话，就会报错 React is undefined，即使该文件中没有任何地方会用到这个 import 进来的 React。虽然这很难以置信，但...添加了这行 import 之后，确实不报错了。我不得不在这样一个 Nuxt 项目下面装上 `react` 和 `@types/react`。
 
 虽然有坑，但结果是好的，最终在不借助 Nuxt OG Image 的情况下，实现了自行生成 OG Image。
 
