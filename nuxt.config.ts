@@ -32,7 +32,7 @@ export default defineNuxtConfig({
 
 	site: {
 		url: 'https://subilan.win',
-		name: 'SolitudeScroll'
+		name: 'Haskell Works'
 	},
 
 	modules: ['@nuxtjs/sitemap', '@nuxt/image'],

@@ -25,8 +25,8 @@ import blogrolls from '@/data/blogrolls.json'
 const showReason = ref(false);
 
 const thisInfo = {
-  '网站名称': 'SolitudeScroll',
-  '网站介绍': 'Satellite yourself.',
+  '网站名称': 'Haskell Works',
+  '网站介绍': 'stay awake and wonder if there\'s a dog',
   '网站代表色': '#009688',
   '网站地址': 'https://subilan.win',
   '头像': 'https://fnmdp.oss-cn-beijing.aliyuncs.com/assets/avatar.png'
