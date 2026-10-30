@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-8">
     <div class="flex items-start justify-between">
       <div class="flex flex-col gap-2">
-        <h1 class="text-4xl font-bold cursor-pointer" @click="$router.push('/')">Haskell Network</h1>
+        <h1 class="text-4xl font-bold cursor-pointer" @click="$router.push('/')">Haskell Works</h1>
         <div class="flex items-center gap-2 *:text-neutral-500 *:hover:text-neutral-900 *:hover:underline dark:*:text-neutral-400 dark:*:hover:text-neutral-100">
           <router-link to="/pages/blogroll">友链</router-link>
           <router-link to="/pages/pgp">PGP</router-link>

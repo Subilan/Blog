@@ -25,6 +25,7 @@
     <div :class="`
 prose-lg [&_h1]:hidden
         `" v-html="post.content" />
+    <giscus-comments />
   </div>
 </template>
 
