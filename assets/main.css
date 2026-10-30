@@ -5,6 +5,15 @@
 @plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+	font-family: 'Inter Variable';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('./fonts/inter-arrow.woff2') format('woff2-variations');
+	unicode-range: U+2197;
+}
+
 :root {
 	font-feature-settings:
 		'liga' 1,
@@ -18,7 +27,7 @@
 
 @theme {
 	--font-sans: 'Inter Variable', 'PingFang SC', '微软雅黑', sans-serif;
-	--font-mono: 'Cascadia Code', 'Menlo', 'SF Mono', 'Consolas', monospace;
+	--font-mono: 'Menlo', 'SF Mono', 'Consolas', monospace;
 }
 
 #nprogress .bar {
