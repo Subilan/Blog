@@ -18,12 +18,7 @@
 
 @theme {
 	--font-sans: 'Inter Variable', 'PingFang SC', '微软雅黑', sans-serif;
-	--font-serif: 'Source Serif 4', 'Noto Serif SC', serif;
 	--font-mono: 'Cascadia Code', 'Menlo', 'SF Mono', 'Consolas', monospace;
-}
-
-.serif {
-	--font-sans: var(--font-serif);
 }
 
 #nprogress .bar {

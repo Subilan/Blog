@@ -52,25 +52,6 @@ watch(forceMode, (val) => {
   cookie.value = val;
 });
 
-const fontCookie = useCookie('subilan-blog-font-style');
-const fontStyle = useState('font-style', () => fontCookie.value || 'sans');
-
-const isSerif = computed(() => fontStyle.value === 'serif');
-
-onMounted(() => {
-  document.documentElement.classList.toggle('serif', isSerif.value);
-});
-
-watch(isSerif, (val) => {
-  if (import.meta.client) {
-    document.documentElement.classList.toggle('serif', val);
-  }
-});
-
-watch(fontStyle, (val) => {
-  fontCookie.value = val;
-});
-
 onMounted(() => {
   useFavicon('/avatar.jpg', {
     rel: 'icon'
@@ -81,10 +62,6 @@ useHead({
   script: [
     {
       innerHTML: `(function(){var c=document.cookie.match(/(?:^|;\\s*)subilan-blog-dark-mode-indicator=([^;]+)/);var m=c?c[1]:'auto';if(m==='dark'||(m==='auto'&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})()`,
-      type: 'text/javascript'
-    },
-    {
-      innerHTML: `(function(){var c=document.cookie.match(/(?:^|;\\s*)subilan-blog-font-style=([^;]+)/);if(c&&c[1]==='serif'){document.documentElement.classList.add('serif')}})()`,
       type: 'text/javascript'
     }
   ],

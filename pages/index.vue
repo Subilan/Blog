@@ -2,7 +2,7 @@
   <div class="flex flex-col gap-8">
     <div class="flex items-start justify-between">
       <div class="flex flex-col gap-2">
-        <h1 class="text-4xl font-bold cursor-pointer" @click="$router.push('/')">solitude scroll</h1>
+        <h1 class="text-4xl font-bold cursor-pointer" @click="$router.push('/')">Haskell Network</h1>
         <div class="flex items-center gap-2 *:text-neutral-500 *:hover:text-neutral-900 *:hover:underline dark:*:text-neutral-400 dark:*:hover:text-neutral-100">
           <router-link to="/pages/blogroll">友链</router-link>
           <router-link to="/pages/pgp">PGP</router-link>
@@ -11,13 +11,6 @@
         </div>
       </div>
       <div class="flex items-center gap-1">
-        <div
-          class="cursor-pointer p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors font-bold text-lg w-10 h-10 flex items-center justify-center select-none"
-          @click="toggleFontStyle()"
-          :title="fontStyleLabel"
-        >
-          A
-        </div>
         <div
           class="cursor-pointer p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/5 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
           @click="toggleDarkmode"
@@ -60,7 +53,6 @@ import { mdiEmailOutline } from "@mdi/js";
 import GitHub from '~/assets/svg/github.svg';
 import Bilibili from '~/assets/svg/bilibili.svg'
 import toggleDarkmode from '~/utils/toggleDarkmode';
-import toggleFontStyle from '~/utils/toggleFontStyle';
 import { mdiWeatherSunny, mdiWeatherNight, mdiThemeLightDark } from '@mdi/js';
 
 definePageMeta({
@@ -68,11 +60,6 @@ definePageMeta({
 });
 
 const forceMode = useState('force-mode');
-const fontStyle = useState('font-style', () => 'sans');
-
-const fontStyleLabel = computed(() => {
-  return fontStyle.value === 'serif' ? '衬线体' : '无衬线体';
-});
 
 const modeIcon = computed(() => {
   const mode = forceMode.value || 'auto';

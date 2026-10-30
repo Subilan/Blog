@@ -8,16 +8,6 @@ export default defineNuxtConfig({
 	css: [
 		'@fontsource-variable/inter/standard.css',
 		'@fontsource-variable/inter/standard-italic.css',
-		'@fontsource/source-serif-4/latin-400.css',
-		'@fontsource/source-serif-4/latin-ext-400.css',
-		'@fontsource/source-serif-4/latin-400-italic.css',
-		'@fontsource/source-serif-4/latin-ext-400-italic.css',
-		'@fontsource/source-serif-4/latin-600.css',
-		'@fontsource/source-serif-4/latin-ext-600.css',
-		'@fontsource/source-serif-4/latin-600-italic.css',
-		'@fontsource/source-serif-4/latin-ext-600-italic.css',
-		'@fontsource/noto-serif-sc/chinese-simplified-400.css',
-		'@fontsource/noto-serif-sc/chinese-simplified-700.css',
 		'./assets/main.css'
 	],
 
