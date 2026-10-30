@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { useFavicon, usePreferredDark } from "@vueuse/core";
+import { usePreferredDark } from "@vueuse/core";
 import getPostDigest from "~/utils/getPostDigests";
 import getSiteName from "~/utils/getSiteName.js";
 
@@ -52,12 +52,6 @@ watch(forceMode, (val) => {
   cookie.value = val;
 });
 
-onMounted(() => {
-  useFavicon('/avatar.jpg', {
-    rel: 'icon'
-  });
-});
-
 useHead({
   script: [
     {
@@ -72,6 +66,17 @@ useHead({
     }
   ],
   link: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon-light.png'
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/favicon-dark.png',
+      media: '(prefers-color-scheme: dark)'
+    },
     {
       rel: 'stylesheet',
       href: 'https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css',
