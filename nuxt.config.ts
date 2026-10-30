@@ -12,7 +12,7 @@ export default defineNuxtConfig({
 	],
 
 	runtimeConfig: {
-		umamiEndpoint: 'https://analytics.subilan.win',
+		umamiEndpoint: 'https://blog-analytics.hskl.me',
 		umamiUsername: '',
 		umamiPassword: ''
 	},
