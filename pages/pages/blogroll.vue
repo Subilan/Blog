@@ -9,7 +9,7 @@
       <a class="p-4 rounded-lg shadow-sm hover:opacity-80 active:opacity-70 flex items-center bg-center bg-cover bg-no-repeat gap-3"
         target="_blank" :href="x.href" v-for="x in blogrolls.filter(x => !x.hidden)" :class="{ 'text-white': x.light }"
         :style="x.background.startsWith('http') ? `background-image: url(${x.background})` : `background: ${x.background}`">
-        <nuxt-img placeholder="/blind.png" class="rounded-full h-[50px]" format="webp" :src="x.avatar" :alt="x.name" />
+        <BlogrollAvatar :src="x.avatar" :alt="x.name" />
         <div class="flex flex-col">
           <div class="font-bold leading-snug">{{ x.name }}</div>
           <p class="text-sm">{{ x.description }}</p>
