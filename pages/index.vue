@@ -24,7 +24,7 @@
       <a href="https://github.com/Subilan" target="_blank">
         <GitHub />
       </a>
-      <a href="mailto:christophersubilan@gmail.com">
+      <a href="mailto:1843917482@qq.com">
         <icon :path="mdiEmailOutline" />
       </a>
       <a href="https://space.bilibili.com/35413001" target="_blank">
