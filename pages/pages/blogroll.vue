@@ -7,7 +7,7 @@
         href="https://github.com/Subilan/Blog">本博客仓库</a>提交PR（按照数组元素格式修改项目文件中的data/blogroll.json）。</p>
     <div class="flex items-stretch flex-wrap not-prose gap-3 mb-5">
       <a class="p-4 rounded-lg shadow-sm hover:opacity-80 active:opacity-70 flex items-center bg-center bg-cover bg-no-repeat gap-3"
-        target="_blank" :href="x.href" v-for="x in blogrolls.filter(x => !x.hidden)" :class="{ 'text-white': x.light }"
+        target="_blank" :href="x.href" v-for="x in blogrolls.filter(x => !x.hidden)" :class="x.light ? 'text-white' : 'text-neutral-900'"
         :style="x.background.startsWith('http') ? `background-image: url(${x.background})` : `background: ${x.background}`">
         <BlogrollAvatar :src="x.avatar" :alt="x.name" />
         <div class="flex flex-col">
