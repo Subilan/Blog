@@ -31,16 +31,20 @@
 }
 
 #nprogress .bar {
-	background: var(--progress-bar-color) !important;
-	box-shadow:
-		0 0 5px color-mix(in oklab, var(--progress-bar-color) 80%, transparent),
-		0 0 12px color-mix(in oklab, var(--progress-bar-color) 50%, transparent) !important;
+	height: 2px;
+	border-radius: 0 2px 2px 0;
+	background: linear-gradient(
+		90deg,
+		color-mix(in oklab, var(--progress-bar-color) 60%, transparent),
+		var(--progress-bar-color) 45%,
+		color-mix(in oklab, var(--progress-bar-color) 80%, white)
+	) !important;
+	box-shadow: 0 0 8px color-mix(in oklab, var(--progress-bar-color) 55%, transparent) !important;
 }
 
 #nprogress .peg {
-	box-shadow:
-		0 0 10px var(--progress-bar-color),
-		0 0 5px var(--progress-bar-color) !important;
+	box-shadow: 0 0 6px color-mix(in oklab, var(--progress-bar-color) 70%, transparent) !important;
+	opacity: 0.8;
 }
 
 body {
